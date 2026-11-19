@@ -42,5 +42,72 @@
   "repoCommits": "commits",
   "repoAdrs": "decisões registradas (ADRs)",
   "repoTests": "métodos de teste",
-  "history": "Ver todo o histórico de commits no GitHub"
+  "history": "Ver todo o histórico de commits no GitHub",
+  "architecture": {
+    "title": "Arquitetura",
+    "intro": "O caminho de cada mudança, do texto até o navegador. Cada etapa leva às decisões registradas (ADRs) que a explicam.",
+    "decisionsLabel": "Decisões:",
+    "nodes": [
+      {
+        "name": "Manuel",
+        "role": "Intenção e decisões",
+        "details": [
+          "Conteúdo em JSON nos 3 idiomas",
+          "Revisão de cada mudança"
+        ],
+        "adrs": [
+          "0004"
+        ]
+      },
+      {
+        "name": "GitHub",
+        "role": "Código, conteúdo e decisões",
+        "details": [
+          "Blazor Web App (.NET 10) e testes",
+          "ADRs versionados junto com o código"
+        ],
+        "adrs": [
+          "0001"
+        ]
+      },
+      {
+        "name": "Azure Pipelines",
+        "role": "CI/CD",
+        "details": [
+          "Build sem warnings, formatação e testes",
+          "Prerender de cada página × idioma em HTML",
+          "Imagens AVIF/WebP sem metadados"
+        ],
+        "adrs": [
+          "0007",
+          "0003",
+          "0008"
+        ]
+      },
+      {
+        "name": "Azure Static Web Apps",
+        "role": "Hospedagem estática, plano Free",
+        "details": [
+          "Cache imutável e CSP",
+          "Preview a cada pull request"
+        ],
+        "adrs": [
+          "0009"
+        ]
+      },
+      {
+        "name": "Navegador",
+        "role": "Nenhum servidor em execução",
+        "details": [
+          "HTML que funciona sem JavaScript",
+          "WebAssembly só no benchmark",
+          "Vídeos carregados só no clique"
+        ],
+        "adrs": [
+          "0001",
+          "0010"
+        ]
+      }
+    ]
+  }
 }

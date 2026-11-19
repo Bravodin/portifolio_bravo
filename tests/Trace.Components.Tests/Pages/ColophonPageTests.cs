@@ -22,6 +22,20 @@ public sealed class ColophonPageTests : BunitContext
     }
 
     [Fact]
+    public void Architecture_IsAFiveStepFlow_WithAdrLinks()
+    {
+        this.AddSite("/en/colophon/");
+
+        var cut = Render<Colophon>();
+
+        Assert.Equal(["Manuel", "GitHub", "Azure Pipelines", "Azure Static Web Apps", "Browser"], cut.FindAll(".arch-node h3").Select(h => h.TextContent));
+        var adr9 = cut.FindAll(".arch-adrs a").First(a => a.TextContent == "ADR-0009");
+        Assert.Equal("https://github.com/Bravodin/portifolio_bravo/blob/main/docs/architecture/adr/0009-azure-pipelines-and-static-web-apps.md", adr9.GetAttribute("href"));
+        var unknown = cut.FindAll(".arch-adrs a").First(a => a.TextContent == "ADR-0003");
+        Assert.EndsWith("/docs/architecture/adr/README.md", unknown.GetAttribute("href"), StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void WithoutGit_TheCommitCountIsHidden()
     {
         this.AddSite("/en/colophon/", new RepoStats(Commits: null, Adrs: 10, TestMethods: 136));
@@ -37,6 +51,7 @@ public sealed class ColophonPageTests : BunitContext
         var stats = RepoStats.Measure();
 
         Assert.Equal(10, stats.Adrs);
+        Assert.Equal("0010-video-youtube-facade.md", stats.AdrFiles["0010"]);
         Assert.True(stats.TestMethods > 100);
         Assert.True(stats.Commits is null or > 0);
     }

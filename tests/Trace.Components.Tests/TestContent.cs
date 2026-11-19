@@ -20,7 +20,10 @@ internal static class TestContent
         context.Services.AddSingleton(new SiteOptions(new Uri("https://www.manuelbravo.com.br/")));
         context.Services.AddScoped<PageContext>();
         context.Services.AddSingleton(Media);
-        context.Services.AddSingleton(repo ?? new RepoStats(Commits: 42, Adrs: 10, TestMethods: 136));
+        context.Services.AddSingleton(repo ?? new RepoStats(Commits: 42, Adrs: 10, TestMethods: 136)
+        {
+            AdrFiles = new Dictionary<string, string> { ["0009"] = "0009-azure-pipelines-and-static-web-apps.md" },
+        });
         context.Services.AddSingleton<TimeProvider>(new FakeTimeProvider(new DateTimeOffset(2026, 11, 19, 12, 0, 0, TimeSpan.Zero)));
         context.Services.GetRequiredService<NavigationManager>().NavigateTo(path);
     }

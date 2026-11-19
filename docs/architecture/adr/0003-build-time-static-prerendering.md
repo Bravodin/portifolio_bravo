@@ -1,6 +1,6 @@
 # 0003 — Build-time static prerendering with an in-process crawler
 
-- Status: Accepted (spike passed locally on the SWA CLI emulator on 2026-11-19; production check on SWA pending)
+- Status: Accepted (spike passed locally on 2026-11-19 and on production Azure Static Web Apps the same day)
 - Date: 2026-11-19
 
 ## Context
@@ -25,7 +25,7 @@ Deploy a single page with one `InteractiveWebAssembly` island to Azure Static We
 - [x] the island hydrates from persisted state with no server calls (check the network tab: only static GETs);
 - [x] enhanced navigation between prerendered pages works, or is disabled cleanly (`data-enhance-nav="false"`). *Works once SWA sends `Blazor-Enhanced-Nav: allow` (finding 6).*
 - [x] a 404 on a deep link serves `404.html` with a 404 status, readable in all three languages (`responseOverrides` is site-wide);
-- [~] `.wasm` and the other `_framework` files are served with the right MIME types and compression, and only fingerprinted files get `immutable` caching. *MIME and headers ✅ in the emulator; compression and the final file set are checked on the real SWA.*
+- [x] `.wasm` and the other `_framework` files are served with the right MIME types and compression, and only fingerprinted files get `immutable` caching. *Confirmed on production SWA: Brotli, `immutable` on fingerprinted files, 30 s on HTML.*
 - [x] the CSP header from `staticwebapp.config.json` doesn't block the WASM runtime.
 
 ### Spike results (2026-11-19, local)
@@ -49,6 +49,10 @@ Findings that shape `Trace.Prerender` (step 4):
 
 `Trace.Prerender` implements findings 1–4, 6 and 7. It hosts the **published** app with `WebApplicationFactory` (TestServer, no ports), discovers `@page` routes, follows every same-site link, writes `index.html` per folder plus `404.html`, `sitemap.xml`, `robots.txt` and the filled `staticwebapp.config.json`, and fails the build on broken links, missing assets or a page without `<html lang>`. On the SWA CLI emulator, with headless Edge, the island hydrates, the Dyno runs, `/` → `/en/colophon/` → `/` navigates without a reload (44 requests, all `GET`), and every file the browser requests is served `immutable`.
 6. Headless Edge requests `/favicon.ico` by itself. Add a favicon with the design assets.
+
+### Production check (2026-11-19, Azure Static Web Apps)
+
+First deploy through Azure Pipelines, checked with curl and headless Edge against the `*.azurestaticapps.net` URL: every page and the CV return 200 and an unknown path returns a real 404; CSP, `nosniff`, `Referrer-Policy` and `Blazor-Enhanced-Nav: allow` are sent; JavaScript is served Brotli-compressed; fingerprinted files, media and fonts are cached as `immutable`; the benchmark island hydrates in 2.7 s and runs; navigation between pages doesn't reload; 50 requests, all `GET`, none to a third party. The first deploy had failed because the generated `staticwebapp.config.json` exceeded SWA's 20 KB limit (one cache route per image); it now uses a single `/media/*` route and the prerender fails the build above 20 KB. Open: there is no favicon yet (one 404 in the console).
 
 ## Fallback
 

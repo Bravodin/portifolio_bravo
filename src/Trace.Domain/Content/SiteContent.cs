@@ -27,6 +27,12 @@ public sealed record Role(string Who, string What);
 /// <summary>A number with its label, pre-formatted per locale (e.g. "156,5 milhões" / "tokens processados").</summary>
 public sealed record Figure(string Value, string Label);
 
+/// <summary>One step of the architecture flow, with the ADR numbers ("0009") that explain it.</summary>
+public sealed record ArchitectureNode(string Name, string Role, IReadOnlyList<string> Details, IReadOnlyList<string> Adrs);
+
+/// <summary>The Colophon's architecture diagram: an ordered flow from Manuel to the browser.</summary>
+public sealed record Architecture(string Title, string Intro, string DecisionsLabel, IReadOnlyList<ArchitectureNode> Nodes);
+
 /// <summary>
 /// The Colophon's "built with AI, directed by a human" section (content inventory §1.2). Usage figures come from
 /// Manuel's Claude Code usage report; repository figures are measured at build time, so only their labels live here.
@@ -44,7 +50,8 @@ public sealed record ColophonCopy(
     string RepoCommits,
     string RepoAdrs,
     string RepoTests,
-    string History);
+    string History,
+    Architecture Architecture);
 
 /// <summary>A measured result (content inventory §2). Values are pre-formatted per locale (ADR-0004).</summary>
 public sealed record Metric(string Id, string Label, string Before, string After, string Delta, string Where);

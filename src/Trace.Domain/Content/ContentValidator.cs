@@ -65,6 +65,12 @@ public static class ContentValidator
                 yield return $"colophon.json has a different number of roles, reviews or usage figures in {locale}";
             }
 
+            var adrs = (ColophonCopy c) => string.Join('|', c.Architecture.Nodes.Select(n => string.Join(',', n.Adrs)));
+            if (adrs(ours) != adrs(translated))
+            {
+                yield return $"colophon.json architecture has different steps or ADRs in {locale}";
+            }
+
             if (reference.Log.Count != other.Log.Count)
             {
                 yield return $"log.json has {reference.Log.Count} entries in {Locales.Default} but {other.Log.Count} in {locale}";

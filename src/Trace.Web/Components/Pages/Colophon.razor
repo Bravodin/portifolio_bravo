@@ -57,11 +57,42 @@
         <p><a href="@(RepoUrl)/commits/main">@Copy.History ↗</a></p>
     </section>
 
+    @* Architecture as an ordered flow: real text (translated, readable by screen readers), arrows drawn in CSS,
+       horizontal on wide screens and vertical on phones. *@
+    <section class="architecture" aria-labelledby="arch-title">
+        <h2 id="arch-title">@Arch.Title</h2>
+        <p>@Arch.Intro</p>
+        <ol class="arch-flow">
+            @foreach (var node in Arch.Nodes)
+            {
+                <li class="arch-node">
+                    <h3>@node.Name</h3>
+                    <p class="arch-role">@node.Role</p>
+                    <ul>
+                        @foreach (var detail in node.Details)
+                        {
+                            <li>@detail</li>
+                        }
+                    </ul>
+                    <p class="arch-adrs">
+                        <span>@Arch.DecisionsLabel</span>
+                        @foreach (var adr in node.Adrs)
+                        {
+                            <a href="@Repo.AdrUrl(adr)">ADR-@adr</a>
+                        }
+                    </p>
+                </li>
+            }
+        </ol>
+    </section>
+
     <p><a href="@Page.PathFor(PageKey.Home)">@Page.T("colophon.back")</a></p>
 </article>
 
 @code {
-    private const string RepoUrl = "https://github.com/Bravodin/portifolio_bravo";
+    private const string RepoUrl = RepoStats.RepoUrl;
 
     private ColophonCopy Copy => Page.Content.Colophon;
+
+    private Architecture Arch => Copy.Architecture;
 }

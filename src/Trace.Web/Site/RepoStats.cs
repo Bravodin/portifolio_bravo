@@ -10,6 +10,17 @@ namespace Trace.Web.Site;
 /// </summary>
 public sealed partial record RepoStats(int? Commits, int Adrs, int TestMethods)
 {
+    /// <summary>ADR number ("0009") → file name, read from docs/architecture/adr at build time.</summary>
+    public IReadOnlyDictionary<string, string> AdrFiles { get; init; } = new Dictionary<string, string>();
+
+    /// <summary>GitHub URL of an ADR, or of the ADR index when the number is unknown.</summary>
+    public string AdrUrl(string number) =>
+        AdrFiles.TryGetValue(number, out var file)
+            ? $"{RepoUrl}/blob/main/docs/architecture/adr/{file}"
+            : $"{RepoUrl}/blob/main/docs/architecture/adr/README.md";
+
+    public const string RepoUrl = "https://github.com/Bravodin/portifolio_bravo";
+
     public static RepoStats Measure()
     {
         var root = FindRoot();
@@ -18,11 +29,13 @@ public sealed partial record RepoStats(int? Commits, int Adrs, int TestMethods)
             return new RepoStats(null, 0, 0);
         }
 
-        var adrs = Directory.EnumerateFiles(Path.Combine(root, "docs", "architecture", "adr"), "0*.md").Count();
+        var adrFiles = Directory.EnumerateFiles(Path.Combine(root, "docs", "architecture", "adr"), "0*.md")
+            .Select(Path.GetFileName)
+            .ToDictionary(f => f![..4], f => f!, StringComparer.Ordinal);
         var tests = Directory.EnumerateFiles(Path.Combine(root, "tests"), "*.cs", SearchOption.AllDirectories)
             .Where(f => !f.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}", StringComparison.Ordinal))
             .Sum(f => TestAttribute().Count(File.ReadAllText(f)));
-        return new RepoStats(CountCommits(root), adrs, tests);
+        return new RepoStats(CountCommits(root), adrFiles.Count, tests) { AdrFiles = adrFiles };
     }
 
     private static int? CountCommits(string root)

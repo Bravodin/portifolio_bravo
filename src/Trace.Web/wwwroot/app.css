@@ -715,6 +715,82 @@ figcaption small { color: var(--color-muted); }
   .roles-list div { grid-template-columns: 1fr; gap: var(--space-1); }
 }
 
+/* Architecture flow: a column with ↓ on phones, a row with → from 1024 px. */
+.colophon { max-width: var(--content-max); }
+.colophon > ul,
+.colophon > p,
+.ai-build > p,
+.ai-build > dl,
+.ai-build > ul:not(.figures),
+.architecture > p { max-width: var(--measure); }
+
+.architecture { margin-top: var(--space-12); padding-top: var(--space-8); border-top: 1px solid var(--color-line); }
+
+.arch-flow {
+  display: grid;
+  gap: var(--space-8);
+  list-style: none;
+  margin: var(--space-6) 0 var(--space-8);
+  padding: 0;
+  counter-reset: arch;
+}
+
+.arch-node {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-4) var(--space-4) var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-top: 3px solid var(--color-amber);
+  border-radius: var(--radius-md);
+  counter-increment: arch;
+}
+
+.arch-node::before {
+  content: counter(arch, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: var(--size-hud);
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}
+
+.arch-node h3 { margin: 0; font-size: var(--size-h3); }
+.arch-role { margin: 0; font-family: var(--font-mono); font-size: var(--size-small); color: var(--color-amber); }
+.arch-node ul { margin: 0; padding-left: var(--space-4); color: var(--color-text-2); font-size: var(--size-small); display: grid; gap: var(--space-1); }
+.arch-adrs { margin: var(--space-2) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); font-size: var(--size-small); }
+.arch-adrs span { color: var(--color-muted); }
+.arch-adrs a { font-family: var(--font-mono); }
+
+/* Connector between steps (decorative). */
+.arch-node:not(:last-child)::after {
+  content: "↓";
+  position: absolute;
+  left: 50%;
+  bottom: calc(-1 * var(--space-8));
+  transform: translateX(-50%);
+  height: var(--space-8);
+  display: grid;
+  place-items: center;
+  color: var(--color-amber);
+  font-size: 20px;
+}
+
+@media (min-width: 1024px) {
+  .arch-flow { grid-template-columns: repeat(5, 1fr); gap: var(--space-6); }
+  .arch-node:not(:last-child)::after {
+    content: "→";
+    left: auto;
+    right: calc(-1 * var(--space-6));
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--space-6);
+    height: auto;
+  }
+}
+
 /* ---------- Lightbox ---------- */
 
 .lightbox {

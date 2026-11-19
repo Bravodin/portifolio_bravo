@@ -42,5 +42,72 @@
   "repoCommits": "commits",
   "repoAdrs": "recorded decisions (ADRs)",
   "repoTests": "test methods",
-  "history": "See the full commit history on GitHub"
+  "history": "See the full commit history on GitHub",
+  "architecture": {
+    "title": "Architecture",
+    "intro": "The path of every change, from text to the browser. Each step links to the recorded decisions (ADRs) behind it.",
+    "decisionsLabel": "Decisions:",
+    "nodes": [
+      {
+        "name": "Manuel",
+        "role": "Intent and decisions",
+        "details": [
+          "Content as JSON in 3 languages",
+          "Review of every change"
+        ],
+        "adrs": [
+          "0004"
+        ]
+      },
+      {
+        "name": "GitHub",
+        "role": "Code, content and decisions",
+        "details": [
+          "Blazor Web App (.NET 10) and tests",
+          "ADRs versioned with the code"
+        ],
+        "adrs": [
+          "0001"
+        ]
+      },
+      {
+        "name": "Azure Pipelines",
+        "role": "CI/CD",
+        "details": [
+          "Build with no warnings, format check and tests",
+          "Every page × language prerendered to HTML",
+          "AVIF/WebP images, metadata stripped"
+        ],
+        "adrs": [
+          "0007",
+          "0003",
+          "0008"
+        ]
+      },
+      {
+        "name": "Azure Static Web Apps",
+        "role": "Static hosting, Free plan",
+        "details": [
+          "Immutable caching and CSP",
+          "A preview for every pull request"
+        ],
+        "adrs": [
+          "0009"
+        ]
+      },
+      {
+        "name": "Browser",
+        "role": "No server at run time",
+        "details": [
+          "HTML that works without JavaScript",
+          "WebAssembly only for the benchmark",
+          "Videos load only on click"
+        ],
+        "adrs": [
+          "0001",
+          "0010"
+        ]
+      }
+    ]
+  }
 }
