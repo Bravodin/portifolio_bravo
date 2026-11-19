@@ -1,0 +1,76 @@
+{
+  "$schema": "./gallery.schema.json",
+  "items": [
+    {
+      "id": "profile",
+      "file": "profile/manuel-bravo.jpg",
+      "category": "profile",
+      "featured": true,
+      "focalPoint": { "x": 0.5, "y": 0.38 },
+      "credit": null,
+      "alt": {
+        "pt-BR": "Retrato de Manuel Bravo, de blazer preto, em um escritório",
+        "en": "Portrait of Manuel Bravo in a black blazer, in an office",
+        "es": "Retrato de Manuel Bravo con blazer negro, en una oficina"
+      },
+      "caption": null
+    },
+    {
+      "id": "track-01",
+      "file": "garage/track-01-look-back.jpg",
+      "category": "track",
+      "featured": true,
+      "focalPoint": { "x": 0.47, "y": 0.5 },
+      "date": null,
+      "credit": { "name": "TODO — photographer", "url": null },
+      "alt": {
+        "pt-BR": "Manuel na pista com uma Kawasaki preta e vermelha, olhando para trás enquanto outros pilotos se aproximam",
+        "en": "Manuel on track on a black and red Kawasaki, looking back as other riders approach",
+        "es": "Manuel en la pista con una Kawasaki negra y roja, mirando hacia atrás mientras otros pilotos se acercan"
+      },
+      "caption": {
+        "pt-BR": "Olhar para trás antes de mudar de linha. Vale para pista e para deploy.",
+        "en": "Check behind before changing lines. True on track and in deploys.",
+        "es": "Mirar atrás antes de cambiar de línea. Vale en pista y en deploy."
+      }
+    },
+    {
+      "id": "track-02",
+      "file": "garage/track-02-wave.jpg",
+      "category": "track",
+      "featured": false,
+      "focalPoint": { "x": 0.45, "y": 0.4 },
+      "date": null,
+      "credit": { "name": "B.S Racing · MotoGP Cerezer", "url": null },
+      "alt": {
+        "pt-BR": "Manuel em uma moto esportiva vermelha, fazendo sinal de paz com a mão para o fotógrafo",
+        "en": "Manuel on a red sport bike, flashing a peace sign at the photographer",
+        "es": "Manuel en una moto deportiva roja, haciendo el signo de paz al fotógrafo"
+      },
+      "caption": {
+        "pt-BR": "Track day. A melhor forma de desligar a cabeça.",
+        "en": "Track day. The best way to clear my head.",
+        "es": "Track day. La mejor forma de despejar la mente."
+      }
+    },
+    {
+      "id": "track-03",
+      "file": "garage/track-03-lean.jpg",
+      "category": "track",
+      "featured": true,
+      "focalPoint": { "x": 0.52, "y": 0.5 },
+      "date": null,
+      "credit": { "name": "TODO — photographer", "url": null },
+      "alt": {
+        "pt-BR": "Manuel inclinado numa curva com uma moto esportiva vermelha e amarela",
+        "en": "Manuel leaning into a corner on a red and yellow sport bike",
+        "es": "Manuel inclinado en una curva con una moto deportiva roja y amarilla"
+      },
+      "caption": {
+        "pt-BR": "Performance é saber exatamente onde está o limite.",
+        "en": "Performance is knowing exactly where the limit is.",
+        "es": "Rendimiento es saber exactamente dónde está el límite."
+      }
+    }
+  ]
+}

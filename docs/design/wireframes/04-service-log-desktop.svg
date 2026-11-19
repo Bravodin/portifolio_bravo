@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1070" viewBox="0 0 1440 1070" font-family="Barlow, DejaVu Sans, sans-serif">
+<title>04 — Service Log · career timeline (desktop)</title>
+<defs><filter id="glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+<rect x="0" y="0" width="1440" height="900" rx="0" fill="#0E0F11"/>
+<rect x="0" y="0" width="1440" height="64" rx="0" fill="#16181B" opacity="0.95"/>
+<line x1="0" y1="64" x2="1440" y2="64" stroke="#2E3238" stroke-width="1"/>
+<rect x="32" y="16.0" width="32" height="32" rx="2" fill="none" stroke="#FFB020" stroke-width="1.5"/>
+<text x="48" y="37.5" font-size="14" fill="#FFB020" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="middle">MB</text>
+<text x="80" y="36.5" font-size="12" fill="#A8ABB0" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">TRACE</text>
+<text x="172" y="36.5" font-size="11" fill="#8A8E95" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">GEAR</text>
+<rect x="214" y="16.0" width="44" height="32" rx="2" fill="#1F2226" stroke="#FFB020" stroke-width="1.2"/>
+<text x="236" y="40.0" font-size="22" fill="#FFB020" font-weight="700" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">—</text>
+<rect x="0" y="62" width="1440" height="2" rx="0" fill="#2E3238"/>
+<rect x="0" y="62" width="1440.0" height="2" rx="0" fill="#FFB020"/>
+<line x1="1386" y1="25.0" x2="1408" y2="25.0" stroke="#ECEAE4" stroke-width="2"/>
+<line x1="1386" y1="32.0" x2="1408" y2="32.0" stroke="#ECEAE4" stroke-width="2"/>
+<line x1="1386" y1="39.0" x2="1408" y2="39.0" stroke="#ECEAE4" stroke-width="2"/>
+<rect x="1172" y="14.0" width="196" height="36" rx="6" fill="none" stroke="#FFB020" stroke-width="1.5"/>
+<text x="1270.0" y="37.0" font-size="14" fill="#FFB020" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">Recruiter mode (30 s)</text>
+<rect x="1112" y="18.0" width="36" height="28" rx="2" fill="none"/>
+<text x="1130" y="36.5" font-size="12" fill="#8A8E95" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">ES</text>
+<rect x="1072" y="18.0" width="36" height="28" rx="2" fill="#1F2226"/>
+<text x="1090" y="36.5" font-size="12" fill="#ECEAE4" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">EN</text>
+<rect x="1032" y="18.0" width="36" height="28" rx="2" fill="none"/>
+<text x="1050" y="36.5" font-size="12" fill="#8A8E95" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">PT</text>
+<line x1="96" y1="90" x2="96" y2="900" stroke="#2E3238" stroke-width="2"/>
+<text x="200" y="130" font-size="12" fill="#3DD6F5" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">SERVICE LOG  —  THE BIKE'S REVISION HISTORY</text>
+<text x="200" y="188" font-size="48" fill="#ECEAE4" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">Service history since 2008</text>
+<rect x="190" y="236" width="1180" height="92" rx="8" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<line x1="220.0" y1="270" x2="220.0" y2="286" stroke="#6B717A" stroke-width="1.5"/>
+<text x="220.0" y="306" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">2008</text>
+<line x1="282.22222222222223" y1="270" x2="282.22222222222223" y2="278" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="344.44444444444446" y1="270" x2="344.44444444444446" y2="286" stroke="#6B717A" stroke-width="1.5"/>
+<text x="344.44444444444446" y="306" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">2010</text>
+<line x1="406.66666666666663" y1="270" x2="406.66666666666663" y2="278" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="468.8888888888889" y1="270" x2="468.8888888888889" y2="286" stroke="#6B717A" stroke-width="1.5"/>
+<text x="468.8888888888889" y="306" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">2012</text>
+<line x1="531.1111111111111" y1="270" x2="531.1111111111111" y2="278" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="593.3333333333333" y1="270" x2="593.3333333333333" y2="286" stroke="#6B717A" stroke-width="1.5"/>
+<text x="593.3333333333333" y="306" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">2014</text>
+<line x1="655.5555555555555" y1="270" x2="655.5555555555555" y2="278" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="717.7777777777778" y1="270" x2="717.7777777777778" y2="286" stroke="#6B717A" stroke-width="1.5"/>
+<text x="717.7777777777778" y="306" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">2016</text>
+<line x1="780.0" y1="270" x2="780.0" y2="278" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="842.2222222222223" y1="270" x2="842.2222222222223" y2="286" stroke="#6B717A" stroke-width="1.5"/>
+<text x="842.2222222222223" y="306" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">2018</text>
+<line x1="904.4444444444445" y1="270" x2="904.4444444444445" y2="278" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="966.6666666666666" y1="270" x2="966.6666666666666" y2="286" stroke="#6B717A" stroke-width="1.5"/>
+<text x="966.6666666666666" y="306" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">2020</text>
+<line x1="1028.888888888889" y1="270" x2="1028.888888888889" y2="278" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="1091.111111111111" y1="270" x2="1091.111111111111" y2="286" stroke="#6B717A" stroke-width="1.5"/>
+<text x="1091.111111111111" y="306" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">2022</text>
+<line x1="1153.3333333333335" y1="270" x2="1153.3333333333335" y2="278" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="1215.5555555555557" y1="270" x2="1215.5555555555557" y2="286" stroke="#6B717A" stroke-width="1.5"/>
+<text x="1215.5555555555557" y="306" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">2024</text>
+<line x1="1277.7777777777778" y1="270" x2="1277.7777777777778" y2="278" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="1340.0" y1="270" x2="1340.0" y2="286" stroke="#6B717A" stroke-width="1.5"/>
+<text x="1340.0" y="306" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">2026</text>
+<rect x="780.0" y="248" width="311.1111111111111" height="14" rx="2" fill="#FFB020" opacity="0.85"/>
+<circle cx="220.0" cy="255" r="4" fill="#3DD6F5"/>
+<circle cx="282.22222222222223" cy="255" r="4" fill="#3DD6F5"/>
+<circle cx="531.1111111111111" cy="255" r="4" fill="#3DD6F5"/>
+<circle cx="717.7777777777778" cy="255" r="4" fill="#3DD6F5"/>
+<circle cx="780.0" cy="255" r="4" fill="#3DD6F5"/>
+<circle cx="842.2222222222223" cy="255" r="4" fill="#3DD6F5"/>
+<circle cx="904.4444444444445" cy="255" r="4" fill="#3DD6F5"/>
+<circle cx="1091.111111111111" cy="255" r="4" fill="#3DD6F5"/>
+<circle cx="1091.111111111111" cy="255" r="4" fill="#3DD6F5"/>
+<text x="1360" y="226" font-size="11" fill="#8A8E95" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="end" letter-spacing="0.08em">ODOMETER · DRAG OR CLICK A YEAR</text>
+<rect x="200" y="380" width="370" height="300" rx="12" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<rect x="220" y="402" width="120" height="30" rx="2" fill="#1F2226"/>
+<text x="280" y="423" font-size="14" fill="#FFB020" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">2017 → 2018</text>
+<text x="220" y="478" font-size="32" fill="#ECEAE4" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">Indra</text>
+<text x="220" y="506" font-size="16" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Senior SW Engineer</text>
+<line x1="220" y1="530" x2="550" y2="530" stroke="#2E3238" stroke-width="1"/>
+<text x="220" y="576" font-size="26" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">SLA 70 % → 98 %</text>
+<text x="220" y="648" font-size="15" fill="#3DD6F5" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">▸ Service notes</text>
+<rect x="590" y="380" width="370" height="300" rx="12" fill="#16181B" stroke="#FFB020" stroke-width="1"/>
+<rect x="610" y="402" width="120" height="30" rx="2" fill="#1F2226"/>
+<text x="670" y="423" font-size="14" fill="#FFB020" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">2018 → 2019</text>
+<text x="610" y="478" font-size="32" fill="#ECEAE4" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">Indra</text>
+<text x="610" y="506" font-size="16" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Lead SW Engineer</text>
+<line x1="610" y1="530" x2="940" y2="530" stroke="#2E3238" stroke-width="1"/>
+<text x="610" y="576" font-size="26" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">Overtime −75 %</text>
+<text x="610" y="648" font-size="15" fill="#3DD6F5" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">▸ Service notes</text>
+<rect x="980" y="380" width="370" height="300" rx="12" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<rect x="1000" y="402" width="120" height="30" rx="2" fill="#1F2226"/>
+<text x="1060" y="423" font-size="14" fill="#FFB020" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">2019 → 2022</text>
+<text x="1000" y="478" font-size="32" fill="#ECEAE4" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">Indra</text>
+<text x="1000" y="506" font-size="16" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Project Manager</text>
+<line x1="1000" y1="530" x2="1330" y2="530" stroke="#2E3238" stroke-width="1"/>
+<text x="1000" y="576" font-size="26" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">+30 % delivery speed</text>
+<text x="1000" y="648" font-size="15" fill="#3DD6F5" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">▸ Service notes</text>
+<text x="200" y="740" font-size="15" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">‹  newer</text>
+<text x="1350" y="740" font-size="15" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="end">older  ›</text>
+<text x="200" y="800" font-size="12" fill="#3DD6F5" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">EDUCATION</text>
+<text x="200" y="830.0" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">MBA in AI Engineering · UNIPDS · 2026–27 (in progress)   ·   MBA in Project Management · Impacta · 2020–21   ·   Systems Analysis &amp; Dev. · FIEO · 2010–13</text>
+<circle cx="1390" cy="270" r="13" fill="#FF4FD8"/>
+<text x="1390" y="275" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">1</text>
+<circle cx="970" cy="400" r="13" fill="#FF4FD8"/>
+<text x="970" y="405" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">2</text>
+<circle cx="350" cy="648" r="13" fill="#FF4FD8"/>
+<text x="350" y="653" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">3</text>
+<circle cx="178" cy="800" r="13" fill="#FF4FD8"/>
+<text x="178" y="805" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">4</text>
+<rect x="0" y="900" width="1440" height="170" rx="0" fill="#0A0A0B"/>
+<line x1="0" y1="900" x2="1440" y2="900" stroke="#FF4FD8" stroke-width="2" stroke-dasharray="6 6"/>
+<text x="32" y="930" font-size="12" fill="#FF4FD8" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">ANNOTATIONS</text>
+<circle cx="45.0" cy="957" r="13" fill="#FF4FD8"/>
+<text x="45.0" y="962" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">1</text>
+<text x="68.0" y="962" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Odometer ruler 2008 → 2026. Selecting a range filters/scrolls the cards (keyboard: ←/→ by year).</text>
+<circle cx="45.0" cy="987" r="13" fill="#FF4FD8"/>
+<text x="45.0" y="992" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">2</text>
+<text x="68.0" y="992" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Revision card: years, shop, role, one highlight metric. Current selection outlined amber.</text>
+<circle cx="45.0" cy="1017" r="13" fill="#FF4FD8"/>
+<text x="45.0" y="1022" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">3</text>
+<text x="68.0" y="1022" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">'Service notes' expands the full bullet list from the CV (same content model as Recruiter Mode).</text>
+<circle cx="45.0" cy="1047" r="13" fill="#FF4FD8"/>
+<text x="45.0" y="1052" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">4</text>
+<text x="68.0" y="1052" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Education sits under the log as a single strip, not as cards.</text>
+</svg>

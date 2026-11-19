@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TRACE media manifest",
+  "type": "object",
+  "required": ["items"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "file", "category", "alt"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "file": { "type": "string", "pattern": "^(profile|garage|games|workbench)/[a-z0-9-]+\\.(jpe?g|png|webp)$" },
+          "category": { "enum": ["profile", "track", "garage", "games", "workbench"] },
+          "featured": { "type": "boolean", "default": false },
+          "focalPoint": {
+            "type": "object",
+            "required": ["x", "y"],
+            "properties": {
+              "x": { "type": "number", "minimum": 0, "maximum": 1 },
+              "y": { "type": "number", "minimum": 0, "maximum": 1 }
+            }
+          },
+          "date": { "type": ["string", "null"], "pattern": "^\\d{4}(-\\d{2})?$" },
+          "credit": {
+            "type": ["object", "null"],
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "url": { "type": ["string", "null"], "format": "uri" }
+            }
+          },
+          "alt": { "$ref": "#/$defs/localized" },
+          "caption": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/localized" }] }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "localized": {
+      "type": "object",
+      "required": ["pt-BR", "en", "es"],
+      "additionalProperties": false,
+      "properties": {
+        "pt-BR": { "type": "string", "minLength": 3 },
+        "en": { "type": "string", "minLength": 3 },
+        "es": { "type": "string", "minLength": 3 }
+      }
+    }
+  }
+}

@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1070" viewBox="0 0 1440 1070" font-family="Barlow, DejaVu Sans, sans-serif">
+<title>06 — Recruiter Mode (desktop, also prints to 1 × A4)</title>
+<defs><filter id="glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+<rect x="0" y="0" width="1440" height="900" rx="0" fill="#0E0F11"/>
+<rect x="0" y="0" width="1440" height="64" rx="0" fill="#16181B"/>
+<line x1="0" y1="64" x2="1440" y2="64" stroke="#2E3238" stroke-width="1"/>
+<text x="32" y="38" font-size="15" fill="#3DD6F5" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">‹  Take the ride instead</text>
+<text x="720.0" y="37" font-size="12" fill="#FFB020" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle" letter-spacing="0.08em">RECRUITER MODE · 30 S READ</text>
+<text x="1408" y="38" font-size="14" fill="#A8ABB0" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="end">PT  EN  ES   ⎙ Print</text>
+<rect x="120" y="100" width="440" height="740" rx="12" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<clipPath id="clip5"><rect x="152" y="124" width="104" height="104" rx="12"/></clipPath>
+<image x="152" y="124" width="104" height="104" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip5)" href="data:image/jpeg;base64,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"/>
+<rect x="152" y="124" width="104" height="104" rx="12" fill="none" stroke="#2E3238" stroke-width="1"/>
+<text x="276" y="172" font-size="40" fill="#ECEAE4" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">Manuel Bravo</text>
+<text x="276" y="204" font-size="18" fill="#FFB020" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Lead Software Engineer</text>
+<text x="152" y="260" font-size="11" fill="#8A8E95" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">NOW</text>
+<text x="152" y="284" font-size="16" fill="#ECEAE4" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Porto · Lead Engineer · since 2022</text>
+<text x="152" y="316" font-size="11" fill="#8A8E95" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">EXPERIENCE</text>
+<text x="152" y="340" font-size="16" fill="#ECEAE4" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">20+ years</text>
+<text x="152" y="372" font-size="11" fill="#8A8E95" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">SECTORS</text>
+<text x="152" y="396" font-size="16" fill="#ECEAE4" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Insurance · Health · Financial</text>
+<text x="152" y="428" font-size="11" fill="#8A8E95" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">LOCATION</text>
+<text x="152" y="452" font-size="16" fill="#ECEAE4" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Brazil · open to remote</text>
+<text x="152" y="484" font-size="11" fill="#8A8E95" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">LANGUAGES</text>
+<text x="152" y="508" font-size="16" fill="#ECEAE4" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">PT native · ES native · EN full prof.</text>
+<text x="152" y="540" font-size="11" fill="#8A8E95" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">EDUCATION</text>
+<text x="152" y="564" font-size="16" fill="#ECEAE4" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">MBA AI Eng. (2026–27) · MBA PM</text>
+<rect x="152" y="610" width="376" height="52" rx="6" fill="#FFB020"/>
+<text x="340.0" y="641.6" font-size="16" fill="#0E0F11" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">Download CV (PDF)</text>
+<rect x="152" y="674" width="376" height="52" rx="6" fill="none" stroke="#6B717A" stroke-width="1.5"/>
+<text x="340.0" y="705.6" font-size="16" fill="#ECEAE4" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">Talk on LinkedIn  ↗</text>
+<text x="152" y="760" font-size="14" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">Contact via LinkedIn only</text>
+<text x="600" y="120" font-size="12" fill="#3DD6F5" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">KEY RESULTS (MEASURED)</text>
+<rect x="600" y="140" width="230" height="135" rx="8" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<text x="618" y="174" font-size="15" fill="#FF6B66" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" text-decoration="line-through">12–20 s</text>
+<text x="618" y="226" font-size="46" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">~1.2 s</text>
+<text x="618" y="256" font-size="13" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">booking journey</text>
+<rect x="845" y="140" width="230" height="135" rx="8" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<text x="863" y="174" font-size="15" fill="#FF6B66" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" text-decoration="line-through">baseline</text>
+<text x="863" y="226" font-size="46" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">−70 %</text>
+<text x="863" y="256" font-size="13" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">vulnerabilities</text>
+<rect x="1090" y="140" width="230" height="135" rx="8" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<text x="1108" y="174" font-size="15" fill="#FF6B66" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" text-decoration="line-through">CA GW</text>
+<text x="1108" y="226" font-size="46" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">−30 %</text>
+<text x="1108" y="256" font-size="13" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">API platform cost</text>
+<rect x="600" y="290" width="230" height="135" rx="8" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<text x="618" y="324" font-size="15" fill="#FF6B66" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" text-decoration="line-through">baseline</text>
+<text x="618" y="376" font-size="46" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">−40 %</text>
+<text x="618" y="406" font-size="13" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">reimbursement fraud</text>
+<rect x="845" y="290" width="230" height="135" rx="8" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<text x="863" y="324" font-size="15" fill="#FF6B66" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" text-decoration="line-through">70 %</text>
+<text x="863" y="376" font-size="46" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">98 %</text>
+<text x="863" y="406" font-size="13" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">SLA compliance</text>
+<rect x="1090" y="290" width="230" height="135" rx="8" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<text x="1108" y="324" font-size="15" fill="#FF6B66" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" text-decoration="line-through">baseline</text>
+<text x="1108" y="376" font-size="46" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">+40 %</text>
+<text x="1108" y="406" font-size="13" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">dev productivity (AI)</text>
+<text x="600" y="470" font-size="12" fill="#3DD6F5" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">CORE STACK</text>
+<rect x="600" y="488" width="37.36" height="26" rx="2" fill="#1F2226"/>
+<text x="618.68" y="505.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">C#</text>
+<rect x="645.36" y="488" width="54.72" height="26" rx="2" fill="#1F2226"/>
+<text x="672.72" y="505.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">.NET</text>
+<rect x="708.08" y="488" width="80.75999999999999" height="26" rx="2" fill="#1F2226"/>
+<text x="748.46" y="505.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">ASP.NET</text>
+<rect x="796.84" y="488" width="80.75999999999999" height="26" rx="2" fill="#1F2226"/>
+<text x="837.22" y="505.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">Node.js</text>
+<rect x="885.6" y="488" width="106.8" height="26" rx="2" fill="#1F2226"/>
+<text x="939.0" y="505.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">TypeScript</text>
+<rect x="1000.4" y="488" width="80.75999999999999" height="26" rx="2" fill="#1F2226"/>
+<text x="1040.78" y="505.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">Angular</text>
+<rect x="1089.1599999999999" y="488" width="46.04" height="26" rx="2" fill="#1F2226"/>
+<text x="1112.1799999999998" y="505.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">AWS</text>
+<rect x="1143.1999999999998" y="488" width="63.4" height="26" rx="2" fill="#1F2226"/>
+<text x="1174.8999999999999" y="505.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">Redis</text>
+<rect x="600" y="522" width="106.8" height="26" rx="2" fill="#1F2226"/>
+<text x="653.4" y="539.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">SQL Server</text>
+<rect x="714.8" y="522" width="72.08" height="26" rx="2" fill="#1F2226"/>
+<text x="750.8399999999999" y="539.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">Oracle</text>
+<rect x="794.88" y="522" width="89.44" height="26" rx="2" fill="#1F2226"/>
+<text x="839.6" y="539.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">Selenium</text>
+<rect x="892.3199999999999" y="522" width="72.08" height="26" rx="2" fill="#1F2226"/>
+<text x="928.3599999999999" y="539.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">JMeter</text>
+<rect x="972.4" y="522" width="80.75999999999999" height="26" rx="2" fill="#1F2226"/>
+<text x="1012.78" y="539.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">Postman</text>
+<rect x="1061.1599999999999" y="522" width="63.4" height="26" rx="2" fill="#1F2226"/>
+<text x="1092.86" y="539.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">Sonar</text>
+<rect x="1132.56" y="522" width="158.88" height="26" rx="2" fill="#1F2226"/>
+<text x="1212.0" y="539.5" font-size="14" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">Copilot / Claude</text>
+<text x="600" y="620" font-size="12" fill="#3DD6F5" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">LAST 3 ROLES</text>
+<text x="600" y="656" font-size="14" fill="#FFB020" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">2022–2026</text>
+<text x="710" y="656" font-size="16" fill="#ECEAE4" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Porto · Lead Engineer</text>
+<text x="1080" y="656" font-size="14" fill="#A8ABB0" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">Trace stages 1–7</text>
+<text x="600" y="706" font-size="14" fill="#FFB020" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">2022</text>
+<text x="710" y="706" font-size="16" fill="#ECEAE4" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Digisystem · Operation Manager</text>
+<text x="1080" y="706" font-size="14" fill="#A8ABB0" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">BR + LATAM pre-sales</text>
+<text x="600" y="756" font-size="14" fill="#FFB020" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">2019–2022</text>
+<text x="710" y="756" font-size="16" fill="#ECEAE4" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Indra · Project Manager</text>
+<text x="1080" y="756" font-size="14" fill="#A8ABB0" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">+30 % delivery speed</text>
+<circle cx="540" cy="120" r="13" fill="#FF4FD8"/>
+<text x="540" y="125" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">1</text>
+<circle cx="1350" cy="140" r="13" fill="#FF4FD8"/>
+<text x="1350" y="145" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">2</text>
+<circle cx="1220" cy="38" r="13" fill="#FF4FD8"/>
+<text x="1220" y="43" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">3</text>
+<circle cx="260" cy="20" r="13" fill="#FF4FD8"/>
+<text x="260" y="25" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">4</text>
+<rect x="0" y="900" width="1440" height="170" rx="0" fill="#0A0A0B"/>
+<line x1="0" y1="900" x2="1440" y2="900" stroke="#FF4FD8" stroke-width="2" stroke-dasharray="6 6"/>
+<text x="32" y="930" font-size="12" fill="#FF4FD8" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">ANNOTATIONS</text>
+<circle cx="45.0" cy="957" r="13" fill="#FF4FD8"/>
+<text x="45.0" y="962" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">1</text>
+<text x="68.0" y="962" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Portrait + everything a recruiter screens for, above the fold at 1440 × 900 and 360 × 740. Zero animation.</text>
+<circle cx="45.0" cy="987" r="13" fill="#FF4FD8"/>
+<text x="45.0" y="992" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">2</text>
+<text x="68.0" y="992" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Six headline metrics, compact before → after. Same content source as the Trace.</text>
+<circle cx="45.0" cy="1017" r="13" fill="#FF4FD8"/>
+<text x="45.0" y="1022" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">3</text>
+<text x="68.0" y="1022" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Print stylesheet: light background, 1 × A4, URLs printed after links.</text>
+<circle cx="45.0" cy="1047" r="13" fill="#FF4FD8"/>
+<text x="45.0" y="1052" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">4</text>
+<text x="68.0" y="1052" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Exit back to the ride keeps the language. Opening within 10 s unlocks 'Speedrunner'.</text>
+</svg>

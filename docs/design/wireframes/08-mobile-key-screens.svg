@@ -1,0 +1,263 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1174" viewBox="0 0 1800 1174" font-family="Barlow, DejaVu Sans, sans-serif">
+<title>08 — Mobile (390 × 844): Landing · Stage 1 · Recruiter · Terminal</title>
+<defs><filter id="glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+<rect x="0" y="0" width="1800" height="974" rx="0" fill="#08090A"/>
+<text x="48" y="40" font-size="18" fill="#ECEAE4" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">08a Landing</text>
+<text x="48" y="62" font-size="13" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">prerendered, CTA above fold</text>
+<rect x="48" y="90" width="390" height="844" rx="28" fill="#0E0F11" stroke="#6B717A" stroke-width="2"/>
+<rect x="48" y="98" width="390" height="56" rx="0" fill="#16181B" opacity="0.95"/>
+<line x1="48" y1="154" x2="438" y2="154" stroke="#2E3238" stroke-width="1"/>
+<rect x="64" y="110.0" width="32" height="32" rx="2" fill="none" stroke="#FFB020" stroke-width="1.5"/>
+<text x="80" y="131.5" font-size="14" fill="#FFB020" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="middle">MB</text>
+<text x="128" y="130.5" font-size="11" fill="#8A8E95" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">GEAR</text>
+<rect x="170" y="110.0" width="44" height="32" rx="2" fill="#1F2226" stroke="#FFB020" stroke-width="1.2"/>
+<text x="192" y="134.0" font-size="22" fill="#FFB020" font-weight="700" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">N</text>
+<rect x="48" y="152" width="390" height="2" rx="0" fill="#2E3238"/>
+<line x1="400" y1="119.0" x2="422" y2="119.0" stroke="#ECEAE4" stroke-width="2"/>
+<line x1="400" y1="126.0" x2="422" y2="126.0" stroke="#ECEAE4" stroke-width="2"/>
+<line x1="400" y1="133.0" x2="422" y2="133.0" stroke="#ECEAE4" stroke-width="2"/>
+<rect x="318" y="110.0" width="64" height="32" rx="6" fill="none" stroke="#FFB020" stroke-width="1"/>
+<text x="350" y="131.0" font-size="13" fill="#FFB020" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">⏱ 30 s</text>
+<line x1="68" y1="170" x2="68" y2="904" stroke="#2E3238" stroke-width="2"/>
+<circle cx="68" cy="210" r="7" fill="#0E0F11" stroke="#FFB020" stroke-width="2"/>
+<text x="92" y="214" font-size="11" fill="#3DD6F5" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">LEAD SW ENGINEER · BRAZIL</text>
+<text x="90" y="280" font-size="64" fill="#ECEAE4" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">Manuel</text>
+<text x="90" y="340" font-size="64" fill="#ECEAE4" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">Bravo</text>
+<text x="92" y="390" font-size="26" fill="#ECEAE4" font-weight="600" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">I modernize critical platforms</text>
+<text x="92" y="420" font-size="26" fill="#FFB020" font-weight="600" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">without stopping production.</text>
+<text x="92" y="460.0" font-size="15" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Full-stack .NET · Test automation</text>
+<text x="92" y="483.25" font-size="15" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">&amp; quality · AWS · Team building.</text>
+<rect x="92" y="520" width="310" height="52" rx="6" fill="#FFB020"/>
+<rect x="102" y="563" width="290" height="4" rx="2" fill="#0E0F11" opacity="0.3"/>
+<rect x="102" y="563" width="116.0" height="4" rx="2" fill="#0E0F11"/>
+<text x="247.0" y="551.6" font-size="16" fill="#0E0F11" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">Start the ride ▸</text>
+<rect x="92" y="584" width="310" height="52" rx="6" fill="none" stroke="#6B717A" stroke-width="1.5"/>
+<text x="247.0" y="615.6" font-size="16" fill="#ECEAE4" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">Recruiter mode (30 s)</text>
+<text x="92" y="690" font-size="28" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">~1.2 s</text>
+<text x="198" y="686" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">booking, from 12–20 s</text>
+<text x="92" y="746" font-size="28" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">−70 %</text>
+<text x="198" y="742" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">vulnerabilities</text>
+<text x="92" y="802" font-size="28" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">−30 %</text>
+<text x="198" y="798" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">platform cost</text>
+<text x="243.0" y="904" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">scroll to ride ↓</text>
+<text x="486" y="40" font-size="18" fill="#ECEAE4" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">08b Stage 1 + Dyno</text>
+<text x="486" y="62" font-size="13" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">lanes stacked, compact</text>
+<rect x="486" y="90" width="390" height="844" rx="28" fill="#0E0F11" stroke="#6B717A" stroke-width="2"/>
+<rect x="486" y="98" width="390" height="56" rx="0" fill="#16181B" opacity="0.95"/>
+<line x1="486" y1="154" x2="876" y2="154" stroke="#2E3238" stroke-width="1"/>
+<rect x="502" y="110.0" width="32" height="32" rx="2" fill="none" stroke="#FFB020" stroke-width="1.5"/>
+<text x="518" y="131.5" font-size="14" fill="#FFB020" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="middle">MB</text>
+<text x="566" y="130.5" font-size="11" fill="#8A8E95" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">GEAR</text>
+<rect x="608" y="110.0" width="44" height="32" rx="2" fill="#1F2226" stroke="#FFB020" stroke-width="1.2"/>
+<text x="630" y="134.0" font-size="22" fill="#FFB020" font-weight="700" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">1</text>
+<rect x="486" y="152" width="390" height="2" rx="0" fill="#2E3238"/>
+<rect x="486" y="152" width="39.0" height="2" rx="0" fill="#FFB020"/>
+<line x1="838" y1="119.0" x2="860" y2="119.0" stroke="#ECEAE4" stroke-width="2"/>
+<line x1="838" y1="126.0" x2="860" y2="126.0" stroke="#ECEAE4" stroke-width="2"/>
+<line x1="838" y1="133.0" x2="860" y2="133.0" stroke="#ECEAE4" stroke-width="2"/>
+<rect x="756" y="110.0" width="64" height="32" rx="6" fill="none" stroke="#FFB020" stroke-width="1"/>
+<text x="788" y="131.0" font-size="13" fill="#FFB020" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">⏱ 30 s</text>
+<line x1="506" y1="170" x2="506" y2="934" stroke="#2E3238" stroke-width="2"/>
+<line x1="506" y1="170" x2="506" y2="210" stroke="#FFB020" stroke-width="2"/>
+<circle cx="506" cy="210" r="10" fill="#FFB020" filter="url(#glow)" opacity="0.8"/>
+<circle cx="506" cy="210" r="5" fill="#FFB020"/>
+<text x="530" y="214" font-size="11" fill="#3DD6F5" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">GEAR 1 · CLIENT</text>
+<text x="530" y="256" font-size="32" fill="#ECEAE4" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">The app that made</text>
+<text x="530" y="290" font-size="32" fill="#ECEAE4" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">people wait</text>
+<text x="530" y="340" font-size="20" fill="#FF6B66" font-weight="600" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start" text-decoration="line-through">12–20 s</text>
+<text x="606" y="340" font-size="20" fill="#8A8E95" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">→</text>
+<text x="636" y="352" font-size="60" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">~1.2 s</text>
+<rect x="530" y="376" width="57.2" height="26" rx="2" fill="#1F2226"/>
+<text x="558.6" y="393.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">Swift</text>
+<rect x="595.2" y="376" width="64.64" height="26" rx="2" fill="#1F2226"/>
+<text x="627.5200000000001" y="393.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">Kotlin</text>
+<rect x="667.84" y="376" width="79.52" height="26" rx="2" fill="#1F2226"/>
+<text x="707.6" y="393.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">XCUITest</text>
+<rect x="530" y="426" width="330" height="380" rx="12" fill="#1F2226" stroke="#2E3238" stroke-width="1"/>
+<text x="546" y="454" font-size="11" fill="#FFB020" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">DYNO · BOOK APPOINTMENT</text>
+<rect x="546" y="474" width="298" height="124" rx="8" fill="#16181B"/>
+<path d="M569.6,561.0 A42,42 0 1 1 642.4,561.0" stroke="#2E3238" fill="none" stroke-width="8" stroke-linecap="butt"/>
+<path d="M644.7,523.7 A42,42 0 0 1 642.4,561.0" stroke="#FF6B66" fill="none" stroke-width="8" stroke-linecap="butt"/>
+<path d="M569.6,561.0 A42,42 0 1 1 645.9,527.0" stroke="#FF6B66" fill="none" stroke-width="8" stroke-linecap="butt"/>
+<line x1="581.7512886940357" y1="554.0" x2="574.8230854637602" y2="558.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="578.0" y1="540.0" x2="570.0" y2="540.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="581.7512886940357" y1="526.0" x2="574.8230854637602" y2="522.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="592.0" y1="515.7512886940357" x2="588.0" y2="508.8230854637602" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="606.0" y1="512.0" x2="606.0" y2="504.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="620.0" y1="515.7512886940357" x2="624.0" y2="508.8230854637602" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="630.2487113059643" y1="526.0" x2="637.1769145362398" y2="522.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="634.0" y1="540.0" x2="642.0" y2="540.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="630.2487113059643" y1="554.0" x2="637.1769145362398" y2="558.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="606" y1="540" x2="628.8253563910837" y2="532.5835921350013" stroke="#ECEAE4" stroke-width="2.5"/>
+<circle cx="606" cy="540" r="5" fill="#ECEAE4"/>
+<text x="670" y="514" font-size="13" fill="#FF6B66" font-weight="700" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">LEGACY</text>
+<text x="670" y="552" font-size="30" fill="#ECEAE4" font-weight="700" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">09.8 s</text>
+<text x="670" y="578" font-size="13" fill="#FF6B66" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">loading…</text>
+<rect x="546" y="614" width="298" height="124" rx="8" fill="#16181B"/>
+<path d="M569.6,701.0 A42,42 0 1 1 642.4,701.0" stroke="#2E3238" fill="none" stroke-width="8" stroke-linecap="butt"/>
+<path d="M644.7,663.7 A42,42 0 0 1 642.4,701.0" stroke="#FF6B66" fill="none" stroke-width="8" stroke-linecap="butt"/>
+<path d="M569.6,701.0 A42,42 0 0 1 566.1,667.0" stroke="#4ADE80" fill="none" stroke-width="8" stroke-linecap="butt"/>
+<line x1="581.7512886940357" y1="694.0" x2="574.8230854637602" y2="698.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="578.0" y1="680.0" x2="570.0" y2="680.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="581.7512886940357" y1="666.0" x2="574.8230854637602" y2="662.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="592.0" y1="655.7512886940357" x2="588.0" y2="648.8230854637602" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="606.0" y1="652.0" x2="606.0" y2="644.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="620.0" y1="655.7512886940357" x2="624.0" y2="648.8230854637602" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="630.2487113059643" y1="666.0" x2="637.1769145362398" y2="662.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="634.0" y1="680.0" x2="642.0" y2="680.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="630.2487113059643" y1="694.0" x2="637.1769145362398" y2="698.0" stroke="#6B717A" stroke-width="1.5"/>
+<line x1="606" y1="680" x2="583.1746436089163" y2="672.5835921350013" stroke="#ECEAE4" stroke-width="2.5"/>
+<circle cx="606" cy="680" r="5" fill="#ECEAE4"/>
+<text x="670" y="654" font-size="13" fill="#4ADE80" font-weight="700" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">NATIVE</text>
+<text x="670" y="692" font-size="30" fill="#ECEAE4" font-weight="700" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">01.2 s</text>
+<text x="670" y="718" font-size="13" fill="#4ADE80" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">✓ Booked</text>
+<rect x="546" y="760" width="130" height="36" rx="6" fill="#FFB020"/>
+<text x="611.0" y="782.9" font-size="14" fill="#0E0F11" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">Run again</text>
+<text x="692" y="783" font-size="14" fill="#3DD6F5" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Skip →</text>
+<rect x="486" y="858" width="390" height="76" rx="0" fill="#16181B"/>
+<line x1="486" y1="858" x2="876" y2="858" stroke="#2E3238" stroke-width="1"/>
+<rect x="502" y="872" width="170" height="48" rx="6" fill="#FFB020"/>
+<text x="587.0" y="901.6" font-size="16" fill="#0E0F11" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">CV (PDF)</text>
+<rect x="690" y="872" width="170" height="48" rx="6" fill="none" stroke="#6B717A" stroke-width="1.5"/>
+<text x="775.0" y="901.6" font-size="16" fill="#ECEAE4" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">LinkedIn ↗</text>
+<text x="924" y="40" font-size="18" fill="#ECEAE4" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">08c Recruiter mode</text>
+<text x="924" y="62" font-size="13" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">no motion, sticky CTA</text>
+<rect x="924" y="90" width="390" height="844" rx="28" fill="#0E0F11" stroke="#6B717A" stroke-width="2"/>
+<rect x="924" y="98" width="390" height="56" rx="0" fill="#16181B"/>
+<text x="940" y="132" font-size="14" fill="#3DD6F5" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">‹ Ride</text>
+<text x="1119.0" y="131" font-size="11" fill="#FFB020" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle" letter-spacing="0.08em">RECRUITER · 30 S</text>
+<text x="1298" y="132" font-size="13" fill="#A8ABB0" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="end">EN ▾</text>
+<clipPath id="clip1"><rect x="944" y="170" width="68" height="68" rx="10"/></clipPath>
+<image x="944" y="170" width="68" height="68" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip1)" href="data:image/jpeg;base64,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"/>
+<rect x="944" y="170" width="68" height="68" rx="10" fill="none" stroke="#2E3238" stroke-width="1"/>
+<text x="1026" y="202" font-size="34" fill="#ECEAE4" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">Manuel Bravo</text>
+<text x="1026" y="228" font-size="14" fill="#FFB020" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Lead SW Engineer · Porto</text>
+<text x="944" y="264.0" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">20+ yrs · Insurance · Health · Finance</text>
+<text x="944" y="285.7" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Brazil · remote · PT · ES · EN</text>
+<rect x="944" y="320" width="170" height="84" rx="8" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<text x="956" y="342" font-size="11" fill="#FF6B66" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" text-decoration="line-through">12–20 s</text>
+<text x="956" y="376" font-size="32" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">~1.2 s</text>
+<text x="956" y="394" font-size="11" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">booking</text>
+<rect x="1124" y="320" width="170" height="84" rx="8" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<text x="1136" y="376" font-size="32" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">−70 %</text>
+<text x="1136" y="394" font-size="11" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">vulnerabilities</text>
+<rect x="944" y="416" width="170" height="84" rx="8" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<text x="956" y="472" font-size="32" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">−30 %</text>
+<text x="956" y="490" font-size="11" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">API cost</text>
+<rect x="1124" y="416" width="170" height="84" rx="8" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<text x="1136" y="472" font-size="32" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">−40 %</text>
+<text x="1136" y="490" font-size="11" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">fraud</text>
+<rect x="944" y="512" width="170" height="84" rx="8" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<text x="956" y="534" font-size="11" fill="#FF6B66" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" text-decoration="line-through">70 %</text>
+<text x="956" y="568" font-size="32" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">98 %</text>
+<text x="956" y="586" font-size="11" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">SLA</text>
+<rect x="1124" y="512" width="170" height="84" rx="8" fill="#16181B" stroke="#2E3238" stroke-width="1"/>
+<text x="1136" y="568" font-size="32" fill="#4ADE80" font-weight="700" font-family="Barlow Condensed, Arial Narrow, DejaVu Sans Condensed, sans-serif" text-anchor="start">+40 %</text>
+<text x="1136" y="586" font-size="11" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">productivity</text>
+<text x="944" y="630" font-size="11" fill="#3DD6F5" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">CORE STACK</text>
+<rect x="944" y="642" width="34.879999999999995" height="26" rx="2" fill="#1F2226"/>
+<text x="961.44" y="659.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">C#</text>
+<rect x="986.88" y="642" width="49.76" height="26" rx="2" fill="#1F2226"/>
+<text x="1011.76" y="659.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">.NET</text>
+<rect x="1044.64" y="642" width="72.08" height="26" rx="2" fill="#1F2226"/>
+<text x="1080.68" y="659.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">Node.js</text>
+<rect x="1124.72" y="642" width="94.4" height="26" rx="2" fill="#1F2226"/>
+<text x="1171.92" y="659.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">TypeScript</text>
+<rect x="1227.1200000000001" y="642" width="42.32" height="26" rx="2" fill="#1F2226"/>
+<text x="1248.2800000000002" y="659.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">AWS</text>
+<rect x="944" y="676" width="57.2" height="26" rx="2" fill="#1F2226"/>
+<text x="972.6" y="693.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">Redis</text>
+<rect x="1009.2" y="676" width="94.4" height="26" rx="2" fill="#1F2226"/>
+<text x="1056.4" y="693.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">SQL Server</text>
+<rect x="1111.6000000000001" y="676" width="79.52" height="26" rx="2" fill="#1F2226"/>
+<text x="1151.3600000000001" y="693.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">Selenium</text>
+<rect x="1199.1200000000001" y="676" width="64.64" height="26" rx="2" fill="#1F2226"/>
+<text x="1231.44" y="693.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">JMeter</text>
+<rect x="924" y="858" width="390" height="76" rx="0" fill="#16181B"/>
+<line x1="924" y1="858" x2="1314" y2="858" stroke="#2E3238" stroke-width="1"/>
+<rect x="940" y="872" width="170" height="48" rx="6" fill="#FFB020"/>
+<text x="1025.0" y="901.6" font-size="16" fill="#0E0F11" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">CV (PDF)</text>
+<rect x="1128" y="872" width="170" height="48" rx="6" fill="none" stroke="#6B717A" stroke-width="1.5"/>
+<text x="1213.0" y="901.6" font-size="16" fill="#ECEAE4" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">LinkedIn ↗</text>
+<text x="1362" y="40" font-size="18" fill="#ECEAE4" font-weight="600" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">08d Terminal</text>
+<text x="1362" y="62" font-size="13" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">full screen, soft keyboard</text>
+<rect x="1362" y="90" width="390" height="844" rx="28" fill="#0E0F11" stroke="#6B717A" stroke-width="2"/>
+<rect x="1364" y="92" width="386" height="840" rx="26" fill="#1F2226"/>
+<rect x="1362" y="98" width="390" height="48" rx="0" fill="#16181B"/>
+<text x="1378" y="128" font-size="13" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">~/trace</text>
+<text x="1736" y="128" font-size="13" fill="#A8ABB0" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="end">✕ close</text>
+<text x="1378" y="180" font-size="14" fill="#ECEAE4" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">$ help</text>
+<text x="1378" y="206" font-size="14" fill="#A8ABB0" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">whoami  trace  git log  skills</text>
+<text x="1378" y="232" font-size="14" fill="#A8ABB0" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">cv  contact  lang  achievements</text>
+<text x="1378" y="258" font-size="14" fill="#A8ABB0" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">sudo …  clear  exit</text>
+<text x="1378" y="284" font-size="14" fill="#ECEAE4" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">$ skills diagnostics</text>
+<text x="1378" y="310" font-size="14" fill="#A8ABB0" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">├─ Selenium</text>
+<text x="1378" y="336" font-size="14" fill="#A8ABB0" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">├─ JMeter</text>
+<text x="1378" y="362" font-size="14" fill="#A8ABB0" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">├─ Postman</text>
+<text x="1378" y="388" font-size="14" fill="#A8ABB0" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">└─ Sonar 90 % gate</text>
+<text x="1378" y="414" font-size="14" fill="#FFB020" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start">$ █</text>
+<rect x="1374" y="604" width="49.76" height="26" rx="2" fill="#1F2226"/>
+<text x="1398.88" y="621.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">help</text>
+<rect x="1431.76" y="604" width="64.64" height="26" rx="2" fill="#1F2226"/>
+<text x="1464.08" y="621.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">whoami</text>
+<rect x="1504.4" y="604" width="34.879999999999995" height="26" rx="2" fill="#1F2226"/>
+<text x="1521.8400000000001" y="621.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">cv</text>
+<rect x="1547.2800000000002" y="604" width="139.04" height="26" rx="2" fill="#1F2226"/>
+<text x="1616.8000000000002" y="621.5" font-size="12" fill="#3DD6F5" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">sudo hire manuel</text>
+<rect x="1364" y="644" width="386" height="288" rx="0" fill="#2A2D31"/>
+<rect x="1371.0" y="656" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1408.5" y="656" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1446.0" y="656" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1483.5" y="656" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1521.0" y="656" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1558.5" y="656" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1596.0" y="656" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1633.5" y="656" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1671.0" y="656" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1708.5" y="656" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1371.0" y="718" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1408.5" y="718" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1446.0" y="718" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1483.5" y="718" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1521.0" y="718" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1558.5" y="718" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1596.0" y="718" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1633.5" y="718" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1671.0" y="718" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1708.5" y="718" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1371.0" y="780" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1408.5" y="780" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1446.0" y="780" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1483.5" y="780" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1521.0" y="780" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1558.5" y="780" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1596.0" y="780" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1633.5" y="780" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1671.0" y="780" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1708.5" y="780" width="33" height="48" rx="6" fill="#3A3E44"/>
+<rect x="1457" y="842" width="200" height="48" rx="6" fill="#3A3E44"/>
+<text x="1557.0" y="872" font-size="12" fill="#8A8E95" font-weight="400" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="middle">on-screen keyboard</text>
+<circle cx="408" cy="542" r="13" fill="#FF4FD8"/>
+<text x="408" y="547" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">1</text>
+<circle cx="846" cy="450" r="13" fill="#FF4FD8"/>
+<text x="846" y="455" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">2</text>
+<circle cx="1284" cy="894" r="13" fill="#FF4FD8"/>
+<text x="1284" y="899" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">3</text>
+<circle cx="1722" cy="616" r="13" fill="#FF4FD8"/>
+<text x="1722" y="621" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">4</text>
+<rect x="0" y="974" width="1800" height="200" rx="0" fill="#0A0A0B"/>
+<line x1="0" y1="974" x2="1800" y2="974" stroke="#FF4FD8" stroke-width="2" stroke-dasharray="6 6"/>
+<text x="32" y="1004" font-size="12" fill="#FF4FD8" font-weight="600" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" text-anchor="start" letter-spacing="0.08em">ANNOTATIONS</text>
+<circle cx="45.0" cy="1031" r="13" fill="#FF4FD8"/>
+<text x="45.0" y="1036" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">1</text>
+<text x="68.0" y="1036" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Landing: both CTAs above the fold at 390 × 844; spine shrinks to a 20 px gutter.</text>
+<circle cx="45.0" cy="1061" r="13" fill="#FF4FD8"/>
+<text x="45.0" y="1066" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">2</text>
+<text x="68.0" y="1066" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Dyno lanes stack vertically; tachometers shrink; same states as desktop.</text>
+<circle cx="913.0" cy="1031" r="13" fill="#FF4FD8"/>
+<text x="913.0" y="1036" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">3</text>
+<text x="936.0" y="1036" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Recruiter: portrait + identity first. Sticky bottom CTA (CV + LinkedIn) on every page after the hero.</text>
+<circle cx="913.0" cy="1061" r="13" fill="#FF4FD8"/>
+<text x="913.0" y="1066" font-size="14" fill="#000" font-weight="700" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="middle">4</text>
+<text x="936.0" y="1066" font-size="14" fill="#A8ABB0" font-weight="400" font-family="Barlow, DejaVu Sans, sans-serif" text-anchor="start">Terminal goes full screen; quick-command chips avoid typing on a phone keyboard.</text>
+</svg>
