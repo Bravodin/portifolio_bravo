@@ -1,15 +1,16 @@
+@page "/como-foi-feito"
 @page "/en/colophon"
+@page "/es/como-se-hizo"
+@inject PageContext Page
 
-@* Minimal Colophon (docs/ux/sitemap.md). It gives the prerender a second page to crawl,
-   which lets us check enhanced navigation between static pages (ADR-0003). *@
-<PageTitle>Colophon · TRACE</PageTitle>
+<PageTitle>@Page.T("page.colophon.title")</PageTitle>
 
-<main>
-    <h1>How this site is built</h1>
+<article class="prose">
+    <h1>@Page.T("colophon.title")</h1>
     <ul>
-        <li>.NET 10 · Blazor Web App, rendered to static HTML at build time, with WebAssembly islands.</li>
-        <li>Hosted on Azure Static Web Apps, built and deployed by Azure Pipelines.</li>
-        <li>Source, architecture decisions and tests: <a href="https://github.com/Bravodin/portifolio_bravo">GitHub</a>.</li>
+        <li>@Page.T("colophon.stack")</li>
+        <li>@Page.T("colophon.hosting")</li>
+        <li>@Page.T("colophon.source") <a href="https://github.com/Bravodin/portifolio_bravo">GitHub</a></li>
     </ul>
-    <p><a href="/">← Back to the ride</a></p>
-</main>
+    <p><a href="@Page.PathFor(PageKey.Home)">@Page.T("colophon.back")</a></p>
+</article>

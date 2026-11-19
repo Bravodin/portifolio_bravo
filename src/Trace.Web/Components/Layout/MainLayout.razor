@@ -1,6 +1,23 @@
-﻿@inherits LayoutComponentBase
+@inherits LayoutComponentBase
+@inject PageContext Page
 
-@Body
+<a class="skip-link" href="#content">@Page.T("a11y.skip")</a>
+
+<header class="hud">
+    <a class="brand" href="@Page.PathFor(PageKey.Home)" aria-label="TRACE · @Page.Content.Identity.Name">TRACE</a>
+    @* Mobile: icon + "30 s" (interaction-spec, HUD); the full label stays available to screen readers. *@
+    <a class="hud-recruiter" href="@Page.PathFor(PageKey.Recruiter)"><span class="hud-recruiter-icon" aria-hidden="true">⏱</span><span class="hud-recruiter-text">@Page.T("cta.recruiter")</span></a>
+    <LanguageSwitcher />
+</header>
+
+<main id="content" tabindex="-1">
+    @Body
+</main>
+
+<footer class="site-footer">
+    <a href="@Page.PathFor(PageKey.Colophon)">@Page.T("nav.colophon")</a>
+    <a href="@Page.Content.Identity.LinkedIn" rel="noopener" target="_blank">LinkedIn ↗</a>
+</footer>
 
 <div id="blazor-error-ui" data-nosnippet>
     An unhandled error has occurred.

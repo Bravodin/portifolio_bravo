@@ -9,6 +9,8 @@ public sealed class HtmlAnalyzerTests
           <link rel="stylesheet" href="app.abc.css">
           <script type="importmap">{ "imports": { "./_framework/dotnet.js": "./_framework/dotnet.h1.js", "_framework/rc.js.gz": "./_framework/rc.js.gz" } }</script>
           <script type="application/ld+json">{ "@type": "Person" }</script>
+          <link rel="alternate" hreflang="pt-BR" href="https://www.manuelbravo.com.br/">
+          <link rel="alternate" hreflang="en" href="https://www.manuelbravo.com.br/en/">
         </head><body>
           <a href="/en/colophon">Colophon</a>
           <a href="#top">Top</a>
@@ -24,6 +26,10 @@ public sealed class HtmlAnalyzerTests
 
     [Fact]
     public void Analyze_ReadsLang() => Assert.Equal("en", Analyze().Lang);
+
+    [Fact]
+    public void Analyze_ReadsHreflangAlternates() =>
+        Assert.Equal("https://www.manuelbravo.com.br/en/", Analyze().Alternates["en"]);
 
     [Fact]
     public void Analyze_PageLinks_AreSameSiteCanonicalPagesOnly() =>

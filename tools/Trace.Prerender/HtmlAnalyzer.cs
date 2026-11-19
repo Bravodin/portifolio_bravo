@@ -9,11 +9,13 @@ namespace Trace.Prerender;
 /// <param name="PageLinks">Same-site links to other pages, as canonical paths (<c>/en/colophon/</c>).</param>
 /// <param name="AssetReferences">Same-site files the page loads or links to (<c>/app.{hash}.css</c>).</param>
 /// <param name="InlineScripts">Text of every inline script the CSP must allow (import map included).</param>
+/// <param name="Alternates"><c>hreflang</c> → absolute URL, from <c>&lt;link rel="alternate"&gt;</c> (empty when the page has none).</param>
 internal sealed record PageAnalysis(
     string? Lang,
     IReadOnlyList<string> PageLinks,
     IReadOnlyList<string> AssetReferences,
-    IReadOnlyList<string> InlineScripts);
+    IReadOnlyList<string> InlineScripts,
+    IReadOnlyDictionary<string, string> Alternates);
 
 internal static class HtmlAnalyzer
 {
@@ -61,8 +63,14 @@ internal static class HtmlAnalyzer
             }
         }
 
+        var alternates = new SortedDictionary<string, string>(StringComparer.Ordinal);
+        foreach (var link in document.QuerySelectorAll("link[rel=alternate][hreflang][href]"))
+        {
+            alternates[link.GetAttribute("hreflang")!] = new Uri(pageUrl, link.GetAttribute("href")!).AbsoluteUri;
+        }
+
         var lang = document.DocumentElement.GetAttribute("lang");
-        return new PageAnalysis(string.IsNullOrWhiteSpace(lang) ? null : lang, [.. pages], [.. assets], inline);
+        return new PageAnalysis(string.IsNullOrWhiteSpace(lang) ? null : lang, [.. pages], [.. assets], inline, alternates);
     }
 
     private static void AddAll(SortedSet<string> target, Uri baseUrl, IEnumerable<string> urls)

@@ -7,33 +7,34 @@
     Stage 1 dyno (docs/ux/interaction-spec.md#dyno-stage-1).
     L0 (prerendered / no JS): the static result card with the measured numbers.
     L2 (after WASM hydration): the interactive run.
+    All text comes in through Copy, already in the page's language (ADR-0004).
 *@
 <section class="dyno" aria-labelledby="dyno-title" data-dyno-state="@StateName">
-    <h3 id="dyno-title">@Title</h3>
+    <h3 id="dyno-title">@Copy.Title</h3>
 
     @if (!RendererInfo.IsInteractive)
     {
         <div class="dyno-result" data-testid="dyno-static">
-            <p><strong>@LegacyLabel</strong>: 12–20 s</p>
-            <p><strong>@NativeLabel</strong>: ~1.2 s</p>
-            <p>~10–16× faster</p>
-            <p class="dyno-beyond">@BeyondSpeed</p>
+            <p><strong>@Copy.LegacyLabel</strong>: @Copy.MeasuredBefore</p>
+            <p><strong>@Copy.NativeLabel</strong>: @Copy.MeasuredAfter</p>
+            <p>@Copy.MeasuredDelta</p>
+            <p class="dyno-beyond">@Copy.BeyondSpeed</p>
         </div>
     }
     else
     {
         <div class="dyno-lanes">
-            @Lane(LegacyLabel, _run?.LegacyProgress(_elapsed) ?? 0, LegacyShown, _run is not null && _run.IsLegacyDone(_elapsed))
-            @Lane(NativeLabel, _run?.NativeProgress(_elapsed) ?? 0, NativeShown, _run is not null && _run.IsNativeDone(_elapsed))
+            @Lane(Copy.LegacyLabel, _run?.LegacyProgress(_elapsed) ?? 0, LegacyShown, _run is not null && _run.IsLegacyDone(_elapsed))
+            @Lane(Copy.NativeLabel, _run?.NativeProgress(_elapsed) ?? 0, NativeShown, _run is not null && _run.IsNativeDone(_elapsed))
         </div>
 
         @if (_state == DynoState.Done && _run is not null)
         {
             <div class="dyno-result" data-testid="dyno-result">
-                <p><strong>@LegacyLabel</strong>: @Seconds(_run.Legacy)</p>
-                <p><strong>@NativeLabel</strong>: @Seconds(_run.Native)</p>
-                <p>@_run.SpeedUp.ToString("0.#", CultureInfo.InvariantCulture)× faster</p>
-                <p class="dyno-beyond">@BeyondSpeed</p>
+                <p><strong>@Copy.LegacyLabel</strong>: @Seconds(_run.Legacy)</p>
+                <p><strong>@Copy.NativeLabel</strong>: @Seconds(_run.Native)</p>
+                <p>@Number(_run.SpeedUp, "0.#")× @Copy.FasterLabel</p>
+                <p class="dyno-beyond">@Copy.BeyondSpeed</p>
             </div>
         }
 
@@ -41,18 +42,18 @@
         {
             @if (_elapsed >= SkipAfter)
             {
-                <button type="button" class="dyno-skip" @onclick="Skip">Skip — you get the idea</button>
+                <button type="button" class="btn dyno-skip" @onclick="Skip">@Copy.SkipLabel</button>
             }
         }
         else
         {
-            <button type="button" class="dyno-run" @onclick="RunAsync">@(_state == DynoState.Done ? "Run again" : RunLabel)</button>
+            <button type="button" class="btn btn-primary dyno-run" @onclick="RunAsync">@(_state == DynoState.Done ? Copy.RunAgainLabel : Copy.RunLabel)</button>
         }
 
         <p class="visually-hidden" aria-live="polite">@_announcement</p>
     }
 
-    <p class="dyno-footnote">Simulation based on measured production timings. No real systems are called.</p>
+    <p class="dyno-footnote">@Copy.Footnote</p>
 </section>
 
 @code {
@@ -65,14 +66,7 @@
     private string _announcement = string.Empty;
     private CancellationTokenSource? _cts;
 
-    [Parameter] public string Title { get; set; } = "Dyno: booking journey";
-    [Parameter] public string LegacyLabel { get; set; } = "Legacy · Ionic (2016)";
-    [Parameter] public string NativeLabel { get; set; } = "Native · Swift/Kotlin";
-    [Parameter] public string RunLabel { get; set; } = "Run the dyno";
-
-    /// <summary>Payoff after the numbers (content inventory §3.1, <c>stage1.story.beyondSpeed</c>).</summary>
-    [Parameter] public string BeyondSpeed { get; set; } =
-        "Speed is only what a dyno measures. Going native also put the app closer to the hardware, opening the door to wearables.";
+    [Parameter, EditorRequired] public DynoCopy Copy { get; set; } = default!;
 
     /// <summary>Seed source for each run; replaceable in tests.</summary>
     [Parameter] public Func<int> NextSeed { get; set; } = () => Environment.TickCount;
@@ -107,7 +101,7 @@
                 if (!nativeAnnounced && run.IsNativeDone(_elapsed))
                 {
                     nativeAnnounced = true;
-                    _announcement = $"Native finished in {Seconds(run.Native)}";
+                    _announcement = Format(Copy.NativeFinished, Seconds(run.Native));
                 }
 
                 if (run.IsLegacyDone(_elapsed))
@@ -139,7 +133,7 @@
     {
         _elapsed = run.Legacy;
         _state = DynoState.Done;
-        _announcement = $"Legacy finished in {Seconds(run.Legacy)}";
+        _announcement = Format(Copy.LegacyFinished, Seconds(run.Legacy));
     }
 
     private async Task StopAsync()
@@ -156,15 +150,21 @@
 
     private static TimeSpan Min(TimeSpan a, TimeSpan b) => a < b ? a : b;
 
-    private static string Seconds(TimeSpan value) =>
-        value.TotalSeconds.ToString("0.0", CultureInfo.InvariantCulture) + " s";
+    private static string Format(string template, string value) =>
+        string.Format(CultureInfo.InvariantCulture, template, value);
 
-    private static RenderFragment Lane(string label, double progress, TimeSpan shown, bool done) => __builder =>
+    // InvariantGlobalization (ADR-0004): no culture data in the browser, so the decimal separator comes with the copy.
+    private string Number(double value, string format) =>
+        value.ToString(format, CultureInfo.InvariantCulture).Replace(".", Copy.DecimalSeparator, StringComparison.Ordinal);
+
+    private string Seconds(TimeSpan value) => Number(value.TotalSeconds, "0.0") + " s";
+
+    private RenderFragment Lane(string label, double progress, TimeSpan shown, bool done) => __builder =>
     {
         <div class="dyno-lane">
             <span class="dyno-label">@label</span>
             <meter min="0" max="1" value="@progress.ToString("0.###", CultureInfo.InvariantCulture)" aria-label="@label"></meter>
-            <span class="dyno-timer" aria-hidden="true">@shown.TotalSeconds.ToString("00.0", CultureInfo.InvariantCulture) s @(done ? "✓" : "")</span>
+            <span class="dyno-timer" aria-hidden="true">@Number(shown.TotalSeconds, "00.0") s @(done ? "✓" : "")</span>
         </div>
     };
 

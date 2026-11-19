@@ -1,4 +1,6 @@
+using Trace.Domain.Content;
 using Trace.Web.Components;
+using Trace.Web.Site;
 
 // This host never serves visitors. It runs in two places only:
 // - `dotnet run` during development;
@@ -7,6 +9,9 @@ using Trace.Web.Components;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton(TimeProvider.System);
+builder.Services.AddSingleton(_ => ContentStore.Load(Path.Combine(AppContext.BaseDirectory, "content")));
+builder.Services.AddSingleton(new SiteOptions(new Uri(builder.Configuration["Trace:SiteUrl"] ?? "https://www.manuelbravo.com.br/")));
+builder.Services.AddScoped<PageContext>();
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 

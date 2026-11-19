@@ -1,15 +1,43 @@
 @page "/"
+@page "/en"
+@page "/es"
+@inject PageContext Page
 
-@* Phase 1 spike (ADR-0003): one prerendered page + one InteractiveWebAssembly island. *@
-<PageTitle>TRACE · spike</PageTitle>
+@* The ride (docs/ux/sitemap.md). For now: hero + stage 1 with the Dyno; the other stages come next. *@
+<PageTitle>@Page.T("page.home.title")</PageTitle>
 
-<main>
-    <h1>TRACE</h1>
-    <section aria-labelledby="stage-1">
-        <h2 id="stage-1">1 · Client</h2>
-        <p>A 2016 Ionic app where a critical booking journey took 12–20 s. Migrated to native iOS (Swift) and Android (Kotlin): booking ~1.2 s.</p>
-        <p class="stage-story">My manager asked for a benchmark: the Ionic app against native. I ran it and presented the numbers. This dyno replays it.</p>
-        <DynoIsland @rendermode="InteractiveWebAssembly" />
-    </section>
-    <p><a href="/en/colophon/">How this site is built</a></p>
-</main>
+<section class="hero" aria-labelledby="hero-name">
+    <h1 id="hero-name">@Identity.Name</h1>
+    <p class="hero-role">@Identity.Role</p>
+    <p class="hero-tagline">@Identity.Tagline</p>
+    <p class="hero-actions">
+        <a class="btn btn-primary" href="@Page.PathFor(PageKey.Recruiter)">@Page.T("cta.recruiter")</a>
+    </p>
+</section>
+
+<section class="stage" id="client" aria-labelledby="stage-client">
+    <p class="hud-label">@Page.T("stage.label") @Client.Number</p>
+    <h2 id="stage-client">@Client.Title</h2>
+    <dl class="par">
+        <dt>@Page.T("stage.problem")</dt>
+        <dd>@Client.Problem</dd>
+        <dt>@Page.T("stage.action")</dt>
+        <dd>@Client.Action</dd>
+        <dt>@Page.T("stage.result")</dt>
+        <dd>@Client.Result</dd>
+    </dl>
+    <p class="stage-story">@Client.Story[0]</p>
+    <DynoIsland @rendermode="InteractiveWebAssembly" Copy="@DynoCopy.From(Page.Content)" />
+    <ul class="chips" aria-label="Tech">
+        @foreach (var tech in Client.Tech)
+        {
+            <li>@tech</li>
+        }
+    </ul>
+</section>
+
+@code {
+    private Identity Identity => Page.Content.Identity;
+
+    private Stage Client => Page.Content.Stage("client");
+}

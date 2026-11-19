@@ -45,6 +45,7 @@ internal sealed class Prerenderer(PrerenderOptions options)
         CopyStaticAssets(endpoints, host.WebRoot);
         var generatedImmutable = await MaterializeMissingAssetsAsync(client, rendered, cancellationToken);
         ValidatePages(rendered);
+        _errors.AddRange(HreflangValidator.Validate(pages, options.BaseUrl, Trace.Domain.Content.Locales.All));
 
         await WriteAsync("sitemap.xml", SiteFiles.Sitemap(options.BaseUrl, pages.Select(p => p.Path)), cancellationToken);
         await WriteAsync("robots.txt", SiteFiles.Robots(options.BaseUrl), cancellationToken);

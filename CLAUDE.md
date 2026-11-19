@@ -24,7 +24,8 @@ Start with: `README.md` → `docs/ux/concept.md` → `docs/architecture/overview
 - ✅ Hosting decision recorded: **Azure Pipelines + Azure Static Web Apps (Free)**, DNS on Cloudflare, apex → `www` redirect ([ADR-0009](docs/architecture/adr/0009-azure-pipelines-and-static-web-apps.md), [ci-cd-and-hosting.md](docs/architecture/ci-cd-and-hosting.md)). ADR-0002 (GitHub Pages) is superseded.
 - ✅ Skeleton (step 2) and local spike (step 3): the Dyno island hydrates from static files only. Results and the findings that shape the prerender are in [ADR-0003](docs/architecture/adr/0003-build-time-static-prerendering.md#spike-results-2026-11-19-local).
 - ✅ Step 4: `Trace.Prerender` builds `dist/` from the publish output (details in ADR-0003, "Step 4 result"). The media step (ADR-0008, NetVips) is not written yet.
-- ⏳ **Next:** step 5, `azure-pipelines.yml`. Manuel has no Azure account yet, so the SWA production check waits for it.
+- ✅ Step 6 (first part): trilingual content as data (`content/{pt-BR,en,es}/*.json`, validated for parity by `ContentStore`), localized routes (`SiteRoutes`), `<html lang>` + `canonical` + `hreflang` (validated by the prerender), the PT · EN · ES switcher, and **Recruiter Mode** on its 3 routes with a one-page A4 print layout.
+- ⏳ **Next:** the rest of the ride (stages 2–7, Service Log, Toolbox, Garage with photos and videos), the media step, and step 5 (`azure-pipelines.yml`) once Manuel has the Azure DevOps organization.
 - 🎬 4 YouTube Shorts (@mustelasportmedia, engine sound only) are listed in `content/media/videos.json`. They'll be shown through a click-to-load facade ([ADR-0010](docs/architecture/adr/0010-video-youtube-facade.md)). The facade component and the poster download (Prerender media step) come with the Garage. Open items are in `content/media/README.md`.
 
 ## Phase 1/2 plan — skeleton

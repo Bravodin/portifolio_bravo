@@ -20,6 +20,10 @@ During implementation this becomes `content/{locale}/*.json` (see [ADR-0004](../
 
 > ⚠️ Contact is **LinkedIn only**: no e-mail or phone on the site. Publish a version of the CV PDF without phone and e-mail (LinkedIn URL only).
 
+> TODO(manuel): the Recruiter Mode wireframe says "20+ years" of experience, but the career log starts in 2008 (~18 years). The site shows "Since 2008". If there is earlier experience that isn't in the CV, add it to the log and the number can change.
+>
+> TODO(manuel): no CV PDF yet. The "Download CV" button appears automatically once `cvUrl` is set in `content/{locale}/identity.json`.
+
 ---
 
 ## 2. Headline metrics (the "dashboard")

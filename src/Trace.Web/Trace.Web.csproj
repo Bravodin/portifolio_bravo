@@ -10,4 +10,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
   </ItemGroup>
 
+  <!-- Content as data (ADR-0004): read at render time from content/ next to the app (build, publish and the prerender). -->
+  <ItemGroup>
+    <None Include="..\..\content\**\*.json" Exclude="..\..\content\media\**" LinkBase="content" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

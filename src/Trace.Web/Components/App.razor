@@ -1,10 +1,24 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+@inject PageContext Page
+
+<!DOCTYPE html>
+<html lang="@Page.Locale">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@Page.Content.Identity.Tagline" />
+    <meta name="color-scheme" content="dark light" />
     <base href="/" />
+    @if (Page.Page is PageKey key)
+    {
+        @* One canonical URL per page, plus its translations (ADR-0004). x-default → English. *@
+        <link rel="canonical" href="@Page.Absolute(SiteRoutes.PathFor(key, Page.Locale))" />
+        @foreach (var (locale, path) in SiteRoutes.Alternates(key))
+        {
+            <link rel="alternate" hreflang="@locale" href="@Page.Absolute(path)" />
+        }
+        <link rel="alternate" hreflang="x-default" href="@Page.Absolute(SiteRoutes.PathFor(key, Locales.XDefault))" />
+    }
     <ResourcePreloader />
     <link rel="stylesheet" href="@Assets["app.css"]" />
     <link rel="stylesheet" href="@Assets["Trace.Web.styles.css"]" />
@@ -14,6 +28,7 @@
 
 <body>
     <Routes />
+    <script src="@Assets["js/site.js"]" defer></script>
     <script src="@Assets["_framework/blazor.web.js"]"></script>
 </body>
 

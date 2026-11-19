@@ -1,0 +1,39 @@
+@inject PageContext Page
+
+@* PT · EN · ES (docs/ux/interaction-spec.md, HUD). Links go to the same page in the other language.
+   data-enhance-nav="false" forces a full load, so <html lang> and every head tag switch language too. *@
+<nav class="lang" aria-label="@Page.T("lang.label")">
+    <ul>
+        @foreach (var locale in Locales.All)
+        {
+            <li>
+                <a href="@Target(locale)"
+                   hreflang="@locale"
+                   lang="@locale"
+                   aria-label="@Names[locale]"
+                   aria-current="@(locale == Page.Locale ? "true" : null)"
+                   data-enhance-nav="false"
+                   data-lang="@locale">@Short[locale]</a>
+            </li>
+        }
+    </ul>
+</nav>
+
+@code {
+    private static readonly Dictionary<string, string> Short = new()
+    {
+        [Locales.Portuguese] = "PT",
+        [Locales.English] = "EN",
+        [Locales.Spanish] = "ES",
+    };
+
+    // Each language's name in that language, so a screen reader announces it correctly.
+    private static readonly Dictionary<string, string> Names = new()
+    {
+        [Locales.Portuguese] = "Português",
+        [Locales.English] = "English",
+        [Locales.Spanish] = "Español",
+    };
+
+    private string Target(string locale) => SiteRoutes.PathFor(Page.Page ?? PageKey.Home, locale);
+}
