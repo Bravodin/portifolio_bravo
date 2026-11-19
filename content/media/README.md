@@ -50,7 +50,7 @@ The site's photos live here as **originals**. The build generates every web vers
 - [ ] `profile/manuel-bravo.jpg` is 361 × 423 px. That's fine for the avatar, but send a version ≥ 800 px for the Open Graph image and high-density screens.
 - [x] Fill in the photographer credit for `track-01` and `track-03` (@mustelasportmedia).
 - [ ] Confirm the captions (they're drafts) and the dates.
-- [ ] Write a caption for `track-09` (null for now). The gallery keeps four track photos (01, 02, 03, 09); the others were removed and can be restored from git history.
+- [x] Caption for `track-09` (consistency before speed). The gallery keeps four track photos (01, 02, 03, 09); the others were removed and can be restored from git history.
 - [x] **Workbench**: `workbench/manu-mechanic.png`, an AI-generated illustration (marked with `aiGenerated: true`, so the site labels it instead of showing a credit).
 - [x] **Games**: `games/games-01-controller.jpg`. The laptop screen showed Super Mario World (Nintendo's art), so the screen area was blurred before committing; never commit game art, logos or screenshots.
 

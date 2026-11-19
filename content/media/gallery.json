@@ -85,7 +85,11 @@
         "en": "Manuel leaned over in a corner on the red bike, ahead of a rider on a lime-green number 17 bike",
         "es": "Manuel tumbado en la curva con la moto roja, por delante de un piloto en una moto verde lima número 17"
       },
-      "caption": null
+      "caption": {
+        "pt-BR": "Joelho no chão vem depois de muitas voltas na mesma curva. Com código é igual: consistência antes de velocidade.",
+        "en": "Knee down comes after many laps of the same corner. Code works the same way: consistency before speed.",
+        "es": "La rodilla al suelo llega después de muchas vueltas a la misma curva. Con el código pasa igual: constancia antes que velocidad."
+      }
     },
     {
       "id": "workbench-01",

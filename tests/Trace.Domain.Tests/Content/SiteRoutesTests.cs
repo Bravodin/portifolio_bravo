@@ -49,11 +49,11 @@ public sealed class SiteRoutesTests
         Assert.Equal(expected, SiteRoutes.LocaleOf(path));
 
     [Fact]
-    public void Alternates_ListEveryLocaleInSwitcherOrder()
+    public void Alternates_ListEveryLocaleInSwitcherOrder_EnEsPt()
     {
         var alternates = SiteRoutes.Alternates(PageKey.Recruiter);
 
-        Assert.Equal(["pt-BR", "en", "es"], alternates.Keys);
+        Assert.Equal(["en", "es", "pt-BR"], alternates.Keys);
         Assert.Equal("/es/reclutador/", alternates["es"]);
     }
 

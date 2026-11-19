@@ -7,8 +7,8 @@ public static class Locales
     public const string English = "en";
     public const string Spanish = "es";
 
-    /// <summary>In switcher order: PT · EN · ES.</summary>
-    public static readonly IReadOnlyList<string> All = [Portuguese, English, Spanish];
+    /// <summary>In switcher order, as Manuel chose it: EN · ES · PT. The default (root URL) is still PT-BR.</summary>
+    public static readonly IReadOnlyList<string> All = [English, Spanish, Portuguese];
 
     public const string Default = Portuguese;
 
