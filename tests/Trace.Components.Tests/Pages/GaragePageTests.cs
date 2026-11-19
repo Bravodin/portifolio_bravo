@@ -6,13 +6,13 @@ namespace Trace.Components.Tests.Pages;
 public sealed class GaragePageTests : BunitContext
 {
     [Fact]
-    public void Photos_AreTheNineTrackDays_EachLinkingToItsLargeVersion()
+    public void Photos_AreTheFourChosenTrackDays_EachLinkingToItsLargeVersion()
     {
         this.AddSite("/en/garage/");
 
         var links = Render<Garage>().FindAll("section[aria-labelledby=garage-track] a.photo-link");
 
-        Assert.Equal(9, links.Count);
+        Assert.Equal(4, links.Count);
         Assert.All(links, a => Assert.Equal("false", a.GetAttribute("data-enhance-nav")));
         Assert.All(links, a => Assert.Matches(@"^/media/track-0\d-1600\.[0-9a-f]{10}\.jpg$", a.GetAttribute("href")));
     }
@@ -35,7 +35,7 @@ public sealed class GaragePageTests : BunitContext
 
         var credits = Render<Garage>().FindAll(".photo-grid figcaption small").Select(c => c.TextContent).ToList();
 
-        Assert.Equal(8, credits.Count(c => c == "Foto: @mustelasportmedia"));
+        Assert.Equal(3, credits.Count(c => c == "Foto: @mustelasportmedia"));
         Assert.Contains("Foto: B.S Racing · MotoGP Cerezer", credits);
     }
 

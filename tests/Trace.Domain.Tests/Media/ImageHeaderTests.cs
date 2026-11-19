@@ -11,7 +11,7 @@ public sealed class ImageHeaderTests
 
     [Fact]
     public void Read_LargeJpegWithExif_SkipsSegmentsToTheFrame() =>
-        Assert.Equal(new PixelSize(6000, 4000), ImageHeader.Read(Path.Combine(RepoContent.Root, "media", "garage", "track-04-panning.jpg")));
+        Assert.Equal(new PixelSize(4864, 3243), ImageHeader.Read(Path.Combine(RepoContent.Root, "media", "garage", "track-09-knee-down.jpg")));
 
     [Fact]
     public void Read_PngHeader_ReturnsItsSize()
