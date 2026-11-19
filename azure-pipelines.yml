@@ -1,8 +1,9 @@
 # TRACE · CI/CD on Azure Pipelines → Azure Static Web Apps (Free). See ADR-0009 and docs/architecture/ci-cd-and-hosting.md.
 #
-# One pipeline, two triggers:
-#   - push to main  → build, test, prerender, deploy to production;
-#   - pull request  → the same build and tests, deployed to a preview environment (pr<N>).
+#   CI            build, format, tests + coverage, publish, prerender → artifact "site"
+#   CD_Production push to main: deploy the artifact to production (environment "production")
+#   CD_Preview    pull request: deploy it to a preview environment pr<N> (environment "preview")
+#
 # Pipeline variable needed (Pipelines → Edit → Variables, "Keep this value secret"):
 #   SWA_DEPLOYMENT_TOKEN  — from the Static Web App in the Azure portal (Manage deployment token).
 
@@ -14,8 +15,7 @@ pr:
   branches:
     include: [main]
 
-# Microsoft-hosted Linux agent. The AzureStaticWebApp task only runs on Linux.
-# New Azure DevOps organizations need the free parallelism grant first: https://aka.ms/azpipelines-parallelism-request
+# Microsoft-hosted Linux agent (the AzureStaticWebApp task only runs on Linux).
 pool:
   vmImage: ubuntu-latest
 
@@ -24,66 +24,104 @@ variables:
   DOTNET_NOLOGO: 'true'
   BuildConfiguration: Release
 
-steps:
-  # Full history: the Colophon counts commits at build time (RepoStats); a shallow clone would show 1.
-  - checkout: self
-    fetchDepth: 0
+stages:
+  - stage: CI
+    displayName: CI · build, test, prerender
+    jobs:
+      - job: build
+        displayName: Build, test and prerender
+        steps:
+          # Full history: the Colophon counts commits at build time (RepoStats); a shallow clone would show 1.
+          - checkout: self
+            fetchDepth: 0
 
-  - task: UseDotNet@2
-    displayName: .NET SDK from global.json
-    inputs:
-      useGlobalJson: true
+          - task: UseDotNet@2
+            displayName: .NET SDK from global.json
+            inputs:
+              useGlobalJson: true
 
-  - script: dotnet restore Trace.slnx
-    displayName: Restore
+          - script: dotnet restore Trace.slnx
+            displayName: Restore
 
-  # Quality gate (ADR-0007): warnings fail the build, code style is enforced.
-  - script: dotnet build Trace.slnx -c $(BuildConfiguration) --no-restore -warnaserror
-    displayName: Build (warnings as errors)
+          # Quality gate (ADR-0007): warnings fail the build, code style is enforced.
+          - script: dotnet build Trace.slnx -c $(BuildConfiguration) --no-restore -warnaserror
+            displayName: Build (warnings as errors)
 
-  - script: dotnet format Trace.slnx --verify-no-changes --no-restore
-    displayName: Format check
+          - script: dotnet format Trace.slnx --verify-no-changes --no-restore
+            displayName: Format check
 
-  - script: >
-      dotnet test --solution Trace.slnx -c $(BuildConfiguration) --no-build
-      --coverlet --coverlet-output-format cobertura
-      --results-directory $(Agent.TempDirectory)/test-results
-    displayName: Tests + coverage
+          - script: >
+              dotnet test --solution Trace.slnx -c $(BuildConfiguration) --no-build
+              --coverlet --coverlet-output-format cobertura
+              --results-directory $(Agent.TempDirectory)/test-results
+            displayName: Tests + coverage
 
-  - task: PublishCodeCoverageResults@2
-    displayName: Publish coverage
-    condition: succeededOrFailed()
-    inputs:
-      summaryFileLocation: $(Agent.TempDirectory)/test-results/**/*.cobertura.xml
+          - task: PublishCodeCoverageResults@2
+            displayName: Publish coverage
+            condition: succeededOrFailed()
+            inputs:
+              summaryFileLocation: $(Agent.TempDirectory)/test-results/**/*.cobertura.xml
 
-  - script: dotnet publish src/Trace.Web -c $(BuildConfiguration) -o artifacts/publish --no-restore
-    displayName: Publish Trace.Web
+          - script: dotnet publish src/Trace.Web -c $(BuildConfiguration) -o artifacts/publish --no-restore
+            displayName: Publish Trace.Web
 
-  # Renders every page × locale to dist/, generates images, validates links/hreflang/CV, fills the SWA config.
-  # TF_BUILD is set by Azure Pipelines, so a placeholder CV fails the build here.
-  - script: dotnet run --project tools/Trace.Prerender -c $(BuildConfiguration) --no-build -- --publish-dir artifacts/publish --out dist
-    displayName: Prerender to dist/
+          # Renders every page × locale to dist/, generates images, validates links/hreflang/CV/config size.
+          # TF_BUILD is set by Azure Pipelines, so a placeholder CV fails the build here.
+          - script: dotnet run --project tools/Trace.Prerender -c $(BuildConfiguration) --no-build -- --publish-dir artifacts/publish --out dist
+            displayName: Prerender to dist/
 
-  - publish: dist
-    artifact: site
-    displayName: Keep dist/ as a build artifact
+          - publish: dist
+            artifact: site
+            displayName: Publish the site as an artifact
 
-  - task: AzureStaticWebApp@0
-    displayName: Deploy to production
+  - stage: CD_Production
+    displayName: CD · production
+    dependsOn: CI
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'), ne(variables['Build.Reason'], 'PullRequest'))
-    inputs:
-      app_location: dist
-      skip_app_build: true
-      skip_api_build: true
-      azure_static_web_apps_api_token: $(SWA_DEPLOYMENT_TOKEN)
+    jobs:
+      # A deployment job records every release in Pipelines → Environments → production
+      # (which commit is live, since when) and is where manual approvals can be added later.
+      - deployment: production
+        displayName: Deploy to Azure Static Web Apps
+        environment: production
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: site
 
-  # Pull requests from forks never receive secrets, so they build and test but don't deploy.
-  - task: AzureStaticWebApp@0
-    displayName: Deploy preview (pull request)
-    condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'))
-    inputs:
-      app_location: dist
-      skip_app_build: true
-      skip_api_build: true
-      azure_static_web_apps_api_token: $(SWA_DEPLOYMENT_TOKEN)
-      deployment_environment: pr$(System.PullRequest.PullRequestNumber)
+                - task: AzureStaticWebApp@0
+                  displayName: Deploy to production
+                  inputs:
+                    workingDirectory: $(Pipeline.Workspace)/site
+                    app_location: /
+                    skip_app_build: true
+                    skip_api_build: true
+                    azure_static_web_apps_api_token: $(SWA_DEPLOYMENT_TOKEN)
+
+  - stage: CD_Preview
+    displayName: CD · preview (pull request)
+    dependsOn: CI
+    # Pull requests from forks never receive secrets, so they build and test but don't deploy.
+    condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'), ne(variables['System.PullRequest.IsFork'], 'True'))
+    jobs:
+      - deployment: preview
+        displayName: Deploy a preview environment
+        environment: preview
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: site
+
+                - task: AzureStaticWebApp@0
+                  displayName: Deploy preview pr$(System.PullRequest.PullRequestNumber)
+                  inputs:
+                    workingDirectory: $(Pipeline.Workspace)/site
+                    app_location: /
+                    skip_app_build: true
+                    skip_api_build: true
+                    azure_static_web_apps_api_token: $(SWA_DEPLOYMENT_TOKEN)
+                    deployment_environment: pr$(System.PullRequest.PullRequestNumber)

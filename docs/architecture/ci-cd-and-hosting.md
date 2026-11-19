@@ -15,6 +15,8 @@ Decision record: [ADR-0009](adr/0009-azure-pipelines-and-static-web-apps.md) (su
 
 One YAML file with two triggers: `pr:` (pull requests into `main`) and `trigger:` (pushes to `main`). The build and test steps are identical. Only the deploy target changes.
 
+The pipeline has three stages. **CI** builds, tests and prerenders, then publishes `dist/` as the `site` artifact. **CD_Production** (pushes to `main`) and **CD_Preview** (pull requests) are deployment jobs that only download that artifact and deploy it, so what ships is exactly what was tested. Deployment jobs target the Azure DevOps Environments `production` and `preview`, which keep the deploy history (which commit is live, since when) and are where manual approvals can be added (Pipelines → Environments → production → Approvals and checks).
+
 ```mermaid
 flowchart LR
     subgraph BUILD["Stage: Build (PR and main)"]
