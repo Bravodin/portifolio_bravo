@@ -128,7 +128,7 @@ public sealed class HomePageTests : BunitContext
 
         var pitStop = cut.Find("#pit-stop");
         Assert.Equal("https://www.linkedin.com/in/manuelbravoc/", pitStop.QuerySelector("a.btn-primary")!.GetAttribute("href"));
-        Assert.Null(pitStop.QuerySelector("a[download]")); // hidden until the real CV replaces the placeholder
+        Assert.Equal("/cv/manuel-bravo-cv.pdf", pitStop.QuerySelector("a[download]")!.GetAttribute("href"));
         Assert.Empty(cut.FindAll("a[href^='mailto:'], a[href^='tel:']"));
     }
 }

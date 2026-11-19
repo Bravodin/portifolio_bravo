@@ -72,13 +72,13 @@ public sealed class RecruiterPageTests : BunitContext
     }
 
     [Fact]
-    public void CvButton_StaysHiddenWhileTheCvIsAPlaceholder()
+    public void CvButton_LinksToThePdf()
     {
         this.AddSite("/en/recruiter/");
 
         var cut = Render<Recruiter>();
 
-        // cvUrl is null until Manuel replaces content/cv/manuel-bravo-cv.pdf with the real CV.
-        Assert.Empty(cut.FindAll("a[download]"));
+        Assert.Equal("/cv/manuel-bravo-cv.pdf", cut.Find("a[download]").GetAttribute("href"));
+        Assert.Equal("Download CV (PDF)", cut.Find("a[download]").TextContent);
     }
 }
