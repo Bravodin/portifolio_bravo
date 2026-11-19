@@ -44,7 +44,7 @@
   },
   {
     "id": "scanner",
-    "name": "Escáner (observabilidad)",
+    "name": "Herramientas de observabilidad",
     "tools": [
       "OpenSearch",
       "Análisis de causa raíz de punta a punta"

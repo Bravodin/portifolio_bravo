@@ -44,7 +44,7 @@
   },
   {
     "id": "scanner",
-    "name": "Scanner (observability)",
+    "name": "Observability tools",
     "tools": [
       "OpenSearch",
       "End-to-end root-cause analysis"
