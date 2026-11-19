@@ -12,6 +12,8 @@
   },
   "mimeTypes": {
     ".wasm": "application/wasm",
+    ".avif": "image/avif",
+    ".webp": "image/webp",
     ".dat": "application/octet-stream",
     ".blat": "application/octet-stream"
   }

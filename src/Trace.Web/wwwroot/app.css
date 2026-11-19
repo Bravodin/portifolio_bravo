@@ -277,6 +277,12 @@ main {
 
 .hero { padding: var(--space-12) 0; }
 .hero-role { font-family: var(--font-mono); color: var(--color-amber); margin: 0; }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
 .hero-tagline { font-size: var(--size-h3); max-width: var(--measure); color: var(--color-text-2); }
 
 .stage {
@@ -335,17 +341,50 @@ main {
   margin: var(--space-4) 0;
 }
 
+/* "Open case ▸": a real button look, so the deeper story is easy to find. */
 .case summary {
+  list-style: none;
   display: inline-flex;
   align-items: center;
+  gap: var(--space-2);
   min-height: var(--touch-target);
-  cursor: pointer;
+  padding: 0 var(--space-6);
+  border: 1px solid var(--color-amber);
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-amber) 12%, transparent);
+  color: var(--color-amber);
   font-family: var(--font-mono);
   font-size: var(--size-small);
-  color: var(--color-amber);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
 }
 
-.case[open] summary { margin-bottom: var(--space-3); }
+.case summary::-webkit-details-marker { display: none; }
+
+.case summary::after {
+  content: "▸";
+  transition: transform 150ms ease;
+}
+
+.case summary:hover { background: color-mix(in srgb, var(--color-amber) 24%, transparent); }
+
+.case[open] summary {
+  background: var(--color-amber);
+  color: var(--color-on-amber);
+  margin-bottom: var(--space-4);
+}
+
+.case[open] summary::after { transform: rotate(90deg); }
+
+.case[open] .par {
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-surface);
+  border-left: 2px solid var(--color-amber);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
 
 /* ---------- Service Log ---------- */
 
@@ -459,7 +498,43 @@ main {
   border-radius: var(--radius-lg);
 }
 
-.id-role { font-family: var(--font-mono); color: var(--color-amber); margin: 0 0 var(--space-6); }
+.id-role { font-family: var(--font-mono); color: var(--color-amber); margin: 0; }
+
+.id-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.id-head h1 { margin-bottom: var(--space-1); }
+
+.portrait img {
+  display: block;
+  width: 112px;
+  height: 112px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-line);
+}
+
+.pit-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.pit-head h2 { margin: 0; }
+
+.avatar img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-amber);
+}
 
 .facts {
   display: grid;
@@ -477,8 +552,8 @@ main {
 @media (max-width: 767px) {
   .id-card { padding: var(--space-6); }
   .id-actions { order: -1; margin-bottom: var(--space-6); }
-  .id-card h1,
-  .id-role { order: -2; }
+  .id-head { order: -2; gap: var(--space-4); }
+  .portrait img { width: 88px; height: 88px; }
 }
 .id-note { font-size: var(--size-small); color: var(--color-muted); margin: var(--space-3) 0 0; }
 
@@ -540,6 +615,8 @@ main {
   }
 
   h1 { font-size: 22pt; margin-bottom: 2pt; }
+  .id-head { gap: 10pt; margin-bottom: 6pt; }
+  .portrait img { width: 64pt; height: 64pt; }
   .hud-label { margin-bottom: 3pt; }
   .recruiter-bar { justify-content: flex-start; }
   .facts { grid-template-columns: repeat(3, 1fr); gap: 4pt 12pt; margin-bottom: 6pt; }

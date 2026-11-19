@@ -35,6 +35,21 @@ public sealed class RecruiterPageTests : BunitContext
     }
 
     [Fact]
+    public void Portrait_IsResponsiveSizedAndPrioritized()
+    {
+        this.AddSite("/recrutador/");
+
+        var picture = Render<Recruiter>().Find("picture.portrait");
+
+        Assert.Equal(["image/avif", "image/webp"], picture.QuerySelectorAll("source").Select(s => s.GetAttribute("type")));
+        Assert.Contains("-sq-320.", picture.QuerySelector("source")!.GetAttribute("srcset"), StringComparison.Ordinal);
+        var img = picture.QuerySelector("img")!;
+        Assert.Equal(("112", "112"), (img.GetAttribute("width"), img.GetAttribute("height")));
+        Assert.Equal(("eager", "high"), (img.GetAttribute("loading"), img.GetAttribute("fetchpriority")));
+        Assert.StartsWith("Retrato de Manuel Bravo", img.GetAttribute("alt"), StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void ContactIsLinkedInOnly()
     {
         this.AddSite("/es/reclutador/");

@@ -16,8 +16,13 @@
     </div>
 
     <section class="id-card" aria-labelledby="recruiter-name">
-        <h1 id="recruiter-name">@Identity.Name</h1>
-        <p class="id-role">@Identity.Role</p>
+        <div class="id-head">
+            <Picture Id="profile" Shape="ImageShape.Square" Widths="[160, 320]" Sizes="112px" Width="112" Height="112" Class="portrait" Eager="true" />
+            <div>
+                <h1 id="recruiter-name">@Identity.Name</h1>
+                <p class="id-role">@Identity.Role</p>
+            </div>
+        </div>
         <dl class="facts">
             <div><dt>@Page.T("recruiter.now")</dt><dd>@Identity.CurrentRole</dd></div>
             <div><dt>@Page.T("recruiter.experience")</dt><dd>@Experience</dd></div>

@@ -77,6 +77,16 @@ public sealed class HomePageTests : BunitContext
     }
 
     [Fact]
+    public void PitStop_HasALazyRoundAvatar_InTheVisitorsLanguage()
+    {
+        var img = RenderHome("/es/").Find("#pit-stop picture.avatar img");
+
+        Assert.Equal(("64", "lazy"), (img.GetAttribute("width"), img.GetAttribute("loading")));
+        Assert.Null(img.GetAttribute("fetchpriority"));
+        Assert.StartsWith("Retrato de Manuel Bravo con blazer", img.GetAttribute("alt"), StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void PitStop_OffersLinkedInAndCv_Only()
     {
         var cut = RenderHome("/en/");

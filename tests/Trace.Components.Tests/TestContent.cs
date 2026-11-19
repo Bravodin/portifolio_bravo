@@ -12,11 +12,14 @@ internal static class TestContent
 {
     public static ContentStore Store { get; } = ContentStore.Load(Path.Combine(AppContext.BaseDirectory, "content"));
 
+    public static MediaCatalog Media { get; } = new(MediaCatalog.FindRoot(null));
+
     public static void AddSite(this BunitContext context, string path)
     {
         context.Services.AddSingleton(Store);
         context.Services.AddSingleton(new SiteOptions(new Uri("https://www.manuelbravo.com.br/")));
         context.Services.AddScoped<PageContext>();
+        context.Services.AddSingleton(Media);
         context.Services.AddSingleton<TimeProvider>(new FakeTimeProvider(new DateTimeOffset(2026, 11, 19, 12, 0, 0, TimeSpan.Zero)));
         context.Services.GetRequiredService<NavigationManager>().NavigateTo(path);
     }

@@ -1,0 +1,47 @@
+@using Trace.Domain.Media
+@inject MediaCatalog Media
+@inject PageContext Page
+
+@* Responsive photo (ADR-0008): AVIF → WebP → JPEG, explicit width/height (no layout shift),
+   lazy by default, alt text in the page's language. *@
+<picture class="@Class">
+    <source type="image/avif" srcset="@ResponsiveImage.Srcset(Image.In(ImageFormat.Avif))" sizes="@Sizes" />
+    <source type="image/webp" srcset="@ResponsiveImage.Srcset(Image.In(ImageFormat.Webp))" sizes="@Sizes" />
+    <img src="@Fallback.Url"
+         srcset="@ResponsiveImage.Srcset(Image.In(ImageFormat.Jpeg))"
+         sizes="@Sizes"
+         alt="@Image.Item.Alt[Page.Locale]"
+         width="@Width"
+         height="@Height"
+         loading="@(Eager ? "eager" : "lazy")"
+         decoding="async"
+         fetchpriority="@(Eager ? "high" : null)" />
+</picture>
+
+@code {
+    [Parameter, EditorRequired] public string Id { get; set; } = default!;
+
+    [Parameter] public ImageShape Shape { get; set; } = ImageShape.Original;
+
+    /// <summary>Widths to generate; anything wider than the original is dropped (no upscaling).</summary>
+    [Parameter] public int[] Widths { get; set; } = [480, 960, 1600];
+
+    /// <summary>The <c>sizes</c> attribute: how wide the image is shown.</summary>
+    [Parameter, EditorRequired] public string Sizes { get; set; } = default!;
+
+    /// <summary>Displayed size, written as width/height so the browser reserves the space.</summary>
+    [Parameter, EditorRequired] public int Width { get; set; }
+
+    [Parameter, EditorRequired] public int Height { get; set; }
+
+    [Parameter] public string? Class { get; set; }
+
+    /// <summary>Above-the-fold images only (the Recruiter Mode portrait): eager + high fetch priority.</summary>
+    [Parameter] public bool Eager { get; set; }
+
+    private ResponsiveImage Image => _image ??= Media.Image(Id, Shape, Widths);
+
+    private ImageVariant Fallback => Image.In(ImageFormat.Jpeg).Last();
+
+    private ResponsiveImage? _image;
+}
