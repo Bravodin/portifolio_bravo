@@ -35,16 +35,21 @@ public sealed class ContentValidatorTests : IDisposable
 
         var error = Assert.Throws<InvalidDataException>(() => ContentStore.Load(_root));
         Assert.Contains("stage(s)", error.Message, StringComparison.Ordinal);
-        Assert.Contains("log.json has 9 entries in pt-BR but 8 in es", error.Message, StringComparison.Ordinal);
+        Assert.Contains("log.json has 10 entries in pt-BR but 9 in es", error.Message, StringComparison.Ordinal);
     }
 
     [Fact]
     public void Load_DifferentLinkedIn_Fails()
     {
-        Edit("en/identity.json", json => json["linkedIn"] = "https://www.linkedin.com/in/someone-else/");
+        Edit("en/identity.json", json =>
+        {
+            json["linkedIn"] = "https://www.linkedin.com/in/someone-else/";
+            json["careerStartYear"] = 1999;
+        });
 
         var error = Assert.Throws<InvalidDataException>(() => ContentStore.Load(_root));
         Assert.Contains("LinkedIn URL differs in en", error.Message, StringComparison.Ordinal);
+        Assert.Contains("careerStartYear differs in en", error.Message, StringComparison.Ordinal);
     }
 
     [Fact]

@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace Trace.Prerender;
 
-internal sealed record PrerenderOptions(string PublishDirectory, string OutputDirectory, Uri BaseUrl, string SwaConfigTemplate);
+internal sealed record PrerenderOptions(string PublishDirectory, string OutputDirectory, Uri BaseUrl, string SwaConfigTemplate, bool IsCiBuild = false);
 
-internal sealed record PrerenderResult(int Pages, int Files, long Bytes, IReadOnlyList<string> Errors);
+internal sealed record PrerenderResult(int Pages, int Files, long Bytes, IReadOnlyList<string> Errors, IReadOnlyList<string> Warnings);
 
 /// <summary>Runs the whole prerender: crawl → write pages → ship assets → site files → validate (ADR-0003).</summary>
 internal sealed class Prerenderer(PrerenderOptions options)
@@ -17,6 +17,7 @@ internal sealed class Prerenderer(PrerenderOptions options)
     private const string NotFoundRoute = "/not-found";
 
     private readonly List<string> _errors = [];
+    private readonly List<string> _warnings = [];
 
     public async Task<PrerenderResult> RunAsync(CancellationToken cancellationToken)
     {
@@ -46,6 +47,7 @@ internal sealed class Prerenderer(PrerenderOptions options)
         var generatedImmutable = await MaterializeMissingAssetsAsync(client, rendered, cancellationToken);
         ValidatePages(rendered);
         _errors.AddRange(HreflangValidator.Validate(pages, options.BaseUrl, Trace.Domain.Content.Locales.All));
+        CheckPdfs(rendered);
 
         await WriteAsync("sitemap.xml", SiteFiles.Sitemap(options.BaseUrl, pages.Select(p => p.Path)), cancellationToken);
         await WriteAsync("robots.txt", SiteFiles.Robots(options.BaseUrl), cancellationToken);
@@ -58,7 +60,7 @@ internal sealed class Prerenderer(PrerenderOptions options)
             cancellationToken);
 
         var files = new DirectoryInfo(options.OutputDirectory).GetFiles("*", SearchOption.AllDirectories);
-        return new PrerenderResult(pages.Count, files.Length, files.Sum(f => f.Length), _errors);
+        return new PrerenderResult(pages.Count, files.Length, files.Sum(f => f.Length), _errors, _warnings);
     }
 
     /// <summary>Every <c>@page</c> route without parameters, from the host and the islands assembly.</summary>
@@ -133,6 +135,25 @@ internal sealed class Prerenderer(PrerenderOptions options)
         }
 
         return immutable;
+    }
+
+    /// <summary>
+    /// Linked PDFs (the CV) must be real files. A placeholder is a warning locally, so the site can still be
+    /// previewed, and an error in Azure Pipelines (TF_BUILD), so it can never be deployed.
+    /// </summary>
+    private void CheckPdfs(IEnumerable<RenderedPage> pages)
+    {
+        var pdfs = pages.SelectMany(p => p.Analysis.AssetReferences)
+            .Where(r => r.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+            .Distinct(StringComparer.Ordinal);
+
+        foreach (var pdf in pdfs)
+        {
+            if (PdfCheck.Problem(SitePaths.ToDistPath(options.OutputDirectory, pdf)) is { } problem)
+            {
+                (options.IsCiBuild ? _errors : _warnings).Add($"{pdf} {problem}: replace content/cv/ with the real CV (no phone or e-mail)");
+            }
+        }
     }
 
     private void ValidatePages(IEnumerable<RenderedPage> pages)

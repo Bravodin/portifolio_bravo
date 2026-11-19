@@ -20,9 +20,9 @@ During implementation this becomes `content/{locale}/*.json` (see [ADR-0004](../
 
 > ⚠️ Contact is **LinkedIn only**: no e-mail or phone on the site. Publish a version of the CV PDF without phone and e-mail (LinkedIn URL only).
 
-> TODO(manuel): the Recruiter Mode wireframe says "20+ years" of experience, but the career log starts in 2008 (~18 years). The site shows "Since 2008". If there is earlier experience that isn't in the CV, add it to the log and the number can change.
+> Experience: Manuel worked with Delphi and Pascal from 2006 to 2008, before Nunes Imóveis (source: Manuel, 2026-11-19; not in the CV). The site computes the years from `careerStartYear: 2006` at build time ("20 years · since 2006" in 2026), so the number never goes stale.
 >
-> TODO(manuel): no CV PDF yet. The "Download CV" button appears automatically once `cvUrl` is set in `content/{locale}/identity.json`.
+> TODO(manuel): `content/cv/manuel-bravo-cv.pdf` is an **empty placeholder**. Replace it with the real CV (LinkedIn URL only: no phone or e-mail) and commit. Until then the prerender warns locally and **fails the Azure Pipelines build**, so the placeholder can't be deployed.
 
 ---
 
@@ -95,6 +95,7 @@ Shown as a motorcycle **service history**: each entry is a "revision", with odom
 | 2013 → 2016 | COREON | Software Engineer | +20 % performance for financial/insurance clients |
 | 2009 → 2013 | DIMEP | Software Engineer | VB6 → C#/WPF; TCP/IP hardware SDK; device cost −73 % |
 | 2008 → 2009 | Nunes Imóveis | Software Engineer | VB6 / Classic ASP → .NET; batch 8 h → 2 h |
+| 2006 → 2008 | *Early career* (company name not remembered) | Software Developer | Delphi · Pascal. Source: Manuel, 2026-11-19 (not in the CV). Replace "Early career" with the company name if it comes back |
 
 **Education:** MBA in AI Engineering (UNIPDS, 2026–2027, in progress) · MBA in Project Management (Impacta, 2020–2021) · Associate degree in Systems Analysis and Development (FIEO, 2010–2013).
 
@@ -106,7 +107,7 @@ Grouped as **toolbox drawers**. No percentage bars, which are meaningless. Each 
 
 | Drawer | Tools |
 |---|---|
-| Engine (languages & frameworks) | C#, .NET / .NET Framework, ASP.NET, Node.js, TypeScript, Angular, Java / Spring Boot, WPF |
+| Engine (languages & frameworks) | C#, .NET / .NET Framework, ASP.NET, Node.js, TypeScript, Angular, Java / Spring Boot, WPF, Delphi, Pascal |
 | Diagnostics (testing & quality) | Selenium, JMeter, Postman, BDD/TDD (Given-When-Then), Sonar 90 % gates, Jetpack Compose Testing, XCUITest |
 | Electronics (APIs, cloud, architecture) | REST, SOAP, Microservices, AWS, CA API Gateway, Sensedia, Redis, message idempotency |
 | Scanner (observability) | OpenSearch, end-to-end root-cause analysis |

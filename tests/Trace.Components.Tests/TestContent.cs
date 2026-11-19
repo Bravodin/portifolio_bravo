@@ -1,6 +1,7 @@
 using Bunit;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Time.Testing;
 using Trace.Domain.Content;
 using Trace.Web.Site;
 
@@ -16,6 +17,7 @@ internal static class TestContent
         context.Services.AddSingleton(Store);
         context.Services.AddSingleton(new SiteOptions(new Uri("https://www.manuelbravo.com.br/")));
         context.Services.AddScoped<PageContext>();
+        context.Services.AddSingleton<TimeProvider>(new FakeTimeProvider(new DateTimeOffset(2026, 11, 19, 12, 0, 0, TimeSpan.Zero)));
         context.Services.GetRequiredService<NavigationManager>().NavigateTo(path);
     }
 }

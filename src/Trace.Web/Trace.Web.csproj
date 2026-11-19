@@ -10,6 +10,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
   </ItemGroup>
 
+  <!-- The CV PDF lives with the content and is served at /cv/. Replace the placeholder with the real file
+       (LinkedIn only: no phone or e-mail). Trace.Prerender fails a CI build while it's still a placeholder. -->
+  <ItemGroup>
+    <Content Include="../../content/cv/*.pdf" Link="wwwroot/cv/%(Filename)%(Extension)" />
+  </ItemGroup>
+
   <!-- Content as data (ADR-0004): read at render time from content/ next to the app (build, publish and the prerender). -->
   <ItemGroup>
     <None Include="..\..\content\**\*.json" Exclude="..\..\content\media\**" LinkBase="content" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />

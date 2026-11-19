@@ -7,7 +7,7 @@ public sealed record Identity(
     string Tagline,
     string Subtitle,
     string CurrentRole,
-    string CareerStart,
+    int CareerStartYear,
     string Sectors,
     string Location,
     string Languages,

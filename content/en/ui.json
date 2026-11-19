@@ -19,6 +19,7 @@
   "recruiter.back": "Take the ride instead",
   "recruiter.print": "Print",
   "recruiter.now": "Now",
+  "recruiter.experienceValue": "{0} years · since {1}",
   "recruiter.experience": "Experience",
   "recruiter.sectors": "Sectors",
   "recruiter.location": "Location",

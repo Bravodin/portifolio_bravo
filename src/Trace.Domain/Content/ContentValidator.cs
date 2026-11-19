@@ -31,6 +31,11 @@ public static class ContentValidator
                 yield return $"log.json has {reference.Log.Count} entries in {Locales.Default} but {other.Log.Count} in {locale}";
             }
 
+            if (reference.Identity.CareerStartYear != other.Identity.CareerStartYear)
+            {
+                yield return $"identity.json careerStartYear differs in {locale}";
+            }
+
             if (reference.Identity.LinkedIn != other.Identity.LinkedIn)
             {
                 yield return $"identity.json LinkedIn URL differs in {locale}";

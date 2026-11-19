@@ -2,6 +2,7 @@
 @page "/en/recruiter"
 @page "/es/reclutador"
 @inject PageContext Page
+@inject TimeProvider Clock
 
 @* Recruiter Mode (wireframe 06): everything a recruiter screens for, in one screen, no animation,
    printable on one A4 page. Contact is LinkedIn only. *@
@@ -19,7 +20,7 @@
         <p class="id-role">@Identity.Role</p>
         <dl class="facts">
             <div><dt>@Page.T("recruiter.now")</dt><dd>@Identity.CurrentRole</dd></div>
-            <div><dt>@Page.T("recruiter.experience")</dt><dd>@Identity.CareerStart</dd></div>
+            <div><dt>@Page.T("recruiter.experience")</dt><dd>@Experience</dd></div>
             <div><dt>@Page.T("recruiter.sectors")</dt><dd>@Identity.Sectors</dd></div>
             <div><dt>@Page.T("recruiter.location")</dt><dd>@Identity.Location</dd></div>
             <div><dt>@Page.T("recruiter.languages")</dt><dd>@Identity.Languages</dd></div>
@@ -80,6 +81,13 @@
 
 @code {
     private Identity Identity => Page.Content.Identity;
+
+    // Computed at build time from the start year, so "20 years" becomes "21 years" without a content edit.
+    private string Experience => string.Format(
+        System.Globalization.CultureInfo.InvariantCulture,
+        Page.T("recruiter.experienceValue"),
+        Clock.GetLocalNow().Year - Identity.CareerStartYear,
+        Identity.CareerStartYear);
 
     private IEnumerable<Metric> Metrics => Page.Recruiter.Metrics.Select(Page.Content.Metric);
 

@@ -23,6 +23,11 @@ internal static class Entry
             CultureInfo.InvariantCulture,
             $"Prerendered {result.Pages} page(s) → {options.OutputDirectory}: {result.Files} files, {result.Bytes / 1024.0 / 1024.0:0.0} MB"));
 
+        foreach (var warning in result.Warnings)
+        {
+            Console.WriteLine($"warning: {warning}");
+        }
+
         foreach (var error in result.Errors)
         {
             await Console.Error.WriteLineAsync($"error: {error}");
@@ -50,7 +55,8 @@ internal static class Entry
                 Path.GetFullPath(publish),
                 Path.GetFullPath(values["--out"]),
                 new Uri(values["--base-url"]),
-                Path.GetFullPath(values["--swa-config"]))
+                Path.GetFullPath(values["--swa-config"]),
+                IsCiBuild: string.Equals(Environment.GetEnvironmentVariable("TF_BUILD"), "true", StringComparison.OrdinalIgnoreCase))
             : null;
     }
 }

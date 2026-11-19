@@ -46,6 +46,16 @@ public sealed class ContentStoreTests
     }
 
     [Fact]
+    public void Log_EndsWithTheDelphiYears()
+    {
+        var first = Store.For(Locales.English).Log[^1];
+
+        Assert.Equal("2006 → 2008", first.Period);
+        Assert.Equal("Delphi · Pascal", first.Highlight);
+        Assert.Equal(2006, Store.For(Locales.Spanish).Identity.CareerStartYear);
+    }
+
+    [Fact]
     public void T_ReturnsUiString() =>
         Assert.Equal("Modo recrutador (30 s)", Store.For(Locales.Portuguese).T("cta.recruiter"));
 
