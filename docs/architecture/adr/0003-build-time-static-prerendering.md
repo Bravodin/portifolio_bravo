@@ -1,6 +1,6 @@
 # 0003 — Build-time static prerendering with an in-process crawler
 
-- Status: Accepted (to be validated by the Phase 1 spike)
+- Status: Accepted (spike passed locally on the SWA CLI emulator on 2026-11-19; production check on SWA pending)
 - Date: 2026-11-19
 
 ## Context
@@ -22,11 +22,27 @@ Add a console tool, **`Trace.Prerender`**, that:
 
 Deploy a single page with one `InteractiveWebAssembly` island to Azure Static Web Apps and confirm that:
 
-- [ ] the island hydrates from persisted state with no server calls (check the network tab: only static GETs);
-- [ ] enhanced navigation between prerendered pages works, or is disabled cleanly (`data-enhance-nav="false"`);
-- [ ] a 404 on a deep link serves `404.html` with a 404 status, readable in all three languages (`responseOverrides` is site-wide);
-- [ ] `.wasm` and the other `_framework` files are served with the right MIME types and compression, and only fingerprinted files get `immutable` caching;
-- [ ] the CSP header from `staticwebapp.config.json` doesn't block the WASM runtime.
+- [x] the island hydrates from persisted state with no server calls (check the network tab: only static GETs);
+- [ ] enhanced navigation between prerendered pages works, or is disabled cleanly (`data-enhance-nav="false"`). *Not testable with one page; check in step 4 (multiple routes).*
+- [x] a 404 on a deep link serves `404.html` with a 404 status, readable in all three languages (`responseOverrides` is site-wide);
+- [~] `.wasm` and the other `_framework` files are served with the right MIME types and compression, and only fingerprinted files get `immutable` caching. *MIME and headers ✅ in the emulator; compression and the final file set are checked on the real SWA.*
+- [x] the CSP header from `staticwebapp.config.json` doesn't block the WASM runtime.
+
+### Spike results (2026-11-19, local)
+
+Setup: `dotnet publish` of `Trace.Web` → the published app serves `/` once → `dist/` → served by the **SWA CLI emulator** (`npx @azure/static-web-apps-cli start dist`) → headless Edge (Playwright) loads the page, waits for hydration, runs the Dyno and skips.
+
+- ✅ **Hydration works from static files.** The prerendered island shows the L0 result card (`data-dyno-state="static"`). After the WASM runtime loads it switches to `idle`, then runs, announces "Native finished in 1.2 s" in the live region, and finishes. 43 requests, **all `GET`, none to a server** (no `_blazor`, no SignalR).
+- ✅ Headers from `staticwebapp.config.json` apply (CSP, `nosniff`, `immutable` on `/_framework/*`), `.wasm` is served as `application/wasm`, and a deep link returns `404.html` with status 404.
+
+Findings that shape `Trace.Prerender` (step 4):
+
+1. **Fingerprinted URLs are virtual.** `MapStaticAssets` serves `app.{hash}.css`, `Trace.Web.{hash}.styles.css`, `_framework/blazor.web.{hash}.js` and others from routes, but the publish output only has `app.css` and so on. The prerender must **materialize every identity endpoint** listed in `Trace.Web.staticwebassets.endpoints.json` (`Route` ← `AssetFile`, entries with no `Selectors`). It skips the `.br`/`.gz` routes because SWA compresses on its own.
+2. **`_framework/resource-collection.{hash}.js` is generated in memory** (it isn't in the publish output). Without it, hydration fails with "Failed to fetch dynamically imported module". The crawler must **GET it from the in-process host** (its URL is in the import map) and write it to `dist/`.
+3. **CSP and the inline import map.** `<script type="importmap">` is inline, so `script-src` needs its `sha256-…` hash. Browsers hash the text **after the HTML parser normalizes CRLF to LF**, so hashing the raw Windows output gives the wrong value. The prerender must compute the hash on LF-normalized text and write it into `dist/staticwebapp.config.json`. The repo copy holds a placeholder, `__INLINE_SCRIPT_HASHES__`.
+4. **Ship only what is referenced.** The spike's `dist/` was 18 MB: every asset was copied twice (with and without a hash), plus ICU data. Step 4 writes only the routes the pages reference, and `InvariantGlobalization` (ADR-0004) removes the `icudt*.dat` files. That keeps the `immutable` rule on `/_framework/*` honest, because no file without a hash ships there.
+5. The prerendered page carries an **antiforgery token** in the persisted component state. It's harmless (the site has no forms), but it's dead weight and gets baked into static HTML; strip or disable it in step 4.
+6. Headless Edge requests `/favicon.ico` by itself. Add a favicon with the design assets.
 
 ## Fallback
 

@@ -1,0 +1,171 @@
+@using System.Globalization
+@using Trace.Domain.Dyno
+@implements IAsyncDisposable
+@inject TimeProvider Clock
+
+@*
+    Stage 1 dyno (docs/ux/interaction-spec.md#dyno-stage-1).
+    L0 (prerendered / no JS): the static result card with the measured numbers.
+    L2 (after WASM hydration): the interactive run.
+*@
+<section class="dyno" aria-labelledby="dyno-title" data-dyno-state="@StateName">
+    <h3 id="dyno-title">@Title</h3>
+
+    @if (!RendererInfo.IsInteractive)
+    {
+        <div class="dyno-result" data-testid="dyno-static">
+            <p><strong>@LegacyLabel</strong>: 12–20 s</p>
+            <p><strong>@NativeLabel</strong>: ~1.2 s</p>
+            <p>~10–16× faster</p>
+        </div>
+    }
+    else
+    {
+        <div class="dyno-lanes">
+            @Lane(LegacyLabel, _run?.LegacyProgress(_elapsed) ?? 0, LegacyShown, _run is not null && _run.IsLegacyDone(_elapsed))
+            @Lane(NativeLabel, _run?.NativeProgress(_elapsed) ?? 0, NativeShown, _run is not null && _run.IsNativeDone(_elapsed))
+        </div>
+
+        @if (_state == DynoState.Done && _run is not null)
+        {
+            <div class="dyno-result" data-testid="dyno-result">
+                <p><strong>@LegacyLabel</strong>: @Seconds(_run.Legacy)</p>
+                <p><strong>@NativeLabel</strong>: @Seconds(_run.Native)</p>
+                <p>@_run.SpeedUp.ToString("0.#", CultureInfo.InvariantCulture)× faster</p>
+            </div>
+        }
+
+        @if (_state == DynoState.Running)
+        {
+            @if (_elapsed >= SkipAfter)
+            {
+                <button type="button" class="dyno-skip" @onclick="Skip">Skip — you get the idea</button>
+            }
+        }
+        else
+        {
+            <button type="button" class="dyno-run" @onclick="RunAsync">@(_state == DynoState.Done ? "Run again" : RunLabel)</button>
+        }
+
+        <p class="visually-hidden" aria-live="polite">@_announcement</p>
+    }
+
+    <p class="dyno-footnote">Simulation based on measured production timings. No real systems are called.</p>
+</section>
+
+@code {
+    private static readonly TimeSpan SkipAfter = TimeSpan.FromSeconds(3);
+    private static readonly TimeSpan Tick = TimeSpan.FromMilliseconds(50);
+
+    private DynoState _state = DynoState.Idle;
+    private DynoRun? _run;
+    private TimeSpan _elapsed;
+    private string _announcement = string.Empty;
+    private CancellationTokenSource? _cts;
+
+    [Parameter] public string Title { get; set; } = "Dyno: booking journey";
+    [Parameter] public string LegacyLabel { get; set; } = "Legacy · Ionic (2016)";
+    [Parameter] public string NativeLabel { get; set; } = "Native · Swift/Kotlin";
+    [Parameter] public string RunLabel { get; set; } = "Run the dyno";
+
+    /// <summary>Seed source for each run; replaceable in tests.</summary>
+    [Parameter] public Func<int> NextSeed { get; set; } = () => Environment.TickCount;
+
+    private string StateName => RendererInfo.IsInteractive ? _state.ToString().ToLowerInvariant() : "static";
+
+    private TimeSpan NativeShown => _run is null ? TimeSpan.Zero : Min(_elapsed, _run.Native);
+
+    private TimeSpan LegacyShown => _run is null ? TimeSpan.Zero : Min(_elapsed, _run.Legacy);
+
+    private async Task RunAsync()
+    {
+        await StopAsync();
+        _run = DynoSimulation.Create(NextSeed());
+        _elapsed = TimeSpan.Zero;
+        _announcement = string.Empty;
+        _state = DynoState.Running;
+        _cts = new CancellationTokenSource();
+        _ = DriveAsync(_run, _cts.Token);
+    }
+
+    private async Task DriveAsync(DynoRun run, CancellationToken token)
+    {
+        var started = Clock.GetTimestamp();
+        var nativeAnnounced = false;
+        using var timer = new PeriodicTimer(Tick, Clock);
+        try
+        {
+            while (await timer.WaitForNextTickAsync(token))
+            {
+                _elapsed = Clock.GetElapsedTime(started);
+                if (!nativeAnnounced && run.IsNativeDone(_elapsed))
+                {
+                    nativeAnnounced = true;
+                    _announcement = $"Native finished in {Seconds(run.Native)}";
+                }
+
+                if (run.IsLegacyDone(_elapsed))
+                {
+                    Finish(run);
+                    await InvokeAsync(StateHasChanged);
+                    return;
+                }
+
+                await InvokeAsync(StateHasChanged);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            // Run stopped (skip, run again, or component disposed).
+        }
+    }
+
+    private async Task Skip()
+    {
+        await StopAsync();
+        if (_run is not null)
+        {
+            Finish(_run);
+        }
+    }
+
+    private void Finish(DynoRun run)
+    {
+        _elapsed = run.Legacy;
+        _state = DynoState.Done;
+        _announcement = $"Legacy finished in {Seconds(run.Legacy)}";
+    }
+
+    private async Task StopAsync()
+    {
+        if (_cts is not null)
+        {
+            await _cts.CancelAsync();
+            _cts.Dispose();
+            _cts = null;
+        }
+    }
+
+    public async ValueTask DisposeAsync() => await StopAsync();
+
+    private static TimeSpan Min(TimeSpan a, TimeSpan b) => a < b ? a : b;
+
+    private static string Seconds(TimeSpan value) =>
+        value.TotalSeconds.ToString("0.0", CultureInfo.InvariantCulture) + " s";
+
+    private static RenderFragment Lane(string label, double progress, TimeSpan shown, bool done) => __builder =>
+    {
+        <div class="dyno-lane">
+            <span class="dyno-label">@label</span>
+            <meter min="0" max="1" value="@progress.ToString("0.###", CultureInfo.InvariantCulture)" aria-label="@label"></meter>
+            <span class="dyno-timer" aria-hidden="true">@shown.TotalSeconds.ToString("00.0", CultureInfo.InvariantCulture) s @(done ? "✓" : "")</span>
+        </div>
+    };
+
+    private enum DynoState
+    {
+        Idle,
+        Running,
+        Done,
+    }
+}

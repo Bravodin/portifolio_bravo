@@ -3,6 +3,7 @@ using Trace.Web.Components;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 

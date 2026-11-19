@@ -22,15 +22,16 @@ Start with: `README.md` → `docs/ux/concept.md` → `docs/architecture/overview
 
 - ✅ **Phase 0** — product, UX, wireframes (`docs/design/wireframes`), design tokens, architecture, ADRs 0001–0009, photos + media manifest.
 - ✅ Hosting decision recorded: **Azure Pipelines + Azure Static Web Apps (Free)**, DNS on Cloudflare, apex → `www` redirect ([ADR-0009](docs/architecture/adr/0009-azure-pipelines-and-static-web-apps.md), [ci-cd-and-hosting.md](docs/architecture/ci-cd-and-hosting.md)). ADR-0002 (GitHub Pages) is superseded.
-- ⏳ **Phase 1/2 — next:** skeleton + pipeline (below), starting at step 2.
+- ✅ Skeleton (step 2) and local spike (step 3): the Dyno island hydrates from static files only. Results and the findings that shape the prerender are in [ADR-0003](docs/architecture/adr/0003-build-time-static-prerendering.md#spike-results-2026-11-19-local).
+- ⏳ **Next:** step 4, `Trace.Prerender`. Manuel has no Azure account yet, so the SWA production check waits for step 5.
 
 ## Phase 1/2 plan — skeleton
 
 Solution (see `docs/architecture/overview.md` §5):
 
 ```
-global.json                    # pin .NET 10 SDK
-Trace.sln
+global.json                    # pin .NET 10 SDK + Microsoft.Testing.Platform runner
+Trace.slnx
 src/Trace.Domain/              # net10.0 class library — AchievementService, DynoSimulation, TerminalInterpreter, content records
 src/Trace.Client/              # Blazor WASM islands (InteractiveWebAssembly)
 src/Trace.Web/                 # Blazor Web App host, static SSR pages
@@ -45,9 +46,9 @@ azure-pipelines.yml
 
 Order:
 1. ~~ADR-0009 + docs updates~~ ✅ done.
-2. `global.json`, solution, projects, `Directory.Build.props` (nullable, warnings as errors, analyzers), `.editorconfig`.
-3. **Spike (ADR-0003 exit criteria):** one prerendered page + one `InteractiveWebAssembly` island (a tiny Dyno) → deployed to SWA. Confirm that it hydrates with static GETs only.
-4. `Trace.Prerender` minimal: routes × locales → `dist/`, plus `sitemap.xml` and `404.html`.
+2. ~~`global.json`, solution, projects, `Directory.Build.props`, `.editorconfig`~~ ✅ done (central package management in `Directory.Packages.props`; xUnit v3 + bUnit on Microsoft.Testing.Platform with `coverlet.MTP`).
+3. ~~**Spike (ADR-0003 exit criteria)**~~ ✅ passed locally (SWA CLI). The deploy to the real SWA happens with step 5.
+4. `Trace.Prerender` minimal: routes × locales → `dist/`, plus `sitemap.xml` and `404.html`. Must apply the spike findings: materialize endpoints from `Trace.Web.staticwebassets.endpoints.json`, crawl `resource-collection.{hash}.js`, compute the import map CSP hash on LF-normalized text into `__INLINE_SCRIPT_HASHES__`, ship only referenced files, `InvariantGlobalization`, check enhanced navigation.
 5. `azure-pipelines.yml`: restore → build → test + coverage → prerender → `AzureStaticWebApp@0` deploy (`skip_app_build: true`, `app_location: dist`).
 6. Then content JSON + the Recruiter Mode page (highest value for recruiters).
 
@@ -55,9 +56,12 @@ Order:
 
 ```bash
 dotnet --version                                   # expect 10.0.x
-dotnet build -warnaserror
-dotnet test --collect:"XPlat Code Coverage"
-dotnet run --project tools/Trace.Prerender -- --out dist
+dotnet build Trace.slnx -warnaserror
+dotnet test --solution Trace.slnx                  # exit code 8 = a test project ran zero tests
+dotnet test --solution Trace.slnx --coverlet --coverlet-output-format cobertura --results-directory artifacts/test-results
+dotnet format Trace.slnx --verify-no-changes
+dotnet run --project tools/Trace.Prerender -- --out dist   # step 4, not written yet
+npx @azure/static-web-apps-cli start dist --port 4280      # serve dist/ like SWA does (needs Node)
 python3 docs/design/wireframes/_src/wf_desktop.py docs/design/wireframes   # regenerate wireframes (needs Pillow)
 python3 docs/design/wireframes/_src/wf_mobile.py  docs/design/wireframes
 ```
