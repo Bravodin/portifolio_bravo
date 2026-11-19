@@ -17,7 +17,7 @@ public sealed class RecruiterPageTests : BunitContext
         Assert.Equal("~1.2 s", cut.Find("[data-metric=M1] .metric-after").TextContent);
         Assert.Equal(3, cut.FindAll(".roles li").Count);
         Assert.Contains("20 years · since 2006", cut.Find(".facts").TextContent, StringComparison.Ordinal);
-        Assert.Equal("‹ Take the ride instead", cut.Find("a.back").TextContent);
+        Assert.Equal("‹ See the full page", cut.Find("a.back").TextContent);
         Assert.Equal("/en/", cut.Find("a.back").GetAttribute("href"));
     }
 

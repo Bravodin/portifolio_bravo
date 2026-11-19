@@ -91,8 +91,8 @@ Source: Manuel, 2026-11-19 (not in the CV). It adds **no new numbers**: the dyno
 
 | Key | EN | PT-BR | ES |
 |---|---|---|---|
-| `stage1.story.benchmark` | My manager asked for a benchmark: the Ionic app against native. I ran it and presented the numbers. This dyno replays it. | Meu gestor pediu um benchmark: o app Ionic contra o nativo. Eu rodei e apresentei os números. Este dinamômetro reproduz esse teste. | Mi gerente pidió un benchmark: la app Ionic contra la nativa. Lo ejecuté y presenté los números. Este dinamómetro lo reproduce. |
-| `stage1.story.beyondSpeed` | Speed is only what a dyno measures. Going native also put the app closer to the hardware, opening the door to wearables. | Velocidade é só o que o dinamômetro mede. Ir para o nativo também deixou o app mais perto do hardware e abriu caminho para wearables. | La velocidad es solo lo que mide un dinamómetro. Pasar a nativo también acercó la app al hardware y abrió la puerta a los wearables. |
+| `stage1.story.benchmark` | My manager asked for a benchmark: the Ionic app against native. I ran it and presented the numbers. This simulation replays it. | Meu gestor pediu um benchmark: o app Ionic contra o nativo. Eu rodei e apresentei os números. Esta simulação reproduz esse teste. | Mi gerente pidió un benchmark: la app Ionic contra la nativa. Lo ejecuté y presenté los números. Esta simulación lo reproduce. |
+| `stage1.story.beyondSpeed` | Speed is only what a benchmark measures. Going native also put the app closer to the hardware, opening the door to wearables. | Velocidade é só o que o benchmark mede. Ir para o nativo também deixou o app mais perto do hardware e abriu caminho para wearables. | La velocidad es solo lo que mide un benchmark. Pasar a nativo también acercó la app al hardware y abrió la puerta a los wearables. |
 
 TODO(manuel): who the numbers were presented to (manager only, or leadership too?), and whether the benchmark drove the migration decision. Until then the copy just says "presented the numbers".
 
@@ -165,10 +165,10 @@ All photos are listed in [`content/media/gallery.json`](../../content/media/gall
 | Key | EN | PT-BR | ES |
 |---|---|---|---|
 | `cta.recruiter` | Recruiter mode (30 s) | Modo recrutador (30 s) | Modo reclutador (30 s) |
-| `cta.ride` | Start the ride | Dar a partida | Arrancar |
+| `cta.ride` | See the Trace | Ver o Trace | Ver el Trace |
 | `cta.cv` | Download CV (PDF) | Baixar CV (PDF) | Descargar CV (PDF) |
 | `cta.linkedin` | Talk on LinkedIn | Conversar no LinkedIn | Hablar en LinkedIn |
 | `hud.progress` | Trace progress | Progresso do trace | Progreso del trace |
-| `dyno.run` | Run the dyno | Rodar o dinamômetro | Correr el dinamómetro |
+| `dyno.run` | Run the benchmark | Rodar o benchmark | Correr el benchmark |
 | `a11y.skip` | Skip to content | Pular para o conteúdo | Saltar al contenido |
 | `motion.toggle` | Reduce motion | Reduzir movimento | Reducir movimiento |

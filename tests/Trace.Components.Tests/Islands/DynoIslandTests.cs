@@ -39,7 +39,7 @@ public sealed class DynoIslandTests : BunitContext
         var cut = Render<DynoIsland>(p => p.Add(x => x.Copy, Portuguese));
 
         Assert.Contains("~1,2 s", cut.Find("[data-testid=dyno-static]").TextContent, StringComparison.Ordinal);
-        Assert.Equal("Dinamômetro: jornada de agendamento", cut.Find("h3").TextContent);
+        Assert.Equal("Benchmark: jornada de agendamento", cut.Find("h3").TextContent);
     }
 
     [Fact]
@@ -49,7 +49,7 @@ public sealed class DynoIslandTests : BunitContext
 
         var cut = Render<DynoIsland>(p => p.Add(x => x.Copy, English));
 
-        Assert.Equal("Run the dyno", cut.Find("button.dyno-run").TextContent);
+        Assert.Equal("Run the benchmark", cut.Find("button.dyno-run").TextContent);
         Assert.Equal("idle", cut.Find("section").GetAttribute("data-dyno-state"));
     }
 

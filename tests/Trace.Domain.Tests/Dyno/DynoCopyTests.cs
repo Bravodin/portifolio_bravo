@@ -13,7 +13,7 @@ public sealed class DynoCopyTests
     {
         var copy = DynoCopy.From(Store.For(Locales.Portuguese));
 
-        Assert.Equal("Rodar o dinamômetro", copy.RunLabel);
+        Assert.Equal("Rodar o benchmark", copy.RunLabel);
         Assert.Equal(",", copy.DecimalSeparator);
         Assert.Equal("12–20 s", copy.MeasuredBefore);
         Assert.Equal("~1,2 s", copy.MeasuredAfter);

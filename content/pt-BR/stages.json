@@ -8,8 +8,8 @@
     "action": "Liderei a migração para iOS (Swift) e Android (Kotlin) nativos; levei os testes de regressão para Compose Testing + XCUITest.",
     "result": "Agendamento em ~1,2 s.",
     "story": [
-      "Meu gestor pediu um benchmark: o app Ionic contra o nativo. Eu rodei e apresentei os números. Este dinamômetro reproduz esse teste.",
-      "Velocidade é só o que o dinamômetro mede. Ir para o nativo também deixou o app mais perto do hardware e abriu caminho para wearables."
+      "Meu gestor pediu um benchmark: o app Ionic contra o nativo. Eu rodei e apresentei os números. Esta simulação reproduz esse teste.",
+      "Velocidade é só o que o benchmark mede. Ir para o nativo também deixou o app mais perto do hardware e abriu caminho para wearables."
     ],
     "tech": [
       "Swift",
