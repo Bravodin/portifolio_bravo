@@ -120,8 +120,8 @@ Grouped as **toolbox drawers**. No percentage bars, which are meaningless. Each 
 | Diagnostics (testing & quality) | Selenium, JMeter, Postman, BDD/TDD (Given-When-Then), Sonar 90 % gates, Jetpack Compose Testing, XCUITest |
 | APIs, cloud & architecture (was "Electronics") | REST, SOAP, Microservices, AWS, CA API Gateway, Sensedia, Redis, message idempotency |
 | Scanner (observability) | OpenSearch, end-to-end root-cause analysis |
-| Fluids (databases) | SQL Server, Oracle, MySQL |
-| Power tools (AI-assisted engineering) | GitHub Copilot, Claude |
+| Databases (was "Fluids") | SQL Server, Oracle, MySQL |
+| AI-assisted coding (was "Power tools") | GitHub Copilot, Claude |
 | Frameworks & methodologies (was "Workshop management") | Scrum, ITIL / HPSM, pre-sales & RFPs, budgeting, team building |
 
 ---

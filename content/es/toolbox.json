@@ -52,7 +52,7 @@
   },
   {
     "id": "fluids",
-    "name": "Fluidos (bases de datos)",
+    "name": "Bases de datos",
     "tools": [
       "SQL Server",
       "Oracle",
@@ -61,7 +61,7 @@
   },
   {
     "id": "power-tools",
-    "name": "Herramientas eléctricas (ingeniería asistida por IA)",
+    "name": "Código asistido por IA",
     "tools": [
       "GitHub Copilot",
       "Claude"
