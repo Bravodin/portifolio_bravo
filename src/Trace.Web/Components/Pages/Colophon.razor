@@ -95,7 +95,42 @@
     <section class="architecture" aria-labelledby="arch-title">
         <h2 id="arch-title">@Arch.Title</h2>
         <p>@Arch.Intro</p>
-        <ol class="arch-flow">
+
+        @* Two views of the same steps, chosen with radio buttons (works without JS, arrow keys switch). *@
+        <div class="arch-views">
+            <fieldset class="arch-toggle">
+                <legend class="visually-hidden">@Arch.ViewLabel</legend>
+                <input type="radio" name="arch-view" id="arch-view-graph" checked />
+                <label for="arch-view-graph">@Arch.GraphView</label>
+                <input type="radio" name="arch-view" id="arch-view-list" />
+                <label for="arch-view-list">@Arch.ListView</label>
+            </fieldset>
+
+            @* Swimlanes: one row per layer; the publishing flow on the left, the access flow on the right,
+               Azure Static Web Apps spanning both where they meet. *@
+            <div class="arch-lanes" role="group" aria-label="@Arch.GraphView">
+                <span class="lane-corner"></span>
+                <span class="lane-head lane-head-publish">@Arch.PublishFlow</span>
+                <span class="lane-head lane-head-access">@Arch.AccessFlow</span>
+                @foreach (var node in Arch.Nodes)
+                {
+                    <span class="lane-label">@node.Layer</span>
+                    @if (node.Flow == "access")
+                    {
+                        <span class="lane-empty" aria-hidden="true"></span>
+                    }
+                    <div class="lane-card lane-@node.Flow">
+                        <strong>@node.Name</strong>
+                        <span>@node.Role</span>
+                    </div>
+                    @if (node.Flow == "publish")
+                    {
+                        <span class="lane-empty" aria-hidden="true"></span>
+                    }
+                }
+            </div>
+
+            <ol class="arch-flow">
             @foreach (var node in Arch.Nodes)
             {
                 <li class="arch-node">
@@ -116,7 +151,8 @@
                     </p>
                 </li>
             }
-        </ol>
+            </ol>
+        </div>
     </section>
 
     <p><a href="@Page.PathFor(PageKey.Home)">@Page.T("colophon.back")</a></p>

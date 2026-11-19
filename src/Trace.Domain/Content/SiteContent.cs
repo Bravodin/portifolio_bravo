@@ -27,14 +27,26 @@ public sealed record Role(string Who, string What);
 /// <summary>A number with its label, pre-formatted per locale (e.g. "156,5 milhões" / "tokens processados").</summary>
 public sealed record Figure(string Value, string Label);
 
-/// <summary>One step of the architecture flow, with the ADR numbers ("0009") that explain it.</summary>
-public sealed record ArchitectureNode(string Name, string Role, IReadOnlyList<string> Details, IReadOnlyList<string> Adrs);
+/// <summary>
+/// One step of the architecture, with the ADR numbers ("0009") that explain it. <c>Layer</c> names its swimlane;
+/// <c>Flow</c> is "publish" (every push), "access" (every visit) or "both" (where the two meet).
+/// </summary>
+public sealed record ArchitectureNode(string Name, string Role, IReadOnlyList<string> Details, IReadOnlyList<string> Adrs, string Layer, string Flow);
 
 /// <summary>Labels for the Colophon's "latest build" panel (the values come from the pipeline at build time).</summary>
 public sealed record BuildCopy(string Title, string Intro, string Number, string Commit, string Branch, string BuiltAt, string Tests, string Coverage, string Run, string Local);
 
 /// <summary>The Colophon's architecture diagram: an ordered flow from Manuel to the browser.</summary>
-public sealed record Architecture(string Title, string Intro, string DecisionsLabel, IReadOnlyList<ArchitectureNode> Nodes);
+public sealed record Architecture(
+    string Title,
+    string Intro,
+    string DecisionsLabel,
+    IReadOnlyList<ArchitectureNode> Nodes,
+    string ViewLabel,
+    string GraphView,
+    string ListView,
+    string PublishFlow,
+    string AccessFlow);
 
 /// <summary>
 /// The Colophon's "built with AI, directed by a human" section (content inventory §1.2). Usage figures come from

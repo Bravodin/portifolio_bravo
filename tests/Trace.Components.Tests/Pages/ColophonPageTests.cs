@@ -22,13 +22,13 @@ public sealed class ColophonPageTests : BunitContext
     }
 
     [Fact]
-    public void Architecture_IsAFiveStepFlow_WithAdrLinks()
+    public void Architecture_IsASixStepFlow_WithAdrLinks()
     {
         this.AddSite("/colophon/");
 
         var cut = Render<Colophon>();
 
-        Assert.Equal(["Manuel", "GitHub", "Azure Pipelines", "Azure Static Web Apps", "Browser"], cut.FindAll(".arch-node h3").Select(h => h.TextContent));
+        Assert.Equal(["Manuel", "GitHub", "Azure Pipelines", "Azure Static Web Apps", "Cloudflare + registro.br", "Browser"], cut.FindAll(".arch-node h3").Select(h => h.TextContent));
         var adr9 = cut.FindAll(".arch-adrs a").First(a => a.TextContent == "ADR-0009");
         Assert.Equal("https://github.com/Bravodin/portifolio_bravo/blob/main/docs/architecture/adr/0009-azure-pipelines-and-static-web-apps.md", adr9.GetAttribute("href"));
         var unknown = cut.FindAll(".arch-adrs a").First(a => a.TextContent == "ADR-0003");
@@ -60,6 +60,23 @@ public sealed class ColophonPageTests : BunitContext
 
         Assert.Empty(panel.QuerySelectorAll(".build-facts"));
         Assert.Contains("gerada localmente", panel.TextContent, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Architecture_HasBothViews_DiagramChosenByDefault()
+    {
+        this.AddSite("/pt/como-foi-feito/");
+
+        var cut = Render<Colophon>();
+
+        Assert.NotNull(cut.Find("#arch-view-graph").GetAttribute("checked"));
+        Assert.Null(cut.Find("#arch-view-list").GetAttribute("checked"));
+        Assert.Equal(["Gráfica", "Detalhada"], cut.FindAll(".arch-toggle label").Select(l => l.TextContent));
+        Assert.Equal(["Autor", "Código", "CI/CD", "Hospedagem", "DNS", "Cliente"], cut.FindAll(".lane-label").Select(l => l.TextContent));
+        Assert.Equal(3, cut.FindAll(".lane-publish").Count);
+        Assert.Equal(2, cut.FindAll(".lane-access").Count);
+        Assert.Equal("Azure Static Web Apps", cut.Find(".lane-both strong").TextContent);
+        Assert.Equal(6, cut.FindAll(".arch-flow > .arch-node").Count);
     }
 
     [Fact]

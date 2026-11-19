@@ -3,7 +3,7 @@
 > An interactive portfolio built with **.NET 10 / Blazor**.
 > Follow a single request as it travels from a phone to the database, and see what changed at each hop along the way.
 
-**Live:** https://thankful-sky-0b6524c0f.3.azurestaticapps.net (custom domain `www.manuelbravo.com.br` coming soon) · in English, Spanish and Portuguese.
+**Live:** https://www.manuelbravo.com.br · in English, Spanish and Portuguese.
 
 This repository is a portfolio piece in its own right. The site, and also how it was designed, decided, tested and shipped, are all here in the open.
 
@@ -21,6 +21,8 @@ This repository is a portfolio piece in its own right. The site, and also how it
 content/*.json ──► Blazor Web App (.NET 10) ──► Trace.Prerender ──► dist/ (static HTML, CSS, WASM, AVIF/WebP)
                                                       │
 GitHub ──► Azure Pipelines:  CI (build -warnaserror · format · tests · prerender) ──► CD (Azure Static Web Apps)
+                                                                                              │
+Visitor ──► www.manuelbravo.com.br (registro.br domain · Cloudflare DNS) ─────────────────────┘
 ```
 
 - **Static first:** every page × language is rendered to HTML at build time, so the site works without JavaScript and needs no server at run time ([ADR-0003](docs/architecture/adr/0003-build-time-static-prerendering.md)).
@@ -44,7 +46,7 @@ dotnet run --project src/Trace.Web   # dev server with hot reload (no prerender,
 | Phase | Scope | State |
 |---|---|---|
 | 0 — Discovery & UX | Vision, personas, flows, wireframes, design tokens, architecture, ADRs | ✅ |
-| 1 — Skeleton & delivery | Blazor Web App (.NET 10), build-time prerender, media pipeline, Azure Pipelines CI → CD to Azure Static Web Apps | ✅ · custom domain ⏳ |
+| 1 — Skeleton & delivery | Blazor Web App (.NET 10), build-time prerender, media pipeline, Azure Pipelines CI → CD to Azure Static Web Apps, custom domain (DNS on Cloudflare) | ✅ |
 | 2 — Content & i18n | EN / ES / PT-BR content as data, Recruiter Mode, Garage, About, Colophon, `hreflang` + sitemap, design fonts | ✅ |
 | 3 — Immersion | The Trace (7 stages) and the benchmark ✅ · motion, gear indicator, achievements, terminal ⏳ | 🟡 |
 | 4 — Hardening | xUnit + bUnit ✅ · Playwright + axe + Lighthouse CI budgets in the pipeline ⏳ | 🟡 |
@@ -80,11 +82,11 @@ All diagrams in the docs are written in Mermaid, so GitHub renders them inline. 
 - .NET 10 · Blazor Web App with one Interactive WebAssembly island · build-time static prerender
 - Hand-written CSS from design tokens · self-hosted Barlow, Barlow Condensed and JetBrains Mono (OFL)
 - NetVips (images) · AngleSharp (HTML validation) · xUnit v3 + bUnit on Microsoft.Testing.Platform
-- Azure Pipelines → Azure Static Web Apps (Free)
+- Azure Pipelines → Azure Static Web Apps (Free) · domain registered at registro.br, DNS on Cloudflare (Free)
 
 ## Built with AI
 
-The site was built in partnership with Claude (Anthropic) in Claude Code: I set the intent, the content and the decisions, and reviewed every change; Claude proposed architecture and solutions and wrote the code and tests. Commits carry the co-authorship, and the [Colophon](https://thankful-sky-0b6524c0f.3.azurestaticapps.net/colophon/) tells the full story.
+The site was built in partnership with Claude (Anthropic) in Claude Code: I set the intent, the content and the decisions, and reviewed every change; Claude proposed architecture and solutions and wrote the code and tests. Commits carry the co-authorship, and the [Colophon](https://www.manuelbravo.com.br/colophon/) tells the full story.
 
 ## Author
 

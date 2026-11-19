@@ -57,7 +57,9 @@
         ],
         "adrs": [
           "0004"
-        ]
+        ],
+        "layer": "Autor",
+        "flow": "publish"
       },
       {
         "name": "GitHub",
@@ -68,7 +70,9 @@
         ],
         "adrs": [
           "0001"
-        ]
+        ],
+        "layer": "Código",
+        "flow": "publish"
       },
       {
         "name": "Azure Pipelines",
@@ -82,7 +86,9 @@
           "0007",
           "0003",
           "0008"
-        ]
+        ],
+        "layer": "CI/CD",
+        "flow": "publish"
       },
       {
         "name": "Azure Static Web Apps",
@@ -93,7 +99,23 @@
         ],
         "adrs": [
           "0009"
-        ]
+        ],
+        "layer": "Hospedagem",
+        "flow": "both"
+      },
+      {
+        "name": "Cloudflare + registro.br",
+        "role": "Domínio e DNS",
+        "details": [
+          "Domínio registrado no registro.br",
+          "DNS na Cloudflare: www aponta para o Azure",
+          "manuelbravo.com.br redireciona para www"
+        ],
+        "adrs": [
+          "0009"
+        ],
+        "layer": "DNS",
+        "flow": "access"
       },
       {
         "name": "Navegador",
@@ -106,9 +128,16 @@
         "adrs": [
           "0001",
           "0010"
-        ]
+        ],
+        "layer": "Cliente",
+        "flow": "access"
       }
-    ]
+    ],
+    "viewLabel": "Visualização",
+    "graphView": "Gráfica",
+    "listView": "Detalhada",
+    "publishFlow": "Publicação · a cada push",
+    "accessFlow": "Acesso · a cada visita"
   },
   "build": {
     "title": "Último build",

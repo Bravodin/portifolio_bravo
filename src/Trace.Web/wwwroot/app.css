@@ -715,6 +715,122 @@ figcaption small { color: var(--color-muted); }
   .roles-list div { grid-template-columns: 1fr; gap: var(--space-1); }
 }
 
+/* Architecture views: radio toggle (no JS), swimlanes by default, cards on demand. */
+.arch-toggle {
+  display: inline-flex;
+  gap: var(--space-1);
+  margin: var(--space-4) 0 var(--space-6);
+  padding: var(--space-1);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-full);
+}
+
+.arch-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.arch-toggle label {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  padding: 0 var(--space-6);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-2);
+  cursor: pointer;
+}
+
+.arch-toggle input:checked + label { background: var(--color-amber); color: var(--color-on-amber); }
+.arch-toggle input:focus-visible + label { outline: 2px solid var(--color-amber); outline-offset: 2px; }
+
+.arch-views:has(#arch-view-graph:checked) .arch-flow { display: none; }
+.arch-views:has(#arch-view-list:checked) .arch-lanes { display: none; }
+
+.arch-lanes {
+  display: grid;
+  grid-template-columns: 8rem 1fr 1fr;
+  gap: 0;
+  margin-bottom: var(--space-8);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.lane-head,
+.lane-label {
+  font-family: var(--font-mono);
+  font-size: var(--size-hud);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lane-head { padding: var(--space-3) var(--space-4); color: var(--color-amber); border-bottom: 1px solid var(--color-line-strong); }
+.lane-head-access,
+.lane-access,
+.arch-lanes > .lane-empty:nth-child(3n) { border-left: 1px dashed var(--color-line); }
+
+.lane-label {
+  display: flex;
+  align-items: center;
+  padding: var(--space-4);
+  color: var(--color-muted);
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-line);
+}
+
+.lane-label,
+.lane-card,
+.lane-empty { border-top: 1px solid var(--color-line); }
+
+.lane-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-1);
+  margin: var(--space-3) var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-raised);
+  border: 1px solid var(--color-line-strong);
+  border-left: 3px solid var(--color-amber);
+  border-radius: var(--radius-md);
+}
+
+.lane-card strong { font-family: var(--font-display); font-size: var(--size-h3); line-height: 1.1; }
+.lane-card span { font-size: var(--size-small); color: var(--color-text-2); }
+.lane-both { grid-column: span 2; justify-self: center; min-width: 50%; border-left-color: var(--color-cyan); }
+
+/* Flow arrows: publishing goes down the left lane, access goes up the right lane into hosting. */
+.lane-publish::after,
+.lane-access::after {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-amber);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.lane-publish::after { content: "↓"; bottom: calc(-1 * var(--space-6)); }
+.lane-access::after { content: "↑"; top: calc(-1 * var(--space-6)); }
+
+@media (max-width: 767px) {
+  .arch-lanes { grid-template-columns: 1fr; }
+  .lane-corner,
+  .lane-head,
+  .lane-empty { display: none; }
+  .lane-label { border-right: 0; padding-bottom: 0; background: none; }
+  .lane-label,
+  .lane-card { border-top: 0; }
+  .lane-both { grid-column: auto; justify-self: stretch; }
+  .lane-publish::after,
+  .lane-access::after { display: none; }
+}
+
 .build-panel { margin-top: var(--space-12); padding-top: var(--space-8); border-top: 1px solid var(--color-line); }
 .build-facts {
   display: grid;
@@ -790,7 +906,7 @@ figcaption small { color: var(--color-muted); }
 }
 
 @media (min-width: 1024px) {
-  .arch-flow { grid-template-columns: repeat(5, 1fr); gap: var(--space-6); }
+  .arch-flow { grid-template-columns: repeat(6, 1fr); gap: var(--space-6); }
   .arch-node:not(:last-child)::after {
     content: "→";
     left: auto;
