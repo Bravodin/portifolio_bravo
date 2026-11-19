@@ -53,7 +53,7 @@ internal sealed class Prerenderer(PrerenderOptions options)
         var rendered = notFound is null ? pages : [.. pages, notFound];
         var endpoints = StaticAssetManifest.Load(host.ManifestPath);
         CopyStaticAssets(endpoints, host.WebRoot);
-        var mediaRoutes = GenerateMedia(host.Services.GetRequiredService<MediaCatalog>(), rendered);
+        GenerateMedia(host.Services.GetRequiredService<MediaCatalog>(), rendered);
         var generatedImmutable = await MaterializeMissingAssetsAsync(client, rendered, cancellationToken);
         ValidatePages(rendered);
         _errors.AddRange(HreflangValidator.Validate(pages, options.BaseUrl, Trace.Domain.Content.Locales.All));
@@ -61,13 +61,16 @@ internal sealed class Prerenderer(PrerenderOptions options)
 
         await WriteAsync("sitemap.xml", SiteFiles.Sitemap(options.BaseUrl, pages.Select(p => p.Path)), cancellationToken);
         await WriteAsync("robots.txt", SiteFiles.Robots(options.BaseUrl), cancellationToken);
-        await WriteAsync(
-            "staticwebapp.config.json",
-            SiteFiles.StaticWebAppConfig(
+        var swaConfig = SiteFiles.StaticWebAppConfig(
                 await File.ReadAllTextAsync(options.SwaConfigTemplate, cancellationToken),
                 rendered.SelectMany(p => p.Analysis.InlineScripts).Select(CspHashes.ForInlineScript),
-                endpoints.Where(e => e.IsImmutable).Select(e => e.Route).Concat(generatedImmutable).Concat(mediaRoutes)),
-            cancellationToken);
+                endpoints.Where(e => e.IsImmutable).Select(e => e.Route).Concat(generatedImmutable));
+        if (SiteFiles.SwaConfigProblem(swaConfig) is { } problem)
+        {
+            _errors.Add(problem);
+        }
+
+        await WriteAsync("staticwebapp.config.json", swaConfig, cancellationToken);
 
         var files = new DirectoryInfo(options.OutputDirectory).GetFiles("*", SearchOption.AllDirectories);
         return new PrerenderResult(pages.Count, files.Length, files.Sum(f => f.Length), _errors, _warnings);
@@ -114,11 +117,11 @@ internal sealed class Prerenderer(PrerenderOptions options)
     /// <summary>
     /// Media step (ADR-0008): writes every image variant the pages reference, from the same recipe the
     /// <c>Picture</c> component used to write the markup. Unknown /media/ URLs fall through to the missing-asset check.
-    /// Returns the generated URLs: their names carry a content hash, so they're cached as immutable.
+    /// Every /media/ name carries a content hash, so the template's single "/media/*" route caches them as immutable
+    /// (one route per file would push staticwebapp.config.json past SWA's 20 KB limit).
     /// </summary>
-    private List<string> GenerateMedia(MediaCatalog catalog, IEnumerable<RenderedPage> pages)
+    private void GenerateMedia(MediaCatalog catalog, IEnumerable<RenderedPage> pages)
     {
-        var generated = new List<string>();
         var urls = pages.SelectMany(p => p.Analysis.AssetReferences)
             .Where(r => r.StartsWith("/media/", StringComparison.Ordinal))
             .Distinct(StringComparer.Ordinal);
@@ -128,11 +131,8 @@ internal sealed class Prerenderer(PrerenderOptions options)
             if (catalog.TryGetIssued(url, out var variant))
             {
                 MediaGenerator.Write(variant, SitePaths.ToDistPath(options.OutputDirectory, url));
-                generated.Add(url);
             }
         }
-
-        return generated;
     }
 
     /// <summary>

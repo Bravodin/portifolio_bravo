@@ -42,6 +42,13 @@ public sealed class SiteFilesTests
     }
 
     [Fact]
+    public void SwaConfigProblem_FlagsConfigsOverTwentyKilobytes()
+    {
+        Assert.Null(SiteFiles.SwaConfigProblem(new string('x', 20 * 1024)));
+        Assert.Contains("over 20 KB", SiteFiles.SwaConfigProblem(new string('x', (20 * 1024) + 1)), StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void StaticWebAppConfig_WithoutPlaceholder_Throws() =>
         Assert.Throws<InvalidOperationException>(() => SiteFiles.StaticWebAppConfig("{}", [], []));
 }

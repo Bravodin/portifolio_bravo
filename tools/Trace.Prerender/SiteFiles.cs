@@ -70,6 +70,18 @@ internal static class SiteFiles
         return config.ToJsonString(JsonOptions) + "\n";
     }
 
+    /// <summary>Azure Static Web Apps rejects a staticwebapp.config.json larger than 20 KB at deploy time.</summary>
+    public const int SwaConfigLimitBytes = 20 * 1024;
+
+    /// <summary>An error message when the config would be rejected by SWA, so the build fails locally instead of at deploy.</summary>
+    public static string? SwaConfigProblem(string config)
+    {
+        var bytes = Encoding.UTF8.GetByteCount(config);
+        return bytes > SwaConfigLimitBytes
+            ? $"staticwebapp.config.json is {bytes / 1024.0:0.0} KB; Azure Static Web Apps rejects anything over 20 KB (too many per-file routes?)"
+            : null;
+    }
+
     public static async Task WriteAsync(string path, string content, CancellationToken cancellationToken)
     {
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
