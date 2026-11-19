@@ -176,7 +176,11 @@
         "en": "Illustration of Manuel in a black tank top changing the rear wheel of a blue Yamaha R7 in a garage full of tools",
         "es": "Ilustración de Manuel, con camiseta sin mangas negra, cambiando la rueda trasera de una Yamaha R7 azul en un garaje lleno de herramientas"
       },
-      "caption": null
+      "caption": {
+        "pt-BR": "Mão na massa é o que faz a gente entender o que está sendo feito. A IA acelera, mas não decide sozinha: é preciso revisar, checar os limites e os padrões. O humano continua indispensável.",
+        "en": "Getting your hands dirty is how you understand what's being built. AI speeds things up, but it doesn't decide alone: someone has to review it and check its limits and patterns. The human is still indispensable.",
+        "es": "Meter las manos es lo que te hace entender lo que se está construyendo. La IA acelera, pero no decide sola: hay que revisar, verificar los límites y los patrones. El humano sigue siendo indispensable."
+      }
     },
     {
       "id": "games-01",
