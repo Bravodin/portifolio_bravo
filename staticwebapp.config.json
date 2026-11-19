@@ -1,6 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/staticwebapp.config.json",
   "routes": [
+    { "route": "/en/", "redirect": "/", "statusCode": 301 },
+    { "route": "/en/recruiter/", "redirect": "/recruiter/", "statusCode": 301 },
+    { "route": "/en/colophon/", "redirect": "/colophon/", "statusCode": 301 },
+    { "route": "/en/garage/", "redirect": "/garage/", "statusCode": 301 },
+    { "route": "/recrutador/", "redirect": "/pt/recrutador/", "statusCode": 301 },
+    { "route": "/como-foi-feito/", "redirect": "/pt/como-foi-feito/", "statusCode": 301 },
+    { "route": "/garagem/", "redirect": "/pt/garagem/", "statusCode": 301 },
+    { "route": "/cv/manuel-bravo-cv.pdf", "redirect": "/cv/manuel-bravo-resume.pdf", "statusCode": 301 },
     {
       "route": "/fonts/v1/*",
       "headers": { "Cache-Control": "public, max-age=31536000, immutable" }

@@ -10,25 +10,32 @@ public enum PageKey
 }
 
 /// <summary>
-/// Localized URLs (docs/ux/sitemap.md): PT-BR at the root, EN under <c>/en/</c>, ES under <c>/es/</c>,
-/// each with its own slug. Paths are canonical: leading and trailing slash.
+/// Localized URLs (docs/ux/sitemap.md, ADR-0011): English at the root, Spanish under <c>/es/</c>, Portuguese under
+/// <c>/pt/</c>, each with its own slug. Paths are canonical: leading and trailing slash.
 /// </summary>
 public static class SiteRoutes
 {
     private static readonly Dictionary<(PageKey Page, string Locale), string> Paths = new()
     {
-        [(PageKey.Home, Locales.Portuguese)] = "/",
-        [(PageKey.Home, Locales.English)] = "/en/",
+        [(PageKey.Home, Locales.English)] = "/",
         [(PageKey.Home, Locales.Spanish)] = "/es/",
-        [(PageKey.Recruiter, Locales.Portuguese)] = "/recrutador/",
-        [(PageKey.Recruiter, Locales.English)] = "/en/recruiter/",
+        [(PageKey.Home, Locales.Portuguese)] = "/pt/",
+        [(PageKey.Recruiter, Locales.English)] = "/recruiter/",
         [(PageKey.Recruiter, Locales.Spanish)] = "/es/reclutador/",
-        [(PageKey.Colophon, Locales.Portuguese)] = "/como-foi-feito/",
-        [(PageKey.Colophon, Locales.English)] = "/en/colophon/",
+        [(PageKey.Recruiter, Locales.Portuguese)] = "/pt/recrutador/",
+        [(PageKey.Colophon, Locales.English)] = "/colophon/",
         [(PageKey.Colophon, Locales.Spanish)] = "/es/como-se-hizo/",
-        [(PageKey.Garage, Locales.Portuguese)] = "/garagem/",
-        [(PageKey.Garage, Locales.English)] = "/en/garage/",
+        [(PageKey.Colophon, Locales.Portuguese)] = "/pt/como-foi-feito/",
+        [(PageKey.Garage, Locales.English)] = "/garage/",
         [(PageKey.Garage, Locales.Spanish)] = "/es/garaje/",
+        [(PageKey.Garage, Locales.Portuguese)] = "/pt/garagem/",
+    };
+
+    /// <summary>URL prefix of each non-default locale (English has none: it's at the root, ADR-0011).</summary>
+    private static readonly Dictionary<string, string> Prefixes = new(StringComparer.Ordinal)
+    {
+        [Locales.Spanish] = "/es/",
+        [Locales.Portuguese] = "/pt/",
     };
 
     private static readonly Dictionary<string, (PageKey Page, string Locale)> ByPath =
@@ -41,7 +48,7 @@ public static class SiteRoutes
             ? path
             : throw new ArgumentOutOfRangeException(nameof(locale), locale, $"No route for {page} in '{locale}'.");
 
-    /// <summary>Finds the page and locale for a URL path such as <c>/en/recruiter</c> or <c>en/recruiter/?x=1</c>.</summary>
+    /// <summary>Finds the page and locale for a URL path such as <c>/pt/recrutador</c> or <c>pt/recrutador/?x=1</c>.</summary>
     public static bool TryResolve(string path, out PageKey page, out string locale)
     {
         if (ByPath.TryGetValue(Canonical(path), out var match))
@@ -61,9 +68,9 @@ public static class SiteRoutes
     public static string LocaleOf(string path)
     {
         var canonical = Canonical(path);
-        foreach (var locale in Locales.All.Where(l => l != Locales.Default))
+        foreach (var (locale, prefix) in Prefixes)
         {
-            if (canonical.StartsWith($"/{locale}/", StringComparison.Ordinal))
+            if (canonical.StartsWith(prefix, StringComparison.Ordinal))
             {
                 return locale;
             }

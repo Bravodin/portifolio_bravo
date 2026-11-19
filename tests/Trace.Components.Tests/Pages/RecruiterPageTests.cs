@@ -8,7 +8,7 @@ public sealed class RecruiterPageTests : BunitContext
     [Fact]
     public void English_ShowsIdentityResultsStackAndRoles()
     {
-        this.AddSite("/en/recruiter/");
+        this.AddSite("/recruiter/");
 
         var cut = Render<Recruiter>();
 
@@ -18,26 +18,26 @@ public sealed class RecruiterPageTests : BunitContext
         Assert.Equal(3, cut.FindAll(".roles li").Count);
         Assert.Contains("20 years · since 2006", cut.Find(".facts").TextContent, StringComparison.Ordinal);
         Assert.Equal("‹ See the full page", cut.Find("a.back").TextContent);
-        Assert.Equal("/en/", cut.Find("a.back").GetAttribute("href"));
+        Assert.Equal("/", cut.Find("a.back").GetAttribute("href"));
     }
 
     [Fact]
     public void Portuguese_IsFullyTranslated()
     {
-        this.AddSite("/recrutador/");
+        this.AddSite("/pt/recrutador/");
 
         var cut = Render<Recruiter>();
 
         Assert.Contains("20 anos · desde 2006", cut.Find(".facts").TextContent, StringComparison.Ordinal);
         Assert.Equal("~1,2 s", cut.Find("[data-metric=M1] .metric-after").TextContent);
         Assert.Equal("Resultados-chave (medidos)", cut.Find("#recruiter-results").TextContent);
-        Assert.Equal("/", cut.Find("a.back").GetAttribute("href"));
+        Assert.Equal("/pt/", cut.Find("a.back").GetAttribute("href"));
     }
 
     [Fact]
     public void Portrait_IsResponsiveSizedAndPrioritized()
     {
-        this.AddSite("/recrutador/");
+        this.AddSite("/pt/recrutador/");
 
         var picture = Render<Recruiter>().Find("picture.portrait");
 
@@ -63,7 +63,7 @@ public sealed class RecruiterPageTests : BunitContext
     [Fact]
     public void MetricWithDifferentDelta_ShowsIt_OtherwiseNot()
     {
-        this.AddSite("/en/recruiter/");
+        this.AddSite("/recruiter/");
 
         var cut = Render<Recruiter>();
 
@@ -74,11 +74,11 @@ public sealed class RecruiterPageTests : BunitContext
     [Fact]
     public void CvButton_LinksToThePdf()
     {
-        this.AddSite("/en/recruiter/");
+        this.AddSite("/recruiter/");
 
         var cut = Render<Recruiter>();
 
-        Assert.Equal("/cv/manuel-bravo-cv.pdf", cut.Find("a[download]").GetAttribute("href"));
+        Assert.Equal("/cv/manuel-bravo-resume.pdf", cut.Find("a[download]").GetAttribute("href"));
         Assert.Equal("Download CV (PDF)", cut.Find("a[download]").TextContent);
     }
 }

@@ -8,11 +8,11 @@ public sealed class LanguageSwitcherTests : BunitContext
     [Fact]
     public void LinksToTheSamePageInEachLanguage_AndMarksTheCurrentOne()
     {
-        this.AddSite("/en/recruiter/");
+        this.AddSite("/recruiter/");
 
         var links = Render<LanguageSwitcher>().FindAll("a");
 
-        Assert.Equal(["/en/recruiter/", "/es/reclutador/", "/recrutador/"], links.Select(a => a.GetAttribute("href")));
+        Assert.Equal(["/recruiter/", "/es/reclutador/", "/pt/recrutador/"], links.Select(a => a.GetAttribute("href")));
         Assert.Equal(["EN", "ES", "PT"], links.Select(a => a.TextContent));
         Assert.Equal("true", links[0].GetAttribute("aria-current"));
         Assert.Null(links[2].GetAttribute("aria-current"));
@@ -21,7 +21,7 @@ public sealed class LanguageSwitcherTests : BunitContext
     [Fact]
     public void ForcesFullReload_SoHtmlLangChangesToo()
     {
-        this.AddSite("/");
+        this.AddSite("/pt/");
 
         var links = Render<LanguageSwitcher>().FindAll("a");
 
@@ -36,6 +36,6 @@ public sealed class LanguageSwitcherTests : BunitContext
 
         var links = Render<LanguageSwitcher>().FindAll("a");
 
-        Assert.Equal(["/en/", "/es/", "/"], links.Select(a => a.GetAttribute("href")));
+        Assert.Equal(["/", "/es/", "/pt/"], links.Select(a => a.GetAttribute("href")));
     }
 }

@@ -9,7 +9,7 @@ public sealed class ColophonPageTests : BunitContext
     [Fact]
     public void AiSection_ShowsRolesReviewsAndBothSetsOfNumbers()
     {
-        this.AddSite("/como-foi-feito/");
+        this.AddSite("/pt/como-foi-feito/");
 
         var cut = Render<Colophon>();
 
@@ -24,7 +24,7 @@ public sealed class ColophonPageTests : BunitContext
     [Fact]
     public void Architecture_IsAFiveStepFlow_WithAdrLinks()
     {
-        this.AddSite("/en/colophon/");
+        this.AddSite("/colophon/");
 
         var cut = Render<Colophon>();
 
@@ -38,19 +38,22 @@ public sealed class ColophonPageTests : BunitContext
     [Fact]
     public void WithoutGit_TheCommitCountIsHidden()
     {
-        this.AddSite("/en/colophon/", new RepoStats(Commits: null, Adrs: 10, TestMethods: 136));
+        this.AddSite("/colophon/", new RepoStats(Commits: null, Adrs: 10, TestMethods: 136));
 
         var cut = Render<Colophon>();
 
         Assert.DoesNotContain(cut.FindAll(".figures span"), s => s.TextContent == "commits");
     }
 
+    // The repository root: two levels above content/media.
+    private static string MediaRootParent() => Path.GetFullPath(Path.Combine(MediaCatalog.FindRoot(null), "..", ".."));
+
     [Fact]
     public void Measure_CountsThisRepository()
     {
         var stats = RepoStats.Measure();
 
-        Assert.Equal(10, stats.Adrs);
+        Assert.Equal(Directory.GetFiles(Path.Combine(MediaRootParent(), "docs", "architecture", "adr"), "0*.md").Length, stats.Adrs);
         Assert.Equal("0010-video-youtube-facade.md", stats.AdrFiles["0010"]);
         Assert.True(stats.TestMethods > 100);
         Assert.True(stats.Commits is null or > 0);

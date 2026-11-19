@@ -20,7 +20,7 @@ public sealed class HomePageTests : BunitContext
     [Fact]
     public void Hero_ShowsThePortrait_AboveTheFold()
     {
-        var img = RenderHome("/en/").Find(".hero picture.hero-portrait img");
+        var img = RenderHome("/").Find(".hero picture.hero-portrait img");
 
         Assert.Equal(("160", "eager"), (img.GetAttribute("width"), img.GetAttribute("loading")));
         Assert.StartsWith("Portrait of Manuel Bravo", img.GetAttribute("alt"), StringComparison.Ordinal);
@@ -29,7 +29,7 @@ public sealed class HomePageTests : BunitContext
     [Fact]
     public void About_ComesRightAfterTheHero_WithHowIWork()
     {
-        var cut = RenderHome("/");
+        var cut = RenderHome("/pt/");
 
         Assert.Equal("Sobre mim", cut.Find("#about h2").TextContent);
         Assert.Equal(6, cut.FindAll("#about .about-principles li").Count);
@@ -41,7 +41,7 @@ public sealed class HomePageTests : BunitContext
     [Fact]
     public void Trace_HasTheSevenStagesInOrder()
     {
-        var cut = RenderHome("/en/");
+        var cut = RenderHome("/");
 
         Assert.Equal(["client", "edge", "gateway", "services", "cache", "database", "pit"], cut.FindAll(".stage").Select(s => s.Id));
     }
@@ -49,7 +49,7 @@ public sealed class HomePageTests : BunitContext
     [Fact]
     public void EachStage_ShowsItsMeasuredMetric()
     {
-        var cut = RenderHome("/en/");
+        var cut = RenderHome("/");
 
         Assert.Equal("−40 %", cut.Find("#edge .metric-after").TextContent);
         Assert.Equal("−30 %", cut.Find("#gateway .metric-delta").TextContent);
@@ -60,7 +60,7 @@ public sealed class HomePageTests : BunitContext
     [Fact]
     public void Case_IsANativeDetailsWithProblemActionResult()
     {
-        var cut = RenderHome("/");
+        var cut = RenderHome("/pt/");
 
         var details = cut.Find("#gateway details.case");
         Assert.Null(details.GetAttribute("open"));
@@ -80,7 +80,7 @@ public sealed class HomePageTests : BunitContext
     [Fact]
     public void ServiceLog_ListsEveryRevisionDownTo2006()
     {
-        var cut = RenderHome("/en/");
+        var cut = RenderHome("/");
 
         var entries = cut.FindAll(".log-entry");
         Assert.Equal(10, entries.Count);
@@ -90,7 +90,7 @@ public sealed class HomePageTests : BunitContext
     [Fact]
     public void Toolbox_HasSevenOpenDrawers()
     {
-        var cut = RenderHome("/en/");
+        var cut = RenderHome("/");
 
         var drawers = cut.FindAll("details.drawer");
         Assert.Equal(7, drawers.Count);
@@ -100,7 +100,7 @@ public sealed class HomePageTests : BunitContext
     [Fact]
     public void Garage_HasThreeCards_AllWithImages_GamesListsFavourites()
     {
-        var cut = RenderHome("/en/");
+        var cut = RenderHome("/");
 
         Assert.NotNull(cut.Find("#garage-motorcycles picture img"));
         Assert.StartsWith("Illustration of Manuel", cut.Find("#garage-mechanics picture img").GetAttribute("alt"), StringComparison.Ordinal);
@@ -108,7 +108,7 @@ public sealed class HomePageTests : BunitContext
         Assert.Contains("blurred", cut.Find("#garage-games picture img").GetAttribute("alt"), StringComparison.Ordinal);
         Assert.Equal(8, cut.FindAll("#garage-games .garage-favorites li").Count);
         Assert.Equal("Retro", cut.Find("#garage-games .garage-favorites-label").TextContent);
-        Assert.Equal("/en/garage/", cut.Find("#garage a.btn").GetAttribute("href"));
+        Assert.Equal("/garage/", cut.Find("#garage a.btn").GetAttribute("href"));
     }
 
     [Fact]
@@ -124,11 +124,11 @@ public sealed class HomePageTests : BunitContext
     [Fact]
     public void PitStop_OffersLinkedInAndCv_Only()
     {
-        var cut = RenderHome("/en/");
+        var cut = RenderHome("/");
 
         var pitStop = cut.Find("#pit-stop");
         Assert.Equal("https://www.linkedin.com/in/manuelbravoc/", pitStop.QuerySelector("a.btn-primary")!.GetAttribute("href"));
-        Assert.Equal("/cv/manuel-bravo-cv.pdf", pitStop.QuerySelector("a[download]")!.GetAttribute("href"));
+        Assert.Equal("/cv/manuel-bravo-resume.pdf", pitStop.QuerySelector("a[download]")!.GetAttribute("href"));
         Assert.Empty(cut.FindAll("a[href^='mailto:'], a[href^='tel:']"));
     }
 }

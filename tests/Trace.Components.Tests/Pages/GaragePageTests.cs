@@ -8,7 +8,7 @@ public sealed class GaragePageTests : BunitContext
     [Fact]
     public void Photos_AreTheFourChosenTrackDays_EachLinkingToItsLargeVersion()
     {
-        this.AddSite("/en/garage/");
+        this.AddSite("/garage/");
 
         var links = Render<Garage>().FindAll("section[aria-labelledby=garage-track] a.photo-link");
 
@@ -20,7 +20,7 @@ public sealed class GaragePageTests : BunitContext
     [Fact]
     public void Lightbox_GetsItsLabelsInThePagesLanguage()
     {
-        this.AddSite("/garagem/");
+        this.AddSite("/pt/garagem/");
 
         var article = Render<Garage>().Find("article.garage-page");
 
@@ -31,7 +31,7 @@ public sealed class GaragePageTests : BunitContext
     [Fact]
     public void Photos_CreditTheirPhotographers()
     {
-        this.AddSite("/garagem/");
+        this.AddSite("/pt/garagem/");
 
         var credits = Render<Garage>().FindAll(".photo-grid figcaption small").Select(c => c.TextContent).ToList();
 
@@ -42,7 +42,7 @@ public sealed class GaragePageTests : BunitContext
     [Fact]
     public void Workshop_ShowsTheIllustration_LabelledAsAiGenerated()
     {
-        this.AddSite("/garagem/");
+        this.AddSite("/pt/garagem/");
 
         var workshop = Render<Garage>().Find("section[aria-labelledby=garage-workbench]");
 
@@ -79,7 +79,7 @@ public sealed class GaragePageTests : BunitContext
     [Fact]
     public void Videos_WithoutADownloadedPoster_ShowAPlainCard_AndNoYouTubeImage()
     {
-        this.AddSite("/en/garage/");
+        this.AddSite("/garage/");
 
         var cut = Render<Garage>();
 
@@ -91,7 +91,7 @@ public sealed class GaragePageTests : BunitContext
     [Fact]
     public void Videos_DescribeWhatHappens_ForPeopleWhoCantWatch()
     {
-        this.AddSite("/en/garage/");
+        this.AddSite("/garage/");
 
         var caption = Render<Garage>().Find(".video figcaption").TextContent;
 

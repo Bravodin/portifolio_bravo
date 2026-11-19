@@ -5,9 +5,9 @@ public static class ContentValidator
 {
     public static IEnumerable<string> Validate(ContentStore store)
     {
-        var reference = store.For(Locales.Default);
+        var reference = store.For(Locales.ContentReference);
 
-        foreach (var locale in Locales.All.Where(l => l != Locales.Default))
+        foreach (var locale in Locales.All.Where(l => l != Locales.ContentReference))
         {
             var other = store.For(locale);
 
@@ -73,7 +73,7 @@ public static class ContentValidator
 
             if (reference.Log.Count != other.Log.Count)
             {
-                yield return $"log.json has {reference.Log.Count} entries in {Locales.Default} but {other.Log.Count} in {locale}";
+                yield return $"log.json has {reference.Log.Count} entries in {Locales.ContentReference} but {other.Log.Count} in {locale}";
             }
 
             if (reference.Identity.CareerStartYear != other.Identity.CareerStartYear)
@@ -115,7 +115,7 @@ public static class ContentValidator
 
         if (extra.Count > 0)
         {
-            yield return $"{locale} has {what}(s) that {Locales.Default} doesn't: {string.Join(", ", extra)}";
+            yield return $"{locale} has {what}(s) that {Locales.ContentReference} doesn't: {string.Join(", ", extra)}";
         }
     }
 }

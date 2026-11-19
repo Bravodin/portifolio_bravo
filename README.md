@@ -84,7 +84,7 @@ All diagrams in the docs are written in Mermaid, so GitHub renders them inline. 
 
 ## Built with AI
 
-The site was built in partnership with Claude (Anthropic) in Claude Code: I set the intent, the content and the decisions, and reviewed every change; Claude proposed architecture and solutions and wrote the code and tests. Commits carry the co-authorship, and the [Colophon](https://thankful-sky-0b6524c0f.3.azurestaticapps.net/en/colophon/) tells the full story.
+The site was built in partnership with Claude (Anthropic) in Claude Code: I set the intent, the content and the decisions, and reviewed every change; Claude proposed architecture and solutions and wrote the code and tests. Commits carry the co-authorship, and the [Colophon](https://thankful-sky-0b6524c0f.3.azurestaticapps.net/colophon/) tells the full story.
 
 ## Author
 

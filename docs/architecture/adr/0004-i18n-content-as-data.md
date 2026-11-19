@@ -1,6 +1,6 @@
 # 0004 — Content as data; i18n by route; invariant globalization
 
-- Status: Accepted
+- Status: Accepted; route layout superseded by [0011](0011-english-at-the-root.md) (English at the root, Portuguese under `/pt/`)
 - Date: 2026-11-19
 
 ## Context

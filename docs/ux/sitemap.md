@@ -4,12 +4,12 @@
 
 Each route exists in three locales and is **prerendered to static HTML** at build time.
 
-| Route (PT-BR default) | EN | ES | Purpose | Persona |
+| Route (EN default, [ADR-0011](../architecture/adr/0011-english-at-the-root.md)) | ES | PT-BR | Purpose | Persona |
 |---|---|---|---|---|
-| `/` | `/en/` | `/es/` | The ride: hero + Trace + Service Log + Toolbox + Garage + Pit Stop | All |
-| `/recrutador/` | `/en/recruiter/` | `/es/reclutador/` | Recruiter Mode: one screen, printable | P1 |
-| `/como-foi-feito/` | `/en/colophon/` | `/es/como-se-hizo/` | How this site was built: stack, ADRs, Lighthouse, build hash | P3 |
-| `/garagem/` | `/en/garage/` | `/es/garaje/` | Full photo gallery (track days, workbench, games), filterable by category, with a lightbox | P4 |
+| `/` | `/es/` | `/pt/` | The ride: hero + Trace + Journey + Toolbox + Garage + Contact | All |
+| `/recruiter/` | `/es/reclutador/` | `/pt/recrutador/` | Recruiter Mode: one screen, printable | P1 |
+| `/colophon/` | `/es/como-se-hizo/` | `/pt/como-foi-feito/` | How this site was built: stack, architecture, ADRs, built with AI | P3 |
+| `/garage/` | `/es/garaje/` | `/pt/garagem/` | Photos and videos (track days, workshop, games) with a lightbox | P4 |
 | `/404.html` | — | — | Localized "Wrong turn" page (detects locale from the path) | All |
 | `/cv/manuel-bravo-{pt,en,es}.pdf` | | | Static PDF (no phone or e-mail; LinkedIn only) | P1 |
 

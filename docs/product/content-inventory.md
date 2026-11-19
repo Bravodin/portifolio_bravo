@@ -22,7 +22,7 @@ During implementation this becomes `content/{locale}/*.json` (see [ADR-0004](../
 
 > Experience: Manuel worked with Delphi and Pascal from 2006 to 2008, before Nunes Imóveis (source: Manuel, 2026-11-19; not in the CV). The site computes the years from `careerStartYear: 2006` at build time ("20 years · since 2006" in 2026), so the number never goes stale.
 >
-> CV: `content/cv/manuel-bravo-cv.pdf` is Manuel's real CV (2026-11-19, 3 pages, English). Checked before publishing: LinkedIn is the only contact, no e-mail or phone in the text or the PDF metadata. If it is ever replaced by an empty or non-PDF file, the prerender warns locally and **fails the Azure Pipelines build**.
+> CV: `content/cv/manuel-bravo-resume.pdf` is Manuel's real CV (2026-11-19, 3 pages, English). Checked before publishing: LinkedIn is the only contact, no e-mail or phone in the text or the PDF metadata. If it is ever replaced by an empty or non-PDF file, the prerender warns locally and **fails the Azure Pipelines build**.
 
 ### 1.1 About me
 
