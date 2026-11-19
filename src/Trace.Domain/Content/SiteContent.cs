@@ -53,15 +53,11 @@ public sealed record Metric(string Id, string Label, string Before, string After
 public sealed record LogEntry(string Period, string Company, string Role, string Highlight);
 
 /// <summary>A Trace stage: Problem → Action → Result (content inventory §3).</summary>
-/// <remarks>
-/// <c>Metaphor</c> is the motorcycle part the layer maps to ("Fuel injection" for the API gateway).
-/// <c>Metric</c> is the ID of the headline metric (content inventory §2) shown as before → after.
-/// </remarks>
+/// <remarks><c>Metric</c> is the ID of the headline metric (content inventory §2) shown as before → after.</remarks>
 public sealed record Stage(
     string Id,
     int Number,
     string Title,
-    string Metaphor,
     string Metric,
     string Problem,
     string Action,

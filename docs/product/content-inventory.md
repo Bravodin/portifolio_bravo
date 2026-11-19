@@ -70,6 +70,8 @@ These are shown as gauges / counters. Always display them as **before → after*
 
 Format for each stage: **Layer → Problem → Action → Result → Tech**. Copy is a draft; final wording is done per locale.
 
+> On the site (2026-11-19, Manuel's request): no mechanics vocabulary in the professional sections. The garage-metaphor column below is design history only; stage labels show just "Stage N", stage 7 is "Observability & Quality", the Service Log is titled "Journey" and toolbox drawers have plain names. Motorcycles and mechanics stay in the Garage, where they are actual hobbies.
+
 | # | Stage (game "level") | Garage metaphor | Problem | Action | Result | Tech chips |
 |---|---|---|---|---|---|---|
 | 1 | **Client** | Handlebars & dashboard | A 2016 Ionic app where a critical booking journey took 12–20 s | Led the migration to native iOS (Swift) and Android (Kotlin); moved regression testing to Compose Testing + XCUITest | Booking ~1.2 s | Swift · Kotlin · Jetpack Compose Testing · XCUITest · WPF |
