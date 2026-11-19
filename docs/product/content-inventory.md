@@ -122,7 +122,7 @@ Grouped as **toolbox drawers**. No percentage bars, which are meaningless. Each 
 | Scanner (observability) | OpenSearch, end-to-end root-cause analysis |
 | Fluids (databases) | SQL Server, Oracle, MySQL |
 | Power tools (AI-assisted engineering) | GitHub Copilot, Claude |
-| Workshop management | Scrum, ITIL / HPSM, pre-sales & RFPs, budgeting, team building |
+| Frameworks & methodologies (was "Workshop management") | Scrum, ITIL / HPSM, pre-sales & RFPs, budgeting, team building |
 
 ---
 
