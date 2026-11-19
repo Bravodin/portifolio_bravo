@@ -51,7 +51,13 @@ public sealed record Drawer(string Id, string Name, IReadOnlyList<string> Tools)
 /// A Garage card (content inventory §6): a hobby and what it says about the work. <c>Photo</c> is a gallery id;
 /// cards without one show a line-art <c>Icon</c> until a photo arrives.
 /// </summary>
-public sealed record GarageCard(string Id, string Title, string Text, string Link, string? Photo, string? Icon);
+public sealed record GarageCard(string Id, string Title, string Text, string Link, string? Photo, string? Icon, IReadOnlyList<FavoriteGroup>? Favorites);
+
+/// <summary>
+/// A labelled list of favourites shown as text chips (e.g. "Retro": Mega Man X, Metroid…). Names only: game art,
+/// logos and screenshots are copyrighted and never used on the site.
+/// </summary>
+public sealed record FavoriteGroup(string Label, IReadOnlyList<string> Items);
 
 /// <summary>Locale-neutral choices for Recruiter Mode (content/recruiter.json).</summary>
 public sealed record RecruiterSelection(IReadOnlyList<string> Metrics, IReadOnlyList<string> CoreStack, int Roles);

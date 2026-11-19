@@ -20,6 +20,16 @@
                     <h3>@card.Title</h3>
                     <p>@card.Text</p>
                     <p class="garage-link">@card.Link</p>
+                    @foreach (var group in card.Favorites ?? [])
+                    {
+                        <p class="hud-label garage-favorites-label">@group.Label</p>
+                        <ul class="chips garage-favorites">
+                            @foreach (var item in group.Items)
+                            {
+                                <li>@item</li>
+                            }
+                        </ul>
+                    }
                 </div>
             </li>
         }

@@ -5,7 +5,8 @@
     "text": "Pilotar, e a sensação de uma máquina bem acertada.",
     "link": "Você sente 1,2 s contra 15 s do mesmo jeito que sente um motor bem regulado.",
     "photo": "track-03",
-    "icon": null
+    "icon": null,
+    "favorites": null
   },
   {
     "id": "mechanics",
@@ -13,7 +14,8 @@
     "text": "Desmontar para entender, e montar de volta melhor.",
     "link": "Modernização de legado: respeitar o original e melhorar o que importa.",
     "photo": "workbench-01",
-    "icon": "wrench"
+    "icon": "wrench",
+    "favorites": null
   },
   {
     "id": "games",
@@ -21,6 +23,26 @@
     "text": "Progressão, ciclos de feedback, uma curva de dificuldade bem desenhada.",
     "link": "Por isso este site tem etapas.",
     "photo": null,
-    "icon": "gamepad"
+    "icon": "gamepad",
+    "favorites": [
+      {
+        "label": "Clássicos",
+        "items": [
+          "Demon's Crest",
+          "Mega Man X",
+          "Mega Man 7",
+          "The Legend of Zelda",
+          "Metroid"
+        ]
+      },
+      {
+        "label": "Hoje",
+        "items": [
+          "Overwatch",
+          "Baldur's Gate",
+          "Grand Theft Auto"
+        ]
+      }
+    ]
   }
 ]

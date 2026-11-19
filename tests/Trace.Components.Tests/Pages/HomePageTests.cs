@@ -106,6 +106,8 @@ public sealed class HomePageTests : BunitContext
         Assert.StartsWith("Illustration of Manuel", cut.Find("#garage-mechanics picture img").GetAttribute("alt"), StringComparison.Ordinal);
         Assert.Single(cut.FindAll(".garage-card svg.line-art"));
         Assert.NotNull(cut.Find("#garage-games svg.line-art"));
+        Assert.Equal(8, cut.FindAll("#garage-games .garage-favorites li").Count);
+        Assert.Equal("Retro", cut.Find("#garage-games .garage-favorites-label").TextContent);
         Assert.Equal("/en/garage/", cut.Find("#garage a.btn").GetAttribute("href"));
     }
 

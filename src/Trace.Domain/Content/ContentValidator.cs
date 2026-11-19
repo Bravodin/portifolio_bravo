@@ -36,6 +36,15 @@ public static class ContentValidator
                 yield return problem;
             }
 
+            foreach (var (mine, theirs) in reference.Garage.Join(other.Garage, c => c.Id, c => c.Id, (a, b) => (a, b)))
+            {
+                var names = (GarageCard c) => string.Join('|', c.Favorites?.SelectMany(g => g.Items) ?? []);
+                if (names(mine) != names(theirs))
+                {
+                    yield return $"garage card '{mine.Id}' lists different favourites in {locale}";
+                }
+            }
+
             foreach (var (mine, theirs) in reference.Stages.Join(other.Stages, s => s.Id, s => s.Id, (a, b) => (a, b)))
             {
                 if (mine.Number != theirs.Number || mine.Metric != theirs.Metric)

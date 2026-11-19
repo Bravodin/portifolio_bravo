@@ -103,6 +103,17 @@ public sealed class ContentStoreTests
     }
 
     [Fact]
+    public void Garage_Games_ListsRetroAndCurrentFavourites_AsTextOnly()
+    {
+        var favorites = Store.For(Locales.Portuguese).Garage.Single(c => c.Id == "games").Favorites!;
+
+        Assert.Equal(["Clássicos", "Hoje"], favorites.Select(g => g.Label));
+        Assert.Contains("Demon's Crest", favorites[0].Items);
+        Assert.Contains("Overwatch", favorites[1].Items);
+        Assert.All(Store.For(Locales.English).Garage.Where(c => c.Id != "games"), c => Assert.Null(c.Favorites));
+    }
+
+    [Fact]
     public void About_HasThreeParagraphsAndSixPrinciples_InEveryLocale()
     {
         foreach (var locale in Locales.All)

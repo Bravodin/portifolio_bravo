@@ -5,7 +5,8 @@
     "text": "Riding, and the feeling of a well-tuned machine.",
     "link": "You feel 1.2 s vs 15 s the same way you feel a tuned engine.",
     "photo": "track-03",
-    "icon": null
+    "icon": null,
+    "favorites": null
   },
   {
     "id": "mechanics",
@@ -13,7 +14,8 @@
     "text": "Taking things apart to understand them, and putting them back better.",
     "link": "Legacy modernization: respect the original, upgrade what matters.",
     "photo": "workbench-01",
-    "icon": "wrench"
+    "icon": "wrench",
+    "favorites": null
   },
   {
     "id": "games",
@@ -21,6 +23,26 @@
     "text": "Progression, feedback loops, a well-designed difficulty curve.",
     "link": "Why this site has levels.",
     "photo": null,
-    "icon": "gamepad"
+    "icon": "gamepad",
+    "favorites": [
+      {
+        "label": "Retro",
+        "items": [
+          "Demon's Crest",
+          "Mega Man X",
+          "Mega Man 7",
+          "The Legend of Zelda",
+          "Metroid"
+        ]
+      },
+      {
+        "label": "Now",
+        "items": [
+          "Overwatch",
+          "Baldur's Gate",
+          "Grand Theft Auto"
+        ]
+      }
+    ]
   }
 ]

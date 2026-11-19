@@ -545,6 +545,8 @@ main {
 .garage-card-body h3 { margin-bottom: var(--space-2); }
 .garage-card-body p { margin: 0 0 var(--space-2); color: var(--color-text-2); }
 .garage-link { color: var(--color-cyan) !important; font-size: var(--size-small); }
+.garage-favorites-label { margin: var(--space-4) 0 var(--space-1); }
+.garage-favorites { margin-top: 0; }
 
 .garage-page h2 { margin-top: var(--space-12); }
 
