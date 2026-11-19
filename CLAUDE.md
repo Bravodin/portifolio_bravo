@@ -25,7 +25,7 @@ Start with: `README.md` → `docs/ux/concept.md` → `docs/architecture/overview
 - ✅ Skeleton (step 2) and local spike (step 3): the Dyno island hydrates from static files only. Results and the findings that shape the prerender are in [ADR-0003](docs/architecture/adr/0003-build-time-static-prerendering.md#spike-results-2026-11-19-local).
 - ✅ Step 4: `Trace.Prerender` builds `dist/` from the publish output (details in ADR-0003, "Step 4 result"). The media step (ADR-0008, NetVips) is not written yet.
 - ⏳ **Next:** step 5, `azure-pipelines.yml`. Manuel has no Azure account yet, so the SWA production check waits for it.
-- 🎬 Manuel has 4 YouTube Shorts for the Garage (IDs `xEh1hYPC3lM`, `ZeJOh9WHzJ4`, `UsLC7vsWB1Q`, `knjhekGSKe4`). Plan: click-to-load facade on `youtube-nocookie.com`, recorded in a new ADR-0010. Credits and descriptions pending.
+- 🎬 4 YouTube Shorts (@mustelasportmedia, engine sound only) are listed in `content/media/videos.json`. They'll be shown through a click-to-load facade ([ADR-0010](docs/architecture/adr/0010-video-youtube-facade.md)). The facade component and the poster download (Prerender media step) come with the Garage. Open items are in `content/media/README.md`.
 
 ## Phase 1/2 plan — skeleton
 

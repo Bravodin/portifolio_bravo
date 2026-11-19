@@ -52,3 +52,30 @@ The site's photos live here as **originals**. The build generates every web vers
 - [ ] Confirm the captions (they're drafts) and the dates.
 - [ ] Write captions for `track-04` … `track-09` (null for now) and pick which photos are `featured` for the Garage cards.
 - [ ] Add photos for **workbench** (mechanics) and **games** to complete the Garage.
+
+## Videos (YouTube)
+
+Videos don't live in the repo. Upload them to YouTube (a Short or a regular video; "Unlisted" works) and add an entry to [`videos.json`](videos.json), validated by `videos.schema.json`. The site shows a poster with a ▶ button and only loads YouTube when someone clicks (see [ADR-0010](../../docs/architecture/adr/0010-video-youtube-facade.md)).
+
+```json
+{
+  "id": "short-05-interlagos",
+  "youtubeId": "xEh1hYPC3lM",
+  "category": "track",
+  "featured": false,
+  "aspectRatio": "9:16",
+  "poster": null,
+  "credit": { "name": "@mustelasportmedia", "url": "https://www.instagram.com/mustelasportmedia/" },
+  "title":       { "pt-BR": "…", "en": "…", "es": "…" },
+  "description": { "pt-BR": "…", "en": "…", "es": "…" }
+}
+```
+
+- `youtubeId` is the 11 characters after `/shorts/` or `?v=` in the link.
+- `description` is **required** in all 3 languages: it tells people who can't watch what happens. Say "engine sound only" when there's no speech. If someone speaks, review the YouTube captions too.
+- `poster: null` uses YouTube's thumbnail (downloaded at build time). To pick another frame, export it as an image into `garage/` and set `poster` to its path.
+
+### To do for the current videos
+
+- [ ] `short-01-roll-out`: YouTube's thumbnail shows two people's faces in the paddock. Pick a poster frame without them (or confirm they agreed to appear).
+- [ ] Confirm the drafted titles and descriptions. They were written from each video's first frame only.

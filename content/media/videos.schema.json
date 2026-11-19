@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TRACE video manifest (ADR-0010)",
+  "type": "object",
+  "required": ["items"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "youtubeId", "category", "credit", "title", "description"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "youtubeId": { "type": "string", "pattern": "^[A-Za-z0-9_-]{11}$" },
+          "category": { "enum": ["track", "garage", "games", "workbench"] },
+          "featured": { "type": "boolean", "default": false },
+          "aspectRatio": { "enum": ["9:16", "16:9"], "default": "9:16" },
+          "poster": { "type": ["string", "null"], "pattern": "^(garage|games|workbench)/[a-z0-9-]+\\.(jpe?g|png|webp)$" },
+          "credit": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "url": { "type": ["string", "null"], "format": "uri" }
+            }
+          },
+          "title": { "$ref": "#/$defs/localized" },
+          "description": { "$ref": "#/$defs/localized" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "localized": {
+      "type": "object",
+      "required": ["pt-BR", "en", "es"],
+      "additionalProperties": false,
+      "properties": {
+        "pt-BR": { "type": "string", "minLength": 3 },
+        "en": { "type": "string", "minLength": 3 },
+        "es": { "type": "string", "minLength": 3 }
+      }
+    }
+  }
+}

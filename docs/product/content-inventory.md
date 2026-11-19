@@ -133,6 +133,7 @@ All photos are listed in [`content/media/gallery.json`](../../content/media/gall
 | `track-02` | Gallery | ✅ credit: B.S Racing · MotoGP Cerezer |
 | `track-03` | Garage card "Motorcycles" + gallery | ✅ credit: @mustelasportmedia |
 | `track-04` … `track-09` | Gallery (Evo Racing track day) | ✅ credit: @mustelasportmedia · captions pending |
+| `short-01` … `short-04` | Garage videos (YouTube Shorts, ADR-0010) | ✅ credit: @mustelasportmedia · descriptions drafted, to confirm |
 
 ---
 
