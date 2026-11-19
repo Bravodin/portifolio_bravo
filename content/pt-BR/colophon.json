@@ -26,19 +26,24 @@
   "usagePeriod": "Uso do Claude Code em 19 de novembro de 2026",
   "usage": [
     {
-      "value": "146,6 milhões",
+      "value": "248,3 milhões",
       "label": "tokens processados"
     },
     {
-      "value": "455 mil",
+      "value": "608 mil",
       "label": "tokens escritos pela IA"
     },
     {
-      "value": "US$ 43,93",
+      "value": "US$ 69,38",
       "label": "custo total"
+    },
+    {
+      "value": "≈ 6 h",
+      "label": "do primeiro commit (11h52) ao site no ar (17h47)"
     }
   ],
   "usageNote": "Quase tudo (99 %) é contexto relido do cache, não texto novo: a IA relê o projeto a cada passo.",
+  "usageReflection": "Sozinho, um projeto assim me levaria fácil uma semana. Saiu em um dia, e isso é determinante na rotina de um dev. Mas a IA não faz isso sozinha: como dev sênior, eu sei o que quero e como quero, então consigo dirigir, revisar e decidir rápido. A IA acelera quem já sabe para onde vai.",
   "repoCommits": "commits",
   "repoAdrs": "decisões registradas (ADRs)",
   "repoTests": "métodos de teste",

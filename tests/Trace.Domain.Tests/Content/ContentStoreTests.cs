@@ -133,8 +133,8 @@ public sealed class ContentStoreTests
 
         Assert.Equal(["Manuel", "Claude", "Juntos"], colophon.Roles.Select(r => r.Who));
         Assert.Equal(4, colophon.Reviews.Count);
-        Assert.Equal(["146,6 milhões", "455 mil", "US$ 43,93"], colophon.Usage.Select(u => u.Value));
-        Assert.Equal("US$43.93", Store.For(Locales.English).Colophon.Usage[2].Value);
+        Assert.Equal(["248,3 milhões", "608 mil", "US$ 69,38", "≈ 6 h"], colophon.Usage.Select(u => u.Value));
+        Assert.Equal("US$69.38", Store.For(Locales.English).Colophon.Usage[2].Value);
     }
 
     [Fact]

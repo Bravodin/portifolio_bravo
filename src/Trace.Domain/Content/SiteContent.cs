@@ -62,6 +62,7 @@ public sealed record ColophonCopy(
     string UsagePeriod,
     IReadOnlyList<Figure> Usage,
     string UsageNote,
+    string UsageReflection,
     string RepoCommits,
     string RepoAdrs,
     string RepoTests,

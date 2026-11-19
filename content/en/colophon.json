@@ -26,19 +26,24 @@
   "usagePeriod": "Claude Code usage on November 19, 2026",
   "usage": [
     {
-      "value": "146.6 million",
+      "value": "248.3 million",
       "label": "tokens processed"
     },
     {
-      "value": "455 thousand",
+      "value": "608 thousand",
       "label": "tokens written by the AI"
     },
     {
-      "value": "US$43.93",
+      "value": "US$69.38",
       "label": "total cost"
+    },
+    {
+      "value": "≈ 6 h",
+      "label": "from the first commit (11:52) to the site going live (17:47)"
     }
   ],
   "usageNote": "Almost all of it (99 %) is context re-read from cache, not new text: the AI re-reads the project at every step.",
+  "usageReflection": "On my own, a project like this would easily take me a week. It took one day, and that changes a developer's routine. But the AI doesn't do it alone: as a senior developer, I know what I want and how I want it, so I can steer, review and decide fast. AI speeds up people who already know where they're going.",
   "repoCommits": "commits",
   "repoAdrs": "recorded decisions (ADRs)",
   "repoTests": "test methods",
