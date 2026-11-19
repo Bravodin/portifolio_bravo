@@ -8,7 +8,7 @@ namespace Trace.Prerender;
 /// Hosts Trace.Web in memory (TestServer: no ports, no waits) on top of the <c>dotnet publish</c> output,
 /// so the HTML references exactly the fingerprinted files that ship.
 /// </summary>
-internal sealed class PrerenderHost(string publishDirectory) : WebApplicationFactory<Program>
+internal sealed class PrerenderHost(string publishDirectory, string posterCache) : WebApplicationFactory<Program>
 {
     public const string ManifestFileName = "Trace.Web.staticwebassets.endpoints.json";
 
@@ -22,6 +22,7 @@ internal sealed class PrerenderHost(string publishDirectory) : WebApplicationFac
         builder.UseContentRoot(publishDirectory);
         builder.UseWebRoot(WebRoot);
         builder.UseSetting("Trace:StaticAssetsManifest", ManifestPath);
+        builder.UseSetting("Trace:VideoPosterCache", posterCache);
         builder.ConfigureLogging(logging => logging.SetMinimumLevel(LogLevel.Warning));
     }
 }

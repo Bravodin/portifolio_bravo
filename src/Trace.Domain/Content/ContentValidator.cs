@@ -31,6 +31,11 @@ public static class ContentValidator
                 yield return problem;
             }
 
+            foreach (var problem in SameSet("garage card", reference.Garage.Select(c => c.Id), other.Garage.Select(c => c.Id), locale))
+            {
+                yield return problem;
+            }
+
             foreach (var (mine, theirs) in reference.Stages.Join(other.Stages, s => s.Id, s => s.Id, (a, b) => (a, b)))
             {
                 if (mine.Number != theirs.Number || mine.Metric != theirs.Metric)

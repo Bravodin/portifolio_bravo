@@ -16,6 +16,14 @@
           "category": { "enum": ["track", "garage", "games", "workbench"] },
           "featured": { "type": "boolean", "default": false },
           "aspectRatio": { "enum": ["9:16", "16:9"], "default": "9:16" },
+          "focalPoint": {
+            "type": "object",
+            "required": ["x", "y"],
+            "properties": {
+              "x": { "type": "number", "minimum": 0, "maximum": 1 },
+              "y": { "type": "number", "minimum": 0, "maximum": 1 }
+            }
+          },
           "poster": { "type": ["string", "null"], "pattern": "^(garage|games|workbench)/[a-z0-9-]+\\.(jpe?g|png|webp)$" },
           "credit": {
             "type": "object",

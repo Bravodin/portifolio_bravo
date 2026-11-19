@@ -6,6 +6,7 @@ public enum PageKey
     Home,
     Recruiter,
     Colophon,
+    Garage,
 }
 
 /// <summary>
@@ -25,6 +26,9 @@ public static class SiteRoutes
         [(PageKey.Colophon, Locales.Portuguese)] = "/como-foi-feito/",
         [(PageKey.Colophon, Locales.English)] = "/en/colophon/",
         [(PageKey.Colophon, Locales.Spanish)] = "/es/como-se-hizo/",
+        [(PageKey.Garage, Locales.Portuguese)] = "/garagem/",
+        [(PageKey.Garage, Locales.English)] = "/en/garage/",
+        [(PageKey.Garage, Locales.Spanish)] = "/es/garaje/",
     };
 
     private static readonly Dictionary<string, (PageKey Page, string Locale)> ByPath =

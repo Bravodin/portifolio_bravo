@@ -3,8 +3,8 @@ using Trace.Domain.Media;
 
 namespace Trace.Web.Site;
 
-/// <summary>A responsive image ready for <c>&lt;picture&gt;</c>: every variant, plus the item for its alt text.</summary>
-public sealed record ResponsiveImage(GalleryItem Item, IReadOnlyList<ImageVariant> Variants)
+/// <summary>A responsive image ready for <c>&lt;picture&gt;</c>: every variant, plus alt text per locale (null = decorative).</summary>
+public sealed record ResponsiveImage(IReadOnlyDictionary<string, string>? Alt, IReadOnlyList<ImageVariant> Variants)
 {
     public IEnumerable<ImageVariant> In(ImageFormat format) => Variants.Where(v => v.Format == format);
 
@@ -19,15 +19,27 @@ public sealed record ResponsiveImage(GalleryItem Item, IReadOnlyList<ImageVarian
 public sealed class MediaCatalog
 {
     private readonly string _root;
+    private readonly string? _posterCache;
+    private readonly List<GalleryItem> _gallery;
     private readonly Dictionary<string, GalleryItem> _items;
     private readonly ConcurrentDictionary<string, ImageVariant> _issued = new(StringComparer.Ordinal);
     private readonly ConcurrentDictionary<string, (PixelSize Size, byte[] Bytes)> _originals = new(StringComparer.Ordinal);
 
-    public MediaCatalog(string mediaRoot)
+    /// <param name="mediaRoot">The folder with gallery.json, videos.json and the photo originals.</param>
+    /// <param name="posterCache">Where Trace.Prerender downloaded the YouTube thumbnails ({youtubeId}.jpg); null = no posters.</param>
+    public MediaCatalog(string mediaRoot, string? posterCache = null)
     {
         _root = mediaRoot;
-        _items = Gallery.Load(Path.Combine(mediaRoot, "gallery.json")).ToDictionary(i => i.Id, StringComparer.Ordinal);
+        _posterCache = posterCache;
+        _gallery = [.. Gallery.Load(Path.Combine(mediaRoot, "gallery.json"))];
+        _items = _gallery.ToDictionary(i => i.Id, StringComparer.Ordinal);
+        Videos = Trace.Domain.Media.Videos.Load(Path.Combine(mediaRoot, "videos.json"));
     }
+
+    /// <summary>Every photo, in manifest order.</summary>
+    public IReadOnlyList<GalleryItem> Photos => _gallery;
+
+    public IReadOnlyList<VideoItem> Videos { get; }
 
     public GalleryItem Item(string id) =>
         _items.TryGetValue(id, out var item) ? item : throw new KeyNotFoundException($"gallery.json has no item '{id}'.");
@@ -36,9 +48,28 @@ public sealed class MediaCatalog
     {
         var item = Item(id);
         var path = Path.Combine(_root, item.File.Replace('/', Path.DirectorySeparatorChar));
+        return Build(id, path, shape, item.FocalPoint, widths, item.Alt);
+    }
+
+    /// <summary>
+    /// A 9:16 poster for a video, cut from the thumbnail Trace.Prerender downloaded (ADR-0010).
+    /// Null when there's no downloaded thumbnail (dev runs, tests): the facade then shows a plain card.
+    /// </summary>
+    public ResponsiveImage? Poster(VideoItem video, IEnumerable<int> widths)
+    {
+        var path = video.Poster is { } own
+            ? Path.Combine(_root, own.Replace('/', Path.DirectorySeparatorChar))
+            : _posterCache is null ? null : Path.Combine(_posterCache, video.YoutubeId + ".jpg");
+        return path is not null && File.Exists(path)
+            ? Build(video.Id, path, ImageShape.Vertical, video.FocalPoint, widths, alt: null)
+            : null;
+    }
+
+    private ResponsiveImage Build(string id, string path, ImageShape shape, FocalPoint? focal, IEnumerable<int> widths, IReadOnlyDictionary<string, string>? alt)
+    {
         var (size, bytes) = _originals.GetOrAdd(path, p => (ImageHeader.Read(p), File.ReadAllBytes(p)));
 
-        var crop = MediaPlan.Crop(size, shape, item.FocalPoint?.X ?? 0.5, item.FocalPoint?.Y ?? 0.5);
+        var crop = MediaPlan.Crop(size, shape, focal?.X ?? 0.5, focal?.Y ?? 0.5);
         var fingerprint = MediaPlan.Fingerprint(bytes, shape, crop);
 
         var variants = (
@@ -57,7 +88,7 @@ public sealed class MediaCatalog
             _issued[variant.Url] = variant;
         }
 
-        return new ResponsiveImage(item, variants);
+        return new ResponsiveImage(alt, variants);
     }
 
     /// <summary>A variant some page referenced, by URL. Used by Trace.Prerender's media step.</summary>

@@ -11,6 +11,8 @@ public sealed class SiteRoutesTests
     [InlineData(PageKey.Recruiter, "en", "/en/recruiter/")]
     [InlineData(PageKey.Recruiter, "es", "/es/reclutador/")]
     [InlineData(PageKey.Colophon, "es", "/es/como-se-hizo/")]
+    [InlineData(PageKey.Garage, "pt-BR", "/garagem/")]
+    [InlineData(PageKey.Garage, "es", "/es/garaje/")]
     public void PathFor_UsesLocalizedSlugs(PageKey page, string locale, string expected) =>
         Assert.Equal(expected, SiteRoutes.PathFor(page, locale));
 
@@ -60,7 +62,7 @@ public sealed class SiteRoutesTests
     {
         var paths = SiteRoutes.AllPaths.ToList();
 
-        Assert.Equal(9, paths.Count);
+        Assert.Equal(12, paths.Count);
         Assert.Equal(paths.Count, paths.Distinct(StringComparer.Ordinal).Count());
         Assert.All(paths, p => Assert.True(p.StartsWith('/') && p.EndsWith('/')));
     }

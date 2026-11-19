@@ -1,0 +1,26 @@
+[
+  {
+    "id": "motorcycles",
+    "title": "Motorcycles & track days",
+    "text": "Riding, and the feeling of a well-tuned machine.",
+    "link": "You feel 1.2 s vs 15 s the same way you feel a tuned engine.",
+    "photo": "track-03",
+    "icon": null
+  },
+  {
+    "id": "mechanics",
+    "title": "Mechanics",
+    "text": "Taking things apart to understand them, and putting them back better.",
+    "link": "Legacy modernization: respect the original, upgrade what matters.",
+    "photo": null,
+    "icon": "wrench"
+  },
+  {
+    "id": "games",
+    "title": "Games",
+    "text": "Progression, feedback loops, a well-designed difficulty curve.",
+    "link": "Why this site has levels.",
+    "photo": null,
+    "icon": "gamepad"
+  }
+]

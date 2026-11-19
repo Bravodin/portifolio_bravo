@@ -11,7 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.AddSingleton(_ => ContentStore.Load(Path.Combine(AppContext.BaseDirectory, "content")));
 builder.Services.AddSingleton(new SiteOptions(new Uri(builder.Configuration["Trace:SiteUrl"] ?? "https://www.manuelbravo.com.br/")));
-builder.Services.AddSingleton(new MediaCatalog(MediaCatalog.FindRoot(builder.Configuration["Trace:MediaRoot"])));
+builder.Services.AddSingleton(new MediaCatalog(
+    MediaCatalog.FindRoot(builder.Configuration["Trace:MediaRoot"]),
+    builder.Configuration["Trace:VideoPosterCache"]));
 builder.Services.AddScoped<PageContext>();
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();

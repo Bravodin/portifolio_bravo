@@ -442,6 +442,110 @@ main {
   font-weight: 600;
 }
 
+/* ---------- Garage ---------- */
+
+.garage {
+  padding: var(--space-16) 0 var(--space-8);
+  border-top: 1px solid var(--color-line);
+}
+
+.garage-cards,
+.photo-grid,
+.video-grid {
+  display: grid;
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0 0 var(--space-6);
+  padding: 0;
+}
+
+.garage-cards { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+.photo-grid { grid-template-columns: repeat(auto-fill, minmax(min(14rem, 45%), 1fr)); }
+.video-grid { grid-template-columns: repeat(auto-fill, minmax(min(12rem, 45%), 1fr)); }
+
+.garage-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+}
+
+.garage-card img,
+.photo-grid img,
+.line-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.line-art {
+  padding: 18%;
+  background: var(--color-raised);
+  fill: none;
+  stroke: var(--color-line-strong);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.line-art-frame { stroke: var(--color-line); stroke-dasharray: 4 6; }
+.garage-card-body { padding: var(--space-4) var(--space-6) var(--space-6); }
+.garage-card-body h3 { margin-bottom: var(--space-2); }
+.garage-card-body p { margin: 0 0 var(--space-2); color: var(--color-text-2); }
+.garage-link { color: var(--color-cyan) !important; font-size: var(--size-small); }
+
+.garage-page h2 { margin-top: var(--space-12); }
+
+.photo-grid figure,
+.video { margin: 0; }
+.photo-link { display: block; border-radius: var(--radius-md); overflow: hidden; }
+.photo-grid figcaption,
+.video figcaption { display: grid; gap: var(--space-1); margin-top: var(--space-2); font-size: var(--size-small); color: var(--color-text-2); }
+.video figcaption strong { color: var(--color-text); font-size: var(--size-body); }
+figcaption small { color: var(--color-muted); }
+
+.video-facade {
+  position: relative;
+  display: block;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: var(--color-raised);
+  border-radius: var(--radius-lg);
+}
+
+.video-facade img,
+.video-placeholder { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.video-play {
+  position: absolute;
+  inset: 0;
+  width: 64px;
+  height: 64px;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-full);
+  background: var(--color-amber);
+  color: var(--color-on-amber);
+  font-size: 24px;
+  box-shadow: 0 4px 24px rgb(0 0 0 / 50%);
+}
+
+.video-facade:hover .video-play,
+.video-facade:focus-visible .video-play { transform: scale(1.08); }
+
+.video-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border: 0;
+  border-radius: var(--radius-lg);
+}
+
 /* ---------- Dyno ---------- */
 
 .dyno {

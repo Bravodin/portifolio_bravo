@@ -53,5 +53,16 @@
   "toolbox.title": "Caja de herramientas",
   "toolbox.intro": "Herramientas organizadas por cajón. Sin barras de porcentaje: no significan nada.",
   "pitstop.title": "Pit stop",
-  "pitstop.text": "¿Buscas a alguien para modernizar una plataforma crítica sin detener la producción? Hablemos."
+  "pitstop.text": "¿Buscas a alguien para modernizar una plataforma crítica sin detener la producción? Hablemos.",
+  "garage.title": "Garaje",
+  "garage.intro": "Lo que hago lejos del teclado, y lo que eso me enseñó sobre el trabajo.",
+  "garage.seeAll": "Ver todas las fotos y videos",
+  "garage.photos": "Track days",
+  "garage.videos": "En la pista",
+  "garage.photoCredit": "Foto: {0}",
+  "garage.videoCredit": "Video: {0}",
+  "garage.open": "Abrir en tamaño grande",
+  "video.play": "Reproducir video: {0}",
+  "page.garage.title": "Garaje · Manuel Bravo",
+  "garage.back": "← Volver al recorrido"
 }

@@ -73,9 +73,9 @@ Videos don't live in the repo. Upload them to YouTube (a Short or a regular vide
 
 - `youtubeId` is the 11 characters after `/shorts/` or `?v=` in the link.
 - `description` is **required** in all 3 languages: it tells people who can't watch what happens. Say "engine sound only" when there's no speech. If someone speaks, review the YouTube captions too.
-- `poster: null` uses YouTube's thumbnail (downloaded at build time). To pick another frame, export it as an image into `garage/` and set `poster` to its path.
+- `poster: null` uses YouTube's thumbnail (downloaded at build time) and cuts a 9:16 column from it. To pick another frame, pause the video, export the frame as a JPEG into `garage/` (for example `garage/short-01-frame.jpg`) and set `"poster": "garage/short-01-frame.jpg"`. A vertical frame works best. Poster frames are **not** listed in `gallery.json`.
 
 ### To do for the current videos
 
-- [ ] `short-01-roll-out`: YouTube's thumbnail shows two people's faces in the paddock. Pick a poster frame without them (or confirm they agreed to appear).
+- [ ] `short-01-roll-out`: YouTube's thumbnail shows two people's faces in the paddock, and they sit inside the video frame, so no crop can hide them. Export a frame without them and set `poster` (see above), or confirm they agreed to appear.
 - [ ] Confirm the drafted titles and descriptions. They were written from each video's first frame only.

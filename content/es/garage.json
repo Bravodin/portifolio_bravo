@@ -1,0 +1,26 @@
+[
+  {
+    "id": "motorcycles",
+    "title": "Motos y track days",
+    "text": "Pilotar, y la sensación de una máquina bien ajustada.",
+    "link": "Sientes 1,2 s contra 15 s igual que sientes un motor bien afinado.",
+    "photo": "track-03",
+    "icon": null
+  },
+  {
+    "id": "mechanics",
+    "title": "Mecánica",
+    "text": "Desarmar para entender, y volver a armar mejor.",
+    "link": "Modernización de legado: respetar el original y mejorar lo que importa.",
+    "photo": null,
+    "icon": "wrench"
+  },
+  {
+    "id": "games",
+    "title": "Videojuegos",
+    "text": "Progresión, ciclos de feedback, una curva de dificultad bien diseñada.",
+    "link": "Por eso este sitio tiene etapas.",
+    "photo": null,
+    "icon": "gamepad"
+  }
+]

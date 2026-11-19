@@ -77,6 +77,16 @@ public sealed class HomePageTests : BunitContext
     }
 
     [Fact]
+    public void Garage_HasThreeCards_PhotoForMotorcycles_LineArtForTheRest()
+    {
+        var cut = RenderHome("/en/");
+
+        Assert.NotNull(cut.Find("#garage-motorcycles picture img"));
+        Assert.Equal(2, cut.FindAll(".garage-card svg.line-art").Count);
+        Assert.Equal("/en/garage/", cut.Find("#garage a.btn").GetAttribute("href"));
+    }
+
+    [Fact]
     public void PitStop_HasALazyRoundAvatar_InTheVisitorsLanguage()
     {
         var img = RenderHome("/es/").Find("#pit-stop picture.avatar img");

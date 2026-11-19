@@ -23,7 +23,14 @@ internal sealed class Prerenderer(PrerenderOptions options)
 
     public async Task<PrerenderResult> RunAsync(CancellationToken cancellationToken)
     {
-        await using var host = new PrerenderHost(options.PublishDirectory);
+        var posterCache = Path.Combine(Path.GetDirectoryName(options.PublishDirectory)!, "media-cache", "youtube");
+        using (var http = new HttpClient { Timeout = TimeSpan.FromSeconds(30) })
+        {
+            var videos = Trace.Domain.Media.Videos.Load(Path.Combine(MediaCatalog.FindRoot(null), "videos.json"));
+            _errors.AddRange(await PosterDownloader.DownloadAsync(http, videos, posterCache, cancellationToken));
+        }
+
+        await using var host = new PrerenderHost(options.PublishDirectory, posterCache);
         using var client = host.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
 
         var crawler = new SiteCrawler(client);

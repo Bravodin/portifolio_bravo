@@ -1,0 +1,28 @@
+@inject PageContext Page
+
+@* Garage on the home page (content inventory §6): three hobbies, each tied back to the work. *@
+<section class="garage" id="garage" aria-labelledby="garage-title">
+    <h2 id="garage-title">@Page.T("garage.title")</h2>
+    <p class="section-intro">@Page.T("garage.intro")</p>
+    <ul class="garage-cards">
+        @foreach (var card in Page.Content.Garage)
+        {
+            <li class="garage-card" id="garage-@card.Id">
+                @if (card.Photo is { } photo)
+                {
+                    <Picture Id="@photo" Shape="ImageShape.Square" Widths="[480, 960]" Sizes="(min-width: 1024px) 380px, (min-width: 768px) 45vw, 92vw" Width="480" Height="480" Class="garage-photo" />
+                }
+                else
+                {
+                    <LineArt Icon="@(card.Icon ?? "wrench")" />
+                }
+                <div class="garage-card-body">
+                    <h3>@card.Title</h3>
+                    <p>@card.Text</p>
+                    <p class="garage-link">@card.Link</p>
+                </div>
+            </li>
+        }
+    </ul>
+    <p><a class="btn" href="@Page.PathFor(PageKey.Garage)">@Page.T("garage.seeAll") →</a></p>
+</section>

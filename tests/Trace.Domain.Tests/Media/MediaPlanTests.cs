@@ -27,6 +27,26 @@ public sealed class MediaPlanTests
         Assert.Equal(2000, MediaPlan.Crop(new PixelSize(6000, 4000), ImageShape.Square, 1, 0.5).Left);
 
     [Fact]
+    public void Crop_Vertical_CutsANineBySixteenColumnAroundTheFocalPoint()
+    {
+        var crop = MediaPlan.Crop(new PixelSize(1280, 720), ImageShape.Vertical);
+
+        Assert.Equal(new CropBox(438, 0, 405, 720), crop);
+    }
+
+    [Fact]
+    public void Crop_Vertical_FollowsAFocalPointToTheLeft() =>
+        Assert.Equal(310, MediaPlan.Crop(new PixelSize(1280, 720), ImageShape.Vertical, 0.4).Left);
+
+    [Fact]
+    public void Crop_VerticalOnATallImage_KeepsTheWidth() =>
+        Assert.Equal(new CropBox(0, 100, 900, 1600), MediaPlan.Crop(new PixelSize(900, 1800), ImageShape.Vertical));
+
+    [Fact]
+    public void Url_VerticalHasItsOwnSuffix() =>
+        Assert.Equal("/media/short-v-405.abc.avif", MediaPlan.Url("short", ImageShape.Vertical, 405, "abc", ImageFormat.Avif));
+
+    [Fact]
     public void Widths_NeverUpscale() =>
         Assert.Equal([160, 320], MediaPlan.Widths(new CropBox(0, 0, 361, 361), [160, 320, 640, 800, 320]));
 

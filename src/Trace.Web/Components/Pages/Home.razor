@@ -3,8 +3,8 @@
 @page "/es"
 @inject PageContext Page
 
-@* The ride (docs/ux/sitemap.md): hero → the Trace (7 stages) → Service Log → Toolbox → Pit Stop.
-   The Garage comes with the media pipeline (ADR-0008, ADR-0010). *@
+@* The ride (docs/ux/sitemap.md): hero → the Trace (7 stages) → Service Log → Toolbox
+   → Garage → Pit Stop. *@
 <PageTitle>@Page.T("page.home.title")</PageTitle>
 
 <section class="hero" id="start" aria-labelledby="hero-name">
@@ -70,6 +70,8 @@
         }
     </div>
 </section>
+
+<GarageSection />
 
 <section class="pit-stop" id="pit-stop" aria-labelledby="pitstop-title">
     <div class="pit-head">

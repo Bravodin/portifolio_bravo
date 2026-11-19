@@ -53,5 +53,16 @@
   "toolbox.title": "Toolbox",
   "toolbox.intro": "Tools grouped by drawer. No percentage bars: they don't mean anything.",
   "pitstop.title": "Pit Stop",
-  "pitstop.text": "Looking for someone to modernize a critical platform without stopping production? Let's talk."
+  "pitstop.text": "Looking for someone to modernize a critical platform without stopping production? Let's talk.",
+  "garage.title": "Garage",
+  "garage.intro": "What I do when I'm not at the keyboard, and what it taught me about the work.",
+  "garage.seeAll": "See all photos and videos",
+  "garage.photos": "Track days",
+  "garage.videos": "On board",
+  "garage.photoCredit": "Photo: {0}",
+  "garage.videoCredit": "Video: {0}",
+  "garage.open": "Open full size",
+  "video.play": "Play video: {0}",
+  "page.garage.title": "Garage · Manuel Bravo",
+  "garage.back": "← Back to the ride"
 }

@@ -1,0 +1,20 @@
+@* Blueprint-style placeholder for a Garage card that has no photo yet (content inventory §6). Decorative. *@
+<svg class="line-art" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+    <rect x="6" y="6" width="108" height="108" rx="8" class="line-art-frame" />
+    @if (Icon == "wrench")
+    {
+        <path d="M78 26a18 18 0 0 0-22 23L28 77a7 7 0 1 0 10 10l28-28a18 18 0 0 0 23-22l-11 11-9-2-2-9z" />
+    }
+    else
+    {
+        <path d="M38 44h44a16 16 0 0 1 16 16v4a16 16 0 0 1-28 10l-4-4H54l-4 4a16 16 0 0 1-28-10v-4a16 16 0 0 1 16-16z" />
+        <path d="M38 54v12M32 60h12" />
+        <circle cx="80" cy="56" r="2.5" />
+        <circle cx="86" cy="64" r="2.5" />
+    }
+</svg>
+
+@code {
+    /// <summary>"wrench" or "gamepad".</summary>
+    [Parameter, EditorRequired] public string Icon { get; set; } = default!;
+}

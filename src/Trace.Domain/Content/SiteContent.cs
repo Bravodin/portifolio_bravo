@@ -41,6 +41,12 @@ public sealed record Stage(
 /// <summary>A Toolbox drawer (content inventory §5). No skill bars: just the tools.</summary>
 public sealed record Drawer(string Id, string Name, IReadOnlyList<string> Tools);
 
+/// <summary>
+/// A Garage card (content inventory §6): a hobby and what it says about the work. <c>Photo</c> is a gallery id;
+/// cards without one show a line-art <c>Icon</c> until a photo arrives.
+/// </summary>
+public sealed record GarageCard(string Id, string Title, string Text, string Link, string? Photo, string? Icon);
+
 /// <summary>Locale-neutral choices for Recruiter Mode (content/recruiter.json).</summary>
 public sealed record RecruiterSelection(IReadOnlyList<string> Metrics, IReadOnlyList<string> CoreStack, int Roles);
 
@@ -52,6 +58,7 @@ public sealed record SiteContent(
     IReadOnlyList<LogEntry> Log,
     IReadOnlyList<Stage> Stages,
     IReadOnlyList<Drawer> Toolbox,
+    IReadOnlyList<GarageCard> Garage,
     IReadOnlyDictionary<string, string> Ui)
 {
     /// <summary>A UI string from ui.json. A missing key is a content bug, so it throws instead of rendering a blank.</summary>

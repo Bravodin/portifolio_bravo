@@ -10,7 +10,7 @@
     <img src="@Fallback.Url"
          srcset="@ResponsiveImage.Srcset(Image.In(ImageFormat.Jpeg))"
          sizes="@Sizes"
-         alt="@Image.Item.Alt[Page.Locale]"
+         alt="@(Image.Alt is { } alt ? alt[Page.Locale] : string.Empty)"
          width="@Width"
          height="@Height"
          loading="@(Eager ? "eager" : "lazy")"
@@ -19,7 +19,11 @@
 </picture>
 
 @code {
-    [Parameter, EditorRequired] public string Id { get; set; } = default!;
+    /// <summary>A gallery id (content/media/gallery.json). Use either this or <see cref="Source"/>.</summary>
+    [Parameter] public string? Id { get; set; }
+
+    /// <summary>An image already prepared by MediaCatalog (e.g. a video poster).</summary>
+    [Parameter] public ResponsiveImage? Source { get; set; }
 
     [Parameter] public ImageShape Shape { get; set; } = ImageShape.Original;
 
@@ -39,7 +43,7 @@
     /// <summary>Above-the-fold images only (the Recruiter Mode portrait): eager + high fetch priority.</summary>
     [Parameter] public bool Eager { get; set; }
 
-    private ResponsiveImage Image => _image ??= Media.Image(Id, Shape, Widths);
+    private ResponsiveImage Image => _image ??= Source ?? Media.Image(Id ?? throw new InvalidOperationException("Picture needs Id or Source."), Shape, Widths);
 
     private ImageVariant Fallback => Image.In(ImageFormat.Jpeg).Last();
 

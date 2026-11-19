@@ -18,8 +18,11 @@ public enum ImageShape
     /// <summary>The whole image, resized.</summary>
     Original,
 
-    /// <summary>A square cut around the focal point (avatars, the Recruiter Mode portrait).</summary>
+    /// <summary>A square cut around the focal point (avatars, the Recruiter Mode portrait, gallery thumbnails).</summary>
     Square,
+
+    /// <summary>A 9:16 cut around the focal point (posters for vertical videos such as YouTube Shorts).</summary>
+    Vertical,
 }
 
 /// <summary>A source rectangle in original pixels.</summary>
@@ -40,20 +43,25 @@ public static class MediaPlan
     public static readonly IReadOnlyList<ImageFormat> Formats = [ImageFormat.Avif, ImageFormat.Webp, ImageFormat.Jpeg];
 
     /// <summary>
-    /// The crop for a shape. A square takes the image's short side, centred on the focal point
+    /// The crop for a shape: the largest box with the shape's aspect ratio, centred on the focal point
     /// (0–1 from the top-left corner) and pushed back inside the image when it would overflow.
     /// </summary>
     public static CropBox Crop(PixelSize source, ImageShape shape, double focalX = 0.5, double focalY = 0.5)
     {
-        if (shape == ImageShape.Original)
+        var ratio = shape switch
         {
-            return new CropBox(0, 0, source.Width, source.Height);
-        }
+            ImageShape.Square => 1.0,
+            ImageShape.Vertical => 9.0 / 16.0,
+            _ => source.Width / (double)source.Height,
+        };
 
-        var side = Math.Min(source.Width, source.Height);
-        var left = Math.Clamp((int)Math.Round((focalX * source.Width) - (side / 2.0)), 0, source.Width - side);
-        var top = Math.Clamp((int)Math.Round((focalY * source.Height) - (side / 2.0)), 0, source.Height - side);
-        return new CropBox(left, top, side, side);
+        var (width, height) = source.Width / (double)source.Height > ratio
+            ? ((int)Math.Round(source.Height * ratio), source.Height)
+            : (source.Width, (int)Math.Round(source.Width / ratio));
+
+        var left = Math.Clamp((int)Math.Round((focalX * source.Width) - (width / 2.0)), 0, source.Width - width);
+        var top = Math.Clamp((int)Math.Round((focalY * source.Height) - (height / 2.0)), 0, source.Height - height);
+        return new CropBox(left, top, width, height);
     }
 
     /// <summary>Requested widths that don't upscale, plus the crop's own width when every request is too big.</summary>
@@ -73,7 +81,12 @@ public static class MediaPlan
 
     public static string Url(string id, ImageShape shape, int width, string fingerprint, ImageFormat format)
     {
-        var suffix = shape == ImageShape.Square ? "-sq" : string.Empty;
+        var suffix = shape switch
+        {
+            ImageShape.Square => "-sq",
+            ImageShape.Vertical => "-v",
+            _ => string.Empty,
+        };
         var extension = format switch
         {
             ImageFormat.Avif => "avif",

@@ -1,0 +1,67 @@
+@page "/garagem"
+@page "/en/garage"
+@page "/es/garaje"
+@using System.Globalization
+@inject PageContext Page
+@inject MediaCatalog Media
+
+@* Full gallery (docs/ux/sitemap.md, P4): the on-board Shorts and every track-day photo, with credits.
+   For now each photo links to its large version; the JS lightbox comes with Phase 3. *@
+<PageTitle>@Page.T("page.garage.title")</PageTitle>
+
+<article class="garage-page">
+    <p><a href="@Page.PathFor(PageKey.Home)#garage">@Page.T("garage.back")</a></p>
+    <h1>@Page.T("garage.title")</h1>
+    <p class="section-intro">@Page.T("garage.intro")</p>
+
+    <section aria-labelledby="garage-videos">
+        <h2 id="garage-videos">@Page.T("garage.videos")</h2>
+        <ul class="video-grid">
+            @foreach (var video in Media.Videos)
+            {
+                <li><VideoFacade Video="video" /></li>
+            }
+        </ul>
+    </section>
+
+    <section aria-labelledby="garage-photos">
+        <h2 id="garage-photos">@Page.T("garage.photos")</h2>
+        <ul class="photo-grid">
+            @foreach (var photo in Media.Photos.Where(p => p.Category == "track"))
+            {
+                <li>
+                    <figure>
+                        <a class="photo-link" href="@Large(photo.Id)" title="@Page.T("garage.open")">
+                            <Picture Id="@photo.Id" Shape="ImageShape.Square" Widths="[320, 640]" Sizes="(min-width: 1024px) 280px, (min-width: 768px) 30vw, 45vw" Width="320" Height="320" />
+                        </a>
+                        <figcaption>
+                            @if (photo.Caption is { } caption)
+                            {
+                                <span>@caption[Page.Locale]</span>
+                            }
+                            @if (photo.Credit is { } credit)
+                            {
+                                <small>
+                                    @if (credit.Url is { } url)
+                                    {
+                                        <a href="@url" rel="noopener" target="_blank">@Credit(credit.Name)</a>
+                                    }
+                                    else
+                                    {
+                                        @Credit(credit.Name)
+                                    }
+                                </small>
+                            }
+                        </figcaption>
+                    </figure>
+                </li>
+            }
+        </ul>
+    </section>
+</article>
+
+@code {
+    private string Large(string id) => Media.Image(id, ImageShape.Original, [1600]).In(ImageFormat.Jpeg).Last().Url;
+
+    private string Credit(string name) => string.Format(CultureInfo.InvariantCulture, Page.T("garage.photoCredit"), name);
+}

@@ -93,6 +93,16 @@ public sealed class ContentStoreTests
     }
 
     [Fact]
+    public void Garage_HasThreeCards_OnlyMotorcyclesHasAPhotoForNow()
+    {
+        var garage = Store.For(Locales.English).Garage;
+
+        Assert.Equal(["motorcycles", "mechanics", "games"], garage.Select(c => c.Id));
+        Assert.Equal("track-03", garage[0].Photo);
+        Assert.All(garage.Skip(1), c => Assert.NotNull(c.Icon));
+    }
+
+    [Fact]
     public void Stage_Client_HasBothStoryBeats() =>
         Assert.Equal(2, Store.For(Locales.English).Stage("client").Story.Count);
 
