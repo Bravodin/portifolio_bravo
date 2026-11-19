@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Trace.Client/Trace.Client.csproj" />
+    <Project Path="src/Trace.Domain/Trace.Domain.csproj" />
+    <Project Path="src/Trace.Web/Trace.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Trace.Components.Tests/Trace.Components.Tests.csproj" />
+    <Project Path="tests/Trace.Domain.Tests/Trace.Domain.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Pure C# logic: no Blazor, no JS. Coverage gate ≥ 90 % (ADR-0007). -->
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Trace.Domain.Tests" />
+  </ItemGroup>
+
+</Project>
