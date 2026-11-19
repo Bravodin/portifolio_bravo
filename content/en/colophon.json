@@ -109,5 +109,17 @@
         ]
       }
     ]
+  },
+  "build": {
+    "title": "Latest build",
+    "intro": "This version of the site came out of this pipeline run. The numbers come from the build itself, not from a screenshot.",
+    "number": "Build",
+    "commit": "Commit",
+    "branch": "Branch",
+    "builtAt": "Built at",
+    "tests": "Tests passed",
+    "coverage": "Trace.Domain coverage",
+    "run": "See this build in Azure DevOps",
+    "local": "This version was built locally, outside the pipeline. On the published site, this shows the build's data."
   }
 }

@@ -715,6 +715,18 @@ figcaption small { color: var(--color-muted); }
   .roles-list div { grid-template-columns: 1fr; gap: var(--space-1); }
 }
 
+.build-panel { margin-top: var(--space-12); padding-top: var(--space-8); border-top: 1px solid var(--color-line); }
+.build-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+}
+.build-facts div { padding: var(--space-3) var(--space-4); background: var(--color-surface); border: 1px solid var(--color-line); border-radius: var(--radius-md); }
+.build-facts dt { font-family: var(--font-mono); font-size: var(--size-hud); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); }
+.build-facts dd { margin: var(--space-1) 0 0; font-family: var(--font-mono); }
+.build-ok { color: var(--color-after); }
+
 /* Architecture flow: a column with ↓ on phones, a row with → from 1024 px. */
 .colophon { max-width: var(--content-max); }
 .colophon > ul,

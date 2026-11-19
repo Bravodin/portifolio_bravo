@@ -30,6 +30,9 @@ public sealed record Figure(string Value, string Label);
 /// <summary>One step of the architecture flow, with the ADR numbers ("0009") that explain it.</summary>
 public sealed record ArchitectureNode(string Name, string Role, IReadOnlyList<string> Details, IReadOnlyList<string> Adrs);
 
+/// <summary>Labels for the Colophon's "latest build" panel (the values come from the pipeline at build time).</summary>
+public sealed record BuildCopy(string Title, string Intro, string Number, string Commit, string Branch, string BuiltAt, string Tests, string Coverage, string Run, string Local);
+
 /// <summary>The Colophon's architecture diagram: an ordered flow from Manuel to the browser.</summary>
 public sealed record Architecture(string Title, string Intro, string DecisionsLabel, IReadOnlyList<ArchitectureNode> Nodes);
 
@@ -51,7 +54,8 @@ public sealed record ColophonCopy(
     string RepoAdrs,
     string RepoTests,
     string History,
-    Architecture Architecture);
+    Architecture Architecture,
+    BuildCopy Build);
 
 /// <summary>A measured result (content inventory §2). Values are pre-formatted per locale (ADR-0004).</summary>
 public sealed record Metric(string Id, string Label, string Before, string After, string Delta, string Where);

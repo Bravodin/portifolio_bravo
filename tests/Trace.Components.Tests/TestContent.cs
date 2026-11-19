@@ -14,12 +14,13 @@ internal static class TestContent
 
     public static MediaCatalog Media { get; } = new(MediaCatalog.FindRoot(null));
 
-    public static void AddSite(this BunitContext context, string path, RepoStats? repo = null)
+    public static void AddSite(this BunitContext context, string path, RepoStats? repo = null, BuildInfo? build = null)
     {
         context.Services.AddSingleton(Store);
         context.Services.AddSingleton(new SiteOptions(new Uri("https://www.manuelbravo.com.br/")));
         context.Services.AddScoped<PageContext>();
         context.Services.AddSingleton(Media);
+        context.Services.AddSingleton(new BuildSnapshot(build));
         context.Services.AddSingleton(repo ?? new RepoStats(Commits: 42, Adrs: 10, TestMethods: 136)
         {
             AdrFiles = new Dictionary<string, string> { ["0009"] = "0009-azure-pipelines-and-static-web-apps.md" },

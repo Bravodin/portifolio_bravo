@@ -109,5 +109,17 @@
         ]
       }
     ]
+  },
+  "build": {
+    "title": "Último build",
+    "intro": "Esta versão do site saiu deste build da esteira. Os números vêm do próprio build, não de um print.",
+    "number": "Build",
+    "commit": "Commit",
+    "branch": "Branch",
+    "builtAt": "Gerado em",
+    "tests": "Testes aprovados",
+    "coverage": "Cobertura do Trace.Domain",
+    "run": "Ver este build no Azure DevOps",
+    "local": "Esta versão foi gerada localmente, fora da esteira. No site publicado, aqui aparecem os dados do build."
   }
 }

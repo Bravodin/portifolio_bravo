@@ -15,6 +15,7 @@ builder.Services.AddSingleton(new MediaCatalog(
     MediaCatalog.FindRoot(builder.Configuration["Trace:MediaRoot"]),
     builder.Configuration["Trace:VideoPosterCache"]));
 builder.Services.AddSingleton(_ => RepoStats.Measure());
+builder.Services.AddSingleton(sp => new BuildSnapshot(BuildInfo.FromEnvironment(sp.GetRequiredService<TimeProvider>())));
 builder.Services.AddScoped<PageContext>();
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();

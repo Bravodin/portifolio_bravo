@@ -109,5 +109,17 @@
         ]
       }
     ]
+  },
+  "build": {
+    "title": "Último build",
+    "intro": "Esta versión del sitio salió de esta ejecución del pipeline. Los números vienen del propio build, no de una captura.",
+    "number": "Build",
+    "commit": "Commit",
+    "branch": "Branch",
+    "builtAt": "Generado el",
+    "tests": "Pruebas aprobadas",
+    "coverage": "Cobertura de Trace.Domain",
+    "run": "Ver este build en Azure DevOps",
+    "local": "Esta versión se generó localmente, fuera del pipeline. En el sitio publicado, aquí aparecen los datos del build."
   }
 }

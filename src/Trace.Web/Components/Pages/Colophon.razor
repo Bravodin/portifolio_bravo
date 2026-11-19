@@ -1,8 +1,10 @@
 @page "/colophon"
+@using System.Globalization
 @page "/es/como-se-hizo"
 @page "/pt/como-foi-feito"
 @inject PageContext Page
 @inject RepoStats Repo
+@inject BuildSnapshot Snapshot
 
 <PageTitle>@Page.T("page.colophon.title")</PageTitle>
 
@@ -55,6 +57,37 @@
         </ul>
         <p class="figures-note">@Copy.UsageNote</p>
         <p><a href="@(RepoUrl)/commits/main">@Copy.History ↗</a></p>
+    </section>
+
+    @* Latest build: real values from the pipeline run that produced this version (ADR-0007, ADR-0009). *@
+    <section class="build-panel" aria-labelledby="build-title">
+        <h2 id="build-title">@Copy.Build.Title</h2>
+        @if (Snapshot.Build is { } build)
+        {
+            <p>@Copy.Build.Intro</p>
+            <dl class="build-facts">
+                <div><dt>@Copy.Build.Number</dt><dd>@build.Number</dd></div>
+                <div><dt>@Copy.Build.Commit</dt><dd><a href="@(RepoUrl)/commit/@build.Commit">@build.ShortCommit</a></dd></div>
+                <div><dt>@Copy.Build.Branch</dt><dd>@build.Branch</dd></div>
+                <div><dt>@Copy.Build.BuiltAt</dt><dd>@build.BuiltAt.ToString("yyyy-MM-dd HH:mm 'UTC'", CultureInfo.InvariantCulture)</dd></div>
+                @if (build.TestsPassed is { } passed && build.TestsTotal is { } total)
+                {
+                    <div><dt>@Copy.Build.Tests</dt><dd class="build-ok">@passed / @total</dd></div>
+                }
+                @if (build.DomainCoverage is { } coverage)
+                {
+                    <div><dt>@Copy.Build.Coverage</dt><dd class="build-ok">@coverage.ToString("0.#%", CultureInfo.InvariantCulture)</dd></div>
+                }
+            </dl>
+            @if (build.RunUrl is { } run)
+            {
+                <p><a href="@run">@Copy.Build.Run ↗</a></p>
+            }
+        }
+        else
+        {
+            <p class="figures-note">@Copy.Build.Local</p>
+        }
     </section>
 
     @* Architecture as an ordered flow: real text (translated, readable by screen readers), arrows drawn in CSS,

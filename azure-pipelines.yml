@@ -50,17 +50,21 @@ stages:
           - script: dotnet format Trace.slnx --verify-no-changes --no-restore
             displayName: Format check
 
-          - script: >
-              dotnet test --solution Trace.slnx -c $(BuildConfiguration) --no-build
-              --coverlet --coverlet-output-format cobertura
-              --results-directory $(Agent.TempDirectory)/test-results
+          # The summary (total/succeeded) and the Cobertura files feed the Colophon's "latest build" panel.
+          - script: |
+              set -o pipefail
+              mkdir -p $(Agent.TempDirectory)/test-results
+              dotnet test --solution Trace.slnx -c $(BuildConfiguration) --no-build \
+                --coverlet --coverlet-output-format cobertura \
+                --results-directory $(Agent.TempDirectory)/test-results \
+                | tee $(Agent.TempDirectory)/test-results/summary.txt
             displayName: Tests + coverage
 
           - task: PublishCodeCoverageResults@2
             displayName: Publish coverage
             condition: succeededOrFailed()
             inputs:
-              summaryFileLocation: $(Agent.TempDirectory)/test-results/**/*.cobertura.xml
+              summaryFileLocation: $(Agent.TempDirectory)/test-results/**/*cobertura*.xml
 
           - script: dotnet publish src/Trace.Web -c $(BuildConfiguration) -o artifacts/publish --no-restore
             displayName: Publish Trace.Web
@@ -69,6 +73,8 @@ stages:
           # TF_BUILD is set by Azure Pipelines, so a placeholder CV fails the build here.
           - script: dotnet run --project tools/Trace.Prerender -c $(BuildConfiguration) --no-build -- --publish-dir artifacts/publish --out dist
             displayName: Prerender to dist/
+            env:
+              TRACE_TEST_RESULTS: $(Agent.TempDirectory)/test-results
 
           - publish: dist
             artifact: site
