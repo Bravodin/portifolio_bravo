@@ -103,13 +103,14 @@ public sealed class ContentStoreTests
     }
 
     [Fact]
-    public void About_HasThreeParagraphsAndFivePrinciples_InEveryLocale()
+    public void About_HasThreeParagraphsAndSixPrinciples_InEveryLocale()
     {
         foreach (var locale in Locales.All)
         {
             var about = Store.For(locale).About;
             Assert.Equal(3, about.Paragraphs.Count);
-            Assert.Equal(5, about.Principles.Count);
+            Assert.Equal(6, about.Principles.Count);
+            Assert.Equal(about.Principles[^1].Title, Store.For(locale).About.Principles[5].Title);
         }
 
         Assert.Contains("Delphi em 2006", Store.For(Locales.Portuguese).About.Paragraphs[0], StringComparison.Ordinal);

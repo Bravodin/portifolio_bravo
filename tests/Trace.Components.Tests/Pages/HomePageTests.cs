@@ -32,7 +32,8 @@ public sealed class HomePageTests : BunitContext
         var cut = RenderHome("/");
 
         Assert.Equal("Sobre mim", cut.Find("#about h2").TextContent);
-        Assert.Equal(5, cut.FindAll("#about .about-principles li").Count);
+        Assert.Equal(6, cut.FindAll("#about .about-principles li").Count);
+        Assert.Equal("Foco no que posso mudar", cut.FindAll("#about .about-principles strong")[4].TextContent);
         Assert.Equal("Simples primeiro", cut.FindAll("#about .about-principles strong")[2].TextContent);
         Assert.Equal("about", cut.Find("#start + section").Id);
     }
