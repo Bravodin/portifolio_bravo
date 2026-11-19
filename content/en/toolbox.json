@@ -1,0 +1,81 @@
+[
+  {
+    "id": "engine",
+    "name": "Engine (languages & frameworks)",
+    "tools": [
+      "C#",
+      ".NET / .NET Framework",
+      "ASP.NET",
+      "Node.js",
+      "TypeScript",
+      "Angular",
+      "Java / Spring Boot",
+      "WPF",
+      "Delphi",
+      "Pascal"
+    ]
+  },
+  {
+    "id": "diagnostics",
+    "name": "Diagnostics (testing & quality)",
+    "tools": [
+      "Selenium",
+      "JMeter",
+      "Postman",
+      "BDD/TDD (Given-When-Then)",
+      "Sonar 90 % gates",
+      "Jetpack Compose Testing",
+      "XCUITest"
+    ]
+  },
+  {
+    "id": "electronics",
+    "name": "Electronics (APIs, cloud, architecture)",
+    "tools": [
+      "REST",
+      "SOAP",
+      "Microservices",
+      "AWS",
+      "CA API Gateway",
+      "Sensedia",
+      "Redis",
+      "Message idempotency"
+    ]
+  },
+  {
+    "id": "scanner",
+    "name": "Scanner (observability)",
+    "tools": [
+      "OpenSearch",
+      "End-to-end root-cause analysis"
+    ]
+  },
+  {
+    "id": "fluids",
+    "name": "Fluids (databases)",
+    "tools": [
+      "SQL Server",
+      "Oracle",
+      "MySQL"
+    ]
+  },
+  {
+    "id": "power-tools",
+    "name": "Power tools (AI-assisted engineering)",
+    "tools": [
+      "GitHub Copilot",
+      "Claude"
+    ]
+  },
+  {
+    "id": "workshop",
+    "name": "Workshop management",
+    "tools": [
+      "Scrum",
+      "ITIL / HPSM",
+      "Pre-sales & RFPs",
+      "Budgeting",
+      "Team building"
+    ]
+  }
+]

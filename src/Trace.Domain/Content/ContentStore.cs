@@ -50,6 +50,7 @@ public sealed class ContentStore
             Read<List<Metric>>(Path.Combine(folder, "metrics.json")),
             Read<List<LogEntry>>(Path.Combine(folder, "log.json")),
             Read<List<Stage>>(Path.Combine(folder, "stages.json")),
+            Read<List<Drawer>>(Path.Combine(folder, "toolbox.json")),
             Read<Dictionary<string, string>>(Path.Combine(folder, "ui.json")));
     }
 

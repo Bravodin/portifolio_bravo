@@ -26,6 +26,19 @@ public static class ContentValidator
                 yield return problem;
             }
 
+            foreach (var problem in SameSet("toolbox drawer", reference.Toolbox.Select(d => d.Id), other.Toolbox.Select(d => d.Id), locale))
+            {
+                yield return problem;
+            }
+
+            foreach (var (mine, theirs) in reference.Stages.Join(other.Stages, s => s.Id, s => s.Id, (a, b) => (a, b)))
+            {
+                if (mine.Number != theirs.Number || mine.Metric != theirs.Metric)
+                {
+                    yield return $"stage '{mine.Id}' has a different number or metric in {locale}";
+                }
+            }
+
             if (reference.Log.Count != other.Log.Count)
             {
                 yield return $"log.json has {reference.Log.Count} entries in {Locales.Default} but {other.Log.Count} in {locale}";
@@ -40,6 +53,11 @@ public static class ContentValidator
             {
                 yield return $"identity.json LinkedIn URL differs in {locale}";
             }
+        }
+
+        foreach (var stage in reference.Stages.Where(s => reference.Metrics.All(m => m.Id != s.Metric)))
+        {
+            yield return $"stage '{stage.Id}' uses metric '{stage.Metric}', which metrics.json doesn't have";
         }
 
         foreach (var id in store.Recruiter.Metrics.Where(id => reference.Metrics.All(m => m.Id != id)))

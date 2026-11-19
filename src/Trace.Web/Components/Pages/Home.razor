@@ -3,41 +3,87 @@
 @page "/es"
 @inject PageContext Page
 
-@* The ride (docs/ux/sitemap.md). For now: hero + stage 1 with the Dyno; the other stages come next. *@
+@* The ride (docs/ux/sitemap.md): hero → the Trace (7 stages) → Service Log → Toolbox → Pit Stop.
+   The Garage comes with the media pipeline (ADR-0008, ADR-0010). *@
 <PageTitle>@Page.T("page.home.title")</PageTitle>
 
-<section class="hero" aria-labelledby="hero-name">
+<section class="hero" id="start" aria-labelledby="hero-name">
     <h1 id="hero-name">@Identity.Name</h1>
     <p class="hero-role">@Identity.Role</p>
     <p class="hero-tagline">@Identity.Tagline</p>
     <p class="hero-actions">
         <a class="btn btn-primary" href="@Page.PathFor(PageKey.Recruiter)">@Page.T("cta.recruiter")</a>
+        <a class="btn" href="#trace">@Page.T("cta.ride") ↓</a>
     </p>
 </section>
 
-<section class="stage" id="client" aria-labelledby="stage-client">
-    <p class="hud-label">@Page.T("stage.label") @Client.Number</p>
-    <h2 id="stage-client">@Client.Title</h2>
-    <dl class="par">
-        <dt>@Page.T("stage.problem")</dt>
-        <dd>@Client.Problem</dd>
-        <dt>@Page.T("stage.action")</dt>
-        <dd>@Client.Action</dd>
-        <dt>@Page.T("stage.result")</dt>
-        <dd>@Client.Result</dd>
-    </dl>
-    <p class="stage-story">@Client.Story[0]</p>
-    <DynoIsland @rendermode="InteractiveWebAssembly" Copy="@DynoCopy.From(Page.Content)" />
-    <ul class="chips" aria-label="Tech">
-        @foreach (var tech in Client.Tech)
+<section class="trace" id="trace" aria-labelledby="trace-title">
+    <h2 id="trace-title">@Page.T("trace.title")</h2>
+    <p class="section-intro">@Page.T("trace.intro")</p>
+
+    @foreach (var stage in Page.Content.Stages)
+    {
+        @if (stage.Id == "client")
         {
-            <li>@tech</li>
+            <StageSection Stage="stage">
+                <p class="stage-story">@stage.Story[0]</p>
+                <DynoIsland @rendermode="InteractiveWebAssembly" Copy="@DynoCopy.From(Page.Content)" />
+            </StageSection>
         }
-    </ul>
+        else
+        {
+            <StageSection Stage="stage" />
+        }
+    }
+</section>
+
+<section class="service-log" id="service-log" aria-labelledby="log-title">
+    <h2 id="log-title">@Page.T("log.title")</h2>
+    <p class="section-intro">@Page.T("log.intro")</p>
+    <ol class="log">
+        @foreach (var entry in Page.Content.Log)
+        {
+            <li class="log-entry">
+                <span class="log-odometer">@entry.Period</span>
+                <strong class="log-shop">@entry.Company · @entry.Role</strong>
+                <span class="log-note">@entry.Highlight</span>
+            </li>
+        }
+    </ol>
+</section>
+
+<section class="toolbox" id="toolbox" aria-labelledby="toolbox-title">
+    <h2 id="toolbox-title">@Page.T("toolbox.title")</h2>
+    <p class="section-intro">@Page.T("toolbox.intro")</p>
+    <div class="drawers">
+        @foreach (var drawer in Page.Content.Toolbox)
+        {
+            <details class="drawer" id="drawer-@drawer.Id" open>
+                <summary>@drawer.Name</summary>
+                <ul class="chips">
+                    @foreach (var tool in drawer.Tools)
+                    {
+                        <li>@tool</li>
+                    }
+                </ul>
+            </details>
+        }
+    </div>
+</section>
+
+<section class="pit-stop" id="pit-stop" aria-labelledby="pitstop-title">
+    <h2 id="pitstop-title">@Page.T("pitstop.title")</h2>
+    <p class="section-intro">@Page.T("pitstop.text")</p>
+    <p class="hero-actions">
+        <a class="btn btn-primary" href="@Identity.LinkedIn" rel="noopener" target="_blank">@Page.T("cta.linkedin") ↗</a>
+        @if (Identity.CvUrl is { } cv)
+        {
+            <a class="btn" href="@cv" download>@Page.T("cta.cv")</a>
+        }
+    </p>
+    <p class="id-note">@Page.T("recruiter.contactNote")</p>
 </section>
 
 @code {
     private Identity Identity => Page.Content.Identity;
-
-    private Stage Client => Page.Content.Stage("client");
 }

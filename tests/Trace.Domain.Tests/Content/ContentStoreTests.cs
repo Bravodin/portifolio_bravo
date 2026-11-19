@@ -74,6 +74,25 @@ public sealed class ContentStoreTests
     }
 
     [Fact]
+    public void Stages_AreTheSevenLayersInOrder_EachWithAMetric()
+    {
+        var stages = Store.For(Locales.English).Stages;
+
+        Assert.Equal(["client", "edge", "gateway", "services", "cache", "database", "pit"], stages.Select(s => s.Id));
+        Assert.Equal(Enumerable.Range(1, 7), stages.Select(s => s.Number));
+        Assert.Equal(["M1", "M2", "M3", "M4", "M5", "M6", "M7"], stages.Select(s => s.Metric));
+    }
+
+    [Fact]
+    public void Toolbox_HasSevenDrawers_AndIncludesTheDelphiYears()
+    {
+        var toolbox = Store.For(Locales.Portuguese).Toolbox;
+
+        Assert.Equal(7, toolbox.Count);
+        Assert.Contains("Delphi", toolbox.Single(d => d.Id == "engine").Tools);
+    }
+
+    [Fact]
     public void Stage_Client_HasBothStoryBeats() =>
         Assert.Equal(2, Store.For(Locales.English).Stage("client").Story.Count);
 

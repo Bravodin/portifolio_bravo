@@ -1,0 +1,81 @@
+[
+  {
+    "id": "engine",
+    "name": "Motor (linguagens e frameworks)",
+    "tools": [
+      "C#",
+      ".NET / .NET Framework",
+      "ASP.NET",
+      "Node.js",
+      "TypeScript",
+      "Angular",
+      "Java / Spring Boot",
+      "WPF",
+      "Delphi",
+      "Pascal"
+    ]
+  },
+  {
+    "id": "diagnostics",
+    "name": "Diagnóstico (testes e qualidade)",
+    "tools": [
+      "Selenium",
+      "JMeter",
+      "Postman",
+      "BDD/TDD (Given-When-Then)",
+      "Gates de 90 % no Sonar",
+      "Jetpack Compose Testing",
+      "XCUITest"
+    ]
+  },
+  {
+    "id": "electronics",
+    "name": "Elétrica (APIs, cloud, arquitetura)",
+    "tools": [
+      "REST",
+      "SOAP",
+      "Microsserviços",
+      "AWS",
+      "CA API Gateway",
+      "Sensedia",
+      "Redis",
+      "Idempotência de mensagens"
+    ]
+  },
+  {
+    "id": "scanner",
+    "name": "Scanner (observabilidade)",
+    "tools": [
+      "OpenSearch",
+      "Análise de causa raiz de ponta a ponta"
+    ]
+  },
+  {
+    "id": "fluids",
+    "name": "Fluidos (bancos de dados)",
+    "tools": [
+      "SQL Server",
+      "Oracle",
+      "MySQL"
+    ]
+  },
+  {
+    "id": "power-tools",
+    "name": "Ferramentas elétricas (engenharia assistida por IA)",
+    "tools": [
+      "GitHub Copilot",
+      "Claude"
+    ]
+  },
+  {
+    "id": "workshop",
+    "name": "Gestão da oficina",
+    "tools": [
+      "Scrum",
+      "ITIL / HPSM",
+      "Pré-vendas e RFPs",
+      "Orçamento",
+      "Formação de times"
+    ]
+  }
+]

@@ -3,6 +3,8 @@
     "id": "client",
     "number": 1,
     "title": "Cliente",
+    "metaphor": "Manillar y tablero",
+    "metric": "M1",
     "problem": "Una app Ionic de 2016 donde un flujo crítico de agendamiento tardaba 12–20 s.",
     "action": "Lideré la migración a iOS (Swift) y Android (Kotlin) nativos; llevé las pruebas de regresión a Compose Testing + XCUITest.",
     "result": "Agendamiento en ~1,2 s.",
@@ -10,6 +12,116 @@
       "Mi gerente pidió un benchmark: la app Ionic contra la nativa. Lo ejecuté y presenté los números. Este dinamómetro lo reproduce.",
       "La velocidad es solo lo que mide un dinamómetro. Pasar a nativo también acercó la app al hardware y abrió la puerta a los wearables."
     ],
-    "tech": ["Swift", "Kotlin", "Jetpack Compose Testing", "XCUITest", "WPF"]
+    "tech": [
+      "Swift",
+      "Kotlin",
+      "Jetpack Compose Testing",
+      "XCUITest",
+      "WPF"
+    ]
+  },
+  {
+    "id": "edge",
+    "number": 2,
+    "title": "Borde y seguridad",
+    "metaphor": "Llave de encendido e inmovilizador",
+    "metric": "M2",
+    "problem": "Fraude en los flujos de reembolso.",
+    "action": "Agregué biometría facial al reembolso.",
+    "result": "Fraude −40 %.",
+    "story": [],
+    "tech": [
+      "Biometría",
+      "AWS",
+      "Troubleshooting de firewall"
+    ]
+  },
+  {
+    "id": "gateway",
+    "number": 3,
+    "title": "API Gateway",
+    "metaphor": "Inyección de combustible",
+    "metric": "M3",
+    "problem": "Alto costo de la plataforma en CA API Gateway.",
+    "action": "Migré el gateway a Sensedia.",
+    "result": "Costo −30 %.",
+    "story": [],
+    "tech": [
+      "Sensedia",
+      "CA API Gateway",
+      "REST",
+      "SOAP"
+    ]
+  },
+  {
+    "id": "services",
+    "number": 4,
+    "title": "Servicios",
+    "metaphor": "Bloque del motor (rectificación)",
+    "metric": "M4",
+    "problem": "Servicios legados en .NET/SOAP con una gran superficie de vulnerabilidades.",
+    "action": "Modernicé ~80 % de ellos a Node.js.",
+    "result": "Vulnerabilidades −70 %.",
+    "story": [],
+    "tech": [
+      "Node.js",
+      "TypeScript",
+      "C#",
+      ".NET",
+      "Microservicios"
+    ]
+  },
+  {
+    "id": "cache",
+    "number": 5,
+    "title": "Caché y mensajería",
+    "metaphor": "Transmisión",
+    "metric": "M5",
+    "problem": "Fallas intermitentes y procesamiento duplicado.",
+    "action": "Idempotencia de mensajes + caché con Redis; rediseñé la arquitectura de un flujo crítico.",
+    "result": "Flujo de 8 h → 4 h; mayor confiabilidad.",
+    "story": [],
+    "tech": [
+      "Redis",
+      "Idempotencia",
+      "AWS"
+    ]
+  },
+  {
+    "id": "database",
+    "number": 6,
+    "title": "Base de datos",
+    "metaphor": "Aceite y refrigeración",
+    "metric": "M6",
+    "problem": "Deadlocks y batches lentos con alto volumen de datos.",
+    "action": "Ajusté queries, transacciones, estrategia de bloqueos y stored procedures.",
+    "result": "Batch de 8 h → 2 h; deadlocks eliminados; +20 % de throughput.",
+    "story": [],
+    "tech": [
+      "SQL Server",
+      "Oracle",
+      "MySQL",
+      "LINQ"
+    ]
+  },
+  {
+    "id": "pit",
+    "number": 7,
+    "title": "Pit crew · Observabilidad y calidad",
+    "metaphor": "Escáner de diagnóstico y equipo de boxes",
+    "metric": "M7",
+    "problem": "Problemas en producción que cruzan la app, el chatbot y la web; releases sin red de seguridad.",
+    "action": "RCA de punta a punta con OpenSearch; Selenium / Postman / JMeter; BDD/TDD; gate de 90 % en Sonar; piloto con Copilot + Claude.",
+    "result": "+40 % de productividad; pruebas de carga antes del go-live.",
+    "story": [],
+    "tech": [
+      "OpenSearch",
+      "Selenium",
+      "JMeter",
+      "Postman",
+      "Sonar",
+      "GitHub Copilot",
+      "Claude"
+    ]
   }
 ]

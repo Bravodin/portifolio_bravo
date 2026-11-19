@@ -3,6 +3,8 @@
     "id": "client",
     "number": 1,
     "title": "Client",
+    "metaphor": "Handlebars & dashboard",
+    "metric": "M1",
     "problem": "A 2016 Ionic app where a critical booking journey took 12–20 s.",
     "action": "Led the migration to native iOS (Swift) and Android (Kotlin); moved regression testing to Compose Testing + XCUITest.",
     "result": "Booking ~1.2 s.",
@@ -10,6 +12,116 @@
       "My manager asked for a benchmark: the Ionic app against native. I ran it and presented the numbers. This dyno replays it.",
       "Speed is only what a dyno measures. Going native also put the app closer to the hardware, opening the door to wearables."
     ],
-    "tech": ["Swift", "Kotlin", "Jetpack Compose Testing", "XCUITest", "WPF"]
+    "tech": [
+      "Swift",
+      "Kotlin",
+      "Jetpack Compose Testing",
+      "XCUITest",
+      "WPF"
+    ]
+  },
+  {
+    "id": "edge",
+    "number": 2,
+    "title": "Edge & Security",
+    "metaphor": "Ignition key & immobilizer",
+    "metric": "M2",
+    "problem": "Fraud in reimbursement workflows.",
+    "action": "Added facial biometrics to reimbursement.",
+    "result": "Fraud −40 %.",
+    "story": [],
+    "tech": [
+      "Biometrics",
+      "AWS",
+      "Firewall troubleshooting"
+    ]
+  },
+  {
+    "id": "gateway",
+    "number": 3,
+    "title": "API Gateway",
+    "metaphor": "Fuel injection",
+    "metric": "M3",
+    "problem": "High platform cost on CA API Gateway.",
+    "action": "Migrated the gateway to Sensedia.",
+    "result": "Cost −30 %.",
+    "story": [],
+    "tech": [
+      "Sensedia",
+      "CA API Gateway",
+      "REST",
+      "SOAP"
+    ]
+  },
+  {
+    "id": "services",
+    "number": 4,
+    "title": "Services",
+    "metaphor": "Engine block (rebuild)",
+    "metric": "M4",
+    "problem": "Legacy .NET/SOAP services with a large vulnerability surface.",
+    "action": "Modernized ~80 % of them to Node.js.",
+    "result": "Vulnerabilities −70 %.",
+    "story": [],
+    "tech": [
+      "Node.js",
+      "TypeScript",
+      "C#",
+      ".NET",
+      "Microservices"
+    ]
+  },
+  {
+    "id": "cache",
+    "number": 5,
+    "title": "Cache & Messaging",
+    "metaphor": "Transmission",
+    "metric": "M5",
+    "problem": "Intermittent failures and duplicate processing.",
+    "action": "Message idempotency + Redis caching; reworked the architecture of a critical workflow.",
+    "result": "Workflow 8 h → 4 h; better reliability.",
+    "story": [],
+    "tech": [
+      "Redis",
+      "Idempotency",
+      "AWS"
+    ]
+  },
+  {
+    "id": "database",
+    "number": 6,
+    "title": "Database",
+    "metaphor": "Oil & cooling",
+    "metric": "M6",
+    "problem": "Deadlocks and slow batches on high-volume data.",
+    "action": "Tuned queries, transactions, locking strategy and stored procedures.",
+    "result": "Batch 8 h → 2 h; deadlocks eliminated; +20 % throughput.",
+    "story": [],
+    "tech": [
+      "SQL Server",
+      "Oracle",
+      "MySQL",
+      "LINQ"
+    ]
+  },
+  {
+    "id": "pit",
+    "number": 7,
+    "title": "Pit Crew · Observability & Quality",
+    "metaphor": "Diagnostic scanner & pit crew",
+    "metric": "M7",
+    "problem": "Production issues that span the app, chatbot and web; releases without a safety net.",
+    "action": "End-to-end RCA with OpenSearch; Selenium / Postman / JMeter; BDD/TDD; 90 % Sonar gate; Copilot + Claude pilot.",
+    "result": "+40 % productivity; load tests before go-live.",
+    "story": [],
+    "tech": [
+      "OpenSearch",
+      "Selenium",
+      "JMeter",
+      "Postman",
+      "Sonar",
+      "GitHub Copilot",
+      "Claude"
+    ]
   }
 ]

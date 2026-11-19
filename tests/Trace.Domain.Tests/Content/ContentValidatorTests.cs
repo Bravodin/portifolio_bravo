@@ -39,6 +39,25 @@ public sealed class ContentValidatorTests : IDisposable
     }
 
     [Fact]
+    public void Load_StageWithUnknownOrMismatchedMetric_Fails()
+    {
+        Edit("pt-BR/stages.json", json => json[1]!["metric"] = "M77");
+
+        var error = Assert.Throws<InvalidDataException>(() => ContentStore.Load(_root));
+        Assert.Contains("stage 'edge' uses metric 'M77'", error.Message, StringComparison.Ordinal);
+        Assert.Contains("stage 'edge' has a different number or metric in en", error.Message, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Load_MissingToolboxDrawer_Fails()
+    {
+        Edit("es/toolbox.json", json => json.AsArray().RemoveAt(0));
+
+        var error = Assert.Throws<InvalidDataException>(() => ContentStore.Load(_root));
+        Assert.Contains("es is missing toolbox drawer(s): engine", error.Message, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Load_DifferentLinkedIn_Fails()
     {
         Edit("en/identity.json", json =>

@@ -44,5 +44,14 @@
   "colophon.stack": ".NET 10 · Blazor Web App, rendered to static HTML at build time, with WebAssembly islands.",
   "colophon.hosting": "Hosted on Azure Static Web Apps, built and deployed by Azure Pipelines.",
   "colophon.source": "Source, architecture decisions and tests:",
-  "colophon.back": "← Back to the ride"
+  "colophon.back": "← Back to the ride",
+  "stage.openCase": "Open case",
+  "trace.title": "The Trace",
+  "trace.intro": "Follow one request from the phone to the database. Each stop is a layer I modernized, with the measured result.",
+  "log.title": "Service Log",
+  "log.intro": "Each job is a service on the same machine. The odometer is the year.",
+  "toolbox.title": "Toolbox",
+  "toolbox.intro": "Tools grouped by drawer. No percentage bars: they don't mean anything.",
+  "pitstop.title": "Pit Stop",
+  "pitstop.text": "Looking for someone to modernize a critical platform without stopping production? Let's talk."
 }

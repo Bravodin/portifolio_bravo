@@ -1,0 +1,53 @@
+@inject PageContext Page
+
+@* One Trace stage (docs/ux/sitemap.md, "Content hierarchy per Trace stage").
+   Closed: hook (the problem) + metric + chips. Open: Problem · Action · Result.
+   The case uses native <details>, so it works without JS (L0). *@
+<section class="stage" id="@Stage.Id" aria-labelledby="stage-@Stage.Id">
+    <header class="stage-head">
+        <p class="hud-label">@Page.T("stage.label") @Stage.Number · @Stage.Metaphor</p>
+        <h3 id="stage-@Stage.Id">@Stage.Title</h3>
+    </header>
+
+    <p class="stage-hook">@Stage.Problem</p>
+
+    <p class="stage-metric" data-metric="@Metric.Id">
+        <span class="metric-before">@Metric.Before <span class="metric-arrow" aria-hidden="true">→</span></span>
+        <span class="@(Metric.After.Length > 10 ? "metric-after metric-after-long" : "metric-after")">@Metric.After</span>
+        @if (Metric.Delta != "—" && Metric.Delta != Metric.After)
+        {
+            <span class="metric-delta">@Metric.Delta</span>
+        }
+        <span class="metric-label">@Metric.Label · @Metric.Where</span>
+    </p>
+
+    @ChildContent
+
+    <details class="case">
+        <summary>@Page.T("stage.openCase")</summary>
+        <dl class="par">
+            <dt>@Page.T("stage.problem")</dt>
+            <dd>@Stage.Problem</dd>
+            <dt>@Page.T("stage.action")</dt>
+            <dd>@Stage.Action</dd>
+            <dt>@Page.T("stage.result")</dt>
+            <dd>@Stage.Result</dd>
+        </dl>
+    </details>
+
+    <ul class="chips" aria-label="Tech">
+        @foreach (var tech in Stage.Tech)
+        {
+            <li>@tech</li>
+        }
+    </ul>
+</section>
+
+@code {
+    [Parameter, EditorRequired] public Stage Stage { get; set; } = default!;
+
+    /// <summary>Extra content inside the stage, e.g. the Dyno in stage 1.</summary>
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    private Metric Metric => Page.Content.Metric(Stage.Metric);
+}

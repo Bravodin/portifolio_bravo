@@ -301,6 +301,108 @@ main {
   color: var(--color-text-2);
 }
 
+.section-intro { max-width: var(--measure); color: var(--color-text-2); margin: 0 0 var(--space-8); }
+
+.trace,
+.service-log,
+.toolbox,
+.pit-stop {
+  padding: var(--space-16) 0 var(--space-8);
+  border-top: 1px solid var(--color-line);
+}
+
+.stage {
+  padding: var(--space-8) 0;
+  border-top: 1px dashed var(--color-line);
+}
+
+.stage:first-of-type { border-top: 0; }
+.stage-head h3 { margin-bottom: var(--space-2); }
+.stage-hook { max-width: var(--measure); margin: 0 0 var(--space-4); }
+
+.stage-metric {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+  margin: 0 0 var(--space-4);
+}
+
+.stage-metric .metric-label { flex-basis: 100%; margin-top: 0; }
+
+.case {
+  max-width: var(--measure);
+  margin: var(--space-4) 0;
+}
+
+.case summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  color: var(--color-amber);
+}
+
+.case[open] summary { margin-bottom: var(--space-3); }
+
+/* ---------- Service Log ---------- */
+
+.log {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 var(--space-6);
+  border-left: 2px solid var(--color-line);
+  display: grid;
+  gap: var(--space-6);
+}
+
+.log-entry {
+  position: relative;
+  display: grid;
+  gap: var(--space-1);
+}
+
+/* A node on the odometer line. */
+.log-entry::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--space-6) - 7px);
+  top: 0.45em;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg);
+  border: 2px solid var(--color-amber);
+}
+
+.log-odometer { font-family: var(--font-mono); font-size: var(--size-small); color: var(--color-muted); }
+.log-note { color: var(--color-text-2); }
+
+/* ---------- Toolbox ---------- */
+
+.drawers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: var(--space-4);
+}
+
+.drawer {
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+}
+
+.drawer summary {
+  min-height: var(--touch-target);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+
 /* ---------- Dyno ---------- */
 
 .dyno {
