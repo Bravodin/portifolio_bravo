@@ -57,6 +57,8 @@ Order:
 ## Useful commands
 
 ```bash
+./scripts/run-local.ps1                            # everything the pipeline does, then serve dist/ on :4280 (-SkipTests, -NoServe)
+dotnet run --project src/Trace.Web                 # dev server with hot reload (not the static build)
 dotnet --version                                   # expect 10.0.x
 dotnet build Trace.slnx -warnaserror
 dotnet test --solution Trace.slnx                  # exit code 8 = a test project ran zero tests
