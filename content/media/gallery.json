@@ -177,6 +177,21 @@
         "es": "Ilustración de Manuel, con camiseta sin mangas negra, cambiando la rueda trasera de una Yamaha R7 azul en un garaje lleno de herramientas"
       },
       "caption": null
+    },
+    {
+      "id": "games-01",
+      "file": "games/games-01-controller.jpg",
+      "category": "games",
+      "featured": false,
+      "focalPoint": { "x": 0.5, "y": 0.65 },
+      "date": null,
+      "credit": null,
+      "alt": {
+        "pt-BR": "Manuel segurando um controle azul em frente ao notebook, com a tela de um jogo desfocada ao fundo",
+        "en": "Manuel holding a blue game controller in front of a laptop, with a game blurred on the screen behind it",
+        "es": "Manuel sosteniendo un control azul frente a una laptop, con un juego desenfocado en la pantalla de fondo"
+      },
+      "caption": null
     }
   ]
 }

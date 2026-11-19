@@ -132,7 +132,7 @@ Grouped as **toolbox drawers**. No percentage bars, which are meaningless. Each 
 |---|---|---|---|
 | 🏍️ Motorcycles / track days | Riding, and the feeling of a well-tuned machine | Performance: you feel 1.2 s vs 15 s the same way you feel a tuned engine | ✅ `track-03-lean` (featured), `track-01`, `track-02` |
 | 🔧 Mechanics | Taking things apart to understand them, and putting them back better | Legacy modernization: respect the original, upgrade what matters | ✅ `workbench-01` (AI-generated illustration, labelled on the site) |
-| 🎮 Games | Progression, feedback loops, a well-designed difficulty curve | Why this site has levels and achievements | ⏳ `games/` (to provide). Favourites (Manuel, 2026-11-19), shown as **text only**, never game art: Retro: Demon's Crest, Mega Man X, Mega Man 7, The Legend of Zelda, Metroid · Now: Overwatch, Baldur's Gate, Grand Theft Auto |
+| 🎮 Games | Progression, feedback loops, a well-designed difficulty curve | Why this site has levels and achievements | ✅ `games-01` (controller photo; the game on screen is blurred). Favourites (Manuel, 2026-11-19), shown as **text only**, never game art: Retro: Demon's Crest, Mega Man X, Mega Man 7, The Legend of Zelda, Metroid · Now: Overwatch, Baldur's Gate, Grand Theft Auto |
 
 Until a category has a photo, its card uses a line-art illustration (blueprint style) instead of an empty slot.
 

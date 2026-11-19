@@ -98,14 +98,14 @@ public sealed class HomePageTests : BunitContext
     }
 
     [Fact]
-    public void Garage_HasThreeCards_ImagesWhereTheyExist_LineArtForGames()
+    public void Garage_HasThreeCards_AllWithImages_GamesListsFavourites()
     {
         var cut = RenderHome("/en/");
 
         Assert.NotNull(cut.Find("#garage-motorcycles picture img"));
         Assert.StartsWith("Illustration of Manuel", cut.Find("#garage-mechanics picture img").GetAttribute("alt"), StringComparison.Ordinal);
-        Assert.Single(cut.FindAll(".garage-card svg.line-art"));
-        Assert.NotNull(cut.Find("#garage-games svg.line-art"));
+        Assert.Empty(cut.FindAll(".garage-card svg.line-art"));
+        Assert.Contains("blurred", cut.Find("#garage-games picture img").GetAttribute("alt"), StringComparison.Ordinal);
         Assert.Equal(8, cut.FindAll("#garage-games .garage-favorites li").Count);
         Assert.Equal("Retro", cut.Find("#garage-games .garage-favorites-label").TextContent);
         Assert.Equal("/en/garage/", cut.Find("#garage a.btn").GetAttribute("href"));

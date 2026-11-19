@@ -52,7 +52,7 @@ The site's photos live here as **originals**. The build generates every web vers
 - [ ] Confirm the captions (they're drafts) and the dates.
 - [ ] Write captions for `track-04` … `track-09` (null for now) and pick which photos are `featured` for the Garage cards.
 - [x] **Workbench**: `workbench/manu-mechanic.png`, an AI-generated illustration (marked with `aiGenerated: true`, so the site labels it instead of showing a credit).
-- [ ] Add a photo for **games** to complete the Garage.
+- [x] **Games**: `games/games-01-controller.jpg`. The laptop screen showed Super Mario World (Nintendo's art), so the screen area was blurred before committing; never commit game art, logos or screenshots.
 
 ## Videos (YouTube)
 

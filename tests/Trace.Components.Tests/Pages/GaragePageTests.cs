@@ -41,6 +41,17 @@ public sealed class GaragePageTests : BunitContext
     }
 
     [Fact]
+    public void Games_HasItsOwnSection()
+    {
+        this.AddSite("/es/garaje/");
+
+        var section = Render<Garage>().Find("section[aria-labelledby=garage-games]");
+
+        Assert.Equal("Videojuegos", section.QuerySelector("h2")!.TextContent);
+        Assert.Single(section.QuerySelectorAll("a.photo-link"));
+    }
+
+    [Fact]
     public void Videos_AreFacadesThatWorkWithoutJs()
     {
         this.AddSite("/es/garaje/");

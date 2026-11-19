@@ -69,7 +69,7 @@
 
 @code {
     // Photo grids in page order; a category without photos simply renders nothing.
-    private static readonly (string Category, string Heading)[] Sections = [("track", "garage.photos"), ("workbench", "garage.workshop")];
+    private static readonly (string Category, string Heading)[] Sections = [("track", "garage.photos"), ("workbench", "garage.workshop"), ("games", "garage.gaming")];
 
     private string Large(string id) => Media.Image(id, ImageShape.Original, [1600]).In(ImageFormat.Jpeg).Last().Url;
 
