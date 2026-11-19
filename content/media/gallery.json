@@ -195,7 +195,11 @@
         "en": "Manuel holding a blue game controller in front of a laptop, with a game blurred on the screen behind it",
         "es": "Manuel sosteniendo un control azul frente a una laptop, con un juego desenfocado en la pantalla de fondo"
       },
-      "caption": null
+      "caption": {
+        "pt-BR": "Videogame é como eu desligo do trabalho: recarrega a energia, estimula a criatividade e me faz voltar com ideias novas. Equilíbrio entre vida pessoal e profissional é parte da performance.",
+        "en": "Video games are how I switch off from work: they recharge my energy, spark creativity and send me back with fresh ideas. Balancing work and personal life is part of performing well.",
+        "es": "Los videojuegos son mi forma de desconectar del trabajo: recargan la energía, estimulan la creatividad y me hacen volver con ideas nuevas. El equilibrio entre la vida personal y la profesional es parte del buen rendimiento."
+      }
     }
   ]
 }
