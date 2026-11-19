@@ -1,6 +1,6 @@
 # 0002 — Host on GitHub Pages with a custom domain
 
-- Status: Accepted
+- Status: Superseded by [0009](0009-azure-pipelines-and-static-web-apps.md)
 - Date: 2026-11-19
 
 ## Context

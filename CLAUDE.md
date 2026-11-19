@@ -20,19 +20,9 @@ Start with: `README.md` → `docs/ux/concept.md` → `docs/architecture/overview
 
 ## Status
 
-- ✅ **Phase 0** — product, UX, wireframes (`docs/design/wireframes`), design tokens, architecture, ADRs 0001–0008, photos + media manifest.
-- ⏳ **Phase 1/2 — next:** skeleton + pipeline (below).
-
-## Pending decision to record (do this first)
-
-Manuel decided to **run CI/CD on Azure DevOps (Azure Pipelines)** and **host on Azure Static Web Apps (Free plan)** instead of GitHub Actions + GitHub Pages. The code stays on **GitHub** (public portfolio), connected to Azure Pipelines.
-
-1. Write `docs/architecture/adr/0009-azure-pipelines-and-static-web-apps.md` (status Accepted, supersedes 0002). Mark 0002 as "Superseded by 0009" and update the ADR index. Rationale:
-   - SWA Free gives 100 GB/month bandwidth, 2 custom domains, 3 preview environments (one per PR), 250 MB per environment, 15k files, free SSL.
-   - `staticwebapp.config.json` gives custom headers (long-lived cache for fingerprinted `_framework/*`, CSP), a real 404 (`responseOverrides`) and Brotli. This removes the GitHub Pages limitations listed in the overview's risks.
-   - It matches Manuel's Microsoft/Azure profile.
-   - Caveats: new Azure DevOps orgs need the **free parallelism grant** (form: https://aka.ms/azpipelines-parallelism-request, takes days; a self-hosted agent works meanwhile). Public project = 10 free parallel jobs; private = 1,800 min/month. The **apex domain** needs ALIAS/ANAME/CNAME flattening, which registro.br's DNS likely doesn't offer → move DNS to **Cloudflare (free)** and keep the registration at registro.br. Canonical host: `www.manuelbravo.com.br`; apex redirects to www.
-2. Rewrite `docs/architecture/ci-cd-and-hosting.md` for `azure-pipelines.yml` + SWA (deployment token stored as a secret pipeline variable; PR builds deploy to a preview environment; `main` deploys to production). Remove the GitHub Pages specifics (`CNAME`, `.nojekyll`, A records) from the docs, the overview and ADR-0003.
+- ✅ **Phase 0** — product, UX, wireframes (`docs/design/wireframes`), design tokens, architecture, ADRs 0001–0009, photos + media manifest.
+- ✅ Hosting decision recorded: **Azure Pipelines + Azure Static Web Apps (Free)**, DNS on Cloudflare, apex → `www` redirect ([ADR-0009](docs/architecture/adr/0009-azure-pipelines-and-static-web-apps.md), [ci-cd-and-hosting.md](docs/architecture/ci-cd-and-hosting.md)). ADR-0002 (GitHub Pages) is superseded.
+- ⏳ **Phase 1/2 — next:** skeleton + pipeline (below), starting at step 2.
 
 ## Phase 1/2 plan — skeleton
 
@@ -54,7 +44,7 @@ azure-pipelines.yml
 ```
 
 Order:
-1. ADR-0009 + docs updates (above).
+1. ~~ADR-0009 + docs updates~~ ✅ done.
 2. `global.json`, solution, projects, `Directory.Build.props` (nullable, warnings as errors, analyzers), `.editorconfig`.
 3. **Spike (ADR-0003 exit criteria):** one prerendered page + one `InteractiveWebAssembly` island (a tiny Dyno) → deployed to SWA. Confirm that it hydrates with static GETs only.
 4. `Trace.Prerender` minimal: routes × locales → `dist/`, plus `sitemap.xml` and `404.html`.

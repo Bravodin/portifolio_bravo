@@ -10,7 +10,7 @@ This repository is a portfolio piece in its own right. The site, and also how it
 | Phase | Scope | State |
 |---|---|---|
 | 0 — Discovery & UX | Vision, personas, flows, wireframes, design tokens, architecture, ADRs | ✅ this commit |
-| 1 — Skeleton | Blazor Web App (.NET 10), static prerender, CI/CD to GitHub Pages, custom domain | ⏳ |
+| 1 — Skeleton | Blazor Web App (.NET 10), static prerender, CI/CD on Azure Pipelines to Azure Static Web Apps, custom domain | ⏳ |
 | 2 — Content & i18n | PT-BR / EN / ES content files, Recruiter Mode, SEO | ⏳ |
 | 3 — Immersion | The Trace, Dyno, achievements, terminal | ⏳ |
 | 4 — Hardening | bUnit + Playwright + axe + Lighthouse CI budgets | ⏳ |
@@ -32,7 +32,7 @@ All diagrams are written in Mermaid, so GitHub renders them inline. The wirefram
 - .NET 10 · Blazor Web App (Interactive WebAssembly) · build-time static prerender
 - CSS scroll-driven animations + a thin JS interop module
 - bUnit · Playwright for .NET · axe-core · Lighthouse CI
-- GitHub Actions → GitHub Pages · custom domain `manuelbravo.com.br`
+- Azure Pipelines → Azure Static Web Apps (Free) · custom domain `www.manuelbravo.com.br` (DNS on Cloudflare)
 
 ## Author
 

@@ -1,6 +1,6 @@
 # Architecture overview
 
-> **TL;DR:** a Blazor Web App on .NET 10 that is **rendered to static HTML at build time** and deployed to GitHub Pages. Pages are static SSR (fast, indexable, no JS required). A few **interactive WebAssembly islands** (Dyno, Terminal, Achievements) hydrate on top. Motion is CSS-first. There's no server at runtime.
+> **TL;DR:** a Blazor Web App on .NET 10 that is **rendered to static HTML at build time** and deployed to Azure Static Web Apps by Azure Pipelines. Pages are static SSR (fast, indexable, no JS required). A few **interactive WebAssembly islands** (Dyno, Terminal, Achievements) hydrate on top. Motion is CSS-first. There's no server at runtime.
 
 The diagrams follow the [C4 model](https://c4model.com/), drawn in Mermaid.
 
@@ -11,25 +11,29 @@ flowchart LR
     V["👤 Visitor<br/>recruiter · manager · engineer · peer"]
     S["🏍️ TRACE<br/>manuelbravo.com.br<br/>static portfolio"]
     LI["LinkedIn"]
-    GH["GitHub<br/>repo + Actions + Pages"]
+    GH["GitHub<br/>public repo"]
+    AZ["Azure DevOps<br/>Azure Pipelines"]
+    SWA["Azure Static Web Apps<br/>(Free)"]
     AN["Privacy-first analytics<br/>(cookie-free)"]
-    DNS["registro.br DNS"]
+    DNS["Cloudflare DNS<br/>(domain registered at registro.br)"]
     M["👤 Manuel<br/>author"]
 
     V -- "HTTPS (browse, download CV)" --> S
     V -- "outbound link" --> LI
     V -- "view source / ADRs" --> GH
     S -- "page-view beacon" --> AN
-    DNS -- "A / AAAA / CNAME" --> S
+    DNS -- "CNAME www · apex 301 → www" --> S
     M -- "git push (content, code)" --> GH
-    GH -- "build + deploy" --> S
+    GH -- "PR / push triggers" --> AZ
+    AZ -- "build + deploy dist/" --> SWA
+    SWA -- "serves" --> S
 ```
 
 ## 2. Containers (build time vs. run time)
 
 ```mermaid
 flowchart TB
-    subgraph BUILD["Build time — GitHub Actions runner"]
+    subgraph BUILD["Build time — Azure Pipelines agent"]
         direction TB
         CONTENT[("content/{locale}/*.json<br/>single source of truth")]
         MEDIA[("content/media/<br/>originals + gallery.json")]
@@ -42,7 +46,7 @@ flowchart TB
         CLIENT --> WEB
         WEB --> PRE
         MEDIA -- "NetVips: AVIF/WebP/JPEG,<br/>focal crops, strip EXIF" --> PRE
-        PRE --> DIST[("dist/<br/>HTML · CSS · JS · _framework/*.wasm<br/>sitemap.xml · 404.html · CNAME · .nojekyll")]
+        PRE --> DIST[("dist/<br/>HTML · CSS · JS · _framework/*.wasm<br/>sitemap.xml · 404.html · staticwebapp.config.json")]
     end
 
     subgraph RUN["Run time — visitor's browser (no server)"]
@@ -57,7 +61,7 @@ flowchart TB
         WASM <--> LS
     end
 
-    DIST -- "actions/deploy-pages" --> PAGES["GitHub Pages CDN<br/>www.manuelbravo.com.br"]
+    DIST -- "AzureStaticWebApp@0" --> PAGES["Azure Static Web Apps<br/>www.manuelbravo.com.br"]
     PAGES -- HTTPS --> HTML
 ```
 
@@ -112,7 +116,7 @@ flowchart LR
 sequenceDiagram
     autonumber
     participant B as Browser
-    participant CDN as GitHub Pages CDN
+    participant CDN as Azure Static Web Apps
     participant JS as motion.js
     participant RT as .NET WASM runtime
     participant I as Islands
@@ -146,7 +150,8 @@ sequenceDiagram
 │  ├─ Trace.Components.Tests/ # bUnit
 │  └─ Trace.E2E/            # Playwright for .NET + axe-core, against dist/
 ├─ docs/                    # this documentation
-├─ .github/workflows/       # ci.yml, deploy.yml
+├─ azure-pipelines.yml      # CI/CD (ADR-0009)
+├─ staticwebapp.config.json # headers, caching, 404 (ADR-0009)
 └─ global.json              # pins the .NET 10 SDK
 ```
 
@@ -168,8 +173,9 @@ sequenceDiagram
 
 | Risk | Mitigation |
 |---|---|
-| Interactive WASM islands from a Blazor Web App may behave differently when served from a static host | **Phase 1 spike:** deploy a single island to Pages before building the rest. Fallback documented in [ADR-0003](adr/0003-build-time-static-prerendering.md) |
+| Interactive WASM islands from a Blazor Web App may behave differently when served from a static host | **Phase 1 spike:** deploy a single island to Static Web Apps before building the rest. Fallback documented in [ADR-0003](adr/0003-build-time-static-prerendering.md) |
 | WASM payload on slow networks | Islands are optional enhancements; content is complete without them |
-| GitHub Pages doesn't serve precompressed `.br` files | It gzips on the fly. If needed, put Cloudflare (free) in front for Brotli (see [ADR-0002](adr/0002-hosting-github-pages.md)) |
-| Jekyll ignores `_framework/` | Ship `.nojekyll` in `dist/` |
-| Domain takeover on GitHub Pages | Verify the domain in the GitHub account settings (TXT record) |
+| A new Azure DevOps organization waits days for the free parallelism grant | Run a self-hosted agent until it's approved (see [ADR-0009](adr/0009-azure-pipelines-and-static-web-apps.md)) |
+| An `immutable` cache header on a file without a hash in its name | Apply long-lived `Cache-Control` only to fingerprinted paths; checked in the Phase 1 spike |
+| Preview environments fill the Free plan's 3 slots | Delete environments of closed PRs (manually first, automated later) |
+| The apex domain can't CNAME to SWA on registro.br's DNS | DNS on Cloudflare; the apex 301-redirects to `www` ([ci-cd-and-hosting.md](ci-cd-and-hosting.md#domain-and-dns)) |

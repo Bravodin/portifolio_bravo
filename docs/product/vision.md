@@ -48,7 +48,7 @@ Analytics use a privacy-friendly, cookie-free provider (see [ADR-0006](../archit
 
 ## Constraints
 
-- **Hosting cost: zero.** The site is static output only (GitHub Pages).
+- **Hosting cost: zero.** The site is static output only (Azure Static Web Apps, Free plan; CI on Azure Pipelines).
 - **Domain:** `manuelbravo.com.br`, already owned, with DNS at registro.br.
 - **Contact = LinkedIn only.** No e-mail or phone number on the site, in the HTML source or in the public CV PDF (it lists only the LinkedIn URL). This also avoids scraping and spam.
 - **Confidentiality:** use only the figures already published in the CV, and don't include internal screenshots or employer code.

@@ -9,7 +9,7 @@ We need conversion metrics (CV downloads, LinkedIn clicks, how far visitors get 
 
 ## Decision (proposed)
 
-Use **GoatCounter** (free for personal sites, open source, cookie-free) **or Cloudflare Web Analytics** (free, cookie-free) if Cloudflare ends up in front ([ADR-0002](0002-hosting-github-pages.md)). Track custom events only for: `cv_download`, `linkedin_click`, `recruiter_mode`, `dyno_run`, `trace_complete`, `terminal_open`.
+Use **GoatCounter** (free for personal sites, open source, cookie-free) **or Cloudflare Web Analytics** (free, cookie-free) (Cloudflare already hosts the DNS, see [ADR-0009](0009-azure-pipelines-and-static-web-apps.md), and its JS beacon works without proxying `www`). Track custom events only for: `cv_download`, `linkedin_click`, `recruiter_mode`, `dyno_run`, `trace_complete`, `terminal_open`.
 
 ## Alternatives considered
 

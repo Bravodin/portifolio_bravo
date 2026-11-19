@@ -5,7 +5,7 @@
 
 ## Context
 
-GitHub Pages serves files only. We want each route × locale to exist as real HTML (for SEO, LCP and no-JS reading), produced by the same Razor components that run in the app.
+The host serves static files only (originally GitHub Pages; Azure Static Web Apps since [ADR-0009](0009-azure-pipelines-and-static-web-apps.md)). We want each route × locale to exist as real HTML (for SEO, LCP and no-JS reading), produced by the same Razor components that run in the app.
 
 ## Decision
 
@@ -15,16 +15,18 @@ Add a console tool, **`Trace.Prerender`**, that:
 2. hosts `Trace.Web` **in-process** with `TestServer` (no ports, no flaky waits);
 3. requests every route from a **route manifest** generated from `content/` (routes × `pt-BR`, `en`, `es`);
 4. writes each response to `dist/{locale}/{route}/index.html`;
-5. generates `sitemap.xml`, `robots.txt`, `404.html`, `CNAME` and `.nojekyll`;
+5. generates `sitemap.xml`, `robots.txt` and `404.html`, and copies `staticwebapp.config.json`;
 6. validates internal links, `hreflang` triplets and `<html lang>`, and fails the build on any error.
 
 ## Phase 1 spike (exit criteria)
 
-Deploy a single page with one `InteractiveWebAssembly` island to GitHub Pages and confirm that:
+Deploy a single page with one `InteractiveWebAssembly` island to Azure Static Web Apps and confirm that:
 
 - [ ] the island hydrates from persisted state with no server calls (check the network tab: only static GETs);
 - [ ] enhanced navigation between prerendered pages works, or is disabled cleanly (`data-enhance-nav="false"`);
-- [ ] a 404 on a deep link serves the localized `404.html`.
+- [ ] a 404 on a deep link serves `404.html` with a 404 status, readable in all three languages (`responseOverrides` is site-wide);
+- [ ] `.wasm` and the other `_framework` files are served with the right MIME types and compression, and only fingerprinted files get `immutable` caching;
+- [ ] the CSP header from `staticwebapp.config.json` doesn't block the WASM runtime.
 
 ## Fallback
 
