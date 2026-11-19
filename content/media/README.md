@@ -51,7 +51,8 @@ The site's photos live here as **originals**. The build generates every web vers
 - [x] Fill in the photographer credit for `track-01` and `track-03` (@mustelasportmedia).
 - [ ] Confirm the captions (they're drafts) and the dates.
 - [ ] Write captions for `track-04` … `track-09` (null for now) and pick which photos are `featured` for the Garage cards.
-- [ ] Add photos for **workbench** (mechanics) and **games** to complete the Garage.
+- [x] **Workbench**: `workbench/manu-mechanic.png`, an AI-generated illustration (marked with `aiGenerated: true`, so the site labels it instead of showing a credit).
+- [ ] Add a photo for **games** to complete the Garage.
 
 ## Videos (YouTube)
 

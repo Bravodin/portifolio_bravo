@@ -122,7 +122,7 @@ Grouped as **toolbox drawers**. No percentage bars, which are meaningless. Each 
 | Item | Copy direction | Link to work | Photo |
 |---|---|---|---|
 | 🏍️ Motorcycles / track days | Riding, and the feeling of a well-tuned machine | Performance: you feel 1.2 s vs 15 s the same way you feel a tuned engine | ✅ `track-03-lean` (featured), `track-01`, `track-02` |
-| 🔧 Mechanics | Taking things apart to understand them, and putting them back better | Legacy modernization: respect the original, upgrade what matters | ⏳ `workbench/` (to provide) |
+| 🔧 Mechanics | Taking things apart to understand them, and putting them back better | Legacy modernization: respect the original, upgrade what matters | ✅ `workbench-01` (AI-generated illustration, labelled on the site) |
 | 🎮 Games | Progression, feedback loops, a well-designed difficulty curve | Why this site has levels and achievements | ⏳ `games/` (to provide) |
 
 Until a category has a photo, its card uses a line-art illustration (blueprint style) instead of an empty slot.

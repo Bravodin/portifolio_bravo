@@ -161,6 +161,22 @@
         "es": "Manuel tumbado en la curva con la moto roja, por delante de un piloto en una moto verde lima número 17"
       },
       "caption": null
+    },
+    {
+      "id": "workbench-01",
+      "file": "workbench/manu-mechanic.png",
+      "category": "workbench",
+      "featured": false,
+      "focalPoint": { "x": 0.5, "y": 0.45 },
+      "date": null,
+      "credit": null,
+      "aiGenerated": true,
+      "alt": {
+        "pt-BR": "Ilustração de Manuel, de regata preta, trocando a roda traseira de uma Yamaha R7 azul numa garagem cheia de ferramentas",
+        "en": "Illustration of Manuel in a black tank top changing the rear wheel of a blue Yamaha R7 in a garage full of tools",
+        "es": "Ilustración de Manuel, con camiseta sin mangas negra, cambiando la rueda trasera de una Yamaha R7 azul en un garaje lleno de herramientas"
+      },
+      "caption": null
     }
   ]
 }

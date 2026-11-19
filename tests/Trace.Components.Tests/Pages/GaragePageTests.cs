@@ -10,7 +10,7 @@ public sealed class GaragePageTests : BunitContext
     {
         this.AddSite("/en/garage/");
 
-        var links = Render<Garage>().FindAll(".photo-grid a.photo-link");
+        var links = Render<Garage>().FindAll("section[aria-labelledby=garage-track] a.photo-link");
 
         Assert.Equal(9, links.Count);
         Assert.All(links, a => Assert.Matches(@"^/media/track-0\d-1600\.[0-9a-f]{10}\.jpg$", a.GetAttribute("href")));
@@ -25,6 +25,19 @@ public sealed class GaragePageTests : BunitContext
 
         Assert.Equal(8, credits.Count(c => c == "Foto: @mustelasportmedia"));
         Assert.Contains("Foto: B.S Racing · MotoGP Cerezer", credits);
+    }
+
+    [Fact]
+    public void Workshop_ShowsTheIllustration_LabelledAsAiGenerated()
+    {
+        this.AddSite("/garagem/");
+
+        var workshop = Render<Garage>().Find("section[aria-labelledby=garage-workbench]");
+
+        Assert.Equal("Na oficina", workshop.QuerySelector("h2")!.TextContent);
+        Assert.Single(workshop.QuerySelectorAll("a.photo-link"));
+        Assert.Equal("Ilustração gerada com IA", workshop.QuerySelector(".ai-label")!.TextContent);
+        Assert.StartsWith("Ilustração de Manuel", workshop.QuerySelector("img")!.GetAttribute("alt"), StringComparison.Ordinal);
     }
 
     [Fact]

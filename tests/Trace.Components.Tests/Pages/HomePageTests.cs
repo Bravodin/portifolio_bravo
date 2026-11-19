@@ -77,12 +77,14 @@ public sealed class HomePageTests : BunitContext
     }
 
     [Fact]
-    public void Garage_HasThreeCards_PhotoForMotorcycles_LineArtForTheRest()
+    public void Garage_HasThreeCards_ImagesWhereTheyExist_LineArtForGames()
     {
         var cut = RenderHome("/en/");
 
         Assert.NotNull(cut.Find("#garage-motorcycles picture img"));
-        Assert.Equal(2, cut.FindAll(".garage-card svg.line-art").Count);
+        Assert.StartsWith("Illustration of Manuel", cut.Find("#garage-mechanics picture img").GetAttribute("alt"), StringComparison.Ordinal);
+        Assert.Single(cut.FindAll(".garage-card svg.line-art"));
+        Assert.NotNull(cut.Find("#garage-games svg.line-art"));
         Assert.Equal("/en/garage/", cut.Find("#garage a.btn").GetAttribute("href"));
     }
 

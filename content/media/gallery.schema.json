@@ -23,6 +23,7 @@
               "y": { "type": "number", "minimum": 0, "maximum": 1 }
             }
           },
+          "aiGenerated": { "type": "boolean", "default": false, "description": "AI-made image: the site labels it instead of showing a credit." },
           "date": { "type": ["string", "null"], "pattern": "^\\d{4}(-\\d{2})?$" },
           "credit": {
             "type": ["object", "null"],

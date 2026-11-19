@@ -64,5 +64,7 @@
   "garage.open": "Abrir en tamaño grande",
   "video.play": "Reproducir video: {0}",
   "page.garage.title": "Garaje · Manuel Bravo",
-  "garage.back": "← Volver al recorrido"
+  "garage.back": "← Volver al recorrido",
+  "garage.workshop": "En el taller",
+  "garage.aiIllustration": "Ilustración generada con IA"
 }

@@ -6,7 +6,10 @@ public sealed record FocalPoint(double X, double Y);
 
 public sealed record Credit(string Name, Uri? Url);
 
-/// <summary>One photo from <c>content/media/gallery.json</c> (ADR-0008). Alt text is keyed by locale.</summary>
+/// <summary>
+/// One image from <c>content/media/gallery.json</c> (ADR-0008). Alt text is keyed by locale.
+/// <c>AiGenerated</c> images are labelled as such on the site instead of showing a photographer credit.
+/// </summary>
 public sealed record GalleryItem(
     string Id,
     string File,
@@ -14,6 +17,7 @@ public sealed record GalleryItem(
     bool Featured,
     FocalPoint? FocalPoint,
     Credit? Credit,
+    bool AiGenerated,
     IReadOnlyDictionary<string, string> Alt,
     IReadOnlyDictionary<string, string>? Caption);
 

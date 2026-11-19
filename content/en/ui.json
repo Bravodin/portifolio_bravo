@@ -64,5 +64,7 @@
   "garage.open": "Open full size",
   "video.play": "Play video: {0}",
   "page.garage.title": "Garage · Manuel Bravo",
-  "garage.back": "← Back to the ride"
+  "garage.back": "← Back to the ride",
+  "garage.workshop": "In the workshop",
+  "garage.aiIllustration": "AI-generated illustration"
 }
