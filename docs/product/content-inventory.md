@@ -132,6 +132,7 @@ All photos are listed in [`content/media/gallery.json`](../../content/media/gall
 | `track-01` | Gallery | ✅ credit: @mustelasportmedia |
 | `track-02` | Gallery | ✅ credit: B.S Racing · MotoGP Cerezer |
 | `track-03` | Garage card "Motorcycles" + gallery | ✅ credit: @mustelasportmedia |
+| `track-04` … `track-09` | Gallery (Evo Racing track day) | ✅ credit: @mustelasportmedia · captions pending |
 
 ---
 
