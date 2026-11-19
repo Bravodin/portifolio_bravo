@@ -1,0 +1,17 @@
+[
+  { "id": "M1", "label": "Flujo de agendamiento", "before": "12–20 s", "after": "~1,2 s", "delta": "~10–16× más rápido", "where": "Porto" },
+  { "id": "M2", "label": "Fraude en reembolsos", "before": "base", "after": "−40 %", "delta": "−40 %", "where": "Porto" },
+  { "id": "M3", "label": "Costo de la plataforma de APIs", "before": "CA API Gateway", "after": "Sensedia", "delta": "−30 %", "where": "Porto" },
+  { "id": "M4", "label": "Vulnerabilidades de seguridad", "before": ".NET/SOAP heredado", "after": "Node.js (~80 % migrado)", "delta": "−70 %", "where": "Porto" },
+  { "id": "M5", "label": "Flujo crítico de procesamiento", "before": "8 h", "after": "4 h", "delta": "−50 %", "where": "Porto" },
+  { "id": "M6", "label": "Batch crítico (plataforma de alquileres)", "before": "8 h", "after": "2 h", "delta": "−75 %", "where": "Nunes Imóveis" },
+  { "id": "M7", "label": "Productividad de los devs (piloto de IA)", "before": "base", "after": "+40 %", "delta": "+40 %", "where": "Porto" },
+  { "id": "M8", "label": "Gate de cobertura de pruebas unitarias", "before": "—", "after": "≥ 90 % (Sonar)", "delta": "—", "where": "Porto" },
+  { "id": "M9", "label": "Cumplimiento de SLA", "before": "70 %", "after": "98 %", "delta": "+28 pp", "where": "Indra" },
+  { "id": "M10", "label": "Horas extra de los devs", "before": "~40 h/mes", "after": "~10 h/mes", "delta": "−75 %", "where": "Indra" },
+  { "id": "M11", "label": "Velocidad de entrega (transición ágil)", "before": "Waterfall", "after": "Scrum", "delta": "+30 %", "where": "Indra" },
+  { "id": "M12", "label": "Margen de beneficio anual sostenido", "before": "—", "after": "~32 %", "delta": "—", "where": "Indra" },
+  { "id": "M13", "label": "Costo del reloj de control horario", "before": "R$ 3.000", "after": "R$ 800", "delta": "−73 %", "where": "DIMEP" },
+  { "id": "M14", "label": "Rendimiento del sistema de mercado", "before": "base", "after": "+20 %", "delta": "+20 %", "where": "COREON" },
+  { "id": "M15", "label": "Capacidad de respuesta del POS en WPF", "before": "base", "after": "+15 %", "delta": "+15 %", "where": "Linx" }
+]

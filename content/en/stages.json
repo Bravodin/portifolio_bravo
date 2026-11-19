@@ -1,0 +1,15 @@
+[
+  {
+    "id": "client",
+    "number": 1,
+    "title": "Client",
+    "problem": "A 2016 Ionic app where a critical booking journey took 12–20 s.",
+    "action": "Led the migration to native iOS (Swift) and Android (Kotlin); moved regression testing to Compose Testing + XCUITest.",
+    "result": "Booking ~1.2 s.",
+    "story": [
+      "My manager asked for a benchmark: the Ionic app against native. I ran it and presented the numbers. This dyno replays it.",
+      "Speed is only what a dyno measures. Going native also put the app closer to the hardware, opening the door to wearables."
+    ],
+    "tech": ["Swift", "Kotlin", "Jetpack Compose Testing", "XCUITest", "WPF"]
+  }
+]

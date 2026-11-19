@@ -1,0 +1,15 @@
+[
+  {
+    "id": "client",
+    "number": 1,
+    "title": "Cliente",
+    "problem": "Una app Ionic de 2016 donde un flujo crítico de agendamiento tardaba 12–20 s.",
+    "action": "Lideré la migración a iOS (Swift) y Android (Kotlin) nativos; llevé las pruebas de regresión a Compose Testing + XCUITest.",
+    "result": "Agendamiento en ~1,2 s.",
+    "story": [
+      "Mi gerente pidió un benchmark: la app Ionic contra la nativa. Lo ejecuté y presenté los números. Este dinamómetro lo reproduce.",
+      "La velocidad es solo lo que mide un dinamómetro. Pasar a nativo también acercó la app al hardware y abrió la puerta a los wearables."
+    ],
+    "tech": ["Swift", "Kotlin", "Jetpack Compose Testing", "XCUITest", "WPF"]
+  }
+]

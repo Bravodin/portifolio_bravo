@@ -1,0 +1,17 @@
+[
+  { "id": "M1", "label": "Jornada de agendamento", "before": "12–20 s", "after": "~1,2 s", "delta": "~10–16× mais rápida", "where": "Porto" },
+  { "id": "M2", "label": "Fraudes em reembolso", "before": "base", "after": "−40 %", "delta": "−40 %", "where": "Porto" },
+  { "id": "M3", "label": "Custo da plataforma de APIs", "before": "CA API Gateway", "after": "Sensedia", "delta": "−30 %", "where": "Porto" },
+  { "id": "M4", "label": "Vulnerabilidades de segurança", "before": ".NET/SOAP legado", "after": "Node.js (~80 % migrado)", "delta": "−70 %", "where": "Porto" },
+  { "id": "M5", "label": "Fluxo crítico de processamento", "before": "8 h", "after": "4 h", "delta": "−50 %", "where": "Porto" },
+  { "id": "M6", "label": "Batch crítico (plataforma de locação)", "before": "8 h", "after": "2 h", "delta": "−75 %", "where": "Nunes Imóveis" },
+  { "id": "M7", "label": "Produtividade dos devs (piloto de IA)", "before": "base", "after": "+40 %", "delta": "+40 %", "where": "Porto" },
+  { "id": "M8", "label": "Gate de cobertura de testes unitários", "before": "—", "after": "≥ 90 % (Sonar)", "delta": "—", "where": "Porto" },
+  { "id": "M9", "label": "Cumprimento de SLA", "before": "70 %", "after": "98 %", "delta": "+28 p.p.", "where": "Indra" },
+  { "id": "M10", "label": "Horas extras dos devs", "before": "~40 h/mês", "after": "~10 h/mês", "delta": "−75 %", "where": "Indra" },
+  { "id": "M11", "label": "Velocidade de entrega (transição ágil)", "before": "Waterfall", "after": "Scrum", "delta": "+30 %", "where": "Indra" },
+  { "id": "M12", "label": "Margem de lucro anual sustentada", "before": "—", "after": "~32 %", "delta": "—", "where": "Indra" },
+  { "id": "M13", "label": "Custo do relógio de ponto", "before": "R$ 3.000", "after": "R$ 800", "delta": "−73 %", "where": "DIMEP" },
+  { "id": "M14", "label": "Desempenho do sistema de mercado", "before": "base", "after": "+20 %", "delta": "+20 %", "where": "COREON" },
+  { "id": "M15", "label": "Responsividade do PDV em WPF", "before": "base", "after": "+15 %", "delta": "+15 %", "where": "Linx" }
+]

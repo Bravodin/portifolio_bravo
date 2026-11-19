@@ -1,0 +1,5 @@
+{
+  "metrics": ["M1", "M4", "M3", "M2", "M9", "M7"],
+  "coreStack": ["C#", ".NET", "ASP.NET", "Node.js", "TypeScript", "Angular", "AWS", "Redis", "SQL Server", "Oracle", "Selenium", "JMeter", "Postman", "Sonar", "GitHub Copilot", "Claude"],
+  "roles": 3
+}

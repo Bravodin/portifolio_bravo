@@ -1,0 +1,17 @@
+[
+  { "id": "M1", "label": "Appointment-booking journey", "before": "12–20 s", "after": "~1.2 s", "delta": "~10–16× faster", "where": "Porto" },
+  { "id": "M2", "label": "Reimbursement fraud", "before": "baseline", "after": "−40 %", "delta": "−40 %", "where": "Porto" },
+  { "id": "M3", "label": "API platform cost", "before": "CA API Gateway", "after": "Sensedia", "delta": "−30 %", "where": "Porto" },
+  { "id": "M4", "label": "Security vulnerabilities", "before": "legacy .NET/SOAP", "after": "Node.js (~80 % migrated)", "delta": "−70 %", "where": "Porto" },
+  { "id": "M5", "label": "Critical processing workflow", "before": "8 h", "after": "4 h", "delta": "−50 %", "where": "Porto" },
+  { "id": "M6", "label": "Critical batch (rental platform)", "before": "8 h", "after": "2 h", "delta": "−75 %", "where": "Nunes Imóveis" },
+  { "id": "M7", "label": "Developer productivity (AI pilot)", "before": "baseline", "after": "+40 %", "delta": "+40 %", "where": "Porto" },
+  { "id": "M8", "label": "Unit-test coverage gate", "before": "—", "after": "≥ 90 % (Sonar)", "delta": "—", "where": "Porto" },
+  { "id": "M9", "label": "SLA compliance", "before": "70 %", "after": "98 %", "delta": "+28 pp", "where": "Indra" },
+  { "id": "M10", "label": "Developer overtime", "before": "~40 h/mo", "after": "~10 h/mo", "delta": "−75 %", "where": "Indra" },
+  { "id": "M11", "label": "Delivery speed (Agile transition)", "before": "Waterfall", "after": "Scrum", "delta": "+30 %", "where": "Indra" },
+  { "id": "M12", "label": "Annual profit margin sustained", "before": "—", "after": "~32 %", "delta": "—", "where": "Indra" },
+  { "id": "M13", "label": "Time-clock device cost", "before": "R$ 3,000", "after": "R$ 800", "delta": "−73 %", "where": "DIMEP" },
+  { "id": "M14", "label": "Market system performance", "before": "baseline", "after": "+20 %", "delta": "+20 %", "where": "COREON" },
+  { "id": "M15", "label": "WPF POS responsiveness", "before": "baseline", "after": "+15 %", "delta": "+15 %", "where": "Linx" }
+]
