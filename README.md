@@ -9,11 +9,11 @@ This repository is a portfolio piece in its own right. The site, and also how it
 
 | Phase | Scope | State |
 |---|---|---|
-| 0 — Discovery & UX | Vision, personas, flows, wireframes, design tokens, architecture, ADRs | ✅ this commit |
-| 1 — Skeleton | Blazor Web App (.NET 10), static prerender, CI/CD on Azure Pipelines to Azure Static Web Apps, custom domain | ⏳ |
-| 2 — Content & i18n | PT-BR / EN / ES content files, Recruiter Mode, SEO | ⏳ |
-| 3 — Immersion | The Trace, Dyno, achievements, terminal | ⏳ |
-| 4 — Hardening | bUnit + Playwright + axe + Lighthouse CI budgets | ⏳ |
+| 0 — Discovery & UX | Vision, personas, flows, wireframes, design tokens, architecture, ADRs | ✅ |
+| 1 — Skeleton | Blazor Web App (.NET 10), build-time prerender (`Trace.Prerender`), media pipeline, local run that mirrors CI | ✅ · Azure Pipelines → Azure Static Web Apps and the custom domain: ⏳ |
+| 2 — Content & i18n | PT-BR / EN / ES content as data, Recruiter Mode, Garage, Colophon, `hreflang` + sitemap | ✅ |
+| 3 — Immersion | The Trace (7 stages) and the Dyno ✅ · motion, gear indicator, achievements, terminal ⏳ | 🟡 |
+| 4 — Hardening | xUnit + bUnit (180+ tests) ✅ · Playwright + axe + Lighthouse CI budgets in the pipeline ⏳ | 🟡 |
 
 ## Documentation map
 
