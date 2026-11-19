@@ -1,0 +1,46 @@
+{
+  "aiTitle": "Built with AI, directed by a human",
+  "aiIntro": "This site was built together with Claude (Anthropic), in Claude Code. Who did what:",
+  "roles": [
+    {
+      "who": "Manuel",
+      "what": "Intent, content and decisions: what goes in, what stays out, which path to take. Nothing shipped without his review."
+    },
+    {
+      "who": "Claude",
+      "what": "Architecture and solution proposals, the code, the tests and the checks in a real browser."
+    },
+    {
+      "who": "Together",
+      "what": "Every architecture decision became an ADR, and every change a small commit with recorded co-authorship."
+    }
+  ],
+  "reviewsTitle": "Review went both ways",
+  "reviews": [
+    "Hosting: Manuel swapped GitHub Pages for Azure Static Web Apps with Azure Pipelines; Claude recorded the decision (ADR-0009) and adapted the build.",
+    "Numbers: the wireframe said “20+ years”, and Claude pointed out that the CV didn't back it up. Manuel added his Delphi years (since 2006), and the experience is now computed at build time.",
+    "Images: Claude flagged that old games are still copyrighted and that one photo showed a game on screen; Manuel chose to blur the screen.",
+    "Curation: out of nine track photos, Manuel kept four, and swapped one after hearing a second opinion."
+  ],
+  "numbersTitle": "By the numbers",
+  "usagePeriod": "Claude Code usage on November 19, 2026",
+  "usage": [
+    {
+      "value": "146.6 million",
+      "label": "tokens processed"
+    },
+    {
+      "value": "455 thousand",
+      "label": "tokens written by the AI"
+    },
+    {
+      "value": "US$43.93",
+      "label": "total cost"
+    }
+  ],
+  "usageNote": "Almost all of it (99 %) is context re-read from cache, not new text: the AI re-reads the project at every step.",
+  "repoCommits": "commits",
+  "repoAdrs": "recorded decisions (ADRs)",
+  "repoTests": "test methods",
+  "history": "See the full commit history on GitHub"
+}

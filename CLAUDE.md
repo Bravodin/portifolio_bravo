@@ -54,7 +54,7 @@ Order:
 2. ~~`global.json`, solution, projects, `Directory.Build.props`, `.editorconfig`~~ ✅ done (central package management in `Directory.Packages.props`; xUnit v3 + bUnit on Microsoft.Testing.Platform with `coverlet.MTP`).
 3. ~~**Spike (ADR-0003 exit criteria)**~~ ✅ passed locally (SWA CLI). The deploy to the real SWA happens with step 5.
 4. ~~`Trace.Prerender` minimal~~ ✅ done. Still to add: the media step (ADR-0008), `hreflang` validation once locales exist, and removing the antiforgery token from the HTML.
-5. `azure-pipelines.yml`: restore → build → test + coverage → prerender → `AzureStaticWebApp@0` deploy (`skip_app_build: true`, `app_location: dist`).
+5. `azure-pipelines.yml`: restore → build → test + coverage → prerender → `AzureStaticWebApp@0` deploy (`skip_app_build: true`, `app_location: dist`). Check out with `fetchDepth: 0`: the Colophon counts commits at build time (`RepoStats`), and a shallow clone would show 1. Set `TF_BUILD` (Azure does) so the CV placeholder check fails the build.
 6. Then content JSON + the Recruiter Mode page (highest value for recruiters).
 
 ## Useful commands

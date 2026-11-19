@@ -1,0 +1,46 @@
+{
+  "aiTitle": "Construido con IA, dirigido por un humano",
+  "aiIntro": "Este sitio se hizo en colaboración con Claude (Anthropic), en Claude Code. Quién hizo qué:",
+  "roles": [
+    {
+      "who": "Manuel",
+      "what": "Intención, contenido y decisiones: qué entra, qué sale, qué camino seguir. Nada se publicó sin su revisión."
+    },
+    {
+      "who": "Claude",
+      "what": "Propuestas de arquitectura y de solución, el código, las pruebas y la verificación en un navegador real."
+    },
+    {
+      "who": "Juntos",
+      "what": "Cada decisión de arquitectura se convirtió en un ADR, y cada cambio, en un commit pequeño con la coautoría registrada."
+    }
+  ],
+  "reviewsTitle": "La revisión funcionó en los dos sentidos",
+  "reviews": [
+    "Hosting: Manuel cambió GitHub Pages por Azure Static Web Apps con Azure Pipelines; Claude registró la decisión (ADR-0009) y adaptó el build.",
+    "Números: el wireframe decía “20+ años”, y Claude señaló que el currículum no lo respaldaba. Manuel agregó sus años de Delphi (desde 2006), y la experiencia ahora se calcula en el build.",
+    "Imágenes: Claude recordó que los juegos antiguos siguen protegidos por derechos de autor y que una foto mostraba un juego en la pantalla; Manuel eligió desenfocar la pantalla.",
+    "Curaduría: de nueve fotos de pista, Manuel se quedó con cuatro, y cambió una después de escuchar una segunda opinión."
+  ],
+  "numbersTitle": "En números",
+  "usagePeriod": "Uso de Claude Code el 19 de noviembre de 2026",
+  "usage": [
+    {
+      "value": "146,6 millones",
+      "label": "tokens procesados"
+    },
+    {
+      "value": "455 mil",
+      "label": "tokens escritos por la IA"
+    },
+    {
+      "value": "US$ 43,93",
+      "label": "costo total"
+    }
+  ],
+  "usageNote": "Casi todo (99 %) es contexto releído de la caché, no texto nuevo: la IA relee el proyecto en cada paso.",
+  "repoCommits": "commits",
+  "repoAdrs": "decisiones registradas (ADRs)",
+  "repoTests": "métodos de prueba",
+  "history": "Ver todo el historial de commits en GitHub"
+}

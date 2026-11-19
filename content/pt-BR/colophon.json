@@ -1,0 +1,46 @@
+{
+  "aiTitle": "Construído com IA, dirigido por humano",
+  "aiIntro": "Este site foi feito em parceria com o Claude (Anthropic), no Claude Code. A divisão de papéis:",
+  "roles": [
+    {
+      "who": "Manuel",
+      "what": "Intenção, conteúdo e decisões: o que entra, o que sai, qual caminho seguir. Nada foi publicado sem a revisão dele."
+    },
+    {
+      "who": "Claude",
+      "what": "Propostas de arquitetura e de solução, o código, os testes e a verificação num navegador de verdade."
+    },
+    {
+      "who": "Juntos",
+      "what": "Cada decisão de arquitetura virou um ADR, e cada mudança, um commit pequeno com a coautoria registrada."
+    }
+  ],
+  "reviewsTitle": "A revisão funcionou nos dois sentidos",
+  "reviews": [
+    "Hospedagem: Manuel trocou o GitHub Pages pelo Azure Static Web Apps com Azure Pipelines; o Claude registrou a decisão (ADR-0009) e adaptou o build.",
+    "Números: a wireframe dizia “20+ anos”, e o Claude apontou que o currículo não sustentava isso. Manuel incluiu os anos de Delphi (desde 2006), e a experiência passou a ser calculada no build.",
+    "Imagens: o Claude lembrou que jogos antigos continuam protegidos por direitos autorais e que uma foto mostrava um jogo na tela; Manuel escolheu desfocar a tela.",
+    "Curadoria: das nove fotos de pista, Manuel ficou com quatro, e trocou uma depois de ouvir uma segunda opinião."
+  ],
+  "numbersTitle": "Em números",
+  "usagePeriod": "Uso do Claude Code em 19 de novembro de 2026",
+  "usage": [
+    {
+      "value": "146,6 milhões",
+      "label": "tokens processados"
+    },
+    {
+      "value": "455 mil",
+      "label": "tokens escritos pela IA"
+    },
+    {
+      "value": "US$ 43,93",
+      "label": "custo total"
+    }
+  ],
+  "usageNote": "Quase tudo (99 %) é contexto relido do cache, não texto novo: a IA relê o projeto a cada passo.",
+  "repoCommits": "commits",
+  "repoAdrs": "decisões registradas (ADRs)",
+  "repoTests": "métodos de teste",
+  "history": "Ver todo o histórico de commits no GitHub"
+}

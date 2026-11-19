@@ -21,6 +21,31 @@ public sealed record Principle(string Title, string Text);
 /// <summary>"About me" (content inventory §1.1, from Manuel; no numbers beyond the career log).</summary>
 public sealed record About(string Title, IReadOnlyList<string> Paragraphs, string PrinciplesTitle, IReadOnlyList<Principle> Principles);
 
+/// <summary>One "who did what" line in the Colophon.</summary>
+public sealed record Role(string Who, string What);
+
+/// <summary>A number with its label, pre-formatted per locale (e.g. "156,5 milhões" / "tokens processados").</summary>
+public sealed record Figure(string Value, string Label);
+
+/// <summary>
+/// The Colophon's "built with AI, directed by a human" section (content inventory §1.2). Usage figures come from
+/// Manuel's Claude Code usage report; repository figures are measured at build time, so only their labels live here.
+/// </summary>
+public sealed record ColophonCopy(
+    string AiTitle,
+    string AiIntro,
+    IReadOnlyList<Role> Roles,
+    string ReviewsTitle,
+    IReadOnlyList<string> Reviews,
+    string NumbersTitle,
+    string UsagePeriod,
+    IReadOnlyList<Figure> Usage,
+    string UsageNote,
+    string RepoCommits,
+    string RepoAdrs,
+    string RepoTests,
+    string History);
+
 /// <summary>A measured result (content inventory §2). Values are pre-formatted per locale (ADR-0004).</summary>
 public sealed record Metric(string Id, string Label, string Before, string After, string Delta, string Where);
 
@@ -72,6 +97,7 @@ public sealed record SiteContent(
     IReadOnlyList<Stage> Stages,
     IReadOnlyList<Drawer> Toolbox,
     IReadOnlyList<GarageCard> Garage,
+    ColophonCopy Colophon,
     IReadOnlyDictionary<string, string> Ui)
 {
     /// <summary>A UI string from ui.json. A missing key is a content bug, so it throws instead of rendering a blank.</summary>

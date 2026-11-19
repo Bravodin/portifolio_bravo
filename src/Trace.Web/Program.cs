@@ -14,6 +14,7 @@ builder.Services.AddSingleton(new SiteOptions(new Uri(builder.Configuration["Tra
 builder.Services.AddSingleton(new MediaCatalog(
     MediaCatalog.FindRoot(builder.Configuration["Trace:MediaRoot"]),
     builder.Configuration["Trace:VideoPosterCache"]));
+builder.Services.AddSingleton(_ => RepoStats.Measure());
 builder.Services.AddScoped<PageContext>();
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();

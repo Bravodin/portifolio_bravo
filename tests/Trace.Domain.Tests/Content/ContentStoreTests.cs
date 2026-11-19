@@ -127,6 +127,17 @@ public sealed class ContentStoreTests
     }
 
     [Fact]
+    public void Colophon_TellsWhoDidWhat_WithTheReportedUsage()
+    {
+        var colophon = Store.For(Locales.Portuguese).Colophon;
+
+        Assert.Equal(["Manuel", "Claude", "Juntos"], colophon.Roles.Select(r => r.Who));
+        Assert.Equal(4, colophon.Reviews.Count);
+        Assert.Equal(["146,6 milhões", "455 mil", "US$ 43,93"], colophon.Usage.Select(u => u.Value));
+        Assert.Equal("US$43.93", Store.For(Locales.English).Colophon.Usage[2].Value);
+    }
+
+    [Fact]
     public void Stage_Client_HasBothStoryBeats() =>
         Assert.Equal(2, Store.For(Locales.English).Stage("client").Story.Count);
 

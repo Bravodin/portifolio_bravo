@@ -59,6 +59,12 @@ public static class ContentValidator
                 yield return $"about.json has a different number of paragraphs or principles in {locale}";
             }
 
+            var (ours, translated) = (reference.Colophon, other.Colophon);
+            if (ours.Roles.Count != translated.Roles.Count || ours.Reviews.Count != translated.Reviews.Count || ours.Usage.Count != translated.Usage.Count)
+            {
+                yield return $"colophon.json has a different number of roles, reviews or usage figures in {locale}";
+            }
+
             if (reference.Log.Count != other.Log.Count)
             {
                 yield return $"log.json has {reference.Log.Count} entries in {Locales.Default} but {other.Log.Count} in {locale}";

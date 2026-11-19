@@ -2,16 +2,66 @@
 @page "/en/colophon"
 @page "/es/como-se-hizo"
 @inject PageContext Page
+@inject RepoStats Repo
 
 <PageTitle>@Page.T("page.colophon.title")</PageTitle>
 
-<article class="prose">
+<article class="prose colophon">
     <h1>@Page.T("colophon.title")</h1>
     <ul>
         <li>@Page.T("colophon.stack")</li>
         <li>@Page.T("colophon.hosting")</li>
         <li>@Page.T("colophon.type")</li>
-        <li>@Page.T("colophon.source") <a href="https://github.com/Bravodin/portifolio_bravo">GitHub</a></li>
+        <li>@Page.T("colophon.source") <a href="@RepoUrl">GitHub</a></li>
     </ul>
+
+    @* Built with AI, directed by a human (content inventory §1.2). *@
+    <section class="ai-build" aria-labelledby="ai-title">
+        <h2 id="ai-title">@Copy.AiTitle</h2>
+        <p>@Copy.AiIntro</p>
+        <dl class="roles-list">
+            @foreach (var role in Copy.Roles)
+            {
+                <div>
+                    <dt>@role.Who</dt>
+                    <dd>@role.What</dd>
+                </div>
+            }
+        </dl>
+
+        <h3>@Copy.ReviewsTitle</h3>
+        <ul class="reviews">
+            @foreach (var review in Copy.Reviews)
+            {
+                <li>@review</li>
+            }
+        </ul>
+
+        <h3>@Copy.NumbersTitle</h3>
+        <ul class="figures" aria-label="@Copy.NumbersTitle">
+            @if (Repo.Commits is { } commits)
+            {
+                <li><strong>@commits</strong> <span>@Copy.RepoCommits</span></li>
+            }
+            <li><strong>@Repo.Adrs</strong> <span>@Copy.RepoAdrs</span></li>
+            <li><strong>@Repo.TestMethods</strong> <span>@Copy.RepoTests</span></li>
+        </ul>
+        <p class="hud-label">@Copy.UsagePeriod</p>
+        <ul class="figures">
+            @foreach (var figure in Copy.Usage)
+            {
+                <li><strong>@figure.Value</strong> <span>@figure.Label</span></li>
+            }
+        </ul>
+        <p class="figures-note">@Copy.UsageNote</p>
+        <p><a href="@(RepoUrl)/commits/main">@Copy.History ↗</a></p>
+    </section>
+
     <p><a href="@Page.PathFor(PageKey.Home)">@Page.T("colophon.back")</a></p>
 </article>
+
+@code {
+    private const string RepoUrl = "https://github.com/Bravodin/portifolio_bravo";
+
+    private ColophonCopy Copy => Page.Content.Colophon;
+}

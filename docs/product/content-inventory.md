@@ -33,6 +33,13 @@ Source: Manuel, 2026-11-19 (polished from his notes; not in the CV). Lives in `c
 - **Goal:** keep growing as a technical leader, keep up with how software engineering changes, mentor the team's developers.
 - **How I work:** hands-on (code, PR reviews, architecture) · quality over quantity · simple first (no over-engineering) · active listening (stakeholders' needs first) · focus on what I can change (circles of control, influence and concern: energy goes to control and influence; concerns are tracked without stalling the team) · mentoring.
 
+### 1.2 Colophon: built with AI, directed by a human
+
+Lives in `content/{locale}/colophon.json`. Agreed with Manuel on 2026-11-19: he set intent, content and decisions; Claude proposed architecture and solutions and wrote the code; nothing shipped without his review. The review examples are real moments from the build (hosting decision, "20+ years", game copyright, photo curation).
+
+- **Usage figures** (Manuel's Claude Code daily usage report for 2026-11-19 only, the day this site was built): 146,605,059 tokens processed (145,431,035 cache reads, 99 %), 454,594 output tokens, US$ 43.93. A snapshot: update by hand if a later report is used.
+- **Repository figures** (commits, ADRs, test methods) are measured at build time by `RepoStats`; they're not stored here.
+
 ---
 
 ## 2. Headline metrics (the "dashboard")
