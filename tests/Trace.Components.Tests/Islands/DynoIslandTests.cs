@@ -22,6 +22,7 @@ public sealed class DynoIslandTests : BunitContext
         var card = cut.Find("[data-testid=dyno-static]");
         Assert.Contains("12–20 s", card.TextContent, StringComparison.Ordinal);
         Assert.Contains("~1.2 s", card.TextContent, StringComparison.Ordinal);
+        Assert.Contains("wearables", card.TextContent, StringComparison.Ordinal);
         Assert.Empty(cut.FindAll("button"));
     }
 
@@ -49,6 +50,7 @@ public sealed class DynoIslandTests : BunitContext
         Advance(TimeSpan.FromSeconds(20));
         cut.WaitForAssertion(() => Assert.Equal("done", cut.Find("section").GetAttribute("data-dyno-state")));
         Assert.Contains("Legacy finished in", cut.Markup, StringComparison.Ordinal);
+        Assert.Contains("wearables", cut.Find("[data-testid=dyno-result]").TextContent, StringComparison.Ordinal);
         Assert.Equal("Run again", cut.Find("button.dyno-run").TextContent);
     }
 

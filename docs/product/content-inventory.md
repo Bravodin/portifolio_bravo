@@ -60,6 +60,20 @@ Format for each stage: **Layer → Problem → Action → Result → Tech**. Cop
 | 6 | **Database** | Oil & cooling | Deadlocks and slow batches on high-volume data | Tuned queries, transactions, locking strategy and stored procedures | Batch 8 h → 2 h; deadlocks eliminated; +20 % throughput | SQL Server · Oracle · MySQL · LINQ |
 | 7 | **Pit Crew** (Observability & Quality) | Diagnostic scanner & pit crew | Production issues that span the app, chatbot and web; releases without a safety net | End-to-end RCA with OpenSearch; Selenium / Postman / JMeter; BDD/TDD; 90 % Sonar gate; Copilot + Claude pilot | +40 % productivity; load tests before go-live | OpenSearch · Selenium · JMeter · Postman · Sonar · GitHub Copilot · Claude |
 
+### 3.1 Stage 1 story: the benchmark behind the dyno
+
+Source: Manuel, 2026-11-19 (not in the CV). It adds **no new numbers**: the dyno still uses M1 (12–20 s → ~1.2 s).
+
+- **The benchmark:** his manager asked for a benchmark of the Ionic app against native. Manuel ran it and presented the numbers. The dyno replays that benchmark.
+- **Beyond speed:** the numbers only measure performance. Going native also put the app closer to the hardware, which makes wearables easier to support. This is a **possibility**, not a shipped feature. Don't present it as delivered.
+
+| Key | EN | PT-BR | ES |
+|---|---|---|---|
+| `stage1.story.benchmark` | My manager asked for a benchmark: the Ionic app against native. I ran it and presented the numbers. This dyno replays it. | Meu gestor pediu um benchmark: o app Ionic contra o nativo. Eu rodei e apresentei os números. Este dinamômetro reproduz esse teste. | Mi gerente pidió un benchmark: la app Ionic contra la nativa. Lo ejecuté y presenté los números. Este dinamómetro lo reproduce. |
+| `stage1.story.beyondSpeed` | Speed is only what a dyno measures. Going native also put the app closer to the hardware, opening the door to wearables. | Velocidade é só o que o dinamômetro mede. Ir para o nativo também deixou o app mais perto do hardware e abriu caminho para wearables. | La velocidad es solo lo que mide un dinamómetro. Pasar a nativo también acercó la app al hardware y abrió la puerta a los wearables. |
+
+TODO(manuel): who the numbers were presented to (manager only, or leadership too?), and whether the benchmark drove the migration decision. Until then the copy just says "presented the numbers".
+
 ---
 
 ## 4. Service Log (career timeline)
@@ -115,9 +129,9 @@ All photos are listed in [`content/media/gallery.json`](../../content/media/gall
 | ID | Use | Status |
 |---|---|---|
 | `profile` | Recruiter Mode identity card, Pit Stop, Open Graph image | ✅ (a ≥ 800 px version would be better) |
-| `track-01` | Gallery | ✅ credit pending |
+| `track-01` | Gallery | ✅ credit: @mustelasportmedia |
 | `track-02` | Gallery | ✅ credit: B.S Racing · MotoGP Cerezer |
-| `track-03` | Garage card "Motorcycles" + gallery | ✅ credit pending |
+| `track-03` | Garage card "Motorcycles" + gallery | ✅ credit: @mustelasportmedia |
 
 ---
 

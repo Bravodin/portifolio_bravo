@@ -48,6 +48,6 @@ The site's photos live here as **originals**. The build generates every web vers
 ## To do for the current photos
 
 - [ ] `profile/manuel-bravo.jpg` is 361 × 423 px. That's fine for the avatar, but send a version ≥ 800 px for the Open Graph image and high-density screens.
-- [ ] Fill in the photographer credit for `track-01` and `track-03`.
+- [x] Fill in the photographer credit for `track-01` and `track-03` (@mustelasportmedia).
 - [ ] Confirm the captions (they're drafts) and the dates.
 - [ ] Add photos for **workbench** (mechanics) and **games** to complete the Garage.

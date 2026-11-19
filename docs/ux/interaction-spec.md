@@ -33,10 +33,11 @@ Rule: **nothing in L0 depends on L1 or L2.** The case expanders use native `<det
 
 | State | UI |
 |---|---|
+| Intro (page text, L0) | `stage1.story.benchmark`, just above the dyno: the manager asked for a benchmark, Manuel ran it and presented the numbers, and the dyno replays it |
 | Idle | Two lanes, labeled "Legacy · Ionic (2016)" and "Native · Swift/Kotlin". Tachometers at 0. Button "Run the dyno" |
 | Running | Both needles rise. Each lane has a timer (`00.0 s`) and a booking-skeleton UI. Native completes at ~1.2 s with a ✓ |
 | Skip | After 3 s a link appears: "Skip — you get the idea" |
-| Done | Result card: before/after, computed speed-up, "Run again". Legacy duration = random 12–20 s (seeded per run, shown honestly) |
+| Done | Result card: before/after, computed speed-up, then the payoff line `stage1.story.beyondSpeed` (closer to the hardware → wearables), "Run again". Legacy duration = random 12–20 s (seeded per run, shown honestly). The no-JS static card shows the same payoff line |
 | Footnote | "Simulation based on measured production timings. No real systems are called." |
 
 Keyboard: the button is focusable, and Space/Enter starts the run. While running, `aria-live="polite"` announces "Native finished in 1.2 seconds" and then "Legacy finished in N seconds".

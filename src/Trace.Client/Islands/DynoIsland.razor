@@ -17,6 +17,7 @@
             <p><strong>@LegacyLabel</strong>: 12–20 s</p>
             <p><strong>@NativeLabel</strong>: ~1.2 s</p>
             <p>~10–16× faster</p>
+            <p class="dyno-beyond">@BeyondSpeed</p>
         </div>
     }
     else
@@ -32,6 +33,7 @@
                 <p><strong>@LegacyLabel</strong>: @Seconds(_run.Legacy)</p>
                 <p><strong>@NativeLabel</strong>: @Seconds(_run.Native)</p>
                 <p>@_run.SpeedUp.ToString("0.#", CultureInfo.InvariantCulture)× faster</p>
+                <p class="dyno-beyond">@BeyondSpeed</p>
             </div>
         }
 
@@ -67,6 +69,10 @@
     [Parameter] public string LegacyLabel { get; set; } = "Legacy · Ionic (2016)";
     [Parameter] public string NativeLabel { get; set; } = "Native · Swift/Kotlin";
     [Parameter] public string RunLabel { get; set; } = "Run the dyno";
+
+    /// <summary>Payoff after the numbers (content inventory §3.1, <c>stage1.story.beyondSpeed</c>).</summary>
+    [Parameter] public string BeyondSpeed { get; set; } =
+        "Speed is only what a dyno measures. Going native also put the app closer to the hardware, opening the door to wearables.";
 
     /// <summary>Seed source for each run; replaceable in tests.</summary>
     [Parameter] public Func<int> NextSeed { get; set; } = () => Environment.TickCount;
