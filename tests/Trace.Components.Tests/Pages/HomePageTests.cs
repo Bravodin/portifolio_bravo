@@ -18,6 +18,26 @@ public sealed class HomePageTests : BunitContext
     }
 
     [Fact]
+    public void Hero_ShowsThePortrait_AboveTheFold()
+    {
+        var img = RenderHome("/en/").Find(".hero picture.hero-portrait img");
+
+        Assert.Equal(("160", "eager"), (img.GetAttribute("width"), img.GetAttribute("loading")));
+        Assert.StartsWith("Portrait of Manuel Bravo", img.GetAttribute("alt"), StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void About_ComesRightAfterTheHero_WithHowIWork()
+    {
+        var cut = RenderHome("/");
+
+        Assert.Equal("Sobre mim", cut.Find("#about h2").TextContent);
+        Assert.Equal(5, cut.FindAll("#about .about-principles li").Count);
+        Assert.Equal("Simples primeiro", cut.FindAll("#about .about-principles strong")[2].TextContent);
+        Assert.Equal("about", cut.Find("#start + section").Id);
+    }
+
+    [Fact]
     public void Trace_HasTheSevenStagesInOrder()
     {
         var cut = RenderHome("/en/");

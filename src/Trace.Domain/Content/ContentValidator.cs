@@ -44,6 +44,12 @@ public static class ContentValidator
                 }
             }
 
+            if (reference.About.Paragraphs.Count != other.About.Paragraphs.Count
+                || reference.About.Principles.Count != other.About.Principles.Count)
+            {
+                yield return $"about.json has a different number of paragraphs or principles in {locale}";
+            }
+
             if (reference.Log.Count != other.Log.Count)
             {
                 yield return $"log.json has {reference.Log.Count} entries in {Locales.Default} but {other.Log.Count} in {locale}";

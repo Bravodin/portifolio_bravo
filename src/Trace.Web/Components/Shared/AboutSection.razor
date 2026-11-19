@@ -1,0 +1,27 @@
+@inject PageContext Page
+
+@* "About me" (content inventory §1.1): who Manuel is and how he works, right after the hero. *@
+<section class="about" id="about" aria-labelledby="about-title">
+    <h2 id="about-title">@About.Title</h2>
+    <div class="about-grid">
+        <div class="about-text">
+            @foreach (var paragraph in About.Paragraphs)
+            {
+                <p>@paragraph</p>
+            }
+        </div>
+        <div class="about-principles">
+            <h3>@About.PrinciplesTitle</h3>
+            <ul>
+                @foreach (var principle in About.Principles)
+                {
+                    <li><strong>@principle.Title</strong> <span>@principle.Text</span></li>
+                }
+            </ul>
+        </div>
+    </div>
+</section>
+
+@code {
+    private About About => Page.Content.About;
+}

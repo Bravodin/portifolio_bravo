@@ -1,0 +1,31 @@
+{
+  "title": "Sobre mí",
+  "paragraphs": [
+    "Soy autodidacta. Empecé con Delphi en 2006 y, desde entonces, aprendo cada tecnología nueva poniendo las manos en la masa: de VB6 y .NET a Node.js, la nube y, ahora, un MBA en Ingeniería de IA.",
+    "Lejos del teclado, ruedo en track days y juego videojuegos. Los dos enseñan lo mismo que el trabajo: medir antes de tocar, cuidar los detalles y mejorar una vuelta a la vez.",
+    "Quiero seguir creciendo como líder técnico, acompañando cómo cambia la ingeniería de software y siendo mentor de los devs del equipo."
+  ],
+  "principlesTitle": "Cómo trabajo",
+  "principles": [
+    {
+      "title": "Manos a la obra",
+      "text": "Código, revisión de PR y decisiones de arquitectura, junto con el equipo."
+    },
+    {
+      "title": "Calidad antes que cantidad",
+      "text": "Pruebas automatizadas y gates de calidad antes de llegar a producción."
+    },
+    {
+      "title": "Lo simple primero",
+      "text": "La solución más simple que resuelve el problema real, sin sobreingeniería."
+    },
+    {
+      "title": "Escucha activa",
+      "text": "Entender lo que el negocio y los stakeholders necesitan antes de proponer la solución."
+    },
+    {
+      "title": "Mentoría",
+      "text": "Ayudar a cada dev del equipo a crecer, con revisiones de código que enseñan."
+    }
+  ]
+}

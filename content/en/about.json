@@ -1,0 +1,31 @@
+{
+  "title": "About me",
+  "paragraphs": [
+    "I'm self-taught. I started with Delphi in 2006 and have learned every new technology since by getting my hands dirty: from VB6 and .NET to Node.js, the cloud and, now, an MBA in AI Engineering.",
+    "Away from the keyboard, I ride track days and play video games. Both teach what the job does: measure before you touch anything, get the details right, and improve one lap at a time.",
+    "I want to keep growing as a technical leader, keeping up with how software engineering changes and mentoring the developers on my team."
+  ],
+  "principlesTitle": "How I work",
+  "principles": [
+    {
+      "title": "Hands-on",
+      "text": "Code, pull request reviews and architecture decisions, together with the team."
+    },
+    {
+      "title": "Quality over quantity",
+      "text": "Automated tests and quality gates before anything reaches production."
+    },
+    {
+      "title": "Simple first",
+      "text": "The simplest solution that solves the real problem, without over-engineering."
+    },
+    {
+      "title": "Active listening",
+      "text": "Understand what the business and the stakeholders need before proposing a solution."
+    },
+    {
+      "title": "Mentoring",
+      "text": "Help every developer on the team grow, with code reviews that teach."
+    }
+  ]
+}

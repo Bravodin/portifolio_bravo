@@ -3,19 +3,24 @@
 @page "/es"
 @inject PageContext Page
 
-@* The ride (docs/ux/sitemap.md): hero → the Trace (7 stages) → Service Log → Toolbox
+@* The ride (docs/ux/sitemap.md): hero → about → the Trace (7 stages) → Service Log → Toolbox
    → Garage → Pit Stop. *@
 <PageTitle>@Page.T("page.home.title")</PageTitle>
 
 <section class="hero" id="start" aria-labelledby="hero-name">
-    <h1 id="hero-name">@Identity.Name</h1>
-    <p class="hero-role">@Identity.Role</p>
-    <p class="hero-tagline">@Identity.Tagline</p>
-    <p class="hero-actions">
-        <a class="btn btn-primary" href="@Page.PathFor(PageKey.Recruiter)">@Page.T("cta.recruiter")</a>
-        <a class="btn" href="#trace">@Page.T("cta.ride") ↓</a>
-    </p>
+    <Picture Id="profile" Shape="ImageShape.Square" Widths="[160, 320]" Sizes="(min-width: 768px) 160px, 112px" Width="160" Height="160" Class="hero-portrait" Eager="true" />
+    <div class="hero-text">
+        <h1 id="hero-name">@Identity.Name</h1>
+        <p class="hero-role">@Identity.Role</p>
+        <p class="hero-tagline">@Identity.Tagline</p>
+        <p class="hero-actions">
+            <a class="btn btn-primary" href="@Page.PathFor(PageKey.Recruiter)">@Page.T("cta.recruiter")</a>
+            <a class="btn" href="#trace">@Page.T("cta.ride") ↓</a>
+        </p>
+    </div>
 </section>
+
+<AboutSection />
 
 <section class="trace" id="trace" aria-labelledby="trace-title">
     <h2 id="trace-title">@Page.T("trace.title")</h2>

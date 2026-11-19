@@ -49,6 +49,15 @@ public sealed class ContentValidatorTests : IDisposable
     }
 
     [Fact]
+    public void Load_AboutWithAMissingPrinciple_Fails()
+    {
+        Edit("en/about.json", json => json["principles"]!.AsArray().RemoveAt(0));
+
+        var error = Assert.Throws<InvalidDataException>(() => ContentStore.Load(_root));
+        Assert.Contains("about.json has a different number of paragraphs or principles in en", error.Message, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Load_MissingToolboxDrawer_Fails()
     {
         Edit("es/toolbox.json", json => json.AsArray().RemoveAt(0));

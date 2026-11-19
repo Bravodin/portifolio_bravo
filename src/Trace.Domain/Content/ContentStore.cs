@@ -47,6 +47,7 @@ public sealed class ContentStore
         return new SiteContent(
             locale,
             Read<Identity>(Path.Combine(folder, "identity.json")),
+            Read<About>(Path.Combine(folder, "about.json")),
             Read<List<Metric>>(Path.Combine(folder, "metrics.json")),
             Read<List<LogEntry>>(Path.Combine(folder, "log.json")),
             Read<List<Stage>>(Path.Combine(folder, "stages.json")),

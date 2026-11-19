@@ -15,6 +15,12 @@ public sealed record Identity(
     Uri LinkedIn,
     string? CvUrl);
 
+/// <summary>One "how I work" principle.</summary>
+public sealed record Principle(string Title, string Text);
+
+/// <summary>"About me" (content inventory §1.1, from Manuel; no numbers beyond the career log).</summary>
+public sealed record About(string Title, IReadOnlyList<string> Paragraphs, string PrinciplesTitle, IReadOnlyList<Principle> Principles);
+
 /// <summary>A measured result (content inventory §2). Values are pre-formatted per locale (ADR-0004).</summary>
 public sealed record Metric(string Id, string Label, string Before, string After, string Delta, string Where);
 
@@ -54,6 +60,7 @@ public sealed record RecruiterSelection(IReadOnlyList<string> Metrics, IReadOnly
 public sealed record SiteContent(
     string Locale,
     Identity Identity,
+    About About,
     IReadOnlyList<Metric> Metrics,
     IReadOnlyList<LogEntry> Log,
     IReadOnlyList<Stage> Stages,

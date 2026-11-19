@@ -24,6 +24,15 @@ During implementation this becomes `content/{locale}/*.json` (see [ADR-0004](../
 >
 > TODO(manuel): `content/cv/manuel-bravo-cv.pdf` is an **empty placeholder**. Replace it with the real CV (LinkedIn URL only: no phone or e-mail) and commit. Until then the prerender warns locally and **fails the Azure Pipelines build**, so the placeholder can't be deployed.
 
+### 1.1 About me
+
+Source: Manuel, 2026-11-19 (polished from his notes; not in the CV). Lives in `content/{locale}/about.json`. No new numbers: the years and stacks come from the career log (§4) and education.
+
+- **Self-taught:** started with Delphi in 2006; learned each new stack hands-on (VB6, .NET, Node.js, cloud, now an MBA in AI Engineering).
+- **Hobbies tied to the work:** track days and video games: measure before you touch anything, get the details right, improve one lap at a time.
+- **Goal:** keep growing as a technical leader, keep up with how software engineering changes, mentor the team's developers.
+- **How I work:** hands-on (code, PR reviews, architecture) · quality over quantity · simple first (no over-engineering) · active listening (stakeholders' needs first) · mentoring.
+
 ---
 
 ## 2. Headline metrics (the "dashboard")

@@ -103,6 +103,19 @@ public sealed class ContentStoreTests
     }
 
     [Fact]
+    public void About_HasThreeParagraphsAndFivePrinciples_InEveryLocale()
+    {
+        foreach (var locale in Locales.All)
+        {
+            var about = Store.For(locale).About;
+            Assert.Equal(3, about.Paragraphs.Count);
+            Assert.Equal(5, about.Principles.Count);
+        }
+
+        Assert.Contains("Delphi em 2006", Store.For(Locales.Portuguese).About.Paragraphs[0], StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Stage_Client_HasBothStoryBeats() =>
         Assert.Equal(2, Store.For(Locales.English).Stage("client").Story.Count);
 
