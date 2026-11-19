@@ -71,5 +71,6 @@
   "lightbox.label": "Galería de fotos",
   "lightbox.close": "Cerrar",
   "lightbox.prev": "Foto anterior",
-  "lightbox.next": "Foto siguiente"
+  "lightbox.next": "Foto siguiente",
+  "colophon.type": "Tipografía: Barlow, Barlow Condensed y JetBrains Mono (licencia SIL OFL), alojadas en el propio sitio."
 }

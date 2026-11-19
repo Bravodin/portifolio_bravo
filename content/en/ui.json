@@ -71,5 +71,6 @@
   "lightbox.label": "Photo gallery",
   "lightbox.close": "Close",
   "lightbox.prev": "Previous photo",
-  "lightbox.next": "Next photo"
+  "lightbox.next": "Next photo",
+  "colophon.type": "Type: Barlow, Barlow Condensed and JetBrains Mono (SIL OFL), self-hosted."
 }

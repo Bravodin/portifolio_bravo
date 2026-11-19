@@ -19,6 +19,8 @@
         }
         <link rel="alternate" hreflang="x-default" href="@Page.Absolute(SiteRoutes.PathFor(key, Locales.XDefault))" />
     }
+    @* The display face sets the hero name, the likely LCP element: fetch it right away. *@
+    <link rel="preload" href="/fonts/v1/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
     <ResourcePreloader />
     <link rel="stylesheet" href="@Assets["app.css"]" />
     <link rel="stylesheet" href="@Assets["Trace.Web.styles.css"]" />
