@@ -3,6 +3,8 @@
   <PropertyGroup>
     <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
     <StaticWebAssetProjectMode>Default</StaticWebAssetProjectMode>
+    <!-- ADR-0004: numbers are pre-formatted in content, so no ICU data ships to the browser. -->
+    <InvariantGlobalization>true</InvariantGlobalization>
     <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
   </PropertyGroup>
 

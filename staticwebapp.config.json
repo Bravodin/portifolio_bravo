@@ -1,16 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/staticwebapp.config.json",
-  "routes": [
-    {
-      "route": "/_framework/*",
-      "headers": { "Cache-Control": "public, max-age=31536000, immutable" }
-    }
-  ],
+  "routes": [],
   "responseOverrides": {
     "404": { "rewrite": "/404.html", "statusCode": 404 }
   },
   "globalHeaders": {
     "X-Content-Type-Options": "nosniff",
+    "Blazor-Enhanced-Nav": "allow",
     "Referrer-Policy": "strict-origin-when-cross-origin",
     "Content-Security-Policy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' __INLINE_SCRIPT_HASHES__; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
   },

@@ -23,7 +23,9 @@ Start with: `README.md` → `docs/ux/concept.md` → `docs/architecture/overview
 - ✅ **Phase 0** — product, UX, wireframes (`docs/design/wireframes`), design tokens, architecture, ADRs 0001–0009, photos + media manifest.
 - ✅ Hosting decision recorded: **Azure Pipelines + Azure Static Web Apps (Free)**, DNS on Cloudflare, apex → `www` redirect ([ADR-0009](docs/architecture/adr/0009-azure-pipelines-and-static-web-apps.md), [ci-cd-and-hosting.md](docs/architecture/ci-cd-and-hosting.md)). ADR-0002 (GitHub Pages) is superseded.
 - ✅ Skeleton (step 2) and local spike (step 3): the Dyno island hydrates from static files only. Results and the findings that shape the prerender are in [ADR-0003](docs/architecture/adr/0003-build-time-static-prerendering.md#spike-results-2026-11-19-local).
-- ⏳ **Next:** step 4, `Trace.Prerender`. Manuel has no Azure account yet, so the SWA production check waits for step 5.
+- ✅ Step 4: `Trace.Prerender` builds `dist/` from the publish output (details in ADR-0003, "Step 4 result"). The media step (ADR-0008, NetVips) is not written yet.
+- ⏳ **Next:** step 5, `azure-pipelines.yml`. Manuel has no Azure account yet, so the SWA production check waits for it.
+- 🎬 Manuel has 4 YouTube Shorts for the Garage (IDs `xEh1hYPC3lM`, `ZeJOh9WHzJ4`, `UsLC7vsWB1Q`, `knjhekGSKe4`). Plan: click-to-load facade on `youtube-nocookie.com`, recorded in a new ADR-0010. Credits and descriptions pending.
 
 ## Phase 1/2 plan — skeleton
 
@@ -48,7 +50,7 @@ Order:
 1. ~~ADR-0009 + docs updates~~ ✅ done.
 2. ~~`global.json`, solution, projects, `Directory.Build.props`, `.editorconfig`~~ ✅ done (central package management in `Directory.Packages.props`; xUnit v3 + bUnit on Microsoft.Testing.Platform with `coverlet.MTP`).
 3. ~~**Spike (ADR-0003 exit criteria)**~~ ✅ passed locally (SWA CLI). The deploy to the real SWA happens with step 5.
-4. `Trace.Prerender` minimal: routes × locales → `dist/`, plus `sitemap.xml` and `404.html`. Must apply the spike findings: materialize endpoints from `Trace.Web.staticwebassets.endpoints.json`, crawl `resource-collection.{hash}.js`, compute the import map CSP hash on LF-normalized text into `__INLINE_SCRIPT_HASHES__`, ship only referenced files, `InvariantGlobalization`, check enhanced navigation.
+4. ~~`Trace.Prerender` minimal~~ ✅ done. Still to add: the media step (ADR-0008), `hreflang` validation once locales exist, and removing the antiforgery token from the HTML.
 5. `azure-pipelines.yml`: restore → build → test + coverage → prerender → `AzureStaticWebApp@0` deploy (`skip_app_build: true`, `app_location: dist`).
 6. Then content JSON + the Recruiter Mode page (highest value for recruiters).
 
@@ -60,8 +62,9 @@ dotnet build Trace.slnx -warnaserror
 dotnet test --solution Trace.slnx                  # exit code 8 = a test project ran zero tests
 dotnet test --solution Trace.slnx --coverlet --coverlet-output-format cobertura --results-directory artifacts/test-results
 dotnet format Trace.slnx --verify-no-changes
-dotnet run --project tools/Trace.Prerender -- --out dist   # step 4, not written yet
-npx @azure/static-web-apps-cli start dist --port 4280      # serve dist/ like SWA does (needs Node)
+dotnet publish src/Trace.Web -c Release -o artifacts/publish
+dotnet run --project tools/Trace.Prerender -c Release -- --publish-dir artifacts/publish --out dist
+npx @azure/static-web-apps-cli start dist --port 4280 --swa-config-location dist   # serve dist/ like SWA (needs Node)
 python3 docs/design/wireframes/_src/wf_desktop.py docs/design/wireframes   # regenerate wireframes (needs Pillow)
 python3 docs/design/wireframes/_src/wf_mobile.py  docs/design/wireframes
 ```
