@@ -117,7 +117,7 @@ Grouped as **toolbox drawers**. No percentage bars, which are meaningless. Each 
 | Drawer | Tools |
 |---|---|
 | Languages & stacks (was "Engine") | C#, .NET / .NET Framework, ASP.NET, Node.js, TypeScript, Angular, Java / Spring Boot, WPF, Delphi, Pascal |
-| Diagnostics (testing & quality) | Selenium, JMeter, Postman, BDD/TDD (Given-When-Then), Sonar 90 % gates, Jetpack Compose Testing, XCUITest |
+| Testing & quality (was "Diagnostics") | Selenium, JMeter, Postman, BDD/TDD (Given-When-Then), Sonar 90 % gates, Jetpack Compose Testing, XCUITest |
 | APIs, cloud & architecture (was "Electronics") | REST, SOAP, Microservices, AWS, CA API Gateway, Sensedia, Redis, message idempotency |
 | Observability tools (was "Scanner") | OpenSearch, end-to-end root-cause analysis |
 | Databases (was "Fluids") | SQL Server, Oracle, MySQL |

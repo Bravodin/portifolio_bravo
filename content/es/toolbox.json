@@ -17,7 +17,7 @@
   },
   {
     "id": "diagnostics",
-    "name": "Diagnóstico (pruebas y calidad)",
+    "name": "Pruebas y calidad",
     "tools": [
       "Selenium",
       "JMeter",
