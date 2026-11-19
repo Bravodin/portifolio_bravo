@@ -1,7 +1,7 @@
 [
   {
     "id": "engine",
-    "name": "Motor (linguagens e frameworks)",
+    "name": "Linguagens e stacks",
     "tools": [
       "C#",
       ".NET / .NET Framework",
@@ -30,7 +30,7 @@
   },
   {
     "id": "electronics",
-    "name": "Elétrica (APIs, cloud, arquitetura)",
+    "name": "APIs, cloud e arquitetura",
     "tools": [
       "REST",
       "SOAP",

@@ -116,9 +116,9 @@ Grouped as **toolbox drawers**. No percentage bars, which are meaningless. Each 
 
 | Drawer | Tools |
 |---|---|
-| Engine (languages & frameworks) | C#, .NET / .NET Framework, ASP.NET, Node.js, TypeScript, Angular, Java / Spring Boot, WPF, Delphi, Pascal |
+| Languages & stacks (was "Engine") | C#, .NET / .NET Framework, ASP.NET, Node.js, TypeScript, Angular, Java / Spring Boot, WPF, Delphi, Pascal |
 | Diagnostics (testing & quality) | Selenium, JMeter, Postman, BDD/TDD (Given-When-Then), Sonar 90 % gates, Jetpack Compose Testing, XCUITest |
-| Electronics (APIs, cloud, architecture) | REST, SOAP, Microservices, AWS, CA API Gateway, Sensedia, Redis, message idempotency |
+| APIs, cloud & architecture (was "Electronics") | REST, SOAP, Microservices, AWS, CA API Gateway, Sensedia, Redis, message idempotency |
 | Scanner (observability) | OpenSearch, end-to-end root-cause analysis |
 | Fluids (databases) | SQL Server, Oracle, MySQL |
 | Power tools (AI-assisted engineering) | GitHub Copilot, Claude |
