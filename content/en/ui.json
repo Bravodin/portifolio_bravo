@@ -67,5 +67,9 @@
   "garage.back": "← Back to the ride",
   "garage.workshop": "In the workshop",
   "garage.aiIllustration": "AI-generated illustration",
-  "garage.gaming": "Games"
+  "garage.gaming": "Games",
+  "lightbox.label": "Photo gallery",
+  "lightbox.close": "Close",
+  "lightbox.prev": "Previous photo",
+  "lightbox.next": "Next photo"
 }

@@ -13,7 +13,19 @@ public sealed class GaragePageTests : BunitContext
         var links = Render<Garage>().FindAll("section[aria-labelledby=garage-track] a.photo-link");
 
         Assert.Equal(9, links.Count);
+        Assert.All(links, a => Assert.Equal("false", a.GetAttribute("data-enhance-nav")));
         Assert.All(links, a => Assert.Matches(@"^/media/track-0\d-1600\.[0-9a-f]{10}\.jpg$", a.GetAttribute("href")));
+    }
+
+    [Fact]
+    public void Lightbox_GetsItsLabelsInThePagesLanguage()
+    {
+        this.AddSite("/garagem/");
+
+        var article = Render<Garage>().Find("article.garage-page");
+
+        Assert.Equal("Fechar", article.GetAttribute("data-lightbox-close"));
+        Assert.Equal("Próxima foto", article.GetAttribute("data-lightbox-next"));
     }
 
     [Fact]

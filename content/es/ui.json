@@ -67,5 +67,9 @@
   "garage.back": "← Volver al recorrido",
   "garage.workshop": "En el taller",
   "garage.aiIllustration": "Ilustración generada con IA",
-  "garage.gaming": "Videojuegos"
+  "garage.gaming": "Videojuegos",
+  "lightbox.label": "Galería de fotos",
+  "lightbox.close": "Cerrar",
+  "lightbox.prev": "Foto anterior",
+  "lightbox.next": "Foto siguiente"
 }

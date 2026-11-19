@@ -6,10 +6,14 @@
 @inject MediaCatalog Media
 
 @* Full gallery (docs/ux/sitemap.md, P4): the on-board Shorts, then photos by category, with credits.
-   For now each photo links to its large version; the JS lightbox comes with Phase 3. *@
+   Each photo links to its large version (L0); site.js opens it in a lightbox instead, without leaving the page. *@
 <PageTitle>@Page.T("page.garage.title")</PageTitle>
 
-<article class="garage-page">
+<article class="garage-page"
+         data-lightbox-label="@Page.T("lightbox.label")"
+         data-lightbox-close="@Page.T("lightbox.close")"
+         data-lightbox-prev="@Page.T("lightbox.prev")"
+         data-lightbox-next="@Page.T("lightbox.next")">
     <p><a href="@Page.PathFor(PageKey.Home)#garage">@Page.T("garage.back")</a></p>
     <h1>@Page.T("garage.title")</h1>
     <p class="section-intro">@Page.T("garage.intro")</p>
@@ -33,7 +37,7 @@
             {
                 <li>
                     <figure>
-                        <a class="photo-link" href="@Large(photo.Id)" title="@Page.T("garage.open")">
+                        <a class="photo-link" href="@Large(photo.Id)" title="@Page.T("garage.open")" data-enhance-nav="false">
                             <Picture Id="@photo.Id" Shape="ImageShape.Square" Widths="[320, 640]" Sizes="(min-width: 1024px) 280px, (min-width: 768px) 30vw, 45vw" Width="320" Height="320" />
                         </a>
                         <figcaption>
