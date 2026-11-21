@@ -95,6 +95,6 @@ Videos are served by the site itself, as small MP4 files ([ADR-0012](../../docs/
 
 ### To do for the current videos
 
-- [ ] `short-01-roll-out`: the poster and the clip show other riders in the paddock (small, in the background). Confirm they're fine with it, or pick another frame.
-- [ ] Confirm which original is which Short (matched by eye: 01 = MVI_7492, 02 = MVI_7781, 03 = MVI_7769, 04 = MVI_9404) and the drafted titles and descriptions.
-- [ ] Only `short-01` has a sound track; 02–04 are silent, and their descriptions now say so. Replace the files if the versions with engine sound exist.
+- [x] `short-01-roll-out`: other riders appear small in the paddock background; Manuel confirmed that's fine (2026-11-21).
+- [x] Originals matched by eye (01 = MVI_7492, 02 = MVI_7781, 03 = MVI_7769, 04 = MVI_9404); Manuel said the order doesn't matter.
+- [x] Only `short-01` has a sound track; 02–04 stay silent (Manuel's call), and their descriptions say so.
