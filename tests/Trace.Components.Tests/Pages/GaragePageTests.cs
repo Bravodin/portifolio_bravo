@@ -35,10 +35,12 @@ public sealed class GaragePageTests : BunitContext
     {
         this.AddSite("/pt/garagem/");
 
-        var credits = Render<Garage>().FindAll(".photo-grid figcaption small").Select(c => c.TextContent).ToList();
+        var cut = Render<Garage>();
+        var credits = cut.FindAll(".photo-grid figcaption small").Select(c => c.TextContent).ToList();
 
         Assert.Equal(3, credits.Count(c => c == "Foto: @mustelasportmedia"));
         Assert.Contains("Foto: B.S Racing · MotoGP Cerezer", credits);
+        Assert.Empty(cut.FindAll(".photo-grid figcaption a"));
     }
 
     [Fact]

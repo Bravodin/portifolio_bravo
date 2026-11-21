@@ -54,16 +54,8 @@
                             }
                             else if (photo.Credit is { } credit)
                             {
-                                <small>
-                                    @if (credit.Url is { } url)
-                                    {
-                                        <a href="@url" rel="noopener" target="_blank">@Credit(credit.Name)</a>
-                                    }
-                                    else
-                                    {
-                                        @Credit(credit.Name)
-                                    }
-                                </small>
+                                @* Plain text, like the video credit: the handle names the photographer, no outbound link. *@
+                                <small>@Credit(credit.Name)</small>
                             }
                         </figcaption>
                     </figure>
