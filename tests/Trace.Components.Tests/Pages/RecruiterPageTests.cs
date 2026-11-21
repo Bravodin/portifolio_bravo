@@ -80,5 +80,6 @@ public sealed class RecruiterPageTests : BunitContext
 
         Assert.Equal("/cv/manuel-bravo-resume.pdf", cut.Find("a[download]").GetAttribute("href"));
         Assert.Equal("Download CV (PDF)", cut.Find("a[download]").TextContent);
+        Assert.Contains("btn-primary", cut.Find("a[download]").ClassList);
     }
 }

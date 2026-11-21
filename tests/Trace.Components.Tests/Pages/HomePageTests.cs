@@ -31,10 +31,22 @@ public sealed class HomePageTests : BunitContext
     {
         var actions = RenderHome("/").FindAll(".hero-actions a");
 
-        Assert.Equal("https://github.com/Bravodin", actions[1].GetAttribute("href"));
-        Assert.Equal(("noopener", "_blank"), (actions[1].GetAttribute("rel"), actions[1].GetAttribute("target")));
-        Assert.Contains("GitHub", actions[1].TextContent, StringComparison.Ordinal);
-        Assert.NotNull(actions[1].QuerySelector("svg[aria-hidden=true]"));
+        Assert.Equal("https://github.com/Bravodin", actions[2].GetAttribute("href"));
+        Assert.Equal(("noopener", "_blank"), (actions[2].GetAttribute("rel"), actions[2].GetAttribute("target")));
+        Assert.Contains("GitHub", actions[2].TextContent, StringComparison.Ordinal);
+        Assert.NotNull(actions[2].QuerySelector("svg[aria-hidden=true]"));
+    }
+
+    [Fact]
+    public void Hero_OffersTheCv_AsAPrimaryButton_RightAfterRecruiterMode()
+    {
+        var cv = RenderHome("/pt/").FindAll(".hero-actions a")[1];
+
+        Assert.Equal("/cv/manuel-bravo-resume.pdf", cv.GetAttribute("href"));
+        Assert.True(cv.HasAttribute("download"));
+        Assert.Contains("btn-primary", cv.ClassList);
+        Assert.Equal("Baixar CV (PDF)", cv.TextContent);
+        Assert.NotNull(cv.QuerySelector("svg[aria-hidden=true]"));
     }
 
     [Fact]
