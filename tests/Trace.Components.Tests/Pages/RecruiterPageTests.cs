@@ -50,14 +50,16 @@ public sealed class RecruiterPageTests : BunitContext
     }
 
     [Fact]
-    public void ContactIsLinkedInOnly()
+    public void ContactIsLinkedInOrEmail_NoPhone()
     {
         this.AddSite("/es/reclutador/");
 
         var cut = Render<Recruiter>();
 
         Assert.Equal("https://www.linkedin.com/in/manuelbravoc/", cut.Find(".id-actions a.btn-primary").GetAttribute("href"));
-        Assert.Empty(cut.FindAll("a[href^='mailto:'], a[href^='tel:']"));
+        Assert.Equal("mailto:manuelbravoc@gmail.com", cut.Find(".id-actions a[href^='mailto:']").GetAttribute("href"));
+        Assert.Equal("Contacto por LinkedIn o correo electrónico", cut.Find(".id-note").TextContent);
+        Assert.Empty(cut.FindAll("a[href^='tel:']"));
     }
 
     [Fact]

@@ -5,7 +5,7 @@
 @inject TimeProvider Clock
 
 @* Recruiter Mode (wireframe 06): everything a recruiter screens for, in one screen, no animation,
-   printable on one A4 page. Contact is LinkedIn only. *@
+   printable on one A4 page. Contact is LinkedIn or e-mail (ADR-0013). *@
 <PageTitle>@Page.T("page.recruiter.title")</PageTitle>
 
 <article class="recruiter">
@@ -33,6 +33,7 @@
         </dl>
         <p class="id-actions">
             <a class="btn btn-primary" href="@Identity.LinkedIn" rel="noopener" target="_blank">@Page.T("cta.linkedin") ↗</a>
+            <a class="btn" href="mailto:@Identity.Email"><MailIcon />@Identity.Email</a>
             @if (Identity.CvUrl is { } cv)
             {
                 <a class="btn btn-primary btn-cv" href="@cv" download><DownloadIcon />@Page.T("cta.cv")</a>

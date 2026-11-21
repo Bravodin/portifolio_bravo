@@ -25,7 +25,7 @@
   "recruiter.location": "Location",
   "recruiter.languages": "Languages",
   "recruiter.education": "Education",
-  "recruiter.contactNote": "Contact via LinkedIn only",
+  "recruiter.contactNote": "Contact via LinkedIn or e-mail",
   "recruiter.results": "Key results (measured)",
   "recruiter.stack": "Core stack",
   "recruiter.roles": "Last 3 roles",

@@ -14,6 +14,7 @@ public sealed record Identity(
     string Education,
     Uri LinkedIn,
     Uri GitHub,
+    string Email,
     string? CvUrl);
 
 /// <summary>One "how I work" principle.</summary>

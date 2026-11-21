@@ -27,12 +27,13 @@ public sealed class ContentStoreTests
     }
 
     [Fact]
-    public void Identity_LinkedInIsTheOnlyContactChannel()
+    public void Identity_ContactIsLinkedInAndEmail_InEveryLocale()
     {
         foreach (var locale in Locales.All)
         {
             var identity = Store.For(locale).Identity;
             Assert.Equal(new Uri("https://www.linkedin.com/in/manuelbravoc/"), identity.LinkedIn);
+            Assert.Equal("manuelbravoc@gmail.com", identity.Email);
         }
     }
 
@@ -42,9 +43,11 @@ public sealed class ContentStoreTests
             Assert.Equal(new Uri("https://github.com/Bravodin"), Store.For(locale).Identity.GitHub));
 
     [Fact]
-    public void Content_HasNoEmailOrPhone()
+    public void Content_HasNoPhone_AndNoEmailButTheContactOne()
     {
-        var text = string.Concat(Directory.EnumerateFiles(RepoContent.Root, "*.json", SearchOption.AllDirectories).Select(File.ReadAllText));
+        // ADR-0013: the one published address is identity.json's; nothing else may leak into the content.
+        var text = string.Concat(Directory.EnumerateFiles(RepoContent.Root, "*.json", SearchOption.AllDirectories).Select(File.ReadAllText))
+            .Replace("manuelbravoc@gmail.com", string.Empty, StringComparison.Ordinal);
 
         Assert.DoesNotMatch(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", text);
         Assert.DoesNotMatch(@"\(?\d{2}\)?\s?9?\d{4}-\d{4}", text);

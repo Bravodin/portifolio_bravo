@@ -158,13 +158,16 @@ public sealed class HomePageTests : BunitContext
     }
 
     [Fact]
-    public void PitStop_OffersLinkedInAndCv_Only()
+    public void PitStop_OffersLinkedInEmailAndCv_NoPhone()
     {
         var cut = RenderHome("/");
 
         var pitStop = cut.Find("#pit-stop");
         Assert.Equal("https://www.linkedin.com/in/manuelbravoc/", pitStop.QuerySelector("a.btn-primary")!.GetAttribute("href"));
+        Assert.Equal("mailto:manuelbravoc@gmail.com", pitStop.QuerySelector("a[href^='mailto:']")!.GetAttribute("href"));
+        Assert.Equal("manuelbravoc@gmail.com", pitStop.QuerySelector("a[href^='mailto:']")!.TextContent);
         Assert.Equal("/cv/manuel-bravo-resume.pdf", pitStop.QuerySelector("a[download]")!.GetAttribute("href"));
-        Assert.Empty(cut.FindAll("a[href^='mailto:'], a[href^='tel:']"));
+        Assert.Single(cut.FindAll("a[href^='mailto:']"));
+        Assert.Empty(cut.FindAll("a[href^='tel:']"));
     }
 }

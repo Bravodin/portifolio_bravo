@@ -90,6 +90,11 @@ public static class ContentValidator
             {
                 yield return $"identity.json GitHub URL differs in {locale}";
             }
+
+            if (reference.Identity.Email != other.Identity.Email)
+            {
+                yield return $"identity.json e-mail differs in {locale}";
+            }
         }
 
         foreach (var stage in reference.Stages.Where(s => reference.Metrics.All(m => m.Id != s.Metric)))
