@@ -18,7 +18,7 @@ During implementation this becomes `content/{locale}/*.json` (see [ADR-0004](../
 | `languages` | Portuguese (native) · Spanish (native) · English (full professional) | | |
 | `contact` | linkedin.com/in/manuelbravoc (only channel) | | |
 
-> ⚠️ Contact is **LinkedIn only**: no e-mail or phone on the site. Publish a version of the CV PDF without phone and e-mail (LinkedIn URL only).
+> ⚠️ Contact is **LinkedIn or e-mail** (`manuelbravoc@gmail.com`, ADR-0013): no phone on the site. The CV PDF stays without phone and e-mail (LinkedIn URL only).
 
 > Experience: Manuel worked with Delphi and Pascal from 2006 to 2008, before Nunes Imóveis (source: Manuel, 2026-11-19; not in the CV). The site computes the years from `careerStartYear: 2006` at build time ("20 years · since 2006" in 2026), so the number never goes stale.
 >

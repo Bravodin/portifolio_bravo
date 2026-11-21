@@ -50,5 +50,5 @@ Analytics use a privacy-friendly, cookie-free provider (see [ADR-0006](../archit
 
 - **Hosting cost: zero.** The site is static output only (Azure Static Web Apps, Free plan; CI on Azure Pipelines).
 - **Domain:** `manuelbravo.com.br`, already owned, with DNS at registro.br.
-- **Contact = LinkedIn only.** No e-mail or phone number on the site, in the HTML source or in the public CV PDF (it lists only the LinkedIn URL). This also avoids scraping and spam.
+- **Contact = LinkedIn or e-mail** (changed on 2026-11-21, [ADR-0013](../architecture/adr/0013-contact-linkedin-and-email.md)). No phone number anywhere. The public CV PDF still lists only the LinkedIn URL.
 - **Confidentiality:** use only the figures already published in the CV, and don't include internal screenshots or employer code.

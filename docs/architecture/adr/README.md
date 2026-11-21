@@ -16,6 +16,7 @@ Format: [MADR](https://adr.github.io/madr/) (lightweight). One decision per file
 | [0010](0010-video-youtube-facade.md) | Video: YouTube Shorts behind a click-to-load facade | Superseded by [0012](0012-self-hosted-video.md) |
 | [0011](0011-english-at-the-root.md) | English at the root URL; Portuguese under `/pt/` | Accepted |
 | [0012](0012-self-hosted-video.md) | Video: self-hosted MP4 behind a click-to-load facade | Accepted |
+| [0013](0013-contact-linkedin-and-email.md) | Contact: LinkedIn and e-mail | Accepted |
 
 ## Template
 

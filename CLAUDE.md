@@ -12,7 +12,7 @@ Start with: `README.md` → `docs/ux/concept.md` → `docs/architecture/overview
 
 - **Talk to Manuel in Brazilian Portuguese.** Write repo docs, code, comments and commit messages in **English**.
 - **Numbers come only from `docs/product/content-inventory.md`** (sourced from his CV). Never invent metrics, dates, team sizes or methods. Mark any copy that needs his input with `TODO(manuel)`.
-- **Contact is LinkedIn only.** No phone number or e-mail anywhere on the site, in the HTML, or in the published CV PDF.
+- **Contact is LinkedIn or e-mail** (`manuelbravoc@gmail.com`, from `identity.json`; [ADR-0013](docs/architecture/adr/0013-contact-linkedin-and-email.md)). No phone number anywhere, and no other e-mail address in the content.
 - **Photos:** every file in `content/media/` must have an entry in `gallery.json` (alt text in pt-BR/en/es, credit for event photos). Video files and their poster frames go in `videos.json` instead. See `content/media/README.md`.
 - **Commits:** Conventional Commits (`feat:`, `fix:`, `docs:`, `ci:`, `test:`, `chore:`), small and focused. Show the diff summary and ask before `git push`.
 - **When a decision changes, write a new ADR** that supersedes the old one. Don't rewrite history.
@@ -20,7 +20,7 @@ Start with: `README.md` → `docs/ux/concept.md` → `docs/architecture/overview
 
 ## Status
 
-- ✅ **Phase 0** — product, UX, wireframes (`docs/design/wireframes`), design tokens, architecture, ADRs 0001–0012, photos + media manifest.
+- ✅ **Phase 0** — product, UX, wireframes (`docs/design/wireframes`), design tokens, architecture, ADRs 0001–0013, photos + media manifest.
 - ✅ Hosting decision recorded: **Azure Pipelines + Azure Static Web Apps (Free)**, DNS on Cloudflare, apex → `www` redirect ([ADR-0009](docs/architecture/adr/0009-azure-pipelines-and-static-web-apps.md), [ci-cd-and-hosting.md](docs/architecture/ci-cd-and-hosting.md)). ADR-0002 (GitHub Pages) is superseded.
 - ✅ Skeleton (step 2) and local spike (step 3): the Dyno island hydrates from static files only. Results and the findings that shape the prerender are in [ADR-0003](docs/architecture/adr/0003-build-time-static-prerendering.md#spike-results-2026-11-19-local).
 - ✅ Step 4: `Trace.Prerender` builds `dist/` from the publish output (details in ADR-0003, "Step 4 result"). The media step (ADR-0008, NetVips) is not written yet.

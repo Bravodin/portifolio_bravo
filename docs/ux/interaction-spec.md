@@ -86,7 +86,7 @@ The gallery is mostly CSS and native `<dialog>`, and it needs only ~1 KB of JS f
 ## Pit Stop (contact)
 
 - Primary: "Talk on LinkedIn" (opens in a new tab), "Download CV (PDF)".
-- **LinkedIn is the only contact channel.** No e-mail, phone or form anywhere on the site.
+- **Contact is LinkedIn or e-mail** ([ADR-0013](../architecture/adr/0013-contact-linkedin-and-email.md)): both in Pit Stop and Recruiter Mode. No phone or form anywhere on the site.
 - Unlocks `full-trace` if all stages were seen.
 
 ## Terminal
