@@ -17,7 +17,7 @@ public sealed class ColophonPageTests : BunitContext
         Assert.Equal(["Manuel", "Claude", "Juntos"], cut.FindAll(".roles-list dt").Select(d => d.TextContent));
         Assert.Equal(4, cut.FindAll(".reviews li").Count);
         var figures = cut.FindAll(".figures strong").Select(s => s.TextContent).ToList();
-        Assert.Equal(["42", "10", "136", "248,3 milhões", "608 mil", "US$ 69,38", "≈ 6 h"], figures);
+        Assert.Equal(["42", "10", "136", "285,5 milhões", "742 mil", "US$ 81,72", "≈ 6 h"], figures);
         Assert.Equal("https://github.com/Bravodin/portifolio_bravo/commits/main", cut.Find(".ai-build a").GetAttribute("href"));
     }
 

@@ -45,7 +45,7 @@ Source: Manuel, 2026-11-21. Home, between About and the Trace (`BringSection`); 
 
 Lives in `content/{locale}/colophon.json`. Agreed with Manuel on 2026-11-19: he set intent, content and decisions; Claude proposed architecture and solutions and wrote the code; nothing shipped without his review. The review examples are real moments from the build (hosting decision, "20+ years", game copyright, photo curation).
 
-- **Usage figures** (Manuel's Claude Code daily usage report for 2026-11-19 only, the day this site was built): 146,605,059 tokens processed (145,431,035 cache reads, 99 %), 454,594 output tokens, US$ 43.93. A snapshot: update by hand if a later report is used.
+- **Usage figures** (Manuel's `ccusage daily` reports, summed): 2026-11-19, the day the site was built: 248.3 million tokens processed, 608 thousand output tokens, US$ 69.38; 2026-11-21, the refinements: 37,166,480 tokens (36,743,163 cache reads, 99 %), 134,286 output tokens, US$ 12.34. Shown as totals (285.5 million, 742 thousand, US$ 81.72) with the per-day split in the note. Snapshots: update by hand when a later report is used.
 - **Repository figures** (commits, ADRs, test methods) are measured at build time by `RepoStats`; they're not stored here.
 
 ---

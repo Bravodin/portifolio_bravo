@@ -23,18 +23,18 @@
     "Curadoria: das nove fotos de pista, Manuel ficou com quatro, e trocou uma depois de ouvir uma segunda opinião."
   ],
   "numbersTitle": "Em números",
-  "usagePeriod": "Uso do Claude Code em 19 de novembro de 2026",
+  "usagePeriod": "Uso do Claude Code em 19 e 21 de novembro de 2026",
   "usage": [
     {
-      "value": "248,3 milhões",
+      "value": "285,5 milhões",
       "label": "tokens processados"
     },
     {
-      "value": "608 mil",
+      "value": "742 mil",
       "label": "tokens escritos pela IA"
     },
     {
-      "value": "US$ 69,38",
+      "value": "US$ 81,72",
       "label": "custo total"
     },
     {
@@ -42,7 +42,7 @@
       "label": "do primeiro commit (11h52) ao site no ar (17h47)"
     }
   ],
-  "usageNote": "Quase tudo (99 %) é contexto relido do cache, não texto novo: a IA relê o projeto a cada passo.",
+  "usageNote": "Quase tudo (99 %) é contexto relido do cache, não texto novo: a IA relê o projeto a cada passo. Por dia: 19/11, a construção, US$ 69,38; 21/11, os ajustes, US$ 12,34.",
   "usageReflection": "Sozinho, um projeto assim me levaria fácil uma semana. Saiu em um dia, e isso é determinante na rotina de um dev. Mas a IA não faz isso sozinha: como dev sênior, eu sei o que quero e como quero, então consigo dirigir, revisar e decidir rápido. A IA acelera quem já sabe para onde vai.",
   "repoCommits": "commits",
   "repoAdrs": "decisões registradas (ADRs)",

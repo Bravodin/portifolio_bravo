@@ -23,18 +23,18 @@
     "Curation: out of nine track photos, Manuel kept four, and swapped one after hearing a second opinion."
   ],
   "numbersTitle": "By the numbers",
-  "usagePeriod": "Claude Code usage on November 19, 2026",
+  "usagePeriod": "Claude Code usage on November 19 and 21, 2026",
   "usage": [
     {
-      "value": "248.3 million",
+      "value": "285.5 million",
       "label": "tokens processed"
     },
     {
-      "value": "608 thousand",
+      "value": "742 thousand",
       "label": "tokens written by the AI"
     },
     {
-      "value": "US$69.38",
+      "value": "US$81.72",
       "label": "total cost"
     },
     {
@@ -42,7 +42,7 @@
       "label": "from the first commit (11:52) to the site going live (17:47)"
     }
   ],
-  "usageNote": "Almost all of it (99 %) is context re-read from cache, not new text: the AI re-reads the project at every step.",
+  "usageNote": "Almost all of it (99 %) is context re-read from cache, not new text: the AI re-reads the project at every step. By day: Nov 19, the build, US$69.38; Nov 21, the refinements, US$12.34.",
   "usageReflection": "On my own, a project like this would easily take me a week. It took one day, and that changes a developer's routine. But the AI doesn't do it alone: as a senior developer, I know what I want and how I want it, so I can steer, review and decide fast. AI speeds up people who already know where they're going.",
   "repoCommits": "commits",
   "repoAdrs": "recorded decisions (ADRs)",
