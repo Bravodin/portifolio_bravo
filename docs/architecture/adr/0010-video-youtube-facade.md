@@ -1,6 +1,6 @@
 # 0010 — Video: YouTube Shorts behind a click-to-load facade
 
-- Status: Accepted
+- Status: Superseded by [0012](0012-self-hosted-video.md)
 - Date: 2026-11-19
 
 ## Context

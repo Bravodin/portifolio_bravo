@@ -13,8 +13,9 @@ Format: [MADR](https://adr.github.io/madr/) (lightweight). One decision per file
 | [0007](0007-quality-gates.md) | Quality gates in CI (coverage, axe, Lighthouse, no-JS) | Accepted |
 | [0008](0008-media-pipeline.md) | Media pipeline: originals in the repo, responsive variants at build time | Accepted |
 | [0009](0009-azure-pipelines-and-static-web-apps.md) | CI/CD on Azure Pipelines, hosting on Azure Static Web Apps | Accepted |
-| [0010](0010-video-youtube-facade.md) | Video: YouTube Shorts behind a click-to-load facade | Accepted |
+| [0010](0010-video-youtube-facade.md) | Video: YouTube Shorts behind a click-to-load facade | Superseded by [0012](0012-self-hosted-video.md) |
 | [0011](0011-english-at-the-root.md) | English at the root URL; Portuguese under `/pt/` | Accepted |
+| [0012](0012-self-hosted-video.md) | Video: self-hosted MP4 behind a click-to-load facade | Accepted |
 
 ## Template
 

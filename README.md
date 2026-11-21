@@ -27,7 +27,7 @@ Visitor ──► www.manuelbravo.com.br (registro.br domain · Cloudflare DNS) 
 
 - **Static first:** every page × language is rendered to HTML at build time, so the site works without JavaScript and needs no server at run time ([ADR-0003](docs/architecture/adr/0003-build-time-static-prerendering.md)).
 - **Content as data:** all copy lives in `content/{en,es,pt-BR}/*.json`; the build fails if a translation, a metric or a key is missing ([ADR-0004](docs/architecture/adr/0004-i18n-content-as-data.md)).
-- **Media pipeline:** photos become AVIF/WebP/JPEG at the right sizes, cropped on a focal point, with all metadata stripped ([ADR-0008](docs/architecture/adr/0008-media-pipeline.md)); videos load only on click ([ADR-0010](docs/architecture/adr/0010-video-youtube-facade.md)).
+- **Media pipeline:** photos become AVIF/WebP/JPEG at the right sizes, cropped on a focal point, with all metadata stripped ([ADR-0008](docs/architecture/adr/0008-media-pipeline.md)); videos are self-hosted MP4s that load only on click ([ADR-0012](docs/architecture/adr/0012-self-hosted-video.md)).
 - **CI/CD:** Azure Pipelines runs CI on every push and pull request, then deploys: `main` → production, pull requests → a preview environment ([ADR-0009](docs/architecture/adr/0009-azure-pipelines-and-static-web-apps.md)).
 - **Quality gates:** warnings as errors, format check, 180+ xUnit/bUnit tests, link/`hreflang`/CV/config-size validation in the prerender ([ADR-0007](docs/architecture/adr/0007-quality-gates.md)).
 

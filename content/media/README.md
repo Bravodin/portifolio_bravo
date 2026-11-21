@@ -54,29 +54,47 @@ The site's photos live here as **originals**. The build generates every web vers
 - [x] **Workbench**: `workbench/manu-mechanic.png`, an AI-generated illustration (marked with `aiGenerated: true`, so the site labels it instead of showing a credit).
 - [x] **Games**: `games/games-01-controller.jpg`. The laptop screen showed Super Mario World (Nintendo's art), so the screen area was blurred before committing; never commit game art, logos or screenshots.
 
-## Videos (YouTube)
 
-Videos don't live in the repo. Upload them to YouTube (a Short or a regular video; "Unlisted" works) and add an entry to [`videos.json`](videos.json), validated by `videos.schema.json`. The site shows a poster with a ▶ button and only loads YouTube when someone clicks (see [ADR-0010](../../docs/architecture/adr/0010-video-youtube-facade.md)).
+## Videos
+
+Videos are served by the site itself, as small MP4 files ([ADR-0012](../../docs/architecture/adr/0012-self-hosted-video.md)). The site shows a poster with a ▶ button and only loads the video when someone clicks. Only the web-ready encode goes into git, never the camera original.
+
+1. Encode the original (vertical clip; drop `-c:a aac -b:a 96k` and add `-an` if it has no sound):
+
+   ```powershell
+   ffmpeg -i "MVI_1234.MP4" -map 0:v:0 -map 0:a:0? -vf "scale=720:1280:flags=lanczos,fps=30000/1001,format=yuv420p" `
+     -c:v libx264 -preset slow -crf 25 -profile:v high -level 4.0 -c:a aac -b:a 96k -ac 2 `
+     -map_metadata -1 -map_chapters -1 -movflags +faststart garage/videos/short-05-interlagos.mp4
+   ```
+
+   Aim for a few MB per clip. Install ffmpeg with `winget install Gyan.FFmpeg`.
+2. Export a poster frame (`-ss` = the second you want):
+
+   ```powershell
+   ffmpeg -ss 8 -i "MVI_1234.MP4" -frames:v 1 -vf "scale=1080:1920" -q:v 2 -map_metadata -1 garage/short-05-interlagos-poster.jpg
+   ```
+
+3. Add an entry to [`videos.json`](videos.json), validated by `videos.schema.json`:
 
 ```json
 {
   "id": "short-05-interlagos",
-  "youtubeId": "xEh1hYPC3lM",
+  "file": "garage/videos/short-05-interlagos.mp4",
   "category": "track",
   "featured": false,
   "aspectRatio": "9:16",
-  "poster": null,
+  "poster": "garage/short-05-interlagos-poster.jpg",
   "credit": { "name": "@mustelasportmedia", "url": "https://www.instagram.com/mustelasportmedia/" },
   "title":       { "pt-BR": "…", "en": "…", "es": "…" },
   "description": { "pt-BR": "…", "en": "…", "es": "…" }
 }
 ```
 
-- `youtubeId` is the 11 characters after `/shorts/` or `?v=` in the link.
-- `description` is **required** in all 3 languages: it tells people who can't watch what happens. Say "engine sound only" when there's no speech. If someone speaks, review the YouTube captions too.
-- `poster: null` uses YouTube's thumbnail (downloaded at build time) and cuts a 9:16 column from it. To pick another frame, pause the video, export the frame as a JPEG into `garage/` (for example `garage/short-01-frame.jpg`) and set `"poster": "garage/short-01-frame.jpg"`. A vertical frame works best. Poster frames are **not** listed in `gallery.json`.
+- `description` is **required** in all 3 languages: it tells people who can't watch what happens. Say what can be heard ("engine sound only", "no sound"). If someone speaks, the video needs captions.
+- Video files and poster frames are **not** listed in `gallery.json`. The build fails if a `file` or `poster` is missing.
 
 ### To do for the current videos
 
-- [ ] `short-01-roll-out`: YouTube's thumbnail shows two people's faces in the paddock, and they sit inside the video frame, so no crop can hide them. Export a frame without them and set `poster` (see above), or confirm they agreed to appear.
-- [ ] Confirm the drafted titles and descriptions. They were written from each video's first frame only.
+- [ ] `short-01-roll-out`: the poster and the clip show other riders in the paddock (small, in the background). Confirm they're fine with it, or pick another frame.
+- [ ] Confirm which original is which Short (matched by eye: 01 = MVI_7492, 02 = MVI_7781, 03 = MVI_7769, 04 = MVI_9404) and the drafted titles and descriptions.
+- [ ] Only `short-01` has a sound track; 02–04 are silent, and their descriptions now say so. Replace the files if the versions with engine sound exist.
