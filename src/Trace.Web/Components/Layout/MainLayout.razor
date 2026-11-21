@@ -21,8 +21,10 @@
     <a href="@Page.Content.Identity.LinkedIn" rel="noopener" target="_blank">LinkedIn ↗</a>
 </footer>
 
-<div id="blazor-error-ui" data-nosnippet>
-    An unhandled error has occurred.
-    <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
+@* Blazor's error bar, shown only if an interactive island fails. Its words live in attributes and are drawn by CSS,
+   so text extractors (search snippets, AI summaries a recruiter may use) never read "an error has occurred" as
+   page content. blazor.web.js finds .reload and .dismiss by class and wires them when it shows the bar. *@
+<div id="blazor-error-ui" data-nosnippet data-message="@Page.T("error.unhandled")">
+    <a href="." class="reload" data-label="@Page.T("error.reload")"></a>
+    <span class="dismiss" role="button" tabindex="0" aria-label="@Page.T("error.dismiss")"></span>
 </div>

@@ -18,3 +18,8 @@
         right: 0.75rem;
         top: 0.5rem;
     }
+
+
+    #blazor-error-ui::before { content: attr(data-message) " "; }
+    #blazor-error-ui .reload::before { content: attr(data-label); }
+    #blazor-error-ui .dismiss::before { content: "🗙"; }
