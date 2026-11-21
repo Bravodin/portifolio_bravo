@@ -59,7 +59,7 @@ public sealed class HomePageTests : BunitContext
         Assert.Equal("O que eu trago para o seu time", cut.Find("#bring-title").TextContent);
         Assert.Equal(
             ["Modernização de plataformas críticas", "Liderança técnica e desenvolvimento de equipes", "Redução de custos, riscos e tempo operacional"],
-            cut.FindAll("#bring ol li").Select(li => li.TextContent));
+            cut.FindAll("#bring ol.bring-list > li").Select(li => li.TextContent));
     }
 
     [Fact]
@@ -138,15 +138,18 @@ public sealed class HomePageTests : BunitContext
     }
 
     [Fact]
-    public void ServiceLog_CurrentRole_ShowsTeamSizeAndDecisionScope()
+    public void LeadershipAndScope_SitsUnderWhatIBring_NotInTheServiceLog()
     {
-        var entries = RenderHome("/pt/").FindAll(".log-entry");
+        var cut = RenderHome("/pt/");
 
-        var scope = entries[0].QuerySelectorAll(".log-scope li").Select(li => li.TextContent).ToList();
+        var block = cut.Find("#bring .bring-scope");
+        Assert.Equal("Liderança e escopo", block.QuerySelector("h3")!.TextContent);
+        Assert.Equal("Porto · Lead Engineer · 2022 → hoje", block.QuerySelector(".bring-scope-role")!.TextContent);
+        var scope = block.QuerySelectorAll("li").Select(li => li.TextContent).ToList();
         Assert.Equal(5, scope.Count);
         Assert.Equal("Lidero um time de 12 pessoas", scope[0]);
         Assert.Contains("Decido a arquitetura, que passa pela validação de Segurança da Informação", scope);
-        Assert.All(entries.Skip(1), e => Assert.Null(e.QuerySelector(".log-scope")));
+        Assert.Empty(cut.FindAll("#service-log ul"));
     }
 
     [Fact]

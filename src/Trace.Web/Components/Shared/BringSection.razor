@@ -1,7 +1,9 @@
 @inject PageContext Page
 
 @* "What I bring to your team" (content inventory §1.1): three points from Manuel, between About and the Trace,
-   which then shows the proof. Text only, no numbers. *@
+   which then shows the proof. Text only, no numbers.
+   Below them, the current role's leadership & scope (log.json, the entry with a scope: team size, decisions), so a
+   CTO sees the level of autonomy near the top instead of deep in the Service Log. *@
 <section class="bring" id="bring" aria-labelledby="bring-title">
     <h2 id="bring-title">@Page.T("bring.title")</h2>
     <ol class="bring-list">
@@ -10,8 +12,24 @@
             <li>@Page.T(key)</li>
         }
     </ol>
+
+    @if (Current is { Scope: { Count: > 0 } scope } role)
+    {
+        <div class="bring-scope">
+            <h3>@Page.T("bring.scope")</h3>
+            <p class="bring-scope-role">@role.Company · @role.Role · @role.Period</p>
+            <ul>
+                @foreach (var line in scope)
+                {
+                    <li>@line</li>
+                }
+            </ul>
+        </div>
+    }
 </section>
 
 @code {
     private static readonly string[] Points = ["bring.platforms", "bring.leadership", "bring.savings"];
+
+    private LogEntry? Current => Page.Content.Log.FirstOrDefault(e => e.Scope is { Count: > 0 });
 }

@@ -458,6 +458,21 @@ main {
   font-weight: 600;
 }
 
+.bring-scope { margin-top: var(--space-8); }
+.bring-scope h3 { margin: 0 0 var(--space-1); }
+.bring-scope-role { margin: 0 0 var(--space-3); font-family: var(--font-mono); font-size: var(--size-small); color: var(--color-muted); }
+
+.bring-scope ul {
+  margin: 0;
+  padding: 0 0 0 var(--space-6);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+  gap: var(--space-2) var(--space-8);
+  color: var(--color-text-2);
+}
+
+.bring-scope li::marker { color: var(--color-amber); }
+
 .bring-list li::before {
   content: counter(bring, decimal-leading-zero);
   font-family: var(--font-mono);
@@ -638,19 +653,7 @@ main {
 .log-odometer { font-family: var(--font-mono); font-size: var(--size-small); color: var(--color-muted); }
 .log-note { color: var(--color-text-2); }
 
-.log-scope {
-  margin: var(--space-2) 0 0;
-  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-6);
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-md);
-  display: grid;
-  gap: var(--space-1);
-  max-width: var(--measure);
-  color: var(--color-text-2);
-}
 
-.log-scope li::marker { color: var(--color-amber); }
 
 /* ---------- Toolbox ---------- */
 
