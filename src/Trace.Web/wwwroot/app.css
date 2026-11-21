@@ -250,9 +250,30 @@ h1:focus { outline: none; }
   align-items: center;
 }
 
+.icon { flex: none; width: 1em; height: 1em; }
+
+.hud-github {
+  font-family: var(--font-mono);
+  font-size: var(--size-hud);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-2);
+  text-decoration: none;
+  min-height: var(--touch-target);
+  min-width: var(--touch-target);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+.hud-github:hover { color: var(--color-text); }
+
 @media (max-width: 767px) {
   .hud { gap: var(--space-2); }
   .hud-recruiter-icon { display: inline; margin-right: var(--space-1); }
+  .hud-github .icon { width: 20px; height: 20px; }
+  .hud-github-text,
   .hud-recruiter-text {
     position: absolute;
     width: 1px;

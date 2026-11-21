@@ -37,6 +37,11 @@ public sealed class ContentStoreTests
     }
 
     [Fact]
+    public void Identity_LinksToGitHub_InEveryLocale() =>
+        Assert.All(Locales.All, locale =>
+            Assert.Equal(new Uri("https://github.com/Bravodin"), Store.For(locale).Identity.GitHub));
+
+    [Fact]
     public void Content_HasNoEmailOrPhone()
     {
         var text = string.Concat(Directory.EnumerateFiles(RepoContent.Root, "*.json", SearchOption.AllDirectories).Select(File.ReadAllText));

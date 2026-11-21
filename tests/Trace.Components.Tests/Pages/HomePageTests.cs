@@ -27,6 +27,17 @@ public sealed class HomePageTests : BunitContext
     }
 
     [Fact]
+    public void Hero_LinksToGitHub_NextToRecruiterMode()
+    {
+        var actions = RenderHome("/").FindAll(".hero-actions a");
+
+        Assert.Equal("https://github.com/Bravodin", actions[1].GetAttribute("href"));
+        Assert.Equal(("noopener", "_blank"), (actions[1].GetAttribute("rel"), actions[1].GetAttribute("target")));
+        Assert.Contains("GitHub", actions[1].TextContent, StringComparison.Ordinal);
+        Assert.NotNull(actions[1].QuerySelector("svg[aria-hidden=true]"));
+    }
+
+    [Fact]
     public void About_ComesRightAfterTheHero_WithHowIWork()
     {
         var cut = RenderHome("/pt/");

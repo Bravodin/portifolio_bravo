@@ -85,6 +85,11 @@ public static class ContentValidator
             {
                 yield return $"identity.json LinkedIn URL differs in {locale}";
             }
+
+            if (reference.Identity.GitHub != other.Identity.GitHub)
+            {
+                yield return $"identity.json GitHub URL differs in {locale}";
+            }
         }
 
         foreach (var stage in reference.Stages.Where(s => reference.Metrics.All(m => m.Id != s.Metric)))

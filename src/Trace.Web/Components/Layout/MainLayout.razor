@@ -7,6 +7,8 @@
     <a class="brand" href="@Page.PathFor(PageKey.Home)" aria-label="TRACE · @Page.Content.Identity.Name">TRACE</a>
     @* Mobile: icon + "30 s" (interaction-spec, HUD); the full label stays available to screen readers. *@
     <a class="hud-recruiter" href="@Page.PathFor(PageKey.Recruiter)"><span class="hud-recruiter-icon" aria-hidden="true">⏱</span><span class="hud-recruiter-text">@Page.T("cta.recruiter")</span></a>
+    @* Mobile: just the mark; the name stays available to screen readers. *@
+    <a class="hud-github" href="@Page.Content.Identity.GitHub" rel="noopener" target="_blank"><GitHubIcon /><span class="hud-github-text">GitHub</span></a>
     <LanguageSwitcher />
 </header>
 
