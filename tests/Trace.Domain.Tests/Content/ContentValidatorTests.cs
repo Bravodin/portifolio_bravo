@@ -63,7 +63,7 @@ public sealed class ContentValidatorTests : IDisposable
         Edit("es/toolbox.json", json => json.AsArray().RemoveAt(0));
 
         var error = Assert.Throws<InvalidDataException>(() => ContentStore.Load(_root));
-        Assert.Contains("es is missing toolbox drawer(s): engine", error.Message, StringComparison.Ordinal);
+        Assert.Contains("es is missing toolbox drawer(s): core", error.Message, StringComparison.Ordinal);
     }
 
     [Fact]

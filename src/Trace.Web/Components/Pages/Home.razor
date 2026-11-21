@@ -70,7 +70,8 @@
     <div class="drawers">
         @foreach (var drawer in Page.Content.Toolbox)
         {
-            <details class="drawer" id="drawer-@drawer.Id" open>
+            @* "Previous technologies" starts closed: the current expertise comes first, the history is one click away. *@
+            <details class="drawer" id="drawer-@drawer.Id" open="@(drawer.Id != "previous")">
                 <summary>@drawer.Name</summary>
                 <ul class="chips">
                     @foreach (var tool in drawer.Tools)

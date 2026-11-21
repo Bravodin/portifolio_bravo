@@ -1,81 +1,63 @@
 [
   {
-    "id": "engine",
-    "name": "Languages & stacks",
+    "id": "core",
+    "name": "Core expertise",
     "tools": [
       "C#",
       ".NET / .NET Framework",
       "ASP.NET",
       "Node.js",
       "TypeScript",
-      "Angular",
-      "Java / Spring Boot",
-      "WPF",
-      "Delphi",
-      "Pascal"
+      "SQL Server"
     ]
   },
   {
-    "id": "diagnostics",
-    "name": "Testing & quality",
+    "id": "architecture",
+    "name": "Architecture & Cloud",
     "tools": [
-      "Selenium",
-      "JMeter",
-      "Postman",
-      "BDD/TDD (Given-When-Then)",
-      "Sonar 90 % gates",
-      "Jetpack Compose Testing",
-      "XCUITest"
-    ]
-  },
-  {
-    "id": "electronics",
-    "name": "APIs, cloud & architecture",
-    "tools": [
+      "AWS",
+      "Microservices",
       "REST",
       "SOAP",
-      "Microservices",
-      "AWS",
       "CA API Gateway",
       "Sensedia",
       "Redis",
-      "Message idempotency"
-    ]
-  },
-  {
-    "id": "scanner",
-    "name": "Observability tools",
-    "tools": [
+      "Message idempotency",
       "OpenSearch",
-      "End-to-end root-cause analysis"
-    ]
-  },
-  {
-    "id": "fluids",
-    "name": "Databases",
-    "tools": [
-      "SQL Server",
+      "End-to-end root-cause analysis",
       "Oracle",
       "MySQL"
     ]
   },
   {
-    "id": "power-tools",
-    "name": "AI-assisted coding",
+    "id": "practices",
+    "name": "Engineering practices",
     "tools": [
+      "BDD/TDD (Given-When-Then)",
+      "Sonar 90 % gates",
+      "Selenium",
+      "JMeter",
+      "Postman",
+      "Jetpack Compose Testing",
+      "XCUITest",
+      "Scrum",
+      "ITIL / HPSM",
       "GitHub Copilot",
-      "Claude"
+      "Claude",
+      "Team building",
+      "Pre-sales & RFPs",
+      "Budgeting"
     ]
   },
   {
-    "id": "workshop",
-    "name": "Frameworks & methodologies",
+    "id": "previous",
+    "name": "Previous technologies",
     "tools": [
-      "Scrum",
-      "ITIL / HPSM",
-      "Pre-sales & RFPs",
-      "Budgeting",
-      "Team building"
+      "Java / Spring Boot",
+      "Angular",
+      "WPF",
+      "Delphi",
+      "Pascal"
     ]
   }
 ]

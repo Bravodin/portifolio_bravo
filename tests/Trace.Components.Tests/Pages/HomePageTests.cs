@@ -124,13 +124,14 @@ public sealed class HomePageTests : BunitContext
     }
 
     [Fact]
-    public void Toolbox_HasSevenOpenDrawers()
+    public void Toolbox_LeadsWithCoreExpertise_AndFoldsAwayPreviousTechnologies()
     {
         var cut = RenderHome("/");
 
         var drawers = cut.FindAll("details.drawer");
-        Assert.Equal(7, drawers.Count);
-        Assert.All(drawers, d => Assert.NotNull(d.GetAttribute("open")));
+        Assert.Equal(["Core expertise", "Architecture & Cloud", "Engineering practices", "Previous technologies"], drawers.Select(d => d.QuerySelector("summary")!.TextContent));
+        Assert.All(drawers.Take(3), d => Assert.True(d.HasAttribute("open")));
+        Assert.False(drawers[3].HasAttribute("open"));
     }
 
     [Fact]

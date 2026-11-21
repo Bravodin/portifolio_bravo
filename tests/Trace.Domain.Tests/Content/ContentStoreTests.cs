@@ -92,12 +92,13 @@ public sealed class ContentStoreTests
     }
 
     [Fact]
-    public void Toolbox_HasSevenDrawers_AndIncludesTheDelphiYears()
+    public void Toolbox_HasFourDrawers_WithDelphiUnderPreviousTechnologies()
     {
         var toolbox = Store.For(Locales.Portuguese).Toolbox;
 
-        Assert.Equal(7, toolbox.Count);
-        Assert.Contains("Delphi", toolbox.Single(d => d.Id == "engine").Tools);
+        Assert.Equal(["core", "architecture", "practices", "previous"], toolbox.Select(d => d.Id));
+        Assert.Contains("Delphi", toolbox.Single(d => d.Id == "previous").Tools);
+        Assert.Contains("C#", toolbox.Single(d => d.Id == "core").Tools);
     }
 
     [Fact]

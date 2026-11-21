@@ -133,14 +133,12 @@ Grouped as **toolbox drawers**. No percentage bars, which are meaningless. Each 
 
 | Drawer | Tools |
 |---|---|
-| Languages & stacks (was "Engine") | C#, .NET / .NET Framework, ASP.NET, Node.js, TypeScript, Angular, Java / Spring Boot, WPF, Delphi, Pascal |
-| Testing & quality (was "Diagnostics") | Selenium, JMeter, Postman, BDD/TDD (Given-When-Then), Sonar 90 % gates, Jetpack Compose Testing, XCUITest |
-| APIs, cloud & architecture (was "Electronics") | REST, SOAP, Microservices, AWS, CA API Gateway, Sensedia, Redis, message idempotency |
-| Observability tools (was "Scanner") | OpenSearch, end-to-end root-cause analysis |
-| Databases (was "Fluids") | SQL Server, Oracle, MySQL |
-| AI-assisted coding (was "Power tools") | GitHub Copilot, Claude |
-| Frameworks & methodologies (was "Workshop management") | Scrum, ITIL / HPSM, pre-sales & RFPs, budgeting, team building |
+| Core expertise | C#, .NET / .NET Framework, ASP.NET, Node.js, TypeScript, SQL Server |
+| Architecture & Cloud | AWS, Microservices, REST, SOAP, CA API Gateway, Sensedia, Redis, message idempotency, OpenSearch, end-to-end root-cause analysis, Oracle, MySQL |
+| Engineering practices | BDD/TDD (Given-When-Then), Sonar 90 % gates, Selenium, JMeter, Postman, Jetpack Compose Testing, XCUITest, Scrum, ITIL / HPSM, GitHub Copilot, Claude, team building, pre-sales & RFPs, budgeting |
+| Previous technologies (closed by default) | Java / Spring Boot, Angular, WPF, Delphi, Pascal |
 
+Regrouped on 2026-11-21 (Manuel): the old seven drawers showed breadth but hid the current specialty.
 ---
 
 ## 6. Garage (hobbies)

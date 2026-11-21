@@ -1,81 +1,63 @@
 [
   {
-    "id": "engine",
-    "name": "Lenguajes y stacks",
+    "id": "core",
+    "name": "Especialidad principal",
     "tools": [
       "C#",
       ".NET / .NET Framework",
       "ASP.NET",
       "Node.js",
       "TypeScript",
-      "Angular",
-      "Java / Spring Boot",
-      "WPF",
-      "Delphi",
-      "Pascal"
+      "SQL Server"
     ]
   },
   {
-    "id": "diagnostics",
-    "name": "Pruebas y calidad",
+    "id": "architecture",
+    "name": "Arquitectura y cloud",
     "tools": [
-      "Selenium",
-      "JMeter",
-      "Postman",
-      "BDD/TDD (Given-When-Then)",
-      "Gates de 90 % en Sonar",
-      "Jetpack Compose Testing",
-      "XCUITest"
-    ]
-  },
-  {
-    "id": "electronics",
-    "name": "APIs, cloud y arquitectura",
-    "tools": [
+      "AWS",
+      "Microservicios",
       "REST",
       "SOAP",
-      "Microservicios",
-      "AWS",
       "CA API Gateway",
       "Sensedia",
       "Redis",
-      "Idempotencia de mensajes"
-    ]
-  },
-  {
-    "id": "scanner",
-    "name": "Herramientas de observabilidad",
-    "tools": [
+      "Idempotencia de mensajes",
       "OpenSearch",
-      "Análisis de causa raíz de punta a punta"
-    ]
-  },
-  {
-    "id": "fluids",
-    "name": "Bases de datos",
-    "tools": [
-      "SQL Server",
+      "Análisis de causa raíz de punta a punta",
       "Oracle",
       "MySQL"
     ]
   },
   {
-    "id": "power-tools",
-    "name": "Código asistido por IA",
+    "id": "practices",
+    "name": "Prácticas de ingeniería",
     "tools": [
+      "BDD/TDD (Given-When-Then)",
+      "Gates de 90 % en Sonar",
+      "Selenium",
+      "JMeter",
+      "Postman",
+      "Jetpack Compose Testing",
+      "XCUITest",
+      "Scrum",
+      "ITIL / HPSM",
       "GitHub Copilot",
-      "Claude"
+      "Claude",
+      "Formación de equipos",
+      "Preventa y RFPs",
+      "Presupuestos"
     ]
   },
   {
-    "id": "workshop",
-    "name": "Frameworks y metodologías",
+    "id": "previous",
+    "name": "Tecnologías anteriores",
     "tools": [
-      "Scrum",
-      "ITIL / HPSM",
-      "Preventa y RFPs",
-      "Presupuestos",
-      "Formación de equipos"
+      "Java / Spring Boot",
+      "Angular",
+      "WPF",
+      "Delphi",
+      "Pascal"
     ]
   }
 ]
