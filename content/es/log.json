@@ -1,5 +1,5 @@
 [
-  { "period": "2022 → hoy", "company": "Porto", "role": "Lead Engineer", "highlight": "Modernización digital de Porto Saúde (etapas 1–7 del Trace)" },
+  { "period": "2022 → hoy", "company": "Porto", "role": "Lead Engineer", "highlight": "Modernización digital de Porto Saúde (etapas 1–7 del Trace)", "scope": ["Lidero un equipo de 12 personas", "Decisiones a nivel de coordinación", "Hago las entrevistas; la contratación es del gerente", "Elijo los stacks, entre los homologados por la empresa", "Decido la arquitectura, que pasa por la validación de Seguridad de la Información"] },
   { "period": "2022", "company": "Digisystem", "role": "Operation Manager", "highlight": "Preventa y diseño de soluciones de AMS / Service Desk / Cloud en Brasil y Latinoamérica" },
   { "period": "2019 → 2022", "company": "Indra", "role": "Project Manager", "highlight": "Waterfall → Scrum, +30 % en velocidad de entrega; margen de ~32 % sostenido" },
   { "period": "2018 → 2019", "company": "Indra", "role": "Lead Software Engineer", "highlight": "Horas extra 40 → 10 h/mes; RFPs de R$ 500 mil a R$ 1 millón" },

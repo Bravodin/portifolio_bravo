@@ -76,7 +76,8 @@ public sealed record ColophonCopy(
 public sealed record Metric(string Id, string Label, string Before, string After, string Delta, string Where);
 
 /// <summary>One "revision" in the Service Log (content inventory §4).</summary>
-public sealed record LogEntry(string Period, string Company, string Role, string Highlight);
+/// <summary>One career-log line. <c>Scope</c> (current role only, from Manuel) lists team size and decision scope.</summary>
+public sealed record LogEntry(string Period, string Company, string Role, string Highlight, IReadOnlyList<string>? Scope = null);
 
 /// <summary>A Trace stage: Problem → Action → Result (content inventory §3).</summary>
 /// <remarks><c>Metric</c> is the ID of the headline metric (content inventory §2) shown as before → after.</remarks>

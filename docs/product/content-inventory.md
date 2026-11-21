@@ -115,6 +115,8 @@ Shown as a motorcycle **service history**: each entry is a "revision", with odom
 | Odometer | Shop (company) | Role | Highlight |
 |---|---|---|---|
 | 2022 → now | Porto | Lead Engineer | Porto Saúde digital modernization (Trace stages 1–7) |
+
+Current-role scope (Manuel, 2026-11-21; "scope" on the Porto entry in log.json): leads a team of 12 people · coordination-level decisions · interviews candidates, the manager makes the hire · chooses the stacks among the company-approved ones · decides the architecture, validated by Information Security ("SI").
 | 2022 | Digisystem | Operation Manager | Pre-sales and solution design for AMS / Service Desk / Cloud across BR + LATAM |
 | 2019 → 2022 | Indra | Project Manager | Waterfall → Scrum, +30 % delivery speed; ~32 % margin sustained |
 | 2018 → 2019 | Indra | Lead Software Engineer | Overtime 40 → 10 h/mo; RFPs worth R$500K–1M |

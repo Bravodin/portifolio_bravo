@@ -138,6 +138,18 @@ public sealed class HomePageTests : BunitContext
     }
 
     [Fact]
+    public void ServiceLog_CurrentRole_ShowsTeamSizeAndDecisionScope()
+    {
+        var entries = RenderHome("/pt/").FindAll(".log-entry");
+
+        var scope = entries[0].QuerySelectorAll(".log-scope li").Select(li => li.TextContent).ToList();
+        Assert.Equal(5, scope.Count);
+        Assert.Equal("Lidero um time de 12 pessoas", scope[0]);
+        Assert.Contains("Decido a arquitetura, que passa pela validação de Segurança da Informação", scope);
+        Assert.All(entries.Skip(1), e => Assert.Null(e.QuerySelector(".log-scope")));
+    }
+
+    [Fact]
     public void Toolbox_LeadsWithCoreExpertise_AndFoldsAwayPreviousTechnologies()
     {
         var cut = RenderHome("/");

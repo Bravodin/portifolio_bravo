@@ -59,6 +59,15 @@
                 <span class="log-odometer">@entry.Period</span>
                 <strong class="log-shop">@entry.Company · @entry.Role</strong>
                 <span class="log-note">@entry.Highlight</span>
+                @if (entry.Scope is { Count: > 0 } scope)
+                {
+                    <ul class="log-scope">
+                        @foreach (var line in scope)
+                        {
+                            <li>@line</li>
+                        }
+                    </ul>
+                }
             </li>
         }
     </ol>

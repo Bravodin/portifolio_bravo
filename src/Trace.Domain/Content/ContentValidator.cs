@@ -80,6 +80,10 @@ public static class ContentValidator
             {
                 yield return $"log.json has {reference.Log.Count} entries in {Locales.ContentReference} but {other.Log.Count} in {locale}";
             }
+            else if (!reference.Log.Select(e => e.Scope?.Count ?? 0).SequenceEqual(other.Log.Select(e => e.Scope?.Count ?? 0)))
+            {
+                yield return $"log.json scope lines differ between {Locales.ContentReference} and {locale}";
+            }
 
             if (reference.Identity.CareerStartYear != other.Identity.CareerStartYear)
             {

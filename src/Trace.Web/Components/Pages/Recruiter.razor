@@ -79,6 +79,11 @@
                     <span class="role-period">@role.Period</span>
                     <strong>@role.Company · @role.Role</strong>
                     <span class="role-highlight">@role.Highlight</span>
+                    @if (role.Scope is { Count: > 0 } scope)
+                    {
+                        @* One line, so the page still prints on a single A4 sheet. *@
+                        <span class="role-scope">@string.Join(" · ", scope)</span>
+                    }
                 </li>
             }
         </ol>

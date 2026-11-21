@@ -638,6 +638,20 @@ main {
 .log-odometer { font-family: var(--font-mono); font-size: var(--size-small); color: var(--color-muted); }
 .log-note { color: var(--color-text-2); }
 
+.log-scope {
+  margin: var(--space-2) 0 0;
+  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  display: grid;
+  gap: var(--space-1);
+  max-width: var(--measure);
+  color: var(--color-text-2);
+}
+
+.log-scope li::marker { color: var(--color-amber); }
+
 /* ---------- Toolbox ---------- */
 
 .drawers {
@@ -1247,6 +1261,7 @@ html:has(dialog.lightbox[open]) { overflow: hidden; }
 .roles li { display: grid; gap: var(--space-1); }
 .role-period { font-family: var(--font-mono); font-size: var(--size-small); color: var(--color-muted); }
 .role-highlight { color: var(--color-text-2); }
+.role-scope { color: var(--color-text-2); font-size: var(--size-small); }
 
 /* ---------- Motion ---------- */
 
