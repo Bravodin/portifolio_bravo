@@ -21,7 +21,7 @@ public enum ImageShape
     /// <summary>A square cut around the focal point (avatars, the Recruiter Mode portrait, gallery thumbnails).</summary>
     Square,
 
-    /// <summary>A 9:16 cut around the focal point (posters for vertical videos such as YouTube Shorts).</summary>
+    /// <summary>A 9:16 cut around the focal point (posters for vertical videos).</summary>
     Vertical,
 }
 

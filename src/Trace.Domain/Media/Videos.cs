@@ -3,22 +3,20 @@ using System.Text.Json;
 namespace Trace.Domain.Media;
 
 /// <summary>
-/// One video from <c>content/media/videos.json</c> (ADR-0010). Titles and descriptions are keyed by locale.
-/// <c>Poster</c> (e.g. <c>garage/short-01-frame.jpg</c>) replaces YouTube's thumbnail with a frame of our choosing.
+/// One video from <c>content/media/videos.json</c> (ADR-0012). Titles and descriptions are keyed by locale.
+/// <c>File</c> is the web-ready MP4 (e.g. <c>garage/videos/short-01-roll-out.mp4</c>) and <c>Poster</c> a frame
+/// exported from it (e.g. <c>garage/short-01-roll-out-poster.jpg</c>), both relative to <c>content/media/</c>.
 /// </summary>
 public sealed record VideoItem(
     string Id,
-    string YoutubeId,
+    string File,
     string Category,
     bool Featured,
     FocalPoint? FocalPoint,
-    string? Poster,
+    string Poster,
     Credit Credit,
     IReadOnlyDictionary<string, string> Title,
-    IReadOnlyDictionary<string, string> Description)
-{
-    public Uri WatchUrl => new($"https://www.youtube.com/shorts/{YoutubeId}");
-}
+    IReadOnlyDictionary<string, string> Description);
 
 public static class Videos
 {
@@ -26,7 +24,7 @@ public static class Videos
 
     public static IReadOnlyList<VideoItem> Load(string manifestPath)
     {
-        using var stream = File.OpenRead(manifestPath);
+        using var stream = System.IO.File.OpenRead(manifestPath);
         using var document = JsonDocument.Parse(stream);
         return document.RootElement.GetProperty("items").Deserialize<List<VideoItem>>(Json)
             ?? throw new InvalidDataException($"{manifestPath} has no items.");

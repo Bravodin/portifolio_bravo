@@ -2,22 +2,15 @@
 @inject MediaCatalog Media
 @inject PageContext Page
 
-@* Click-to-load facade (ADR-0010). Without JS it's a plain link to the Short (L0). site.js swaps it for a
-   youtube-nocookie iframe on click, so nothing from YouTube loads (and no cookie is set) before that. *@
+@* Click-to-load facade (ADR-0012). Without JS it's a plain link to the MP4 (L0). site.js swaps it for a <video>
+   with the same poster on click, so no video bytes load before that. The file is ours: no third party involved. *@
 <figure class="video">
     <a class="video-facade"
-       href="@Video.WatchUrl"
-       data-youtube="@Video.YoutubeId"
+       href="@Media.VideoUrl(Video)"
+       data-video
        data-title="@Title"
        aria-label="@string.Format(CultureInfo.InvariantCulture, Page.T("video.play"), Title)">
-        @if (Media.Poster(Video, [270, 405]) is { } poster)
-        {
-            <Picture Source="poster" Sizes="(min-width: 1024px) 270px, 45vw" Width="270" Height="480" Class="video-poster" />
-        }
-        else
-        {
-            <span class="video-placeholder"></span>
-        }
+        <Picture Source="Media.Poster(Video, [270, 405])" Sizes="(min-width: 1024px) 270px, 45vw" Width="270" Height="480" Class="video-poster" />
         <span class="video-play" aria-hidden="true">▶</span>
     </a>
     <figcaption>

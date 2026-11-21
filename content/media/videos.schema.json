@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "TRACE video manifest (ADR-0010)",
+  "title": "TRACE video manifest (ADR-0012)",
   "type": "object",
   "required": ["items"],
   "properties": {
@@ -8,11 +8,11 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "youtubeId", "category", "credit", "title", "description"],
+        "required": ["id", "file", "poster", "category", "credit", "title", "description"],
         "additionalProperties": false,
         "properties": {
           "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
-          "youtubeId": { "type": "string", "pattern": "^[A-Za-z0-9_-]{11}$" },
+          "file": { "type": "string", "pattern": "^(garage|games|workbench)/videos/[a-z0-9-]+\\.mp4$" },
           "category": { "enum": ["track", "garage", "games", "workbench"] },
           "featured": { "type": "boolean", "default": false },
           "aspectRatio": { "enum": ["9:16", "16:9"], "default": "9:16" },
@@ -24,7 +24,7 @@
               "y": { "type": "number", "minimum": 0, "maximum": 1 }
             }
           },
-          "poster": { "type": ["string", "null"], "pattern": "^(garage|games|workbench)/[a-z0-9-]+\\.(jpe?g|png|webp)$" },
+          "poster": { "type": "string", "pattern": "^(garage|games|workbench)/[a-z0-9-]+\\.(jpe?g|png|webp)$" },
           "credit": {
             "type": "object",
             "required": ["name"],

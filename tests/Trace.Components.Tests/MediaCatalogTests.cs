@@ -9,14 +9,15 @@ public sealed class MediaCatalogTests : IDisposable
 
     public MediaCatalogTests()
     {
-        Directory.CreateDirectory(Path.Combine(_root, "garage"));
+        Directory.CreateDirectory(Path.Combine(_root, "garage", "videos"));
         File.Copy(Path.Combine(MediaCatalog.FindRoot(null), "profile", "manuel-bravo.jpg"), Path.Combine(_root, "garage", "frame.jpg"));
+        File.WriteAllBytes(Path.Combine(_root, "garage", "videos", "clip.mp4"), [1, 2, 3]);
         File.WriteAllText(Path.Combine(_root, "gallery.json"), """{ "items": [] }""");
         File.WriteAllText(Path.Combine(_root, "videos.json"), """
             { "items": [
-              { "id": "own", "youtubeId": "AAAAAAAAAAA", "category": "track", "poster": "garage/frame.jpg",
+              { "id": "own", "file": "garage/videos/clip.mp4", "category": "track", "poster": "garage/frame.jpg",
                 "credit": { "name": "x" }, "title": { "en": "t" }, "description": { "en": "d" } },
-              { "id": "yt", "youtubeId": "BBBBBBBBBBB", "category": "track",
+              { "id": "gone", "file": "garage/videos/missing.mp4", "category": "track", "poster": "garage/missing.jpg",
                 "credit": { "name": "x" }, "title": { "en": "t" }, "description": { "en": "d" } }
             ] }
             """);
@@ -39,16 +40,28 @@ public sealed class MediaCatalogTests : IDisposable
     }
 
     [Fact]
-    public void Poster_FromYouTube_NeedsTheDownloadedThumbnail()
+    public void VideoUrl_IsHashed_AndRememberedForThePrerender()
     {
-        Assert.Null(new MediaCatalog(_root).Poster(new MediaCatalog(_root).Videos[1], [270]));
+        var catalog = new MediaCatalog(_root);
 
-        var cache = Path.Combine(_root, "cache");
-        Directory.CreateDirectory(cache);
-        File.Copy(Path.Combine(_root, "garage", "frame.jpg"), Path.Combine(cache, "BBBBBBBBBBB.jpg"));
-        var catalog = new MediaCatalog(_root, cache);
+        var url = catalog.VideoUrl(catalog.Videos[0]);
 
-        Assert.NotNull(catalog.Poster(catalog.Videos[1], [270]));
+        Assert.Matches(@"^/media/own\.[0-9a-f]{10}\.mp4$", url);
+        Assert.True(catalog.TryGetIssuedFile(url, out var source));
+        Assert.Equal(Path.Combine(_root, "garage", "videos", "clip.mp4"), source);
+        Assert.False(catalog.TryGetIssuedFile("/media/other.mp4", out _));
+    }
+
+    [Fact]
+    public void Video_WithMissingFiles_SaysWhichEntryIsWrong()
+    {
+        var catalog = new MediaCatalog(_root);
+
+        var video = Assert.Throws<FileNotFoundException>(() => catalog.VideoUrl(catalog.Videos[1]));
+        var poster = Assert.Throws<FileNotFoundException>(() => catalog.Poster(catalog.Videos[1], [270]));
+
+        Assert.Contains("'gone'", video.Message, StringComparison.Ordinal);
+        Assert.Contains("garage/missing.jpg", poster.Message, StringComparison.Ordinal);
     }
 
     [Fact]

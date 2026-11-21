@@ -102,18 +102,21 @@ document.addEventListener('click', (event) => {
 document.addEventListener('click', (event) => {
   const target = event.target instanceof Element ? event.target : null;
 
-  // Video facade (ADR-0010): load YouTube only now that the visitor asked for it.
-  const video = target?.closest('a[data-youtube]');
-  if (video) {
+  // Video facade (ADR-0012): load the video only now that the visitor asked for it.
+  const facade = target?.closest('a[data-video]');
+  if (facade && event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
     event.preventDefault();
-    const iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(video.dataset.youtube) + '?autoplay=1&playsinline=1&rel=0';
-    iframe.title = video.dataset.title ?? '';
-    iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-    iframe.allowFullscreen = true;
-    iframe.className = 'video-frame';
-    video.replaceWith(iframe);
-    iframe.focus();
+    const player = document.createElement('video');
+    player.src = facade.getAttribute('href');
+    player.poster = facade.querySelector('img')?.currentSrc ?? '';
+    player.controls = true;
+    player.playsInline = true;
+    player.preload = 'auto';
+    player.setAttribute('aria-label', facade.dataset.title ?? '');
+    player.className = 'video-frame';
+    facade.replaceWith(player);
+    player.focus();
+    player.play().catch(() => { /* autoplay refused: the controls are there */ });
     return;
   }
 

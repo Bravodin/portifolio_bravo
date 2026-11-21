@@ -71,19 +71,20 @@ public sealed class GaragePageTests : BunitContext
         var facades = Render<Garage>().FindAll("a.video-facade");
 
         Assert.Equal(4, facades.Count);
-        Assert.Equal("https://www.youtube.com/shorts/xEh1hYPC3lM", facades[0].GetAttribute("href"));
-        Assert.Equal("xEh1hYPC3lM", facades[0].GetAttribute("data-youtube"));
+        Assert.Matches(@"^/media/short-01-roll-out\.[0-9a-f]{10}\.mp4$", facades[0].GetAttribute("href"));
+        Assert.True(facades[0].HasAttribute("data-video"));
         Assert.Equal("Reproducir video: Saliendo a la pista", facades[0].GetAttribute("aria-label"));
     }
 
     [Fact]
-    public void Videos_WithoutADownloadedPoster_ShowAPlainCard_AndNoYouTubeImage()
+    public void Videos_ShowOurOwnPoster_AndNothingFromYouTube()
     {
         this.AddSite("/garage/");
 
         var cut = Render<Garage>();
 
-        Assert.Equal(4, cut.FindAll(".video-placeholder").Count);
+        Assert.Equal(4, cut.FindAll(".video-facade picture.video-poster img").Count);
+        Assert.DoesNotContain("youtube", cut.Markup, StringComparison.OrdinalIgnoreCase);
         Assert.DoesNotContain("ytimg", cut.Markup, StringComparison.Ordinal);
         Assert.DoesNotContain("<iframe", cut.Markup, StringComparison.Ordinal);
     }

@@ -19,8 +19,12 @@ public sealed class VideosTests
     }
 
     [Fact]
-    public void WatchUrl_PointsAtTheShort() =>
-        Assert.Equal(new Uri("https://www.youtube.com/shorts/xEh1hYPC3lM"), Items[0].WatchUrl);
+    public void EveryVideo_HasItsFileAndPosterInTheRepo() =>
+        Assert.All(Items, v =>
+        {
+            Assert.True(File.Exists(Path.Combine(RepoContent.Root, "media", v.File)), v.File);
+            Assert.True(File.Exists(Path.Combine(RepoContent.Root, "media", v.Poster)), v.Poster);
+        });
 
     [Fact]
     public void Gallery_LoadsEveryPhoto() =>

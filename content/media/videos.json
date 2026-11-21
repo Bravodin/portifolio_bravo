@@ -3,11 +3,11 @@
   "items": [
     {
       "id": "short-01-roll-out",
-      "youtubeId": "xEh1hYPC3lM",
+      "file": "garage/videos/short-01-roll-out.mp4",
       "category": "track",
       "featured": false,
       "aspectRatio": "9:16",
-      "poster": null,
+      "poster": "garage/short-01-roll-out-poster.jpg",
       "credit": { "name": "@mustelasportmedia", "url": "https://www.instagram.com/mustelasportmedia/" },
       "title": {
         "pt-BR": "Saindo para a pista",
@@ -22,11 +22,11 @@
     },
     {
       "id": "short-02-corner-hills",
-      "youtubeId": "ZeJOh9WHzJ4",
+      "file": "garage/videos/short-02-corner-hills.mp4",
       "category": "track",
       "featured": false,
       "aspectRatio": "9:16",
-      "poster": null,
+      "poster": "garage/short-02-corner-hills-poster.jpg",
       "credit": { "name": "@mustelasportmedia", "url": "https://www.instagram.com/mustelasportmedia/" },
       "title": {
         "pt-BR": "Curva com a serra ao fundo",
@@ -34,18 +34,18 @@
         "es": "Curva con la sierra al fondo"
       },
       "description": {
-        "pt-BR": "Manuel inclina a moto vermelha numa curva, com morros e eucaliptos ao fundo. Só som de motor.",
-        "en": "Manuel leans the red bike through a corner, with hills and eucalyptus trees behind. Engine sound only.",
-        "es": "Manuel inclina la moto roja en una curva, con cerros y eucaliptos al fondo. Solo sonido de motor."
+        "pt-BR": "Manuel inclina a moto vermelha numa curva, com morros e eucaliptos ao fundo. Sem som.",
+        "en": "Manuel leans the red bike through a corner, with hills and eucalyptus trees behind. No sound.",
+        "es": "Manuel inclina la moto roja en una curva, con cerros y eucaliptos al fondo. Sin sonido."
       }
     },
     {
       "id": "short-03-curb",
-      "youtubeId": "UsLC7vsWB1Q",
+      "file": "garage/videos/short-03-curb.mp4",
       "category": "track",
       "featured": false,
       "aspectRatio": "9:16",
-      "poster": null,
+      "poster": "garage/short-03-curb-poster.jpg",
       "credit": { "name": "@mustelasportmedia", "url": "https://www.instagram.com/mustelasportmedia/" },
       "title": {
         "pt-BR": "Rente à zebra",
@@ -53,18 +53,18 @@
         "es": "Pegado al piano"
       },
       "description": {
-        "pt-BR": "Filmado do nível da grama, Manuel contorna a curva rente à zebra na moto vermelha. Só som de motor.",
-        "en": "Filmed from grass level, Manuel rounds the corner close to the curb on the red bike. Engine sound only.",
-        "es": "Filmado a ras del césped, Manuel toma la curva pegado al piano en la moto roja. Solo sonido de motor."
+        "pt-BR": "Filmado do nível da grama, Manuel contorna a curva rente à zebra na moto vermelha. Sem som.",
+        "en": "Filmed from grass level, Manuel rounds the corner close to the curb on the red bike. No sound.",
+        "es": "Filmado a ras del césped, Manuel toma la curva pegado al piano en la moto roja. Sin sonido."
       }
     },
     {
       "id": "short-04-knee-down",
-      "youtubeId": "knjhekGSKe4",
+      "file": "garage/videos/short-04-knee-down.mp4",
       "category": "track",
       "featured": false,
       "aspectRatio": "9:16",
-      "poster": null,
+      "poster": "garage/short-04-knee-down-poster.jpg",
       "credit": { "name": "@mustelasportmedia", "url": "https://www.instagram.com/mustelasportmedia/" },
       "title": {
         "pt-BR": "Joelho no chão",
@@ -72,9 +72,9 @@
         "es": "Rodilla al suelo"
       },
       "description": {
-        "pt-BR": "Manuel passa bem perto da câmera, deitado na curva com o joelho quase no asfalto. Só som de motor.",
-        "en": "Manuel passes right by the camera, leaned over in the corner with a knee almost on the asphalt. Engine sound only.",
-        "es": "Manuel pasa muy cerca de la cámara, tumbado en la curva con la rodilla casi en el asfalto. Solo sonido de motor."
+        "pt-BR": "Manuel passa bem perto da câmera, deitado na curva com o joelho quase no asfalto. Sem som.",
+        "en": "Manuel passes right by the camera, leaned over in the corner with a knee almost on the asphalt. No sound.",
+        "es": "Manuel pasa muy cerca de la cámara, tumbado en la curva con la rodilla casi en el asfalto. Sin sonido."
       }
     }
   ]

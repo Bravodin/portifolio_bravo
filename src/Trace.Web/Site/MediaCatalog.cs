@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Security.Cryptography;
 using Trace.Domain.Media;
 
 namespace Trace.Web.Site;
@@ -13,24 +14,22 @@ public sealed record ResponsiveImage(IReadOnlyDictionary<string, string>? Alt, I
 }
 
 /// <summary>
-/// Photos from <c>content/media/</c> (ADR-0008). Pages ask it for responsive images; every variant it hands out
-/// is remembered, so Trace.Prerender can generate exactly the files the HTML references.
+/// Photos and videos from <c>content/media/</c> (ADR-0008, ADR-0012). Pages ask it for responsive images and video
+/// URLs; everything it hands out is remembered, so Trace.Prerender can write exactly the files the HTML references.
 /// </summary>
 public sealed class MediaCatalog
 {
     private readonly string _root;
-    private readonly string? _posterCache;
     private readonly List<GalleryItem> _gallery;
     private readonly Dictionary<string, GalleryItem> _items;
     private readonly ConcurrentDictionary<string, ImageVariant> _issued = new(StringComparer.Ordinal);
+    private readonly ConcurrentDictionary<string, string> _issuedFiles = new(StringComparer.Ordinal);
     private readonly ConcurrentDictionary<string, (PixelSize Size, byte[] Bytes)> _originals = new(StringComparer.Ordinal);
 
-    /// <param name="mediaRoot">The folder with gallery.json, videos.json and the photo originals.</param>
-    /// <param name="posterCache">Where Trace.Prerender downloaded the YouTube thumbnails ({youtubeId}.jpg); null = no posters.</param>
-    public MediaCatalog(string mediaRoot, string? posterCache = null)
+    /// <param name="mediaRoot">The folder with gallery.json, videos.json, the photo originals and the video files.</param>
+    public MediaCatalog(string mediaRoot)
     {
         _root = mediaRoot;
-        _posterCache = posterCache;
         _gallery = [.. Gallery.Load(Path.Combine(mediaRoot, "gallery.json"))];
         _items = _gallery.ToDictionary(i => i.Id, StringComparer.Ordinal);
         Videos = Trace.Domain.Media.Videos.Load(Path.Combine(mediaRoot, "videos.json"));
@@ -51,18 +50,32 @@ public sealed class MediaCatalog
         return Build(id, path, shape, item.FocalPoint, widths, item.Alt);
     }
 
+    /// <summary>A 9:16 poster for a video, cut from the frame its manifest entry points at (ADR-0012).</summary>
+    public ResponsiveImage Poster(VideoItem video, IEnumerable<int> widths) =>
+        Build(video.Id, Existing(video.Poster, video.Id), ImageShape.Vertical, video.FocalPoint, widths, alt: null);
+
     /// <summary>
-    /// A 9:16 poster for a video, cut from the thumbnail Trace.Prerender downloaded (ADR-0010).
-    /// Null when there's no downloaded thumbnail (dev runs, tests): the facade then shows a plain card.
+    /// The video's URL, <c>/media/{id}.{hash}.mp4</c>: the hash of the file's bytes, so a new encode gets a new URL
+    /// and the file can be cached as immutable, like the images (ADR-0012).
     /// </summary>
-    public ResponsiveImage? Poster(VideoItem video, IEnumerable<int> widths)
+    public string VideoUrl(VideoItem video)
     {
-        var path = video.Poster is { } own
-            ? Path.Combine(_root, own.Replace('/', Path.DirectorySeparatorChar))
-            : _posterCache is null ? null : Path.Combine(_posterCache, video.YoutubeId + ".jpg");
-        return path is not null && File.Exists(path)
-            ? Build(video.Id, path, ImageShape.Vertical, video.FocalPoint, widths, alt: null)
-            : null;
+        var path = Existing(video.File, video.Id);
+        var (_, bytes) = _originals.GetOrAdd(path, p => (default, File.ReadAllBytes(p)));
+        var url = $"/media/{video.Id}.{Convert.ToHexStringLower(SHA256.HashData(bytes))[..10]}{Path.GetExtension(path).ToLowerInvariant()}";
+        _issuedFiles[url] = path;
+        return url;
+    }
+
+    /// <summary>A file some page referenced as-is (a video), by URL. Used by Trace.Prerender's media step.</summary>
+    public bool TryGetIssuedFile(string url, out string sourcePath) => _issuedFiles.TryGetValue(url, out sourcePath!);
+
+    private string Existing(string relativePath, string videoId)
+    {
+        var path = Path.Combine(_root, (relativePath ?? string.Empty).Replace('/', Path.DirectorySeparatorChar));
+        return File.Exists(path)
+            ? path
+            : throw new FileNotFoundException($"videos.json: '{videoId}' points at '{relativePath}', which isn't in content/media/.", path);
     }
 
     private ResponsiveImage Build(string id, string path, ImageShape shape, FocalPoint? focal, IEnumerable<int> widths, IReadOnlyDictionary<string, string>? alt)
