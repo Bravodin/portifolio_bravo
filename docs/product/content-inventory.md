@@ -114,10 +114,10 @@ Shown as a motorcycle **service history**: each entry is a "revision", with odom
 
 | Odometer | Shop (company) | Role | Highlight |
 |---|---|---|---|
-| 2022 → now | Porto | Lead Engineer | Porto Saúde digital modernization (Trace stages 1–7) |
+| Jul 2022 → now | Porto | Lead Engineer | Porto Saúde digital modernization (Trace stages 1–7) |
 
 Current-role scope (Manuel, 2026-11-21; "scope" on the Porto entry in log.json; shown on the home page as "Leadership & scope" under What I bring, and as one line in Recruiter Mode): leads a team of 12 people · coordination-level decisions · interviews candidates, the manager makes the hire · chooses the stacks among the company-approved ones · decides the architecture, validated by Information Security ("SI").
-| 2022 | Digisystem | Operation Manager | Pre-sales and solution design for AMS / Service Desk / Cloud across BR + LATAM |
+| 2022 → Jun 2022 | Digisystem | Operation Manager | Pre-sales and solution design for AMS / Service Desk / Cloud across BR + LATAM |
 | 2019 → 2022 | Indra | Project Manager | Waterfall → Scrum, +30 % delivery speed; ~32 % margin sustained |
 | 2018 → 2019 | Indra | Lead Software Engineer | Overtime 40 → 10 h/mo; RFPs worth R$500K–1M |
 | 2017 → 2018 | Indra | Senior Software Engineer | SLA 70 % → 98 % (ITIL / HPSM) |
@@ -137,10 +137,10 @@ Grouped as **toolbox drawers**. No percentage bars, which are meaningless. Each 
 
 | Drawer | Tools |
 |---|---|
-| Core expertise | C#, .NET / .NET Framework, ASP.NET, Node.js, TypeScript, SQL Server |
+| Core expertise | C#, .NET / .NET Framework, ASP.NET, Node.js, TypeScript, Angular, SQL Server |
 | Architecture & Cloud | AWS, Microservices, REST, SOAP, CA API Gateway, Sensedia, Redis, message idempotency, OpenSearch, end-to-end root-cause analysis, Oracle, MySQL |
 | Engineering practices | BDD/TDD (Given-When-Then), Sonar 90 % gates, Selenium, JMeter, Postman, Jetpack Compose Testing, XCUITest, Scrum, ITIL / HPSM, GitHub Copilot, Claude, team building, pre-sales & RFPs, budgeting |
-| Previous technologies (closed by default) | Java / Spring Boot, Angular, WPF, Delphi, Pascal |
+| Previous technologies (closed by default) | Java / Spring Boot, WPF, Delphi, Pascal |
 
 Regrouped on 2026-11-21 (Manuel): the old seven drawers showed breadth but hid the current specialty.
 ---

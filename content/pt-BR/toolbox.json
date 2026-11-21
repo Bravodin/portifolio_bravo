@@ -8,6 +8,7 @@
       "ASP.NET",
       "Node.js",
       "TypeScript",
+      "Angular",
       "SQL Server"
     ]
   },
@@ -54,7 +55,6 @@
     "name": "Tecnologias anteriores",
     "tools": [
       "Java / Spring Boot",
-      "Angular",
       "WPF",
       "Delphi",
       "Pascal"

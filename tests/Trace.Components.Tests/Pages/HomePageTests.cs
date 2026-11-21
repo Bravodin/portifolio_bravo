@@ -144,7 +144,7 @@ public sealed class HomePageTests : BunitContext
 
         var block = cut.Find("#bring .bring-scope");
         Assert.Equal("Liderança e escopo", block.QuerySelector("h3")!.TextContent);
-        Assert.Equal("Porto · Lead Engineer · 2022 → hoje", block.QuerySelector(".bring-scope-role")!.TextContent);
+        Assert.Equal("Porto · Lead Engineer · jul/2022 → hoje", block.QuerySelector(".bring-scope-role")!.TextContent);
         var scope = block.QuerySelectorAll("li").Select(li => li.TextContent).ToList();
         Assert.Equal(5, scope.Count);
         Assert.Equal("Lidero um time de 12 pessoas", scope[0]);
