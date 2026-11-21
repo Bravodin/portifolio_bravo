@@ -49,6 +49,16 @@ public sealed class ContentValidatorTests : IDisposable
     }
 
     [Fact]
+    public void Load_StagePartWithUnknownOrMismatchedMetric_Fails()
+    {
+        Edit("pt-BR/stages.json", json => json[6]!["parts"]![2]!["metric"] = "M99");
+
+        var error = Assert.Throws<InvalidDataException>(() => ContentStore.Load(_root));
+        Assert.Contains("stage 'pit' part 'ai' uses metric 'M99'", error.Message, StringComparison.Ordinal);
+        Assert.Contains("stage 'pit' has different parts or part metrics in en", error.Message, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Load_AboutWithAMissingPrinciple_Fails()
     {
         Edit("en/about.json", json => json["principles"]!.AsArray().RemoveAt(0));

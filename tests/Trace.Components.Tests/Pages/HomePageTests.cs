@@ -94,6 +94,20 @@ public sealed class HomePageTests : BunitContext
     }
 
     [Fact]
+    public void Stage7_SplitsQualityObservabilityAndAi_EachWithItsOwnStory()
+    {
+        var stage = RenderHome("/").Find("#pit");
+
+        Assert.Equal("Quality, Observability & AI", stage.QuerySelector("h3")!.TextContent);
+        var parts = stage.QuerySelectorAll(".stage-part");
+        Assert.Equal(["Quality", "Observability", "AI productivity"], parts.Select(p => p.QuerySelector("h4")!.TextContent));
+        Assert.Equal(["M8", null, "M7"], parts.Select(p => p.QuerySelector(".stage-metric")?.GetAttribute("data-metric")));
+        Assert.Equal(["Problem", "Action"], parts[1].QuerySelectorAll("dt").Select(dt => dt.TextContent));
+        Assert.Equal(["Action", "Result"], parts[2].QuerySelectorAll("dt").Select(dt => dt.TextContent));
+        Assert.Null(stage.QuerySelector("details.case"));
+    }
+
+    [Fact]
     public void Case_IsANativeDetailsWithProblemActionResult()
     {
         var cut = RenderHome("/pt/");

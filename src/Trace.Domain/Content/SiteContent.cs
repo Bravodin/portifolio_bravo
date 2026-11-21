@@ -89,7 +89,14 @@ public sealed record Stage(
     string Action,
     string Result,
     IReadOnlyList<string> Story,
-    IReadOnlyList<string> Tech);
+    IReadOnlyList<string> Tech,
+    IReadOnlyList<StagePart>? Parts = null);
+
+/// <summary>
+/// One topic of a stage that covers several (stage 7: quality, observability, AI productivity), shown as its own block.
+/// Problem, Result and Metric are optional: a line without data is left out rather than invented.
+/// </summary>
+public sealed record StagePart(string Id, string Title, string? Metric, string? Problem, string Action, string? Result);
 
 /// <summary>A Toolbox drawer (content inventory §5). No skill bars: just the tools.</summary>
 public sealed record Drawer(string Id, string Name, IReadOnlyList<string> Tools);

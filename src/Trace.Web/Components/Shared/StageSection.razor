@@ -2,38 +2,65 @@
 
 @* One Trace stage (docs/ux/sitemap.md, "Content hierarchy per Trace stage").
    Closed: hook (the problem) + metric + chips. Open: Problem · Action · Result.
-   The case uses native <details>, so it works without JS (L0). *@
+   The case uses native <details>, so it works without JS (L0).
+   A stage with parts (stage 7) shows one block per topic instead, each with its own metric and P·A·R. *@
 <section class="stage" id="@Stage.Id" aria-labelledby="stage-@Stage.Id">
     <header class="stage-head">
         <p class="hud-label">@Page.T("stage.label") @Stage.Number</p>
         <h3 id="stage-@Stage.Id">@Stage.Title</h3>
     </header>
 
-    <p class="stage-hook">@Stage.Problem</p>
+    @if (Stage.Parts is { Count: > 0 } parts)
+    {
+        <div class="stage-parts">
+            @foreach (var part in parts)
+            {
+                <article class="stage-part" id="@Stage.Id-@part.Id" aria-labelledby="stage-@Stage.Id-@part.Id">
+                    <h4 id="stage-@Stage.Id-@part.Id">@part.Title</h4>
+                    @if (part.Metric is { } metricId)
+                    {
+                        @MetricLine(Page.Content.Metric(metricId))
+                    }
+                    <dl class="par">
+                        @if (part.Problem is { } problem)
+                        {
+                            <dt>@Page.T("stage.problem")</dt>
+                            <dd>@problem</dd>
+                        }
+                        <dt>@Page.T("stage.action")</dt>
+                        <dd>@part.Action</dd>
+                        @if (part.Result is { } result)
+                        {
+                            <dt>@Page.T("stage.result")</dt>
+                            <dd>@result</dd>
+                        }
+                    </dl>
+                </article>
+            }
+        </div>
 
-    <p class="stage-metric" data-metric="@Metric.Id">
-        <span class="metric-before">@Metric.Before <span class="metric-arrow" aria-hidden="true">→</span></span>
-        <span class="@(Metric.After.Length > 10 ? "metric-after metric-after-long" : "metric-after")">@Metric.After</span>
-        @if (Metric.Delta != "—" && Metric.Delta != Metric.After)
-        {
-            <span class="metric-delta">@Metric.Delta</span>
-        }
-        <span class="metric-label">@Metric.Label · @Metric.Where</span>
-    </p>
+        @ChildContent
+    }
+    else
+    {
+        <p class="stage-hook">@Stage.Problem</p>
 
-    @ChildContent
+        @MetricLine(Page.Content.Metric(Stage.Metric))
 
-    <details class="case">
-        <summary>@Page.T("stage.openCase")</summary>
-        <dl class="par">
-            <dt>@Page.T("stage.problem")</dt>
-            <dd>@Stage.Problem</dd>
-            <dt>@Page.T("stage.action")</dt>
-            <dd>@Stage.Action</dd>
-            <dt>@Page.T("stage.result")</dt>
-            <dd>@Stage.Result</dd>
-        </dl>
-    </details>
+        @ChildContent
+
+        <details class="case">
+            <summary>@Page.T("stage.openCase")</summary>
+            <dl class="par">
+                <dt>@Page.T("stage.problem")</dt>
+                <dd>@Stage.Problem</dd>
+                <dt>@Page.T("stage.action")</dt>
+                <dd>@Stage.Action</dd>
+                <dt>@Page.T("stage.result")</dt>
+                <dd>@Stage.Result</dd>
+            </dl>
+        </details>
+    }
 
     <ul class="chips" aria-label="Tech">
         @foreach (var tech in Stage.Tech)
@@ -49,5 +76,13 @@
     /// <summary>Extra content inside the stage, e.g. the Dyno in stage 1.</summary>
     [Parameter] public RenderFragment? ChildContent { get; set; }
 
-    private Metric Metric => Page.Content.Metric(Stage.Metric);
+    private static RenderFragment MetricLine(Metric metric) => @<p class="stage-metric" data-metric="@metric.Id">
+        <span class="metric-before">@metric.Before <span class="metric-arrow" aria-hidden="true">→</span></span>
+        <span class="@(metric.After.Length > 10 ? "metric-after metric-after-long" : "metric-after")">@metric.After</span>
+        @if (metric.Delta != "—" && metric.Delta != metric.After)
+        {
+            <span class="metric-delta">@metric.Delta</span>
+        }
+        <span class="metric-label">@metric.Label · @metric.Where</span>
+    </p>;
 }

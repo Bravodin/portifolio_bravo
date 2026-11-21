@@ -88,7 +88,9 @@ Format for each stage: **Layer → Problem → Action → Result → Tech**. Cop
 | 4 | **Services** | Engine block (rebuild) | Legacy .NET/SOAP services with a large vulnerability surface | Modernized ~80 % of them to Node.js | Vulnerabilities −70 % | Node.js · TypeScript · C# · .NET · Microservices |
 | 5 | **Cache & Messaging** | Transmission | Intermittent failures and duplicate processing | Message idempotency + Redis caching; reworked the architecture of a critical workflow | Workflow 8 h → 4 h; better reliability | Redis · Idempotency · AWS |
 | 6 | **Database** | Oil & cooling | Deadlocks and slow batches on high-volume data | Tuned queries, transactions, locking strategy and stored procedures | Batch 8 h → 2 h; deadlocks eliminated; +20 % throughput | SQL Server · Oracle · MySQL · LINQ |
-| 7 | **Pit Crew** (Observability & Quality) | Diagnostic scanner & pit crew | Production issues that span the app, chatbot and web; releases without a safety net | End-to-end RCA with OpenSearch; Selenium / Postman / JMeter; BDD/TDD; 90 % Sonar gate; Copilot + Claude pilot | +40 % productivity; load tests before go-live | OpenSearch · Selenium · JMeter · Postman · Sonar · GitHub Copilot · Claude |
+| 7 | **Pit Crew** (Quality, Observability & AI) | Diagnostic scanner & pit crew | Production issues that span the app, chatbot and web; releases without a safety net | End-to-end RCA with OpenSearch; Selenium / Postman / JMeter; BDD/TDD; 90 % Sonar gate; Copilot + Claude pilot | +40 % productivity; load tests before go-live | OpenSearch · Selenium · JMeter · Postman · Sonar · GitHub Copilot · Claude |
+
+Stage 7 is shown as three blocks (Manuel, 2026-11-21), from the same facts, nothing added: **Quality** (releases without a safety net → Selenium / Postman / JMeter, BDD/TDD, 90 % Sonar gate → load tests before go-live; metric M8) · **Observability** (issues spanning app, chatbot and web → end-to-end RCA with OpenSearch; no result figure yet) · **AI productivity** (Copilot + Claude pilot → +40 %; metric M7).
 
 ### 3.1 Stage 1 story: the benchmark behind the dyno
 

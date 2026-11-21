@@ -101,7 +101,7 @@
   {
     "id": "pit",
     "number": 7,
-    "title": "Observabilidad y calidad",
+    "title": "Calidad, observabilidad e IA",
     "metric": "M7",
     "problem": "Problemas en producción que cruzan la app, el chatbot y la web; releases sin red de seguridad.",
     "action": "RCA de punta a punta con OpenSearch; Selenium / Postman / JMeter; BDD/TDD; gate de 90 % en Sonar; piloto con Copilot + Claude.",
@@ -115,6 +115,32 @@
       "Sonar",
       "GitHub Copilot",
       "Claude"
+    ],
+    "parts": [
+      {
+        "id": "quality",
+        "title": "Calidad",
+        "metric": "M8",
+        "problem": "Releases sin red de seguridad.",
+        "action": "Suites con Selenium, Postman y JMeter; BDD/TDD; gate de 90 % de cobertura en Sonar.",
+        "result": "Pruebas de carga antes del go-live; gate de cobertura en ≥ 90 %."
+      },
+      {
+        "id": "observability",
+        "title": "Observabilidad",
+        "metric": null,
+        "problem": "Problemas en producción que cruzan la app, el chatbot y la web.",
+        "action": "Análisis de causa raíz de punta a punta con OpenSearch.",
+        "result": null
+      },
+      {
+        "id": "ai",
+        "title": "Productividad con IA",
+        "metric": "M7",
+        "problem": null,
+        "action": "Piloto con GitHub Copilot y Claude.",
+        "result": "+40 % de productividad."
+      }
     ]
   }
 ]

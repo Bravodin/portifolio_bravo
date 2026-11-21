@@ -51,6 +51,11 @@ public static class ContentValidator
                 {
                     yield return $"stage '{mine.Id}' has a different number or metric in {locale}";
                 }
+
+                if (!(mine.Parts ?? []).Select(p => (p.Id, p.Metric)).SequenceEqual((theirs.Parts ?? []).Select(p => (p.Id, p.Metric))))
+                {
+                    yield return $"stage '{mine.Id}' has different parts or part metrics in {locale}";
+                }
             }
 
             if (reference.About.Paragraphs.Count != other.About.Paragraphs.Count
@@ -100,6 +105,12 @@ public static class ContentValidator
         foreach (var stage in reference.Stages.Where(s => reference.Metrics.All(m => m.Id != s.Metric)))
         {
             yield return $"stage '{stage.Id}' uses metric '{stage.Metric}', which metrics.json doesn't have";
+        }
+
+        foreach (var (stage, part) in reference.Stages.SelectMany(s => (s.Parts ?? []).Select(p => (s, p)))
+                     .Where(x => x.p.Metric is { } id && reference.Metrics.All(m => m.Id != id)))
+        {
+            yield return $"stage '{stage.Id}' part '{part.Id}' uses metric '{part.Metric}', which metrics.json doesn't have";
         }
 
         foreach (var id in store.Recruiter.Metrics.Where(id => reference.Metrics.All(m => m.Id != id)))
