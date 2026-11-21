@@ -97,4 +97,4 @@ Videos are served by the site itself, as small MP4 files ([ADR-0012](../../docs/
 
 - [x] `short-01-roll-out`: other riders appear small in the paddock background; Manuel confirmed that's fine (2026-11-21).
 - [x] Originals matched by eye (01 = MVI_7492, 02 = MVI_7781, 03 = MVI_7769, 04 = MVI_9404); Manuel said the order doesn't matter.
-- [x] Only `short-01` has a sound track; 02–04 stay silent (Manuel's call), and their descriptions say so.
+- [x] All four clips are silent (Manuel's call; short-01's audio track was removed), and their descriptions say so.

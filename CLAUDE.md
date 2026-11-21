@@ -29,7 +29,7 @@ Start with: `README.md` → `docs/ux/concept.md` → `docs/architecture/overview
 - ✅ Garage: home section (3 cards, line-art for hobbies without photos) and the gallery page on `/garagem/`, `/en/garage/`, `/es/garaje/` (9 track photos with credits, 4 track clips as click-to-load facades). Videos are self-hosted MP4s ([ADR-0012](docs/architecture/adr/0012-self-hosted-video.md), supersedes ADR-0010): encoded once with ffmpeg into `content/media/garage/videos/` (originals stay out of git), posters are frames from the clips, `MediaCatalog` issues hashed `/media/{id}.{hash}.mp4` URLs and the prerender copies them.
 - ✅ **Live** at https://www.manuelbravo.com.br (Azure Static Web Apps; default host `thankful-sky-0b6524c0f.3.azurestaticapps.net`, which the `www` CNAME points to: don't delete it). Domain registered at registro.br, nameservers on Cloudflare: `CNAME www` DNS-only to SWA, apex `A 192.0.2.1` proxied + a 301 Redirect Rule to `www`, plus `v=spf1 -all` and DMARC `p=reject` (no e-mail on the domain). Deployed by Azure Pipelines in CI → CD stages (environments `production` and `preview`); the Colophon shows the latest build's tests and coverage.
 - ⏳ **Next:** Phase 3 motion (packet/spine, gear indicator, counters, achievements, terminal, JS lightbox), the design fonts, and step 5 (`azure-pipelines.yml`) once Manuel has the Azure DevOps organization.
-- 🎬 4 track clips (@mustelasportmedia; only short-01 has sound) are listed in `content/media/videos.json`. Encoding recipe and open items are in `content/media/README.md`.
+- 🎬 4 track clips (@mustelasportmedia; all silent) are listed in `content/media/videos.json`. Encoding recipe and open items are in `content/media/README.md`.
 
 ## Phase 1/2 plan — skeleton
 

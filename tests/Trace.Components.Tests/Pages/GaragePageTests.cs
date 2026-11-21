@@ -96,7 +96,7 @@ public sealed class GaragePageTests : BunitContext
 
         var caption = Render<Garage>().Find(".video figcaption").TextContent;
 
-        Assert.Contains("Engine sound only.", caption, StringComparison.Ordinal);
+        Assert.Contains("No sound.", caption, StringComparison.Ordinal);
         Assert.Contains("Video: @mustelasportmedia", caption, StringComparison.Ordinal);
     }
 }
