@@ -33,6 +33,14 @@ Source: Manuel, 2026-11-19 (polished from his notes; not in the CV). Lives in `c
 - **Goal:** keep growing as a technical leader, keep up with how software engineering changes, mentor the team's developers.
 - **How I work:** hands-on (code, PR reviews, architecture) · quality over quantity · simple first (no over-engineering) · active listening (stakeholders' needs first) · focus on what I can change (circles of control, influence and concern: energy goes to control and influence; concerns are tracked without stalling the team) · mentoring.
 
+#### What I bring to your team
+
+Source: Manuel, 2026-11-21. Home, between About and the Trace (`BringSection`); copy in `content/{locale}/ui.json` (`bring.*`). Three points, text only:
+
+1. Modernizing critical platforms.
+2. Technical leadership and growing teams.
+3. Lower costs, risk and operational time.
+
 ### 1.2 Colophon: built with AI, directed by a human
 
 Lives in `content/{locale}/colophon.json`. Agreed with Manuel on 2026-11-19: he set intent, content and decisions; Claude proposed architecture and solutions and wrote the code; nothing shipped without his review. The review examples are real moments from the build (hosting decision, "20+ years", game copyright, photo curation).

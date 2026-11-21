@@ -1,0 +1,17 @@
+@inject PageContext Page
+
+@* "What I bring to your team" (content inventory §1.1): three points from Manuel, between About and the Trace,
+   which then shows the proof. Text only, no numbers. *@
+<section class="bring" id="bring" aria-labelledby="bring-title">
+    <h2 id="bring-title">@Page.T("bring.title")</h2>
+    <ol class="bring-list">
+        @foreach (var key in Points)
+        {
+            <li>@Page.T(key)</li>
+        }
+    </ol>
+</section>
+
+@code {
+    private static readonly string[] Points = ["bring.platforms", "bring.leadership", "bring.savings"];
+}

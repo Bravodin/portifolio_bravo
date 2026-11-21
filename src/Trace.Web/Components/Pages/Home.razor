@@ -3,7 +3,7 @@
 @page "/pt"
 @inject PageContext Page
 
-@* The ride (docs/ux/sitemap.md): hero → about → the Trace (7 stages) → Service Log → Toolbox
+@* The ride (docs/ux/sitemap.md): hero → about → what I bring → the Trace (7 stages) → Service Log → Toolbox
    → Garage → Pit Stop. *@
 <PageTitle>@Page.T("page.home.title")</PageTitle>
 
@@ -22,6 +22,8 @@
 </section>
 
 <AboutSection />
+
+<BringSection />
 
 <section class="trace" id="trace" aria-labelledby="trace-title">
     <h2 id="trace-title">@Page.T("trace.title")</h2>

@@ -38,6 +38,19 @@ public sealed class HomePageTests : BunitContext
     }
 
     [Fact]
+    public void WhatIBring_SitsBetweenAboutAndTheTrace_WithThreePoints()
+    {
+        var cut = RenderHome("/pt/");
+
+        Assert.Equal("bring", cut.Find("#about + section").Id);
+        Assert.Equal("trace", cut.Find("#bring + section").Id);
+        Assert.Equal("O que eu trago para o seu time", cut.Find("#bring-title").TextContent);
+        Assert.Equal(
+            ["Modernização de plataformas críticas", "Liderança técnica e desenvolvimento de equipes", "Redução de custos, riscos e tempo operacional"],
+            cut.FindAll("#bring ol li").Select(li => li.TextContent));
+    }
+
+    [Fact]
     public void About_ComesRightAfterTheHero_WithHowIWork()
     {
         var cut = RenderHome("/pt/");

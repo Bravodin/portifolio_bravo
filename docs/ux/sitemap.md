@@ -6,7 +6,7 @@ Each route exists in three locales and is **prerendered to static HTML** at buil
 
 | Route (EN default, [ADR-0011](../architecture/adr/0011-english-at-the-root.md)) | ES | PT-BR | Purpose | Persona |
 |---|---|---|---|---|
-| `/` | `/es/` | `/pt/` | The ride: hero + Trace + Journey + Toolbox + Garage + Contact | All |
+| `/` | `/es/` | `/pt/` | The ride: hero + About + What I bring + Trace + Journey + Toolbox + Garage + Contact | All |
 | `/recruiter/` | `/es/reclutador/` | `/pt/recrutador/` | Recruiter Mode: one screen, printable | P1 |
 | `/colophon/` | `/es/como-se-hizo/` | `/pt/como-foi-feito/` | How this site was built: stack, architecture, ADRs, built with AI | P3 |
 | `/garage/` | `/es/garaje/` | `/pt/garagem/` | Photos and videos (track days, workshop, games) with a lightbox | P4 |
