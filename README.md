@@ -47,9 +47,8 @@ dotnet run --project src/Trace.Web   # dev server with hot reload (no prerender,
 |---|---|---|
 | 0 — Discovery & UX | Vision, personas, flows, wireframes, design tokens, architecture, ADRs | ✅ |
 | 1 — Skeleton & delivery | Blazor Web App (.NET 10), build-time prerender, media pipeline, Azure Pipelines CI → CD to Azure Static Web Apps, custom domain (DNS on Cloudflare) | ✅ |
-| 2 — Content & i18n | EN / ES / PT-BR content as data, Recruiter Mode, Garage, About, Colophon, `hreflang` + sitemap, design fonts | ✅ |
-| 3 — Immersion | The Trace (7 stages) and the benchmark ✅ · motion, gear indicator, achievements, terminal ⏳ | 🟡 |
-| 4 — Hardening | xUnit + bUnit ✅ · Playwright + axe + Lighthouse CI budgets in the pipeline ⏳ | 🟡 |
+| 2 — Content & i18n | EN / ES / PT-BR content as data, The Trace (7 stages), the benchmark, Recruiter Mode, Garage, About, Colophon, `hreflang` + sitemap, design fonts | ✅ |
+| 3 — Hardening | xUnit + bUnit ✅ · Playwright + axe + Lighthouse CI budgets in the pipeline ⏳ | 🟡 |
 
 ## Repository layout
 

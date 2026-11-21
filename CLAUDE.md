@@ -28,7 +28,8 @@ Start with: `README.md` → `docs/ux/concept.md` → `docs/architecture/overview
 - ✅ Ride sections: stages 1–7 (shared `StageSection` with a `<details>` case), Service Log, Toolbox, Pit Stop. Media step (ADR-0008) works: `MediaCatalog` (Trace.Web) issues variant URLs from `MediaPlan` (Trace.Domain) and `Trace.Prerender` generates exactly those with NetVips (AVIF/WebP/JPEG, focal crop, metadata stripped, immutable cache). The portrait is in Recruiter Mode and Pit Stop. Images only exist in the prerendered `dist/` (`run-local.ps1`), not under `dotnet run`.
 - ✅ Garage: home section (3 cards, line-art for hobbies without photos) and the gallery page on `/garagem/`, `/en/garage/`, `/es/garaje/` (9 track photos with credits, 4 track clips as click-to-load facades). Videos are self-hosted MP4s ([ADR-0012](docs/architecture/adr/0012-self-hosted-video.md), supersedes ADR-0010): encoded once with ffmpeg into `content/media/garage/videos/` (originals stay out of git), posters are frames from the clips, `MediaCatalog` issues hashed `/media/{id}.{hash}.mp4` URLs and the prerender copies them.
 - ✅ **Live** at https://www.manuelbravo.com.br (Azure Static Web Apps; default host `thankful-sky-0b6524c0f.3.azurestaticapps.net`, which the `www` CNAME points to: don't delete it). Domain registered at registro.br, nameservers on Cloudflare: `CNAME www` DNS-only to SWA, apex `A 192.0.2.1` proxied + a 301 Redirect Rule to `www`, plus `v=spf1 -all` and DMARC `p=reject` (no e-mail on the domain). Deployed by Azure Pipelines in CI → CD stages (environments `production` and `preview`); the Colophon shows the latest build's tests and coverage.
-- ⏳ **Next:** Phase 3 motion (packet/spine, gear indicator, counters, achievements, terminal, JS lightbox), the design fonts, and step 5 (`azure-pipelines.yml`) once Manuel has the Azure DevOps organization.
+- ⏳ **Next:** Playwright + axe + Lighthouse CI budgets in the pipeline.
+- 🚫 **Phase 3 (Immersion) motion is dropped** (Manuel, 2026-11-21): no packet/spine, gear indicator, counters, achievements, terminal or JS lightbox. Don't build them unless he asks again. The Trace stages and the benchmark stay.
 - 🎬 4 track clips (@mustelasportmedia; all silent) are listed in `content/media/videos.json`. Encoding recipe and open items are in `content/media/README.md`.
 
 ## Phase 1/2 plan — skeleton
@@ -57,7 +58,7 @@ Order:
 4. ~~`Trace.Prerender`~~ ✅ done, with the media step (ADR-0008), video files (ADR-0012), `hreflang` and CV checks. Still open: removing the antiforgery token from the HTML.
 5. `azure-pipelines.yml`: restore → build → test + coverage → prerender → `AzureStaticWebApp@0` deploy (`skip_app_build: true`, `app_location: dist`). Check out with `fetchDepth: 0`: the Colophon counts commits at build time (`RepoStats`), and a shallow clone would show 1. Set `TF_BUILD` (Azure does) so the CV placeholder check fails the build.
 6. ~~Content JSON + Recruiter Mode~~ ✅ done, plus the full ride, Garage, About, Colophon and the design fonts.
-7. **Next:** Phase 3 motion (packet/spine, gear indicator, counters, achievements, terminal), then Playwright + axe + Lighthouse CI in the pipeline.
+7. ~~Phase 3 motion~~ dropped (see Status). **Next:** Playwright + axe + Lighthouse CI in the pipeline.
 
 ## Useful commands
 
