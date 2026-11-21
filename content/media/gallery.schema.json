@@ -12,8 +12,8 @@
         "additionalProperties": false,
         "properties": {
           "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
-          "file": { "type": "string", "pattern": "^(profile|garage|games|workbench)/[a-z0-9-]+\\.(jpe?g|png|webp)$" },
-          "category": { "enum": ["profile", "track", "garage", "games", "workbench"] },
+          "file": { "type": "string", "pattern": "^(profile|garage|games|workbench|colophon)/[a-z0-9-]+\\.(jpe?g|png|webp)$" },
+          "category": { "enum": ["profile", "track", "garage", "games", "workbench", "colophon"] },
           "featured": { "type": "boolean", "default": false },
           "focalPoint": {
             "type": "object",

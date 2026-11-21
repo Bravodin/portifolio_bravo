@@ -36,6 +36,18 @@ public sealed class ColophonPageTests : BunitContext
     }
 
     [Fact]
+    public void LatestBuild_ShowsTheRunHistoryScreenshot_LinkedToTheLargeVersion()
+    {
+        this.AddSite("/es/como-se-hizo/");
+
+        var figure = Render<Colophon>().Find(".build-panel figure.build-shot");
+
+        Assert.StartsWith("Pantalla de Azure DevOps", figure.QuerySelector("img")!.GetAttribute("alt"), StringComparison.Ordinal);
+        Assert.Matches(@"^/media/colophon-pipeline-1600\.[0-9a-f]{10}\.jpg$", figure.QuerySelector("a")!.GetAttribute("href"));
+        Assert.StartsWith("El pipeline en Azure DevOps", figure.QuerySelector("figcaption")!.TextContent, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void LatestBuild_ShowsThePipelineRun()
     {
         var build = new BuildInfo("20261119.5", "439189f9abcdef", "main", new DateTimeOffset(2026, 11, 19, 20, 30, 0, TimeSpan.Zero),

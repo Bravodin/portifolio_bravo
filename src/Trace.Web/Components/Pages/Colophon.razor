@@ -5,6 +5,7 @@
 @inject PageContext Page
 @inject RepoStats Repo
 @inject BuildSnapshot Snapshot
+@inject MediaCatalog Media
 
 <PageTitle>@Page.T("page.colophon.title")</PageTitle>
 
@@ -89,6 +90,17 @@
         {
             <p class="figures-note">@Copy.Build.Local</p>
         }
+
+        @* A screenshot of the run history (content/media/colophon/); links to the large version so the text is legible. *@
+        <figure class="build-shot">
+            <a href="@PipelineLarge" data-enhance-nav="false">
+                <Picture Id="@PipelineShot" Widths="[640, 960, 1600]" Sizes="(min-width: 960px) 56rem, 100vw" Width="960" Height="451" />
+            </a>
+            @if (Media.Item(PipelineShot).Caption is { } caption)
+            {
+                <figcaption>@caption[Page.Locale]</figcaption>
+            }
+        </figure>
     </section>
 
     @* Architecture as an ordered flow: real text (translated, readable by screen readers), arrows drawn in CSS,
@@ -161,6 +173,10 @@
 
 @code {
     private const string RepoUrl = RepoStats.RepoUrl;
+
+    private const string PipelineShot = "colophon-pipeline";
+
+    private string PipelineLarge => Media.Image(PipelineShot, ImageShape.Original, [1600]).In(ImageFormat.Jpeg).Last().Url;
 
     private ColophonCopy Copy => Page.Content.Colophon;
 

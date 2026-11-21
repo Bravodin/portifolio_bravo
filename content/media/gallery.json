@@ -129,6 +129,24 @@
         "en": "Video games are how I switch off from work: they recharge my energy, spark creativity and send me back with fresh ideas. Balancing work and personal life is part of performing well.",
         "es": "Los videojuegos son mi forma de desconectar del trabajo: recargan la energía, estimulan la creatividad y me hacen volver con ideas nuevas. El equilibrio entre la vida personal y la profesional es parte del buen rendimiento."
       }
+    },
+    {
+      "id": "colophon-pipeline",
+      "file": "colophon/pipeline-runs.png",
+      "category": "colophon",
+      "featured": false,
+      "date": "2026-11",
+      "credit": null,
+      "alt": {
+        "pt-BR": "Tela do Azure DevOps com a lista de execuções do pipeline deste site: cada linha mostra o commit, a branch main, os três estágios com ícones verdes de sucesso e a duração de cerca de 5 minutos; a última linha tem um estágio vermelho de falha",
+        "en": "Azure DevOps screen listing this site's pipeline runs: each row shows the commit, the main branch, the three stages with green success icons and a duration of about 5 minutes; the last row has a red failed stage",
+        "es": "Pantalla de Azure DevOps con la lista de ejecuciones del pipeline de este sitio: cada fila muestra el commit, la rama main, las tres etapas con íconos verdes de éxito y una duración de unos 5 minutos; la última fila tiene una etapa roja con error"
+      },
+      "caption": {
+        "pt-BR": "O pipeline no Azure DevOps: cada push na main roda o CI (build, testes, prerender) e depois publica no Azure Static Web Apps. As falhas ficam no histórico também.",
+        "en": "The pipeline in Azure DevOps: every push to main runs CI (build, tests, prerender) and then deploys to Azure Static Web Apps. Failures stay in the history too.",
+        "es": "El pipeline en Azure DevOps: cada push a main ejecuta el CI (build, tests, prerender) y luego publica en Azure Static Web Apps. Los errores también quedan en el historial."
+      }
     }
   ]
 }
