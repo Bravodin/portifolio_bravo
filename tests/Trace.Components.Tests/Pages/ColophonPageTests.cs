@@ -43,7 +43,7 @@ public sealed class ColophonPageTests : BunitContext
         var figure = Render<Colophon>().Find(".build-panel figure.build-shot");
 
         Assert.StartsWith("Pantalla de Azure DevOps", figure.QuerySelector("img")!.GetAttribute("alt"), StringComparison.Ordinal);
-        Assert.Matches(@"^/media/colophon-pipeline-1600\.[0-9a-f]{10}\.jpg$", figure.QuerySelector("a")!.GetAttribute("href"));
+        Assert.Matches(@"^/media/colophon-pipeline-1600\.[0-9a-f]{10}\.jpg$", figure.QuerySelector("a.photo-link")!.GetAttribute("href"));
         Assert.StartsWith("El pipeline en Azure DevOps", figure.QuerySelector("figcaption")!.TextContent, StringComparison.Ordinal);
     }
 

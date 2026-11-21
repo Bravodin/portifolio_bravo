@@ -6,14 +6,17 @@
 @inject MediaCatalog Media
 
 @* Full gallery (docs/ux/sitemap.md, P4): the on-board Shorts, then photos by category, with credits.
-   Each photo links to its large version (L0); site.js opens it in a lightbox instead, without leaving the page. *@
+   Each photo links to its large version and each video to its MP4 (L0); site.js opens them in a lightbox instead, without leaving the page. *@
 <PageTitle>@Page.T("page.garage.title")</PageTitle>
 
 <article class="garage-page"
          data-lightbox-label="@Page.T("lightbox.label")"
          data-lightbox-close="@Page.T("lightbox.close")"
          data-lightbox-prev="@Page.T("lightbox.prev")"
-         data-lightbox-next="@Page.T("lightbox.next")">
+         data-lightbox-next="@Page.T("lightbox.next")"
+         data-lightbox-video-label="@Page.T("lightbox.videoLabel")"
+         data-lightbox-video-prev="@Page.T("lightbox.videoPrev")"
+         data-lightbox-video-next="@Page.T("lightbox.videoNext")">
     <p><a href="@Page.PathFor(PageKey.Home)#garage">@Page.T("garage.back")</a></p>
     <h1>@Page.T("garage.title")</h1>
     <p class="section-intro">@Page.T("garage.intro")</p>

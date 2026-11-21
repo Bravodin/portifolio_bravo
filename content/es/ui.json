@@ -72,5 +72,8 @@
   "lightbox.close": "Cerrar",
   "lightbox.prev": "Foto anterior",
   "lightbox.next": "Foto siguiente",
+  "lightbox.videoLabel": "Reproductor de video",
+  "lightbox.videoPrev": "Video anterior",
+  "lightbox.videoNext": "Video siguiente",
   "colophon.type": "Tipografía: Barlow, Barlow Condensed y JetBrains Mono (licencia SIL OFL), alojadas en el propio sitio."
 }

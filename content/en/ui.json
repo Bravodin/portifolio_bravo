@@ -72,5 +72,8 @@
   "lightbox.close": "Close",
   "lightbox.prev": "Previous photo",
   "lightbox.next": "Next photo",
+  "lightbox.videoLabel": "Video player",
+  "lightbox.videoPrev": "Previous video",
+  "lightbox.videoNext": "Next video",
   "colophon.type": "Type: Barlow, Barlow Condensed and JetBrains Mono (SIL OFL), self-hosted."
 }

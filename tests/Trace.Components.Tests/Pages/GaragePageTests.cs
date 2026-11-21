@@ -26,6 +26,8 @@ public sealed class GaragePageTests : BunitContext
 
         Assert.Equal("Fechar", article.GetAttribute("data-lightbox-close"));
         Assert.Equal("Próxima foto", article.GetAttribute("data-lightbox-next"));
+        Assert.Equal("Player de vídeo", article.GetAttribute("data-lightbox-video-label"));
+        Assert.Equal("Próximo vídeo", article.GetAttribute("data-lightbox-video-next"));
     }
 
     [Fact]
@@ -73,6 +75,7 @@ public sealed class GaragePageTests : BunitContext
         Assert.Equal(4, facades.Count);
         Assert.Matches(@"^/media/short-01-roll-out\.[0-9a-f]{10}\.mp4$", facades[0].GetAttribute("href"));
         Assert.True(facades[0].HasAttribute("data-video"));
+        Assert.All(facades, a => Assert.Equal("false", a.GetAttribute("data-enhance-nav")));
         Assert.Equal("Reproducir video: Saliendo a la pista", facades[0].GetAttribute("aria-label"));
     }
 

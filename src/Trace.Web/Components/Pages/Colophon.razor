@@ -9,7 +9,11 @@
 
 <PageTitle>@Page.T("page.colophon.title")</PageTitle>
 
-<article class="prose colophon">
+<article class="prose colophon"
+         data-lightbox-label="@Page.T("lightbox.label")"
+         data-lightbox-close="@Page.T("lightbox.close")"
+         data-lightbox-prev="@Page.T("lightbox.prev")"
+         data-lightbox-next="@Page.T("lightbox.next")">
     <h1>@Page.T("colophon.title")</h1>
     <ul>
         <li>@Page.T("colophon.stack")</li>
@@ -91,9 +95,9 @@
             <p class="figures-note">@Copy.Build.Local</p>
         }
 
-        @* A screenshot of the run history (content/media/colophon/); links to the large version so the text is legible. *@
+        @* A screenshot of the run history (content/media/colophon/); links to the large version (shown in the lightbox) so the text is legible. *@
         <figure class="build-shot">
-            <a href="@PipelineLarge" data-enhance-nav="false">
+            <a class="photo-link" href="@PipelineLarge" data-enhance-nav="false">
                 <Picture Id="@PipelineShot" Widths="[640, 960, 1600]" Sizes="(min-width: 960px) 56rem, 100vw" Width="960" Height="451" />
             </a>
             @if (Media.Item(PipelineShot).Caption is { } caption)
