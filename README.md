@@ -29,7 +29,7 @@ Visitor ──► www.manuelbravo.com.br (registro.br domain · Cloudflare DNS) 
 - **Content as data:** all copy lives in `content/{en,es,pt-BR}/*.json`; the build fails if a translation, a metric or a key is missing ([ADR-0004](docs/architecture/adr/0004-i18n-content-as-data.md)).
 - **Media pipeline:** photos become AVIF/WebP/JPEG at the right sizes, cropped on a focal point, with all metadata stripped ([ADR-0008](docs/architecture/adr/0008-media-pipeline.md)); videos are self-hosted MP4s that load only on click ([ADR-0012](docs/architecture/adr/0012-self-hosted-video.md)).
 - **CI/CD:** Azure Pipelines runs CI on every push and pull request, then deploys: `main` → production, pull requests → a preview environment ([ADR-0009](docs/architecture/adr/0009-azure-pipelines-and-static-web-apps.md)).
-- **Quality gates:** warnings as errors, format check, 180+ xUnit/bUnit tests, link/`hreflang`/CV/config-size validation in the prerender ([ADR-0007](docs/architecture/adr/0007-quality-gates.md)).
+- **Quality gates:** warnings as errors, format check, xUnit/bUnit tests (the Colophon shows the test-method count, measured at build time, and how many test cases the latest build passed: theories run once per input, so cases outnumber methods), link/`hreflang`/CV/config-size validation in the prerender ([ADR-0007](docs/architecture/adr/0007-quality-gates.md)).
 
 ## Run it locally
 
