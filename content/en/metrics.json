@@ -1,11 +1,11 @@
 [
   { "id": "M1", "label": "Appointment-booking journey", "before": "12–20 s", "after": "~1.2 s", "delta": "~10–16× faster", "where": "Porto" },
   { "id": "M2", "label": "Reimbursement fraud", "before": "baseline", "after": "−40 %", "delta": "−40 %", "where": "Porto" },
-  { "id": "M3", "label": "API platform cost", "before": "CA API Gateway", "after": "Sensedia", "delta": "−30 %", "where": "Porto" },
+  { "id": "M3", "label": "Monthly API platform cost", "before": "CA API Gateway", "after": "Sensedia", "delta": "−30 %", "where": "Porto" },
   { "id": "M4", "label": "Security vulnerabilities", "before": "legacy .NET/SOAP", "after": "Node.js (~80 % migrated)", "delta": "−70 %", "where": "Porto" },
   { "id": "M5", "label": "Critical processing workflow", "before": "8 h", "after": "4 h", "delta": "−50 %", "where": "Porto" },
   { "id": "M6", "label": "Critical batch (rental platform)", "before": "8 h", "after": "2 h", "delta": "−75 %", "where": "Nunes Imóveis" },
-  { "id": "M7", "label": "Developer productivity (AI pilot)", "before": "baseline", "after": "+40 %", "delta": "+40 %", "where": "Porto" },
+  { "id": "M7", "label": "Developer productivity (AI pilot, burndown)", "before": "baseline", "after": "+40 %", "delta": "+40 %", "where": "Porto" },
   { "id": "M8", "label": "Unit-test coverage gate", "before": "—", "after": "≥ 90 % (Sonar)", "delta": "—", "where": "Porto" },
   { "id": "M9", "label": "SLA compliance", "before": "70 %", "after": "98 %", "delta": "+28 pp", "where": "Indra" },
   { "id": "M10", "label": "Developer overtime", "before": "~40 h/mo", "after": "~10 h/mo", "delta": "−75 %", "where": "Indra" },

@@ -73,7 +73,7 @@
     "metric": "M2",
     "problem": "Fraudes nos fluxos de reembolso.",
     "action": "Adicionei biometria facial ao reembolso.",
-    "result": "Fraudes −40 %.",
+    "result": "Fraudes −40 % depois que a biometria facial entrou no ar, segundo dados fornecidos pelo time.",
     "story": [],
     "tech": [
       "Biometria",
@@ -88,7 +88,7 @@
     "metric": "M3",
     "problem": "Custo alto da plataforma no CA API Gateway.",
     "action": "Migrei o gateway para a Sensedia.",
-    "result": "Custo −30 %.",
+    "result": "Custo mensal −30 %.",
     "story": [],
     "tech": [
       "Sensedia",
@@ -272,7 +272,7 @@
         "metric": "M7",
         "problem": null,
         "action": "Piloto com GitHub Copilot e Claude.",
-        "result": "+40 % de produtividade."
+        "result": "+40 % de produtividade, medido no burndown do AM."
       }
     ]
   }

@@ -58,11 +58,11 @@ These are shown as gauges / counters. Always display them as **before → after*
 |---|---|---|---|---|---|---|
 | M1 | Appointment-booking journey | 12–20 s | ~1.2 s | ~10–16× faster | Porto | 1 · Client |
 | M2 | Reimbursement fraud | baseline | −40 % | −40 % | Porto | 2 · Edge |
-| M3 | API platform cost | CA API Gateway | Sensedia | −30 % | Porto | 3 · Gateway |
+| M3 | Monthly API platform cost | CA API Gateway | Sensedia | −30 % | Porto | 3 · Gateway |
 | M4 | Security vulnerabilities | legacy .NET/SOAP | Node.js (~80 % migrated) | −70 % | Porto | 4 · Services |
 | M5 | Critical processing workflow | 8 h | 4 h | −50 % | Porto | 5 · Cache & Messaging |
 | M6 | Critical batch (rental platform) | 8 h | 2 h | −75 % | Nunes Imóveis | 6 · Database |
-| M7 | Developer productivity (AI pilot) | baseline | +40 % | +40 % | Porto | 7 · Pit Crew |
+| M7 | Developer productivity (AI pilot, burndown) | baseline | +40 % | +40 % | Porto | 7 · Pit Crew |
 | M8 | Unit-test coverage gate | — | ≥ 90 % (Sonar) | — | Porto | 7 · Pit Crew |
 | M9 | SLA compliance | 70 % | 98 % | +28 pp | Indra | Service Log |
 | M10 | Developer overtime | ~40 h/mo | ~10 h/mo | −75 % | Indra | Service Log |
@@ -105,6 +105,8 @@ Source: Manuel, 2026-11-19 (not in the CV). It adds **no new numbers**: the dyno
 | `stage1.story.beyondSpeed` | Speed is only what a benchmark measures. Going native also put the app closer to the hardware, opening the door to wearables. | Velocidade é só o que o benchmark mede. Ir para o nativo também deixou o app mais perto do hardware e abriu caminho para wearables. | La velocidad es solo lo que mide un benchmark. Pasar a nativo también acercó la app al hardware y abrió la puerta a los wearables. |
 
 TODO(manuel): who the numbers were presented to (manager only, or leadership too?), and whether the benchmark drove the migration decision. Until then the copy just says "presented the numbers".
+
+Methodology (Manuel, 2026-11-21, after a reviewer asked): **M2** fraud −40 % was measured after facial biometrics went live, on data provided by the team (period not given). **M3** −30 % is the monthly platform cost. **M7** +40 % was assessed on the AM burndown during the pilot. TODO(manuel): the period behind M2.
 
 ### 3.2 Deep cases (stages 1, 4, 6)
 
