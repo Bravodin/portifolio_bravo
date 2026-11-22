@@ -73,7 +73,7 @@
     "metric": "M2",
     "problem": "Fraud in reimbursement workflows.",
     "action": "Added facial biometrics to reimbursement.",
-    "result": "Fraud −40 % after facial biometrics went live, according to data provided by the reimbursement team.",
+    "result": "Fraud −40 % after facial biometrics went live, measured over about one quarter in early 2024 on data from the reimbursement team.",
     "story": [],
     "tech": [
       "Biometrics",

@@ -73,7 +73,7 @@
     "metric": "M2",
     "problem": "Fraude en los flujos de reembolso.",
     "action": "Agregué biometría facial al reembolso.",
-    "result": "Fraude −40 % después de que la biometría facial entró en producción, según datos proporcionados por el equipo de reembolsos.",
+    "result": "Fraude −40 % después de que la biometría facial entró en producción, medido en cerca de un trimestre a inicios de 2024, con datos del equipo de reembolsos.",
     "story": [],
     "tech": [
       "Biometría",

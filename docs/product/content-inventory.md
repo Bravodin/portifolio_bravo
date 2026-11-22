@@ -106,7 +106,7 @@ Source: Manuel, 2026-11-19 (not in the CV). It adds **no new numbers**: the dyno
 
 TODO(manuel): who the numbers were presented to (manager only, or leadership too?), and whether the benchmark drove the migration decision. Until then the copy just says "presented the numbers".
 
-Methodology (Manuel, 2026-11-21, after a reviewer asked): **M2** fraud −40 % was measured after facial biometrics went live, on data provided by the reimbursement team (period not given). **M3** −30 % is the monthly platform cost. **M7** +40 % was assessed on the burndown kept by the Agile Master ("AM") during the pilot. TODO(manuel): the period behind M2.
+Methodology (Manuel, 2026-11-21, after a reviewer asked): **M2** fraud −40 % was measured after facial biometrics went live, on data provided by the reimbursement team, over about one quarter in early 2024 (Manuel's estimate). **M3** −30 % is the monthly platform cost. **M7** +40 % was assessed on the burndown kept by the Agile Master ("AM") during the pilot.
 
 ### 3.2 Deep cases (stages 1, 4, 6)
 
