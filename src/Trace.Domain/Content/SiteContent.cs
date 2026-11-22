@@ -91,7 +91,23 @@ public sealed record Stage(
     string Result,
     IReadOnlyList<string> Story,
     IReadOnlyList<string> Tech,
-    IReadOnlyList<StagePart>? Parts = null);
+    IReadOnlyList<StagePart>? Parts = null,
+    StageCase? Case = null);
+
+/// <summary>
+/// The deep case behind "Open case", written only from what Manuel told us: context, the decisions (and what was
+/// turned down), the architecture before → after, and the hardest part (left out when he hasn't said). Stages without one show just Problem · Action · Result.
+/// </summary>
+public sealed record StageCase(string Context, IReadOnlyList<CaseDecision> Decisions, CaseArchitecture Architecture, string? HardPart = null);
+
+/// <summary>A decision in a case: what was chosen and why.</summary>
+public sealed record CaseDecision(string Choice, string Why);
+
+/// <summary>Before → after diagram: each side is one or more lanes, each lane a stack of layers from top to bottom.</summary>
+public sealed record CaseArchitecture(IReadOnlyList<CaseLane> Before, IReadOnlyList<CaseLane> After);
+
+/// <summary>One column of an architecture side, e.g. "iOS" with its layers.</summary>
+public sealed record CaseLane(string Title, IReadOnlyList<string> Layers);
 
 /// <summary>
 /// One topic of a stage that covers several (stage 7: quality, observability, AI productivity), shown as its own block.

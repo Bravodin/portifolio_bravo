@@ -17,7 +17,55 @@
       "Jetpack Compose Testing",
       "XCUITest",
       "WPF"
-    ]
+    ],
+    "case": {
+      "context": "The app was born in 2016 on Ionic 3. Moving to Ionic 8 would have meant practically rebuilding it, so the question became: rebuild it on what? Of the 12 engineers on my team, 4 work in Kotlin and 4 in Swift. Launch of the native apps: 30 November 2026.",
+      "decisions": [
+        {
+          "choice": "Native, not a newer Ionic",
+          "why": "Going from Ionic 3 to 8 would already have been, in practice, a new app."
+        },
+        {
+          "choice": "Native, not Flutter or React Native",
+          "why": "We wanted to stay close to the hardware, without depending on a layer that translates our code to the platform."
+        },
+        {
+          "choice": "A redesign, not a copy of the screens",
+          "why": "UX redesigned the whole app, and we built the native versions from the new design."
+        }
+      ],
+      "architecture": {
+        "before": [
+          {
+            "title": "Ionic 3 · 2016",
+            "layers": [
+              "Web app (Angular)",
+              "WebView",
+              "iOS · Android"
+            ]
+          }
+        ],
+        "after": [
+          {
+            "title": "iOS",
+            "layers": [
+              "Swift app",
+              "XCUITest regression",
+              "iOS native APIs"
+            ]
+          },
+          {
+            "title": "Android",
+            "layers": [
+              "Kotlin app",
+              "Compose Testing regression",
+              "Android native APIs"
+            ]
+          }
+        ]
+      },
+      "hardPart": "Keeping the current app alive while the new one was being built. Features kept coming, so the work tripled: each one went into Ionic, iOS and Android. That lasted until the current app's feature freeze in November 2026."
+    }
   },
   {
     "id": "edge",
@@ -65,7 +113,52 @@
       "C#",
       ".NET",
       "Microservices"
-    ]
+    ],
+    "case": {
+      "context": "About 120 .NET/SOAP endpoints, published on the old CA API Gateway, with a large vulnerability surface. The project started in 2023.",
+      "decisions": [
+        {
+          "choice": "Node.js, not a modern .NET",
+          "why": "In 2023 the company had no .NET stack approved for the cloud."
+        },
+        {
+          "choice": "Old and new side by side, no big-bang cutover",
+          "why": "The new services went up in parallel with the old ones, and I switched the routes one at a time."
+        },
+        {
+          "choice": "Consumers move to the new gateway",
+          "why": "I asked each consumer to call the Sensedia endpoint instead of the old one on CA API."
+        },
+        {
+          "choice": "Measured by Information Security",
+          "why": "The −70 % comes from the security tenant that Information Security runs."
+        }
+      ],
+      "architecture": {
+        "before": [
+          {
+            "title": ".NET/SOAP",
+            "layers": [
+              "Consumers",
+              "CA API Gateway",
+              "~120 .NET/SOAP endpoints"
+            ]
+          }
+        ],
+        "after": [
+          {
+            "title": "Node.js",
+            "layers": [
+              "Consumers",
+              "Sensedia",
+              "Node.js services (~80 %)",
+              "Images on ECS · EKS (AWS)"
+            ]
+          }
+        ]
+      },
+      "hardPart": "The remaining ~20 % is planned for 2027: the native app (stage 1) took priority, and it is the same team."
+    }
   },
   {
     "id": "cache",
@@ -96,7 +189,48 @@
       "Oracle",
       "MySQL",
       "LINQ"
-    ]
+    ],
+    "case": {
+      "context": "A rental platform on SQL Server. The batch processed payment slips (boletos) and bank reconciliation, and took 8 h.",
+      "decisions": [
+        {
+          "choice": "Go after the cause of the deadlocks",
+          "why": "They came from concurrency code that was badly written at the time and from missing transactions."
+        },
+        {
+          "choice": "Indexes, keys and no more N+1 queries",
+          "why": "That is what solved it: the batch went from 8 h to 2 h."
+        },
+        {
+          "choice": "Measure the gain",
+          "why": "The +20 % throughput was measured with Data Analyzer."
+        }
+      ],
+      "architecture": {
+        "before": [
+          {
+            "title": "SQL Server",
+            "layers": [
+              "Batch: payment slips and reconciliation",
+              "Concurrency without transactions",
+              "N+1 queries",
+              "Tables without indexes and keys"
+            ]
+          }
+        ],
+        "after": [
+          {
+            "title": "SQL Server",
+            "layers": [
+              "Batch: payment slips and reconciliation",
+              "Transactions and locks reworked",
+              "Queries without N+1",
+              "Indexes and keys"
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "pit",

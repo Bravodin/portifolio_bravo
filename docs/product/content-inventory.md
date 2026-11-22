@@ -106,6 +106,14 @@ Source: Manuel, 2026-11-19 (not in the CV). It adds **no new numbers**: the dyno
 
 TODO(manuel): who the numbers were presented to (manager only, or leadership too?), and whether the benchmark drove the migration decision. Until then the copy just says "presented the numbers".
 
+### 3.2 Deep cases (stages 1, 4, 6)
+
+Source: Manuel, 2026-11-21 (not in the CV). Shown under "Open case" (`case` in `stages.json`): context, decisions, architecture before → after, and the hard part when he gave one. Facts only; nothing below may be extended without asking him.
+
+- **Stage 1 (Porto, native apps):** the app was on Ionic 3 (2016); going to Ionic 8 was practically a rebuild. Flutter / React Native were turned down to stay close to the hardware without a translation layer. UX redesigned the whole app and the team built the native apps from the new design. Of his 12 engineers, 4 are Kotlin and 4 Swift. Hard part: features kept coming, so the work tripled (Ionic + iOS + Android) until the current app's freeze in November 2026. **Native launch: 30 Nov 2026** (update the copy after launch).
+- **Stage 4 (Porto, services):** ~120 .NET/SOAP endpoints on CA API Gateway; project started in 2023, when the company had no .NET approved for the cloud, hence Node.js. New services ran in parallel; Manuel switched routes one by one and asked consumers to use the Sensedia endpoint instead of the old CA API one. The −70 % comes from the security tenant Information Security runs. Target: container images on AWS ECS / EKS. The remaining ~20 % is planned for 2027: the native app (stage 1) took priority with the same team.
+- **Stage 6 (Nunes Imóveis, database):** SQL Server; the batch processed payment slips (boletos) and bank reconciliation. Deadlocks came from badly written concurrency and missing transactions. Indexes, keys and removing N+1 queries solved it. The +20 % throughput was measured with Data Analyzer. TODO(manuel): the hard part.
+
 ---
 
 ## 4. Service Log (career timeline)

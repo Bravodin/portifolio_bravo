@@ -119,6 +119,31 @@ public sealed class HomePageTests : BunitContext
     }
 
     [Fact]
+    public void DeepCase_ShowsContextDecisionsAndBeforeAfter_InsideTheDetails()
+    {
+        var cut = RenderHome("/pt/");
+
+        var deep = cut.Find("#client details.case .case-deep");
+        Assert.Equal(["Contexto", "Decisões", "Arquitetura", "O mais difícil"], deep.QuerySelectorAll("h4").Select(h => h.TextContent));
+        Assert.Equal(3, deep.QuerySelectorAll(".case-decisions li").Length);
+        Assert.Equal(["Ionic 3 · 2016"], deep.QuerySelectorAll(".case-before .case-lane-title").Select(t => t.TextContent));
+        Assert.Equal(["iOS", "Android"], deep.QuerySelectorAll(".case-after .case-lane-title").Select(t => t.TextContent));
+        Assert.Contains("30 de novembro de 2026", deep.TextContent, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void DeepCase_WithoutAHardPart_LeavesThatHeadingOut()
+    {
+        var home = RenderHome("/");
+        var deep = home.Find("#database .case-deep");
+
+        Assert.Equal(["Context", "Decisions", "Architecture"], deep.QuerySelectorAll("h4").Select(h => h.TextContent));
+        Assert.Contains("Indexes and keys", deep.QuerySelector(".case-after")!.TextContent, StringComparison.Ordinal);
+        Assert.Contains("planned for 2027", home.Find("#services .case-deep").TextContent, StringComparison.Ordinal);
+        Assert.Empty(home.FindAll("#gateway .case-deep"));
+    }
+
+    [Fact]
     public void StageOne_HoldsTheBenchmarkStoryAndTheDyno()
     {
         var cut = RenderHome("/es/");

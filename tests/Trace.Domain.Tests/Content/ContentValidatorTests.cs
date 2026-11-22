@@ -59,6 +59,17 @@ public sealed class ContentValidatorTests : IDisposable
     }
 
     [Fact]
+    public void Load_CaseMissingADecisionOrLayerInOneLocale_Fails()
+    {
+        Edit("es/stages.json", json => json[0]!["case"]!["architecture"]!["after"]![1]!["layers"]!.AsArray().RemoveAt(0));
+        Edit("en/stages.json", json => json[3]!["case"]!["decisions"]!.AsArray().RemoveAt(0));
+
+        var error = Assert.Throws<InvalidDataException>(() => ContentStore.Load(_root));
+        Assert.Contains("stage 'client' has a different case (decisions or architecture layers) in es", error.Message, StringComparison.Ordinal);
+        Assert.Contains("stage 'services' has a different case (decisions or architecture layers) in en", error.Message, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Load_AboutWithAMissingPrinciple_Fails()
     {
         Edit("en/about.json", json => json["principles"]!.AsArray().RemoveAt(0));

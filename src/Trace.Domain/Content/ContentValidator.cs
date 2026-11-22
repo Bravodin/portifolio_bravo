@@ -56,6 +56,11 @@ public static class ContentValidator
                 {
                     yield return $"stage '{mine.Id}' has different parts or part metrics in {locale}";
                 }
+
+                if (CaseShape(mine.Case) != CaseShape(theirs.Case))
+                {
+                    yield return $"stage '{mine.Id}' has a different case (decisions or architecture layers) in {locale}";
+                }
             }
 
             if (reference.About.Paragraphs.Count != other.About.Paragraphs.Count
@@ -127,6 +132,13 @@ public static class ContentValidator
             yield return $"recruiter.json asks for {store.Recruiter.Roles} roles, log.json has {reference.Log.Count}";
         }
     }
+
+    /// <summary>The countable shape of a case (decisions, lanes, layers per lane), so translations can't drop a line.</summary>
+    private static string CaseShape(StageCase? @case) => @case is null
+        ? "none"
+        : $"{@case.Decisions.Count}|{Lanes(@case.Architecture.Before)}|{Lanes(@case.Architecture.After)}|{@case.HardPart is not null}";
+
+    private static string Lanes(IReadOnlyList<CaseLane> lanes) => string.Join(',', lanes.Select(l => l.Layers.Count));
 
     private static IEnumerable<string> SameSet(string what, IEnumerable<string> expected, IEnumerable<string> actual, string locale)
     {

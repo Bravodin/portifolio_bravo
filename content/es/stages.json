@@ -17,7 +17,55 @@
       "Jetpack Compose Testing",
       "XCUITest",
       "WPF"
-    ]
+    ],
+    "case": {
+      "context": "La app nació en 2016 en Ionic 3. Pasar a Ionic 8 habría sido prácticamente reconstruirla, así que la pregunta pasó a ser: ¿reconstruirla en qué? De los 12 ingenieros de mi equipo, 4 trabajan con Kotlin y 4 con Swift. Lanzamiento de las apps nativas: 30 de noviembre de 2026.",
+      "decisions": [
+        {
+          "choice": "Nativo, y no un Ionic más nuevo",
+          "why": "Ir de Ionic 3 a 8 ya habría sido, en la práctica, una app nueva."
+        },
+        {
+          "choice": "Nativo, y no Flutter o React Native",
+          "why": "Queríamos estar cerca del hardware, sin depender de una capa que traduce nuestro código a la plataforma."
+        },
+        {
+          "choice": "Un rediseño, y no una copia de las pantallas",
+          "why": "UX rediseñó toda la app, y fuimos construyendo las versiones nativas a partir del nuevo diseño."
+        }
+      ],
+      "architecture": {
+        "before": [
+          {
+            "title": "Ionic 3 · 2016",
+            "layers": [
+              "App web (Angular)",
+              "WebView",
+              "iOS · Android"
+            ]
+          }
+        ],
+        "after": [
+          {
+            "title": "iOS",
+            "layers": [
+              "App en Swift",
+              "Regresión con XCUITest",
+              "APIs nativas de iOS"
+            ]
+          },
+          {
+            "title": "Android",
+            "layers": [
+              "App en Kotlin",
+              "Regresión con Compose Testing",
+              "APIs nativas de Android"
+            ]
+          }
+        ]
+      },
+      "hardPart": "Mantener viva la app actual mientras nacía la nueva. Las features siguieron llegando, así que el trabajo se triplicó: cada una entraba en Ionic, iOS y Android. Eso duró hasta que se congeló la app actual, en noviembre de 2026."
+    }
   },
   {
     "id": "edge",
@@ -65,7 +113,52 @@
       "C#",
       ".NET",
       "Microservicios"
-    ]
+    ],
+    "case": {
+      "context": "Cerca de 120 endpoints .NET/SOAP, publicados en el antiguo CA API Gateway, con una gran superficie de vulnerabilidades. El proyecto empezó en 2023.",
+      "decisions": [
+        {
+          "choice": "Node.js, y no un .NET moderno",
+          "why": "En 2023 la empresa no tenía .NET homologado para la nube."
+        },
+        {
+          "choice": "Antiguo y nuevo lado a lado, sin un corte único",
+          "why": "Subimos los servicios nuevos en paralelo a los antiguos, y fui cambiando las rutas una a una."
+        },
+        {
+          "choice": "Los consumidores migran al nuevo gateway",
+          "why": "Pedí a cada consumidor que llamara al endpoint de Sensedia en lugar del antiguo, en CA API."
+        },
+        {
+          "choice": "Medición por Seguridad de la Información",
+          "why": "El −70 % viene del tenant de seguridad que opera Seguridad de la Información."
+        }
+      ],
+      "architecture": {
+        "before": [
+          {
+            "title": ".NET/SOAP",
+            "layers": [
+              "Consumidores",
+              "CA API Gateway",
+              "~120 endpoints .NET/SOAP"
+            ]
+          }
+        ],
+        "after": [
+          {
+            "title": "Node.js",
+            "layers": [
+              "Consumidores",
+              "Sensedia",
+              "Servicios Node.js (~80 %)",
+              "Imágenes en ECS · EKS (AWS)"
+            ]
+          }
+        ]
+      },
+      "hardPart": "El ~20 % restante queda para 2027: la app nativa (etapa 1) tuvo prioridad, y el equipo es el mismo."
+    }
   },
   {
     "id": "cache",
@@ -96,7 +189,48 @@
       "Oracle",
       "MySQL",
       "LINQ"
-    ]
+    ],
+    "case": {
+      "context": "Una plataforma de alquileres en SQL Server. El batch procesaba los boletos de pago y la conciliación bancaria, y tardaba 8 h.",
+      "decisions": [
+        {
+          "choice": "Atacar la causa de los deadlocks",
+          "why": "Venían de una concurrencia mal escrita en aquella época y de la falta de transacciones."
+        },
+        {
+          "choice": "Índices, claves y fin de las consultas N+1",
+          "why": "Eso fue lo que lo resolvió: el batch pasó de 8 h a 2 h."
+        },
+        {
+          "choice": "Medir la mejora",
+          "why": "El +20 % de throughput se midió con Data Analyzer."
+        }
+      ],
+      "architecture": {
+        "before": [
+          {
+            "title": "SQL Server",
+            "layers": [
+              "Batch: boletos y conciliación",
+              "Concurrencia sin transacciones",
+              "Consultas N+1",
+              "Tablas sin índices ni claves"
+            ]
+          }
+        ],
+        "after": [
+          {
+            "title": "SQL Server",
+            "layers": [
+              "Batch: boletos y conciliación",
+              "Transacciones y bloqueos revisados",
+              "Consultas sin N+1",
+              "Índices y claves"
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "pit",

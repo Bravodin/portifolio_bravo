@@ -3,6 +3,7 @@
 @* One Trace stage (docs/ux/sitemap.md, "Content hierarchy per Trace stage").
    Closed: hook (the problem) + metric + chips. Open: Problem · Action · Result.
    The case uses native <details>, so it works without JS (L0).
+   A stage with a deep case (stages 1, 4, 6) adds context, decisions, an architecture before → after and the hard part.
    A stage with parts (stage 7) shows one block per topic instead, each with its own metric and P·A·R. *@
 <section class="stage" id="@Stage.Id" aria-labelledby="stage-@Stage.Id">
     <header class="stage-head">
@@ -59,6 +60,35 @@
                 <dt>@Page.T("stage.result")</dt>
                 <dd>@Stage.Result</dd>
             </dl>
+
+            @if (Stage.Case is { } deep)
+            {
+                <div class="case-deep">
+                    <h4>@Page.T("stage.context")</h4>
+                    <p>@deep.Context</p>
+
+                    <h4>@Page.T("stage.decisions")</h4>
+                    <ul class="case-decisions">
+                        @foreach (var decision in deep.Decisions)
+                        {
+                            <li><strong>@decision.Choice.</strong> @decision.Why</li>
+                        }
+                    </ul>
+
+                    <h4>@Page.T("stage.architecture")</h4>
+                    <div class="case-arch">
+                        @Side(Page.T("stage.before"), "before", deep.Architecture.Before)
+                        <span class="case-arch-arrow" aria-hidden="true">→</span>
+                        @Side(Page.T("stage.after"), "after", deep.Architecture.After)
+                    </div>
+
+                    @if (deep.HardPart is { } hardPart)
+                    {
+                        <h4>@Page.T("stage.hardPart")</h4>
+                        <p>@hardPart</p>
+                    }
+                </div>
+            }
         </details>
     }
 
@@ -75,6 +105,25 @@
 
     /// <summary>Extra content inside the stage, e.g. the Dyno in stage 1.</summary>
     [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>One side of the before → after diagram: lanes side by side, each a top-down stack of layers.</summary>
+    private static RenderFragment Side(string label, string kind, IReadOnlyList<CaseLane> lanes) => @<figure class="case-side case-@kind">
+        <figcaption>@label</figcaption>
+        <div class="case-lanes">
+            @foreach (var lane in lanes)
+            {
+                <div class="case-lane">
+                    <p class="case-lane-title">@lane.Title</p>
+                    <ol class="case-layers">
+                        @foreach (var layer in lane.Layers)
+                        {
+                            <li>@layer</li>
+                        }
+                    </ol>
+                </div>
+            }
+        </div>
+    </figure>;
 
     private static RenderFragment MetricLine(Metric metric) => @<p class="stage-metric" data-metric="@metric.Id">
         <span class="metric-before">@metric.Before <span class="metric-arrow" aria-hidden="true">→</span></span>
