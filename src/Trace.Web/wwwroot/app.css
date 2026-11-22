@@ -331,6 +331,16 @@ main {
   font-size: var(--size-small);
 }
 
+/* Its own row under the links. */
+.site-version {
+  flex-basis: 100%;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--size-hud);
+  color: var(--color-text-2);
+}
+
 /* ---------- Buttons and chips ---------- */
 
 .btn {

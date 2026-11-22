@@ -14,6 +14,9 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
 
+    <!-- The site's version, shown in the footer next to the build number (SiteVersion). Bump it by hand on a release. -->
+    <Version>1.0.0</Version>
+
     <Deterministic>true</Deterministic>
     <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">true</ContinuousIntegrationBuild>
     <IsPackable>false</IsPackable>
