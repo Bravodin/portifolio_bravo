@@ -152,7 +152,7 @@
               "Consumidores",
               "Sensedia",
               "Servicios Node.js (~80 %)",
-              "Imágenes en ECS · EKS (AWS)"
+              "Contenedores Node.js corriendo en ECS / EKS (AWS)"
             ]
           }
         ]
