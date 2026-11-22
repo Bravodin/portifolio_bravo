@@ -20,18 +20,9 @@
 <footer class="site-footer">
     <a href="@Page.PathFor(PageKey.Colophon)">@Page.T("nav.colophon")</a>
     <a href="@Page.Content.Identity.LinkedIn" rel="noopener" target="_blank">LinkedIn ↗</a>
-    @* Site version + the pipeline run that built it ("local" outside Azure Pipelines). *@
-    <p class="site-version">
-        v@(SiteVersion.Current) · build
-        @if (Snapshot.Build is { RunUrl: { } run } build)
-        {
-            <a href="@run" rel="noopener" target="_blank">@build.Number</a>
-        }
-        else
-        {
-            @(Snapshot.Build?.Number ?? "local")
-        }
-    </p>
+    @* Site version + the pipeline run that built it ("local" outside Azure Pipelines). Plain text: the
+       Azure DevOps project is private, so a link to the run would only work for Manuel. *@
+    <p class="site-version">v@(SiteVersion.Current) · build @(Snapshot.Build?.Number ?? "local")</p>
 </footer>
 
 @* Blazor's error bar, shown only if an interactive island fails. Its words live in attributes and are drawn by CSS,

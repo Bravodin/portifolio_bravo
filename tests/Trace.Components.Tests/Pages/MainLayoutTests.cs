@@ -23,7 +23,7 @@ public sealed class MainLayoutTests : BunitContext
     }
 
     [Fact]
-    public void Footer_InThePipeline_ShowsTheVersionAndLinksTheBuild()
+    public void Footer_InThePipeline_ShowsTheVersionAndTheBuild_WithoutLinkingThePrivateRun()
     {
         var build = new BuildInfo("20261122.3", "439189f9abcdef", "main", DateTimeOffset.UnixEpoch, new Uri("https://dev.azure.com/org/TRACE/_build/results?buildId=42"), null, null, null);
         this.AddSite("/pt/", build: build);
@@ -32,7 +32,7 @@ public sealed class MainLayoutTests : BunitContext
 
         var version = cut.Find(".site-version");
         Assert.Equal($"v{SiteVersion.Current} · build 20261122.3", Normalize(version.TextContent));
-        Assert.Equal("https://dev.azure.com/org/TRACE/_build/results?buildId=42", version.QuerySelector("a")!.GetAttribute("href"));
+        Assert.Null(version.QuerySelector("a"));
     }
 
     [Fact]
