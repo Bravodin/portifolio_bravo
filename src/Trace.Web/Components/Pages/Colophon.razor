@@ -85,10 +85,6 @@
                     <div><dt>@Copy.Build.Coverage</dt><dd class="build-ok">@coverage.ToString("0.#%", CultureInfo.InvariantCulture)</dd></div>
                 }
             </dl>
-            @if (build.RunUrl is { } run)
-            {
-                <p><a href="@run">@Copy.Build.Run ↗</a></p>
-            }
         }
         else
         {

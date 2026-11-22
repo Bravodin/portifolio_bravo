@@ -25,7 +25,7 @@ public sealed class MainLayoutTests : BunitContext
     [Fact]
     public void Footer_InThePipeline_ShowsTheVersionAndTheBuild_WithoutLinkingThePrivateRun()
     {
-        var build = new BuildInfo("20261122.3", "439189f9abcdef", "main", DateTimeOffset.UnixEpoch, new Uri("https://dev.azure.com/org/TRACE/_build/results?buildId=42"), null, null, null);
+        var build = new BuildInfo("20261122.3", "439189f9abcdef", "main", DateTimeOffset.UnixEpoch, null, null, null);
         this.AddSite("/pt/", build: build);
 
         var cut = Render<MainLayout>(p => p.Add(l => l.Body, (RenderFragment)(b => b.AddContent(0, "body"))));

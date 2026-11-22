@@ -7,13 +7,13 @@ namespace Trace.Web.Site;
 /// <summary>
 /// The pipeline run that built this version of the site, read at build time from the Azure Pipelines
 /// environment and the test step's outputs (TRACE_TEST_RESULTS). Null on a local build.
+/// No link to the run: the Azure DevOps project is private, so visitors couldn't open it.
 /// </summary>
 public sealed partial record BuildInfo(
     string Number,
     string Commit,
     string Branch,
     DateTimeOffset BuiltAt,
-    Uri? RunUrl,
     int? TestsPassed,
     int? TestsTotal,
     double? DomainCoverage)
@@ -44,7 +44,6 @@ public sealed partial record BuildInfo(
             env("BUILD_SOURCEVERSION") ?? "",
             env("BUILD_SOURCEBRANCHNAME") ?? "",
             clock.GetUtcNow(),
-            RunUrlFrom(env("SYSTEM_COLLECTIONURI"), env("SYSTEM_TEAMPROJECT"), env("BUILD_BUILDID")),
             passed,
             total,
             coverage);
@@ -71,11 +70,6 @@ public sealed partial record BuildInfo(
             .FirstOrDefault(p => (string?)p.Attribute("name") == "Trace.Domain");
         return package?.Attribute("line-rate") is { } rate ? double.Parse(rate.Value, CultureInfo.InvariantCulture) : null;
     }
-
-    private static Uri? RunUrlFrom(string? collection, string? project, string? buildId) =>
-        collection is null || project is null || buildId is null
-            ? null
-            : new Uri($"{collection.TrimEnd('/')}/{Uri.EscapeDataString(project)}/_build/results?buildId={buildId}");
 
     private static string? ReadOrNull(string path) => File.Exists(path) ? File.ReadAllText(path) : null;
 

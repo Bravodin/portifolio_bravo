@@ -24,9 +24,6 @@ public sealed class BuildInfoTests : IDisposable
         (_, "BUILD_BUILDNUMBER") => "20261119.5",
         (_, "BUILD_SOURCEVERSION") => "439189f9abcdef",
         (_, "BUILD_SOURCEBRANCHNAME") => "main",
-        (_, "SYSTEM_COLLECTIONURI") => "https://dev.azure.com/org/",
-        (_, "SYSTEM_TEAMPROJECT") => "TRACE",
-        (_, "BUILD_BUILDID") => "42",
         (_, "TRACE_TEST_RESULTS") => _results,
         _ => null,
     };
@@ -39,7 +36,6 @@ public sealed class BuildInfoTests : IDisposable
         Assert.Equal("20261119.5", build.Number);
         Assert.Equal("439189f", build.ShortCommit);
         Assert.Equal("main", build.Branch);
-        Assert.Equal(new Uri("https://dev.azure.com/org/TRACE/_build/results?buildId=42"), build.RunUrl);
         Assert.Equal((186, 186), (build.TestsPassed, build.TestsTotal));
         Assert.Equal(0.9876, build.DomainCoverage);
         Assert.Equal(_clock.GetUtcNow(), build.BuiltAt);

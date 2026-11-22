@@ -50,8 +50,7 @@ public sealed class ColophonPageTests : BunitContext
     [Fact]
     public void LatestBuild_ShowsThePipelineRun()
     {
-        var build = new BuildInfo("20261119.5", "439189f9abcdef", "main", new DateTimeOffset(2026, 11, 19, 20, 30, 0, TimeSpan.Zero),
-            new Uri("https://dev.azure.com/org/TRACE/_build/results?buildId=42"), 186, 186, 1.0);
+        var build = new BuildInfo("20261119.5", "439189f9abcdef", "main", new DateTimeOffset(2026, 11, 19, 20, 30, 0, TimeSpan.Zero), 186, 186, 1.0);
         this.AddSite("/colophon/", build: build);
 
         var panel = Render<Colophon>().Find(".build-panel");
@@ -61,6 +60,8 @@ public sealed class ColophonPageTests : BunitContext
         Assert.Contains("186 / 186", panel.TextContent, StringComparison.Ordinal);
         Assert.Contains("100%", panel.TextContent, StringComparison.Ordinal);
         Assert.Contains("2026-11-19 20:30 UTC", panel.TextContent, StringComparison.Ordinal);
+        // The Azure DevOps project is private: no link visitors couldn't open.
+        Assert.DoesNotContain(panel.QuerySelectorAll("a"), a => a.GetAttribute("href")!.Contains("dev.azure.com", StringComparison.Ordinal));
     }
 
     [Fact]

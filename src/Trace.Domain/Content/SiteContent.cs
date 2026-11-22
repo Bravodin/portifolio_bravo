@@ -36,7 +36,7 @@ public sealed record Figure(string Value, string Label);
 public sealed record ArchitectureNode(string Name, string Role, IReadOnlyList<string> Details, IReadOnlyList<string> Adrs, string Layer, string Flow);
 
 /// <summary>Labels for the Colophon's "latest build" panel (the values come from the pipeline at build time).</summary>
-public sealed record BuildCopy(string Title, string Intro, string Number, string Commit, string Branch, string BuiltAt, string Tests, string Coverage, string Run, string Local);
+public sealed record BuildCopy(string Title, string Intro, string Number, string Commit, string Branch, string BuiltAt, string Tests, string Coverage, string Local);
 
 /// <summary>The Colophon's architecture diagram: an ordered flow from Manuel to the browser.</summary>
 public sealed record Architecture(

@@ -153,7 +153,6 @@
     "builtAt": "Gerado em",
     "tests": "Testes aprovados",
     "coverage": "Cobertura do Trace.Domain",
-    "run": "Ver este build no Azure DevOps",
     "local": "Esta versão foi gerada localmente, fora da esteira. No site publicado, aqui aparecem os dados do build."
   }
 }

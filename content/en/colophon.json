@@ -153,7 +153,6 @@
     "builtAt": "Built at",
     "tests": "Tests passed",
     "coverage": "Trace.Domain coverage",
-    "run": "See this build in Azure DevOps",
     "local": "This version was built locally, outside the pipeline. On the published site, this shows the build's data."
   }
 }
