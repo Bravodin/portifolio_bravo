@@ -15,8 +15,7 @@
       "Swift",
       "Kotlin",
       "Jetpack Compose Testing",
-      "XCUITest",
-      "WPF"
+      "XCUITest"
     ],
     "case": {
       "context": "O app nasceu em 2016 em Ionic 3. Subir para o Ionic 8 seria praticamente reconstruí-lo, então a pergunta passou a ser: reconstruir em quê? Dos 12 engenheiros do meu time, 4 trabalham com Kotlin e 4 com Swift. Lançamento dos apps nativos: 30 de novembro de 2026.",

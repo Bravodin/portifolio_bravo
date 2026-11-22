@@ -70,7 +70,7 @@ These are shown as gauges / counters. Always display them as **before → after*
 | M12 | Annual profit margin sustained | — | ~32 % | — | Indra | Service Log |
 | M13 | Time-clock device cost | R$ 3,000 | R$ 800 | −73 % | DIMEP | Service Log |
 | M14 | Market system performance | baseline | +20 % | +20 % | COREON | 6 · Database |
-| M15 | WPF POS responsiveness | baseline | +15 % | +15 % | Linx | 1 · Client |
+| M15 | WPF POS responsiveness | baseline | +15 % | +15 % | Linx | Service Log (not on stage 1: WPF read as off-topic next to the native-app migration, 2026-11-21) |
 
 ---
 
@@ -82,7 +82,7 @@ Format for each stage: **Layer → Problem → Action → Result → Tech**. Cop
 
 | # | Stage (game "level") | Garage metaphor | Problem | Action | Result | Tech chips |
 |---|---|---|---|---|---|---|
-| 1 | **Client** | Handlebars & dashboard | A 2016 Ionic app where a critical booking journey took 12–20 s | Led the migration to native iOS (Swift) and Android (Kotlin); moved regression testing to Compose Testing + XCUITest | Booking ~1.2 s | Swift · Kotlin · Jetpack Compose Testing · XCUITest · WPF |
+| 1 | **Client** | Handlebars & dashboard | A 2016 Ionic app where a critical booking journey took 12–20 s | Led the migration to native iOS (Swift) and Android (Kotlin); moved regression testing to Compose Testing + XCUITest | Booking ~1.2 s | Swift · Kotlin · Jetpack Compose Testing · XCUITest |
 | 2 | **Edge & Security** | Ignition key & immobilizer | Fraud in reimbursement workflows | Added facial biometrics to reimbursement | Fraud −40 % | Biometrics · AWS · Firewall troubleshooting |
 | 3 | **API Gateway** | Fuel injection | High platform cost on CA API Gateway | Migrated the gateway to Sensedia | Cost −30 % | Sensedia · CA API Gateway · REST · SOAP |
 | 4 | **Services** | Engine block (rebuild) | Legacy .NET/SOAP services with a large vulnerability surface | Modernized ~80 % of them to Node.js | Vulnerabilities −70 % | Node.js · TypeScript · C# · .NET · Microservices |
