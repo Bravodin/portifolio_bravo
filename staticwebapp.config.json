@@ -32,7 +32,6 @@
     ".avif": "image/avif",
     ".webp": "image/webp",
     ".woff2": "font/woff2",
-    ".mp4": "video/mp4",
     ".dat": "application/octet-stream",
     ".blat": "application/octet-stream"
   }

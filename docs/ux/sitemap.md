@@ -9,7 +9,7 @@ Each route exists in three locales and is **prerendered to static HTML** at buil
 | `/` | `/es/` | `/pt/` | The ride: hero + About + What I bring + Trace + Journey + Toolbox + Case studies + Garage + Contact | All |
 | `/recruiter/` | `/es/reclutador/` | `/pt/recrutador/` | Recruiter Mode: one screen, printable | P1 |
 | `/colophon/` | `/es/como-se-hizo/` | `/pt/como-foi-feito/` | How this site was built: stack, architecture, ADRs, built with AI | P3 |
-| `/garage/` | `/es/garaje/` | `/pt/garagem/` | Photos and videos (track days, workshop, games) with a lightbox | P4 |
+| `/garage/` | `/es/garaje/` | `/pt/garagem/` | Photos (track days, workshop, games) with a lightbox; no video ([ADR-0014](../architecture/adr/0014-no-video-keep-the-site-light.md)) | P4 |
 | `/404.html` | — | — | Localized "Wrong turn" page (detects locale from the path) | All |
 | `/cv/manuel-bravo-{pt,en,es}.pdf` | | | Static PDF (no phone or e-mail; LinkedIn only) | P1 |
 

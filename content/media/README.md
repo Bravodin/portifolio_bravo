@@ -57,46 +57,6 @@ The site's photos live here as **originals**. The build generates every web vers
 - [x] **Games**: `games/games-01-controller.jpg`. The laptop screen showed Super Mario World (Nintendo's art), so the screen area was blurred before committing; never commit game art, logos or screenshots.
 
 
-## Videos
+## No video
 
-Videos are served by the site itself, as small MP4 files ([ADR-0012](../../docs/architecture/adr/0012-self-hosted-video.md)). The site shows a poster with a ▶ button and only loads the video when someone clicks. Only the web-ready encode goes into git, never the camera original.
-
-1. Encode the original (vertical clip; drop `-c:a aac -b:a 96k` and add `-an` if it has no sound):
-
-   ```powershell
-   ffmpeg -i "MVI_1234.MP4" -map 0:v:0 -map 0:a:0? -vf "scale=720:1280:flags=lanczos,fps=30000/1001,format=yuv420p" `
-     -c:v libx264 -preset slow -crf 25 -profile:v high -level 4.0 -c:a aac -b:a 96k -ac 2 `
-     -map_metadata -1 -map_chapters -1 -movflags +faststart garage/videos/short-05-interlagos.mp4
-   ```
-
-   Aim for a few MB per clip. Install ffmpeg with `winget install Gyan.FFmpeg`.
-2. Export a poster frame (`-ss` = the second you want):
-
-   ```powershell
-   ffmpeg -ss 8 -i "MVI_1234.MP4" -frames:v 1 -vf "scale=1080:1920" -q:v 2 -map_metadata -1 garage/short-05-interlagos-poster.jpg
-   ```
-
-3. Add an entry to [`videos.json`](videos.json), validated by `videos.schema.json`:
-
-```json
-{
-  "id": "short-05-interlagos",
-  "file": "garage/videos/short-05-interlagos.mp4",
-  "category": "track",
-  "featured": false,
-  "aspectRatio": "9:16",
-  "poster": "garage/short-05-interlagos-poster.jpg",
-  "credit": { "name": "@mustelasportmedia", "url": "https://www.instagram.com/mustelasportmedia/" },
-  "title":       { "pt-BR": "…", "en": "…", "es": "…" },
-  "description": { "pt-BR": "…", "en": "…", "es": "…" }
-}
-```
-
-- `description` is **required** in all 3 languages: it tells people who can't watch what happens. Say what can be heard ("engine sound only", "no sound"). If someone speaks, the video needs captions.
-- Video files and poster frames are **not** listed in `gallery.json`. The build fails if a `file` or `poster` is missing.
-
-### To do for the current videos
-
-- [x] `short-01-roll-out`: other riders appear small in the paddock background; Manuel confirmed that's fine (2026-11-21).
-- [x] Originals matched by eye (01 = MVI_7492, 02 = MVI_7781, 03 = MVI_7769, 04 = MVI_9404); Manuel said the order doesn't matter.
-- [x] All four clips are silent (Manuel's call; short-01's audio track was removed), and their descriptions say so.
+The site has no video ([ADR-0014](../../docs/architecture/adr/0014-no-video-keep-the-site-light.md)): the goal is a light site, and self-hosted clips could use up the hosting bandwidth or create unplanned cost. Don't add `.mp4`/`.webm` files here; a test fails if one shows up. Bringing video back needs a new ADR.

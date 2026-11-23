@@ -825,8 +825,7 @@ main {
 }
 
 .garage-cards,
-.photo-grid,
-.video-grid {
+.photo-grid {
   display: grid;
   gap: var(--space-4);
   list-style: none;
@@ -836,7 +835,6 @@ main {
 
 .garage-cards { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
 .photo-grid { grid-template-columns: repeat(auto-fill, minmax(min(14rem, 45%), 1fr)); }
-.video-grid { grid-template-columns: repeat(auto-fill, minmax(min(12rem, 45%), 1fr)); }
 
 .garage-card {
   display: flex;
@@ -877,42 +875,10 @@ main {
 
 .garage-page h2 { margin-top: var(--space-12); }
 
-.photo-grid figure,
-.video { margin: 0; }
+.photo-grid figure { margin: 0; }
 .photo-link { display: block; border-radius: var(--radius-md); overflow: hidden; }
-.photo-grid figcaption,
-.video figcaption { display: grid; gap: var(--space-1); margin-top: var(--space-2); font-size: var(--size-small); color: var(--color-text-2); }
-.video figcaption strong { color: var(--color-text); font-size: var(--size-body); }
+.photo-grid figcaption { display: grid; gap: var(--space-1); margin-top: var(--space-2); font-size: var(--size-small); color: var(--color-text-2); }
 figcaption small { color: var(--color-muted); }
-
-.video-facade {
-  position: relative;
-  display: block;
-  aspect-ratio: 9 / 16;
-  overflow: hidden;
-  background: var(--color-raised);
-  border-radius: var(--radius-lg);
-}
-
-.video-facade img { display: block; width: 100%; height: 100%; object-fit: cover; }
-
-.video-play {
-  position: absolute;
-  inset: 0;
-  width: 64px;
-  height: 64px;
-  margin: auto;
-  display: grid;
-  place-items: center;
-  border-radius: var(--radius-full);
-  background: var(--color-amber);
-  color: var(--color-on-amber);
-  font-size: 24px;
-  box-shadow: 0 4px 24px rgb(0 0 0 / 50%);
-}
-
-.video-facade:hover .video-play,
-.video-facade:focus-visible .video-play { transform: scale(1.08); }
 
 
 
@@ -1199,17 +1165,6 @@ html:has(dialog.lightbox[open]) { overflow: hidden; }
   object-fit: contain;
   border-radius: var(--radius-md);
 }
-
-.lightbox-video {
-  display: block;
-  height: calc(100dvh - 220px);
-  max-width: 100%;
-  aspect-ratio: 9 / 16;
-  background: #000;
-  border-radius: var(--radius-md);
-}
-
-.lightbox-video[hidden] { display: none; }
 
 .lightbox-caption {
   display: grid;

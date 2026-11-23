@@ -1,6 +1,6 @@
 # 0012 — Video: self-hosted MP4 behind a click-to-load facade
 
-- Status: Accepted
+- Status: Superseded by [0014](0014-no-video-keep-the-site-light.md)
 - Date: 2026-11-21
 - Supersedes: [0010](0010-video-youtube-facade.md)
 

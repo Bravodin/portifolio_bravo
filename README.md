@@ -27,7 +27,7 @@ Visitor ──► www.manuelbravo.com.br (registro.br domain · Cloudflare DNS) 
 
 - **Static first:** every page × language is rendered to HTML at build time, so the site works without JavaScript and needs no server at run time ([ADR-0003](docs/architecture/adr/0003-build-time-static-prerendering.md)).
 - **Content as data:** all copy lives in `content/{en,es,pt-BR}/*.json`; the build fails if a translation, a metric or a key is missing ([ADR-0004](docs/architecture/adr/0004-i18n-content-as-data.md)).
-- **Media pipeline:** photos become AVIF/WebP/JPEG at the right sizes, cropped on a focal point, with all metadata stripped ([ADR-0008](docs/architecture/adr/0008-media-pipeline.md)); videos are self-hosted MP4s that load only on click ([ADR-0012](docs/architecture/adr/0012-self-hosted-video.md)).
+- **Media pipeline:** photos become AVIF/WebP/JPEG at the right sizes, cropped on a focal point, with all metadata stripped ([ADR-0008](docs/architecture/adr/0008-media-pipeline.md)); no video, to keep the site light ([ADR-0014](docs/architecture/adr/0014-no-video-keep-the-site-light.md)).
 - **CI/CD:** Azure Pipelines runs CI on every push and pull request, then deploys: `main` → production, pull requests → a preview environment ([ADR-0009](docs/architecture/adr/0009-azure-pipelines-and-static-web-apps.md)).
 - **Quality gates:** warnings as errors, format check, xUnit/bUnit tests (the Colophon shows the test-method count, measured at build time, and how many test cases the latest build passed: theories run once per input, so cases outnumber methods), link/`hreflang`/CV/config-size validation in the prerender ([ADR-0007](docs/architecture/adr/0007-quality-gates.md)).
 
@@ -53,7 +53,7 @@ dotnet run --project src/Trace.Web   # dev server with hot reload (no prerender,
 ## Repository layout
 
 ```
-content/                 # en/, es/, pt-BR/ JSON content · media/ (photos, gallery.json, videos.json) · cv/
+content/                 # en/, es/, pt-BR/ JSON content · media/ (photos, gallery.json) · cv/
 src/Trace.Domain/        # pure C#: content model and validation, routes, benchmark simulation, media plan
 src/Trace.Client/        # Blazor WebAssembly island (the benchmark)
 src/Trace.Web/           # Blazor Web App: pages, layout, components, styles, fonts
@@ -70,7 +70,7 @@ staticwebapp.config.json # headers, caching, 404 (filled in by the prerender)
 |---|---|
 | Product | [Vision & goals](docs/product/vision.md) · [Personas](docs/product/personas.md) · [Content inventory](docs/product/content-inventory.md) |
 | UX | [Concept](docs/ux/concept.md) · [Sitemap](docs/ux/sitemap.md) · [User flows](docs/ux/user-flows.md) · [Interaction spec](docs/ux/interaction-spec.md) |
-| Content | [Content inventory](docs/product/content-inventory.md) · [Media & how to add photos and videos](content/media/README.md) |
+| Content | [Content inventory](docs/product/content-inventory.md) · [Media & how to add photos](content/media/README.md) |
 | Design | [Design system](docs/design/design-system.md) · [Tokens (DTCG / Figma)](docs/design/tokens/tokens.json) · [Wireframes](docs/design/wireframes/README.md) |
 | Architecture | [Overview (C4)](docs/architecture/overview.md) · [CI/CD & hosting](docs/architecture/ci-cd-and-hosting.md) · [Quality strategy](docs/architecture/quality-strategy.md) · [ADRs](docs/architecture/adr/README.md) |
 

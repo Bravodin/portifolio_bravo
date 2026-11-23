@@ -13,7 +13,7 @@ Start with: `README.md` → `docs/ux/concept.md` → `docs/architecture/overview
 - **Talk to Manuel in Brazilian Portuguese.** Write repo docs, code, comments and commit messages in **English**.
 - **Numbers come only from `docs/product/content-inventory.md`** (sourced from his CV). Never invent metrics, dates, team sizes or methods. Mark any copy that needs his input with `TODO(manuel)`.
 - **Contact is LinkedIn or e-mail** (`manuelbravoc@gmail.com`, from `identity.json`; [ADR-0013](docs/architecture/adr/0013-contact-linkedin-and-email.md)). No phone number anywhere, and no other e-mail address in the content.
-- **Photos:** every file in `content/media/` must have an entry in `gallery.json` (alt text in pt-BR/en/es, credit for event photos). Video files and their poster frames go in `videos.json` instead. See `content/media/README.md`.
+- **Photos:** every file in `content/media/` must have an entry in `gallery.json` (alt text in pt-BR/en/es, credit for event photos). The site has no video ([ADR-0014](docs/architecture/adr/0014-no-video-keep-the-site-light.md)). See `content/media/README.md`.
 - **Commits:** Conventional Commits (`feat:`, `fix:`, `docs:`, `ci:`, `test:`, `chore:`), small and focused. Show the diff summary and ask before `git push`.
 - **When a decision changes, write a new ADR** that supersedes the old one. Don't rewrite history.
 - Accessibility (WCAG 2.2 AA, reduced motion, keyboard) and the performance budgets in `docs/architecture/overview.md` §6 are requirements, not nice-to-haves.
@@ -26,11 +26,11 @@ Start with: `README.md` → `docs/ux/concept.md` → `docs/architecture/overview
 - ✅ Step 4: `Trace.Prerender` builds `dist/` from the publish output (details in ADR-0003, "Step 4 result"). The media step (ADR-0008, NetVips) is not written yet.
 - ✅ Step 6 (first part): trilingual content as data (`content/{pt-BR,en,es}/*.json`, validated for parity by `ContentStore`), localized routes (`SiteRoutes`), `<html lang>` + `canonical` + `hreflang` (validated by the prerender), the PT · EN · ES switcher, and **Recruiter Mode** on its 3 routes with a one-page A4 print layout.
 - ✅ Ride sections: stages 1–7 (shared `StageSection` with a `<details>` case), Service Log, Toolbox, Pit Stop. Media step (ADR-0008) works: `MediaCatalog` (Trace.Web) issues variant URLs from `MediaPlan` (Trace.Domain) and `Trace.Prerender` generates exactly those with NetVips (AVIF/WebP/JPEG, focal crop, metadata stripped, immutable cache). The portrait is in Recruiter Mode and Pit Stop. Images only exist in the prerendered `dist/` (`run-local.ps1`), not under `dotnet run`.
-- ✅ Garage: home section (3 cards, line-art for hobbies without photos) and the gallery page on `/garagem/`, `/en/garage/`, `/es/garaje/` (9 track photos with credits, 4 track clips as click-to-load facades). Videos are self-hosted MP4s ([ADR-0012](docs/architecture/adr/0012-self-hosted-video.md), supersedes ADR-0010): encoded once with ffmpeg into `content/media/garage/videos/` (originals stay out of git), posters are frames from the clips, `MediaCatalog` issues hashed `/media/{id}.{hash}.mp4` URLs and the prerender copies them.
+- ✅ Garage: home section (3 cards, line-art for hobbies without photos) and the photo gallery page on `/garagem/`, `/en/garage/`, `/es/garaje/` (track photos with credits, workshop, games; photo-only lightbox).
 - ✅ **Live** at https://www.manuelbravo.com.br (Azure Static Web Apps; default host `thankful-sky-0b6524c0f.3.azurestaticapps.net`, which the `www` CNAME points to: don't delete it). Domain registered at registro.br, nameservers on Cloudflare: `CNAME www` DNS-only to SWA, apex `A 192.0.2.1` proxied + a 301 Redirect Rule to `www`, plus `v=spf1 -all` and DMARC `p=reject` (no e-mail on the domain). Deployed by Azure Pipelines (https://dev.azure.com/manuelbravo/rg-trace, pipeline `Bravodin.portifolio_bravo`) in CI → CD stages (environments `production` and `preview`); the Colophon shows the latest build's tests and coverage.
 - ⏳ **Next:** Playwright + axe + Lighthouse CI budgets in the pipeline.
 - 🚫 **Phase 3 (Immersion) motion is dropped** (Manuel, 2026-11-21): no packet/spine, gear indicator, counters, achievements, terminal or JS lightbox. Don't build them unless he asks again. The Trace stages and the benchmark stay.
-- 🎬 4 track clips (@mustelasportmedia; all silent) are listed in `content/media/videos.json`. Encoding recipe and open items are in `content/media/README.md`.
+- 🚫 **No video** (Manuel, 2026-11-23, [ADR-0014](docs/architecture/adr/0014-no-video-keep-the-site-light.md), supersedes ADR-0012): the site is meant to be light, and self-hosted clips could eat the SWA bandwidth or create unplanned cost. The 4 track clips and the video code were removed. Bringing video back needs a new ADR.
 
 ## Phase 1/2 plan — skeleton
 
@@ -55,7 +55,7 @@ Order:
 1. ~~ADR-0009 + docs updates~~ ✅ done.
 2. ~~`global.json`, solution, projects, `Directory.Build.props`, `.editorconfig`~~ ✅ done (central package management in `Directory.Packages.props`; xUnit v3 + bUnit on Microsoft.Testing.Platform with `coverlet.MTP`).
 3. ~~**Spike (ADR-0003 exit criteria)**~~ ✅ passed locally (SWA CLI). The deploy to the real SWA happens with step 5.
-4. ~~`Trace.Prerender`~~ ✅ done, with the media step (ADR-0008), video files (ADR-0012), `hreflang` and CV checks. Still open: removing the antiforgery token from the HTML.
+4. ~~`Trace.Prerender`~~ ✅ done, with the media step (ADR-0008), `hreflang` and CV checks. Still open: removing the antiforgery token from the HTML.
 5. `azure-pipelines.yml`: restore → build → test + coverage → prerender → `AzureStaticWebApp@0` deploy (`skip_app_build: true`, `app_location: dist`). Check out with `fetchDepth: 0`: the Colophon counts commits at build time (`RepoStats`), and a shallow clone would show 1. Set `TF_BUILD` (Azure does) so the CV placeholder check fails the build.
 6. ~~Content JSON + Recruiter Mode~~ ✅ done, plus the full ride, Garage, About, Colophon and the design fonts.
 7. ~~Phase 3 motion~~ dropped (see Status). **Next:** Playwright + axe + Lighthouse CI in the pipeline.

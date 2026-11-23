@@ -128,11 +128,11 @@
         "details": [
           "HTML that works without JavaScript",
           "WebAssembly only for the benchmark",
-          "Videos load only on click"
+          "No video: optimized images only"
         ],
         "adrs": [
           "0001",
-          "0010"
+          "0014"
         ],
         "layer": "Client",
         "flow": "access"

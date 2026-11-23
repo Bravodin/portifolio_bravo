@@ -72,13 +72,10 @@
   "cases.repo": "Ver o código no GitHub",
   "garage.title": "Garagem",
   "garage.intro": "O que eu faço longe do teclado, e o que isso me ensinou sobre o trabalho.",
-  "garage.seeAll": "Ver todas as fotos e vídeos",
+  "garage.seeAll": "Ver todas as fotos",
   "garage.photos": "Track days",
-  "garage.videos": "Na pista",
   "garage.photoCredit": "Foto: {0}",
-  "garage.videoCredit": "Vídeo: {0}",
   "garage.open": "Abrir em tamanho grande",
-  "video.play": "Reproduzir vídeo: {0}",
   "page.garage.title": "Garagem · Manuel Bravo",
   "garage.back": "← Voltar ao início",
   "garage.workshop": "Na oficina",
@@ -91,8 +88,5 @@
   "lightbox.close": "Fechar",
   "lightbox.prev": "Foto anterior",
   "lightbox.next": "Próxima foto",
-  "lightbox.videoLabel": "Player de vídeo",
-  "lightbox.videoPrev": "Vídeo anterior",
-  "lightbox.videoNext": "Próximo vídeo",
   "colophon.type": "Tipografia: Barlow, Barlow Condensed e JetBrains Mono (licença SIL OFL), hospedadas no próprio site."
 }

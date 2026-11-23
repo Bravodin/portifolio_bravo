@@ -109,7 +109,7 @@ internal sealed class Prerenderer(PrerenderOptions options)
 
     /// <summary>
     /// Media step (ADR-0008): writes every image variant the pages reference, from the same recipe the
-    /// <c>Picture</c> component used to write the markup, and copies every video they link to (ADR-0012).
+    /// <c>Picture</c> component used to write the markup (the site has no video, ADR-0014).
     /// Unknown /media/ URLs fall through to the missing-asset check.
     /// Every /media/ name carries a content hash, so the template's single "/media/*" route caches them as immutable
     /// (one route per file would push staticwebapp.config.json past SWA's 20 KB limit).
@@ -125,12 +125,6 @@ internal sealed class Prerenderer(PrerenderOptions options)
             if (catalog.TryGetIssued(url, out var variant))
             {
                 MediaGenerator.Write(variant, SitePaths.ToDistPath(options.OutputDirectory, url));
-            }
-            else if (catalog.TryGetIssuedFile(url, out var source))
-            {
-                var target = SitePaths.ToDistPath(options.OutputDirectory, url);
-                _ = Directory.CreateDirectory(Path.GetDirectoryName(target)!);
-                File.Copy(source, target, overwrite: true);
             }
         }
     }

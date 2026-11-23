@@ -5,31 +5,18 @@
 @inject PageContext Page
 @inject MediaCatalog Media
 
-@* Full gallery (docs/ux/sitemap.md, P4): the on-board Shorts, then photos by category, with credits.
-   Each photo links to its large version and each video to its MP4 (L0); site.js opens them in a lightbox instead, without leaving the page. *@
+@* Full gallery (docs/ux/sitemap.md, P4): photos by category, with credits. No video (ADR-0014).
+   Each photo links to its large version (L0); site.js opens it in a lightbox instead, without leaving the page. *@
 <PageTitle>@Page.T("page.garage.title")</PageTitle>
 
 <article class="garage-page"
          data-lightbox-label="@Page.T("lightbox.label")"
          data-lightbox-close="@Page.T("lightbox.close")"
          data-lightbox-prev="@Page.T("lightbox.prev")"
-         data-lightbox-next="@Page.T("lightbox.next")"
-         data-lightbox-video-label="@Page.T("lightbox.videoLabel")"
-         data-lightbox-video-prev="@Page.T("lightbox.videoPrev")"
-         data-lightbox-video-next="@Page.T("lightbox.videoNext")">
+         data-lightbox-next="@Page.T("lightbox.next")">
     <p><a href="@Page.PathFor(PageKey.Home)#garage">@Page.T("garage.back")</a></p>
     <h1>@Page.T("garage.title")</h1>
     <p class="section-intro">@Page.T("garage.intro")</p>
-
-    <section aria-labelledby="garage-videos">
-        <h2 id="garage-videos">@Page.T("garage.videos")</h2>
-        <ul class="video-grid">
-            @foreach (var video in Media.Videos)
-            {
-                <li><VideoFacade Video="video" /></li>
-            }
-        </ul>
-    </section>
 
     @foreach (var (category, heading) in Sections)
     {
@@ -54,7 +41,7 @@
                             }
                             else if (photo.Credit is { } credit)
                             {
-                                @* Plain text, like the video credit: the handle names the photographer, no outbound link. *@
+                                @* Plain text: the handle names the photographer, no outbound link. *@
                                 <small>@Credit(credit.Name)</small>
                             }
                         </figcaption>

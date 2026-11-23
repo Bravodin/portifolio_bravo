@@ -4,10 +4,9 @@
 document.documentElement.classList.add('js');
 
 // ---------- Lightbox ----------
-// Photo links open their large version, and video facades their MP4 (ADR-0012), in a native <dialog> on top of
-// the page. Without JS they simply open the file (L0). The dialog gives focus handling and Esc for free; arrows,
-// swipe and the counter are added here. Photos and videos are browsed as separate sets.
-const LIGHTBOX_LINKS = 'a.photo-link, a[data-video]';
+// Photo links open their large version in a native <dialog> on top of the page. Without JS they simply open the
+// file (L0). The dialog gives focus handling and Esc for free; arrows, swipe and the counter are added here.
+const LIGHTBOX_LINKS = 'a.photo-link';
 const lightbox = {
   links: [],
   index: 0,
@@ -20,7 +19,6 @@ const lightbox = {
     dialog.className = 'lightbox';
     dialog.innerHTML =
       '<figure class="lightbox-figure"><img class="lightbox-img" alt="">' +
-      '<video class="lightbox-video" controls playsinline preload="none" hidden></video>' +
       '<figcaption class="lightbox-caption"></figcaption></figure>' +
       '<p class="lightbox-count" aria-live="polite"></p>' +
       '<button type="button" class="lightbox-close" autofocus>✕</button>' +
@@ -32,13 +30,10 @@ const lightbox = {
     dialog.querySelector('.lightbox-prev').addEventListener('click', () => lightbox.step(-1));
     dialog.querySelector('.lightbox-next').addEventListener('click', () => lightbox.step(1));
     dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
-    // Closing (button, Esc, backdrop) stops the video and frees it, so nothing keeps playing or downloading.
-    dialog.addEventListener('close', () => lightbox.stopVideo());
 
     let startX = null;
     dialog.addEventListener('touchstart', (e) => {
-      // A drag on the video is the scrubber, not a swipe.
-      startX = e.target instanceof HTMLVideoElement ? null : e.touches[0].clientX;
+      startX = e.touches[0].clientX;
     }, { passive: true });
     dialog.addEventListener('touchend', (e) => {
       if (startX === null) return;
@@ -50,15 +45,14 @@ const lightbox = {
   },
 
   open(link) {
-    const isVideo = link.hasAttribute('data-video');
-    this.links = [...document.querySelectorAll(isVideo ? 'a[data-video]' : 'a.photo-link')];
+    this.links = [...document.querySelectorAll(LIGHTBOX_LINKS)];
     this.index = Math.max(0, this.links.indexOf(link));
     const dialog = this.dialog();
     const labels = link.closest('[data-lightbox-label]')?.dataset ?? {};
-    dialog.setAttribute('aria-label', (isVideo ? labels.lightboxVideoLabel : labels.lightboxLabel) ?? '');
+    dialog.setAttribute('aria-label', labels.lightboxLabel ?? '');
     dialog.querySelector('.lightbox-close').setAttribute('aria-label', labels.lightboxClose ?? 'Close');
-    dialog.querySelector('.lightbox-prev').setAttribute('aria-label', (isVideo ? labels.lightboxVideoPrev : labels.lightboxPrev) ?? 'Previous');
-    dialog.querySelector('.lightbox-next').setAttribute('aria-label', (isVideo ? labels.lightboxVideoNext : labels.lightboxNext) ?? 'Next');
+    dialog.querySelector('.lightbox-prev').setAttribute('aria-label', labels.lightboxPrev ?? 'Previous');
+    dialog.querySelector('.lightbox-next').setAttribute('aria-label', labels.lightboxNext ?? 'Next');
     this.show();
     dialog.showModal();
     // Focus a control that never gets replaced (the caption's credit link does, on every photo change).
@@ -71,41 +65,20 @@ const lightbox = {
     this.show();
   },
 
-  stopVideo() {
-    const video = document.querySelector('dialog.lightbox .lightbox-video');
-    if (!video || !video.getAttribute('src')) return;
-    video.pause();
-    video.removeAttribute('src');
-    video.load();
-  },
-
   show() {
     const dialog = this.dialog();
     const link = this.links[this.index];
-    const isVideo = link.hasAttribute('data-video');
     const img = dialog.querySelector('.lightbox-img');
-    const video = dialog.querySelector('.lightbox-video');
-    img.hidden = isVideo;
-    video.hidden = !isVideo;
-    this.stopVideo();
-    if (isVideo) {
-      img.removeAttribute('src');
-      video.poster = link.querySelector('img')?.currentSrc ?? '';
-      video.setAttribute('aria-label', link.dataset.title ?? '');
-      video.src = link.href;
-      video.play().catch(() => { /* autoplay refused: the controls are there */ });
-    } else {
-      img.src = link.href;
-      img.alt = link.querySelector('img')?.alt ?? '';
-    }
+    img.src = link.href;
+    img.alt = link.querySelector('img')?.alt ?? '';
     const caption = link.closest('figure')?.querySelector('figcaption');
     dialog.querySelector('.lightbox-caption').replaceChildren(...(caption ? caption.cloneNode(true).childNodes : []));
     dialog.querySelector('.lightbox-count').textContent = (this.index + 1) + ' / ' + this.links.length;
     const single = this.links.length < 2;
     dialog.querySelector('.lightbox-prev').hidden = single;
     dialog.querySelector('.lightbox-next').hidden = single;
-    // Warm up the neighbouring photos so arrows feel instant (videos load only when shown).
-    for (const d of isVideo ? [] : [-1, 1]) {
+    // Warm up the neighbouring photos so arrows feel instant.
+    for (const d of [-1, 1]) {
       const next = this.links[(this.index + d + this.links.length) % this.links.length];
       if (next) new Image().src = next.href;
     }
@@ -120,7 +93,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 // Capture phase, so the lightbox sees the click before Blazor's enhanced navigation does.
-// Plain left clicks only: Ctrl/Cmd/Shift-click still opens the image or video in a new tab.
+// Plain left clicks only: Ctrl/Cmd/Shift-click still opens the image in a new tab.
 document.addEventListener('click', (event) => {
   const photo = event.target instanceof Element ? event.target.closest(LIGHTBOX_LINKS) : null;
   if (photo && typeof HTMLDialogElement === 'function' && event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {

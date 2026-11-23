@@ -176,7 +176,6 @@ All photos are listed in [`content/media/gallery.json`](../../content/media/gall
 | `track-02` | Gallery | ✅ credit: B.S Racing · MotoGP Cerezer |
 | `track-03` | Garage card "Motorcycles" + gallery | ✅ credit: @mustelasportmedia |
 | `track-09` | Gallery (Evo Racing track day) | ✅ credit: @mustelasportmedia · caption: consistency before speed. Manuel kept four track photos (01, 02, 03, 09) on 2026-11-19; 04–08 were removed (still in git history) |
-| `short-01` … `short-04` | Garage videos (self-hosted MP4, ADR-0012) | ✅ credit: @mustelasportmedia · descriptions drafted, to confirm |
 
 ---
 
