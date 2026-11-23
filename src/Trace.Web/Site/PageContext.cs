@@ -28,5 +28,11 @@ public sealed class PageContext(NavigationManager navigation, ContentStore store
 
     public string PathFor(PageKey page) => SiteRoutes.PathFor(page, Locale);
 
+    /// <summary>
+    /// A link to an element on this page (<c>/pt/#cases</c>). A bare <c>#cases</c> would resolve against
+    /// <c>&lt;base href="/"&gt;</c> and land on the English home page instead.
+    /// </summary>
+    public string Anchor(string id) => Path.Split('?', '#')[0] + "#" + id;
+
     public string Absolute(string path) => new Uri(options.SiteUrl, path).AbsoluteUri;
 }

@@ -2,7 +2,7 @@
 @inject PageContext Page
 @inject BuildSnapshot Snapshot
 
-<a class="skip-link" href="#content">@Page.T("a11y.skip")</a>
+<a class="skip-link" href="@Page.Anchor("content")">@Page.T("a11y.skip")</a>
 
 <header class="hud">
     <a class="brand" href="@Page.PathFor(PageKey.Home)" aria-label="TRACE · @Page.Content.Identity.Name">TRACE</a>

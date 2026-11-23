@@ -49,6 +49,18 @@ public sealed class HomePageTests : BunitContext
         Assert.NotNull(cv.QuerySelector("svg[aria-hidden=true]"));
     }
 
+    [Theory]
+    [InlineData("/", "/#trace")]
+    [InlineData("/pt/", "/pt/#trace")]
+    [InlineData("/es/", "/es/#trace")]
+    public void Hero_JumpLinks_StayInThePageLanguage(string path, string trace)
+    {
+        // <base href="/"> would turn a bare "#trace" into "/#trace", the English home page.
+        var actions = RenderHome(path).FindAll(".hero-actions a");
+
+        Assert.Equal(trace, actions[3].GetAttribute("href"));
+    }
+
     [Fact]
     public void WhatIBring_SitsBetweenAboutAndTheTrace_WithThreePoints()
     {
