@@ -14,7 +14,8 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
 
-    <!-- The site's version, shown in the footer next to the build number (SiteVersion). Bump it by hand on a release. -->
+    <!-- The site's version, shown in the footer next to the build number (SiteVersion). Bumped by .githooks/pre-push
+         on every push to main: feat → minor, fix → patch. Don't edit it by hand. -->
     <Version>1.0.0</Version>
 
     <Deterministic>true</Deterministic>

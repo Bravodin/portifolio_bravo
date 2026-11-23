@@ -1,0 +1,71 @@
+#!/bin/sh
+# Bumps the site version (<Version> in Directory.Build.props) when commits are pushed to main.
+#   any "feat:" commit in the push  -> minor (1.2.3 -> 1.3.0)
+#   else any "fix:" commit          -> patch (1.2.3 -> 1.2.4)
+#   anything else (docs, chore...)  -> no change
+# One bump per push, whatever the number of commits. The hook commits "chore(release): vX.Y.Z" and stops the push,
+# because git has already chosen what to send; run "git push" again to send the release commit too.
+# Enable once per clone: git config core.hooksPath .githooks
+
+props="Directory.Build.props"
+remote="$1"
+zero="0000000000000000000000000000000000000000"
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ "$remote_ref" = "refs/heads/main" ] || continue
+  [ "$local_sha" = "$zero" ] && continue # deleting the branch
+
+  if [ "$remote_sha" = "$zero" ] || ! git cat-file -e "$remote_sha^{commit}" 2>/dev/null; then
+    range="$local_sha --not --remotes=$remote"
+  else
+    range="$remote_sha..$local_sha"
+  fi
+
+  # Commits already covered by a release commit in this push don't count again (the re-push after a bump).
+  # shellcheck disable=SC2086
+  released=$(git log -1 --format=%H -E --grep='^chore\(release\): v' $range)
+  [ -n "$released" ] && range="$released..$local_sha"
+
+  # Subjects only: Conventional Commits put the type there. "feat(scope):" and "feat!:" count too.
+  # shellcheck disable=SC2086
+  subjects=$(git log --format=%s $range)
+  if printf '%s\n' "$subjects" | grep -Eq '^feat(\([^)]*\))?!?:'; then
+    bump=minor
+  elif printf '%s\n' "$subjects" | grep -Eq '^fix(\([^)]*\))?!?:'; then
+    bump=patch
+  else
+    continue
+  fi
+
+  if [ "$local_sha" != "$(git rev-parse HEAD)" ]; then
+    echo "pre-push: main is pushed from a commit that isn't HEAD; check out main to bump the version ($bump)." >&2
+    exit 1
+  fi
+  if ! git diff --quiet HEAD -- "$props" || ! git diff --cached --quiet -- "$props"; then
+    echo "pre-push: $props has uncommitted changes; commit or stash them so the version bump can be committed." >&2
+    exit 1
+  fi
+
+  current=$(sed -n 's:.*<Version>\([0-9]*\.[0-9]*\.[0-9]*\)</Version>.*:\1:p' "$props")
+  if [ -z "$current" ]; then
+    echo "pre-push: no <Version>X.Y.Z</Version> in $props." >&2
+    exit 1
+  fi
+  major=${current%%.*}; rest=${current#*.}; minor=${rest%%.*}; patch=${rest#*.}
+  if [ "$bump" = minor ]; then
+    next="$major.$((minor + 1)).0"
+  else
+    next="$major.$minor.$((patch + 1))"
+  fi
+
+  sed -i "s:<Version>$current</Version>:<Version>$next</Version>:" "$props"
+  git add -- "$props"
+  git commit --quiet -m "chore(release): v$next" -m "$bump bump from $current, for:" -m "$(printf '%s\n' "$subjects" | grep -E '^(feat|fix)(\([^)]*\))?!?:' | sed 's/^/- /')"
+
+  echo "" >&2
+  echo "pre-push: version $current -> $next ($bump). Committed \"chore(release): v$next\"." >&2
+  echo "pre-push: push stopped so the release commit goes with it. Run git push again." >&2
+  exit 1
+done
+
+exit 0

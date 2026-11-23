@@ -15,6 +15,7 @@ Start with: `README.md` → `docs/ux/concept.md` → `docs/architecture/overview
 - **Contact is LinkedIn or e-mail** (`manuelbravoc@gmail.com`, from `identity.json`; [ADR-0013](docs/architecture/adr/0013-contact-linkedin-and-email.md)). No phone number anywhere, and no other e-mail address in the content.
 - **Photos:** every file in `content/media/` must have an entry in `gallery.json` (alt text in pt-BR/en/es, credit for event photos). The site has no video ([ADR-0014](docs/architecture/adr/0014-no-video-keep-the-site-light.md)). See `content/media/README.md`.
 - **Commits:** Conventional Commits (`feat:`, `fix:`, `docs:`, `ci:`, `test:`, `chore:`), small and focused. Show the diff summary and ask before `git push`.
+- **Version:** `.githooks/pre-push` bumps `<Version>` in `Directory.Build.props` on every push to `main` (any `feat:` → minor, else any `fix:` → patch, once per push). It commits `chore(release): vX.Y.Z` and stops the push: run `git push` again. Enable once per clone with `git config core.hooksPath .githooks`.
 - **When a decision changes, write a new ADR** that supersedes the old one. Don't rewrite history.
 - Accessibility (WCAG 2.2 AA, reduced motion, keyboard) and the performance budgets in `docs/architecture/overview.md` §6 are requirements, not nice-to-haves.
 
