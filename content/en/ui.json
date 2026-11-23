@@ -1,6 +1,7 @@
 {
   "cta.recruiter": "Recruiter mode (30 s)",
   "cta.ride": "See the Trace",
+  "cta.cases": "Case studies",
   "cta.cv": "Download CV (PDF)",
   "cta.linkedin": "Talk on LinkedIn",
   "hud.progress": "Trace progress",
@@ -65,6 +66,10 @@
   "toolbox.intro": "Tools grouped by area. No percentage bars: they don't mean anything.",
   "pitstop.title": "Contact",
   "pitstop.text": "Looking for someone to modernize a critical platform without stopping production? Let's talk.",
+  "cases.title": "Case studies",
+  "cases.intro": "Projects of mine with open code on GitHub: what each one solves and what is worth a look.",
+  "cases.highlights": "What to look at",
+  "cases.repo": "See the code on GitHub",
   "garage.title": "Garage",
   "garage.intro": "What I do when I'm not at the keyboard, and what it taught me about the work.",
   "garage.seeAll": "See all photos and videos",

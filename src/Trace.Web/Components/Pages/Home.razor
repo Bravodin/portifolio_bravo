@@ -4,7 +4,7 @@
 @inject PageContext Page
 
 @* The ride (docs/ux/sitemap.md): hero → about → what I bring → the Trace (7 stages) → Service Log → Toolbox
-   → Garage → Pit Stop. *@
+   → Case studies → Garage → Pit Stop. *@
 <PageTitle>@Page.T("page.home.title")</PageTitle>
 
 <section class="hero" id="start" aria-labelledby="hero-name">
@@ -20,6 +20,7 @@
                 <a class="btn btn-primary btn-cv" href="@heroCv" download><DownloadIcon />@Page.T("cta.cv")</a>
             }
             <a class="btn" href="@Identity.GitHub" rel="noopener" target="_blank"><GitHubIcon />GitHub ↗</a>
+            <a class="btn" href="@Page.Anchor("cases")">@Page.T("cta.cases") ↓</a>
             <a class="btn" href="@Page.Anchor("trace")">@Page.T("cta.ride") ↓</a>
         </p>
     </div>
@@ -83,6 +84,8 @@
         }
     </div>
 </section>
+
+<CasesSection />
 
 <GarageSection />
 

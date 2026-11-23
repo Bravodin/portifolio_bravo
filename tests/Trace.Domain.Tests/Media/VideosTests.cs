@@ -28,5 +28,5 @@ public sealed class VideosTests
 
     [Fact]
     public void Gallery_LoadsEveryPhoto() =>
-        Assert.Equal(8, Gallery.Load(Path.Combine(RepoContent.Root, "media", "gallery.json")).Count);
+        Assert.Equal(12, Gallery.Load(Path.Combine(RepoContent.Root, "media", "gallery.json")).Count);
 }

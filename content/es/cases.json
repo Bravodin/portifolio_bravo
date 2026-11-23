@@ -1,0 +1,57 @@
+[
+  {
+    "id": "erp-mock",
+    "title": "ERP Mock · WPF + API",
+    "period": "2026",
+    "summary": "Mini-ERP de clientes, productos, ventas que descuentan stock, dashboard e informes. Las reglas de negocio viven en una API HTTP y WPF es solo la interfaz.",
+    "highlights": [
+      "La app WPF y los tests usan el mismo cliente HTTP, que implementa las interfaces de los servicios: las pantallas no cambiaron cuando las reglas pasaron a la API.",
+      "Un error de regla (stock insuficiente, documento inválido) vuelve como 422 en ProblemDetails y aparece igual en pantalla.",
+      "Cuatro ADR registran las decisiones, desde separar la API hasta PostgreSQL en Docker con SQLite como opción local."
+    ],
+    "tech": [".NET 10", "WPF", "MVVM", "ASP.NET Core Minimal API", "EF Core", "PostgreSQL", "SQLite", "Docker", "xUnit"],
+    "repo": "https://github.com/Bravodin/wpf_mocktest",
+    "photo": "case-erp-mock"
+  },
+  {
+    "id": "loja-mock",
+    "title": "Loja Mock · laboratorio para Selenium",
+    "period": "2026",
+    "summary": "Tienda online en React, totalmente simulada y sin backend, hecha para practicar automatización de pruebas: login, catálogo, carrito con cupones, checkout, pedidos y registro, también en modo móvil.",
+    "highlights": [
+      "Cada elemento interactivo tiene data-testid, así los selectores de los tests no se rompen cuando cambia el diseño.",
+      "Flags en la URL borran los datos (?reset=1) y ajustan la latencia simulada (?delay=), para practicar esperas explícitas.",
+      "Casos de error a propósito: usuario bloqueado, cupón vencido, tarjeta rechazada, producto agotado."
+    ],
+    "tech": ["React", "Vite", "Selenium", "C#", "NUnit"],
+    "repo": "https://github.com/Bravodin/mock-marketplace-iafirst",
+    "photo": "case-loja-mock"
+  },
+  {
+    "id": "alexa-claude",
+    "title": "Assistente Chat · Alexa + Claude",
+    "period": "2026",
+    "summary": "Skill de Alexa en portugués de Brasil que envía la pregunta hablada a la API de Claude y lee la respuesta en voz alta, como un comando nativo de Alexa.",
+    "highlights": [
+      "Alexa espera unos 8 s la respuesta: por eso un modelo rápido, timeout de 7 s y respuestas cortas, sin markdown.",
+      "La respuesta se limpia y se escapa para SSML antes de convertirse en voz.",
+      "La clave de la API nunca va a Git; un script genera el zip para importar en la consola de Alexa."
+    ],
+    "tech": ["Python", "ASK SDK", "AWS Lambda", "Claude API", "SSML"],
+    "repo": "https://github.com/Bravodin/claude-skill-alexa",
+    "photo": "case-alexa-claude"
+  },
+  {
+    "id": "sqlite-merge-tool",
+    "title": "SQLite Merge Tool",
+    "period": "2016 · revisado en 2026",
+    "summary": "Herramienta de Windows que copia datos de tablas entre dos bases SQLite, reemplazando los registros del destino o sumándolos. Creada en 2016 para una necesidad del día a día, escrita a mano, antes de los asistentes de IA.",
+    "highlights": [
+      "La interfaz solo se ocupa de pantallas e hilos; todo el trabajo con la base vive en una biblioteca Core separada.",
+      "En 2026 volvió a compilar, recibió documentación y ADR, y se quedó a propósito en .NET Framework 4.8, como registro de mi trayectoria."
+    ],
+    "tech": ["C#", ".NET Framework 4.8", "WinForms", "System.Data.SQLite"],
+    "repo": "https://github.com/Bravodin/SQLiteMergeTool",
+    "photo": "case-sqlite-merge-tool"
+  }
+]

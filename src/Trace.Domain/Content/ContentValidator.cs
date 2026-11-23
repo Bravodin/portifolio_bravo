@@ -36,6 +36,19 @@ public static class ContentValidator
                 yield return problem;
             }
 
+            foreach (var problem in SameSet("case study", reference.Cases.Select(c => c.Id), other.Cases.Select(c => c.Id), locale))
+            {
+                yield return problem;
+            }
+
+            foreach (var (mine, theirs) in reference.Cases.Join(other.Cases, c => c.Id, c => c.Id, (a, b) => (a, b)))
+            {
+                if (mine.Repo != theirs.Repo || mine.Photo != theirs.Photo || mine.Highlights.Count != theirs.Highlights.Count)
+                {
+                    yield return $"case study '{mine.Id}' has a different repository, thumbnail or number of highlights in {locale}";
+                }
+            }
+
             foreach (var (mine, theirs) in reference.Garage.Join(other.Garage, c => c.Id, c => c.Id, (a, b) => (a, b)))
             {
                 var names = (GarageCard c) => string.Join('|', c.Favorites?.SelectMany(g => g.Items) ?? []);

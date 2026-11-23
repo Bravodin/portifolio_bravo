@@ -1,6 +1,7 @@
 {
   "cta.recruiter": "Modo recrutador (30 s)",
   "cta.ride": "Ver o Trace",
+  "cta.cases": "Estudos de caso",
   "cta.cv": "Baixar CV (PDF)",
   "cta.linkedin": "Conversar no LinkedIn",
   "hud.progress": "Progresso do trace",
@@ -65,6 +66,10 @@
   "toolbox.intro": "Ferramentas agrupadas por área. Sem barras de porcentagem: elas não significam nada.",
   "pitstop.title": "Contato",
   "pitstop.text": "Procurando alguém para modernizar uma plataforma crítica sem parar a produção? Vamos conversar.",
+  "cases.title": "Estudos de caso",
+  "cases.intro": "Projetos meus com código aberto no GitHub: o que cada um resolve e o que vale olhar nele.",
+  "cases.highlights": "O que olhar",
+  "cases.repo": "Ver o código no GitHub",
   "garage.title": "Garagem",
   "garage.intro": "O que eu faço longe do teclado, e o que isso me ensinou sobre o trabalho.",
   "garage.seeAll": "Ver todas as fotos e vídeos",

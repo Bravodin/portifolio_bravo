@@ -1,0 +1,37 @@
+@inject PageContext Page
+
+@* Case studies on the home page (content/{locale}/cases.json): public repositories, each with one thumbnail from
+   its screenshots, what to look at in it and a link to the code. *@
+<section class="cases" id="cases" aria-labelledby="cases-title">
+    <h2 id="cases-title">@Page.T("cases.title")</h2>
+    <p class="section-intro">@Page.T("cases.intro")</p>
+    <ul class="case-cards">
+        @foreach (var study in Page.Content.Cases)
+        {
+            <li class="case-card" id="case-@study.Id">
+                <Picture Id="@study.Photo" Widths="[480, 960]" Sizes="(min-width: 1024px) 560px, (min-width: 768px) 45vw, 92vw" Width="480" Height="300" Class="case-thumb" />
+                <div class="case-card-body">
+                    <p class="hud-label case-period">@study.Period</p>
+                    <h3>@study.Title</h3>
+                    <p>@study.Summary</p>
+                    <p class="hud-label case-highlights-label">@Page.T("cases.highlights")</p>
+                    <ul class="case-highlights">
+                        @foreach (var line in study.Highlights)
+                        {
+                            <li>@line</li>
+                        }
+                    </ul>
+                    <ul class="chips">
+                        @foreach (var tool in study.Tech)
+                        {
+                            <li>@tool</li>
+                        }
+                    </ul>
+                    <p class="case-repo">
+                        <a class="btn" href="@study.Repo" rel="noopener" target="_blank" aria-label="@Page.T("cases.repo"): @study.Title"><GitHubIcon />@Page.T("cases.repo") ↗</a>
+                    </p>
+                </div>
+            </li>
+        }
+    </ul>
+</section>

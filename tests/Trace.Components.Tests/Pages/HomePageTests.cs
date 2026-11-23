@@ -49,18 +49,6 @@ public sealed class HomePageTests : BunitContext
         Assert.NotNull(cv.QuerySelector("svg[aria-hidden=true]"));
     }
 
-    [Theory]
-    [InlineData("/", "/#trace")]
-    [InlineData("/pt/", "/pt/#trace")]
-    [InlineData("/es/", "/es/#trace")]
-    public void Hero_JumpLinks_StayInThePageLanguage(string path, string trace)
-    {
-        // <base href="/"> would turn a bare "#trace" into "/#trace", the English home page.
-        var actions = RenderHome(path).FindAll(".hero-actions a");
-
-        Assert.Equal(trace, actions[3].GetAttribute("href"));
-    }
-
     [Fact]
     public void WhatIBring_SitsBetweenAboutAndTheTrace_WithThreePoints()
     {
@@ -198,6 +186,40 @@ public sealed class HomePageTests : BunitContext
         Assert.Equal(["Core expertise", "Architecture & Cloud", "Engineering practices", "Previous technologies"], drawers.Select(d => d.QuerySelector("summary")!.TextContent));
         Assert.All(drawers.Take(3), d => Assert.True(d.HasAttribute("open")));
         Assert.False(drawers[3].HasAttribute("open"));
+    }
+
+    [Theory]
+    [InlineData("/", "/#cases", "/#trace")]
+    [InlineData("/pt/", "/pt/#cases", "/pt/#trace")]
+    [InlineData("/es/", "/es/#cases", "/es/#trace")]
+    public void Hero_JumpLinks_StayInThePageLanguage(string path, string cases, string trace)
+    {
+        // <base href="/"> would turn a bare "#cases" into "/#cases", the English home page.
+        var actions = RenderHome(path).FindAll(".hero-actions a");
+
+        Assert.Equal(cases, actions[3].GetAttribute("href"));
+        Assert.Equal(trace, actions[4].GetAttribute("href"));
+    }
+
+    [Fact]
+    public void CaseStudies_SitBetweenToolboxAndGarage_EachWithAThumbnailAndItsGitHubRepo()
+    {
+        var cut = RenderHome("/pt/");
+
+        Assert.Equal("cases", cut.Find("#toolbox + section").Id);
+        Assert.Equal("garage", cut.Find("#cases + section").Id);
+        Assert.Equal("Estudos de caso", cut.Find("#cases-title").TextContent);
+
+        var cards = cut.FindAll(".case-card");
+        Assert.Equal(["case-erp-mock", "case-loja-mock", "case-alexa-claude", "case-sqlite-merge-tool"], cards.Select(c => c.Id));
+        Assert.All(cards, card =>
+        {
+            Assert.False(string.IsNullOrWhiteSpace(card.QuerySelector("picture.case-thumb img")!.GetAttribute("alt")));
+            var repo = card.QuerySelector(".case-repo a")!;
+            Assert.StartsWith("https://github.com/Bravodin/", repo.GetAttribute("href"), StringComparison.Ordinal);
+            Assert.Equal(("noopener", "_blank"), (repo.GetAttribute("rel"), repo.GetAttribute("target")));
+        });
+        Assert.Equal("https://github.com/Bravodin/SQLiteMergeTool", cut.Find("#case-sqlite-merge-tool .case-repo a").GetAttribute("href"));
     }
 
     [Fact]

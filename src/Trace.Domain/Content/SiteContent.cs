@@ -130,6 +130,20 @@ public sealed record GarageCard(string Id, string Title, string Text, string Lin
 /// </summary>
 public sealed record FavoriteGroup(string Label, IReadOnlyList<string> Items);
 
+/// <summary>
+/// A case study (content/{locale}/cases.json): one of Manuel's public repositories, with a thumbnail from its
+/// screenshots (<c>Photo</c> is a gallery id), what it is, what to look at in it, and the link to the code on GitHub.
+/// </summary>
+public sealed record CaseStudy(
+    string Id,
+    string Title,
+    string Period,
+    string Summary,
+    IReadOnlyList<string> Highlights,
+    IReadOnlyList<string> Tech,
+    Uri Repo,
+    string Photo);
+
 /// <summary>Locale-neutral choices for Recruiter Mode (content/recruiter.json).</summary>
 public sealed record RecruiterSelection(IReadOnlyList<string> Metrics, IReadOnlyList<string> CoreStack, int Roles);
 
@@ -143,6 +157,7 @@ public sealed record SiteContent(
     IReadOnlyList<Stage> Stages,
     IReadOnlyList<Drawer> Toolbox,
     IReadOnlyList<GarageCard> Garage,
+    IReadOnlyList<CaseStudy> Cases,
     ColophonCopy Colophon,
     IReadOnlyDictionary<string, string> Ui)
 {

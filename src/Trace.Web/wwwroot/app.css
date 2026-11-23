@@ -763,6 +763,57 @@ main {
   font-weight: 600;
 }
 
+/* ---------- Case studies ---------- */
+
+.cases {
+  padding: var(--space-16) 0 var(--space-8);
+  border-top: 1px solid var(--color-line);
+}
+
+.case-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.case-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+}
+
+/* Screenshots come in different shapes: show them all at 16:10, anchored to the top (title bars, headers). */
+.case-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.case-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: var(--space-4) var(--space-6) var(--space-6);
+}
+
+.case-card-body h3 { margin-bottom: var(--space-2); }
+.case-card-body > p { margin: 0 0 var(--space-2); color: var(--color-text-2); }
+.case-period { margin: 0 0 var(--space-1) !important; }
+.case-highlights-label { margin: var(--space-4) 0 var(--space-1) !important; }
+.case-highlights { margin: 0 0 var(--space-4); padding-left: 1.2em; color: var(--color-text-2); }
+.case-highlights li + li { margin-top: var(--space-1); }
+.case-repo { margin-top: auto !important; padding-top: var(--space-2); }
+
 /* ---------- Garage ---------- */
 
 .garage {

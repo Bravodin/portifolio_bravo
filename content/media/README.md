@@ -13,6 +13,7 @@ The site's photos live here as **originals**. The build generates every web vers
    | `workbench/` | The bike in the workshop, tools, repairs | Garage section + gallery |
    | `games/` | Setup, controllers, favorite games | Garage section + gallery |
    | `colophon/` | Screenshots of how the site is built (category `colophon`) | Colophon only, placed by id in `Colophon.razor` |
+   | `projects/` | One thumbnail per case study, taken from the repo's screenshots (category `projects`) | Case studies on the home page, by the `photo` id in `content/{locale}/cases.json` |
 
    Name it in lowercase with hyphens: `track-04-interlagos.jpg`. Use JPEG/PNG/WebP, ideally ≥ 1600 px on the long side (≥ 800 px for portraits).
 

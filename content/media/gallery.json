@@ -147,6 +147,66 @@
         "en": "The pipeline in Azure DevOps: every push to main runs CI (build, tests, prerender) and then deploys to Azure Static Web Apps. Failures stay in the history too.",
         "es": "El pipeline en Azure DevOps: cada push a main ejecuta el CI (build, tests, prerender) y luego publica en Azure Static Web Apps. Los errores también quedan en el historial."
       }
+    },
+    {
+      "id": "case-loja-mock",
+      "file": "projects/case-loja-mock.png",
+      "category": "projects",
+      "featured": false,
+      "focalPoint": { "x": 0.5, "y": 0.3 },
+      "date": "2026-11",
+      "credit": null,
+      "alt": {
+        "pt-BR": "Tela de catálogo da Loja Mock: campo de busca, filtros de categoria e ordenação, e cartões de produtos com preço e botão Adicionar ao carrinho",
+        "en": "Loja Mock catalog screen: a search box, category and sort filters, and product cards with prices and an Add to cart button",
+        "es": "Pantalla de catálogo de Loja Mock: campo de búsqueda, filtros de categoría y orden, y tarjetas de productos con precio y botón Agregar al carrito"
+      },
+      "caption": null
+    },
+    {
+      "id": "case-erp-mock",
+      "file": "projects/case-erp-mock.png",
+      "category": "projects",
+      "featured": false,
+      "focalPoint": { "x": 0.5, "y": 0.3 },
+      "date": "2026-11",
+      "credit": null,
+      "alt": {
+        "pt-BR": "Dashboard do ERP Mock em WPF: menu lateral escuro, cartões de faturamento, vendas, ticket médio e clientes ativos, e um gráfico de barras com o faturamento dos últimos 12 meses",
+        "en": "ERP Mock dashboard in WPF: a dark side menu, cards for revenue, sales, average ticket and active customers, and a bar chart of the last 12 months of revenue",
+        "es": "Dashboard de ERP Mock en WPF: menú lateral oscuro, tarjetas de facturación, ventas, ticket promedio y clientes activos, y un gráfico de barras con la facturación de los últimos 12 meses"
+      },
+      "caption": null
+    },
+    {
+      "id": "case-sqlite-merge-tool",
+      "file": "projects/case-sqlite-merge-tool.png",
+      "category": "projects",
+      "featured": false,
+      "focalPoint": { "x": 0.5, "y": 0.2 },
+      "date": "2026-11",
+      "credit": null,
+      "alt": {
+        "pt-BR": "Janela do SQLite Merge Tool com dois bancos lado a lado, a lista de tabelas de cada um, as opções Replace Data e Union Data e um log verde da transferência",
+        "en": "SQLite Merge Tool window with two databases side by side, each one’s table list, the Replace Data and Union Data options and a green transfer log",
+        "es": "Ventana de SQLite Merge Tool con dos bases de datos lado a lado, la lista de tablas de cada una, las opciones Replace Data y Union Data y un log verde de la transferencia"
+      },
+      "caption": null
+    },
+    {
+      "id": "case-alexa-claude",
+      "file": "projects/case-alexa-claude.png",
+      "category": "projects",
+      "featured": false,
+      "focalPoint": { "x": 0.5, "y": 0.25 },
+      "date": "2026-11",
+      "credit": null,
+      "alt": {
+        "pt-BR": "Diagrama de arquitetura da skill Assistente Chat: a fala do usuário passa pelo Echo, pela Alexa Cloud e por uma AWS Lambda até a API do Claude, e a resposta volta em voz",
+        "en": "Architecture diagram of the Assistente Chat skill: the user’s speech goes through the Echo, the Alexa Cloud and an AWS Lambda to the Claude API, and the answer comes back as speech",
+        "es": "Diagrama de arquitectura de la skill Assistente Chat: la voz del usuario pasa por el Echo, la Alexa Cloud y una AWS Lambda hasta la API de Claude, y la respuesta vuelve como voz"
+      },
+      "caption": null
     }
   ]
 }

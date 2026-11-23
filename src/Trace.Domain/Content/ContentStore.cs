@@ -53,6 +53,7 @@ public sealed class ContentStore
             Read<List<Stage>>(Path.Combine(folder, "stages.json")),
             Read<List<Drawer>>(Path.Combine(folder, "toolbox.json")),
             Read<List<GarageCard>>(Path.Combine(folder, "garage.json")),
+            Read<List<CaseStudy>>(Path.Combine(folder, "cases.json")),
             Read<ColophonCopy>(Path.Combine(folder, "colophon.json")),
             Read<Dictionary<string, string>>(Path.Combine(folder, "ui.json")));
     }
