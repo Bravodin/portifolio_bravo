@@ -498,6 +498,9 @@ main {
   gap: var(--space-3);
 }
 
+/* Five buttons in a row: tighter sides so the longer Spanish labels still fit on one line at desktop widths. */
+.hero-actions .btn { padding: 0 var(--space-4); }
+
 .hero-tagline { font-size: var(--size-h3); max-width: var(--measure); color: var(--color-text-2); }
 
 .stage {
