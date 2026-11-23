@@ -12,7 +12,7 @@ During implementation this becomes `content/{locale}/*.json` (see [ADR-0004](../
 |---|---|---|---|
 | `name` | Manuel Bravo | Manuel Bravo | Manuel Bravo |
 | `role` | Lead Software Engineer | Lead Software Engineer | Lead Software Engineer |
-| `tagline` | I modernize critical platforms without stopping production. | Modernizo plataformas críticas sem parar a produção. | Modernizo plataformas críticas sin detener la producción. |
+| `tagline` | I modernize critical platforms without stopping production, using AI to ship faster without giving up quality. | Modernizo plataformas críticas sem parar a produção, usando IA para entregar mais rápido sem abrir mão da qualidade. | Modernizo plataformas críticas sin detener la producción, usando IA para entregar más rápido sin renunciar a la calidad. |
 | `subtitle` | Full-stack .NET · Test automation & quality · AWS · Team building | Full-stack .NET · Automação de testes e qualidade · AWS · Formação de times | Full-stack .NET · Automatización de pruebas y calidad · AWS · Formación de equipos |
 | `location` | Brazil · open to remote | Brasil · aberto a remoto | Brasil · abierto a remoto |
 | `languages` | Portuguese (native) · Spanish (native) · English (full professional) | | |
