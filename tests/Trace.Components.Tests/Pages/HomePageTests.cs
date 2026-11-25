@@ -211,12 +211,13 @@ public sealed class HomePageTests : BunitContext
         Assert.Equal("Estudos de caso", cut.Find("#cases-title").TextContent);
 
         var cards = cut.FindAll(".case-card");
-        Assert.Equal(["case-erp-mock", "case-loja-mock", "case-alexa-claude", "case-sqlite-merge-tool"], cards.Select(c => c.Id));
+        Assert.Equal(["case-swan-race", "case-erp-mock", "case-loja-mock", "case-alexa-claude", "case-sqlite-merge-tool"], cards.Select(c => c.Id));
         Assert.All(cards, card =>
         {
             Assert.False(string.IsNullOrWhiteSpace(card.QuerySelector("picture.case-thumb img")!.GetAttribute("alt")));
             var repo = card.QuerySelector(".case-repo a")!;
-            Assert.StartsWith("https://github.com/Bravodin/", repo.GetAttribute("href"), StringComparison.Ordinal);
+            // Manuel's own repositories, or his studio's (Schlupfwerk).
+            Assert.Matches(@"^https://github\.com/(Bravodin|schlupfwerk)/", repo.GetAttribute("href"));
             Assert.Equal(("noopener", "_blank"), (repo.GetAttribute("rel"), repo.GetAttribute("target")));
         });
         Assert.Equal("https://github.com/Bravodin/SQLiteMergeTool", cut.Find("#case-sqlite-merge-tool .case-repo a").GetAttribute("href"));

@@ -9,7 +9,7 @@ public sealed class GalleryTests
 
     [Fact]
     public void Gallery_LoadsEveryPhoto() =>
-        Assert.Equal(12, Gallery.Load(Path.Combine(RepoContent.Root, "media", "gallery.json")).Count);
+        Assert.Equal(13, Gallery.Load(Path.Combine(RepoContent.Root, "media", "gallery.json")).Count);
 
     /// <summary>ADR-0014: no video on the site, to keep it light and its bandwidth predictable.</summary>
     [Fact]

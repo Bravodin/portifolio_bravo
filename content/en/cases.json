@@ -1,5 +1,19 @@
 [
   {
+    "id": "swan-race",
+    "title": "Swan Race · Schlupfwerk",
+    "period": "2026",
+    "summary": "As Founder & Game Developer of Schlupfwerk, my indie game studio, I make Swan Race: a free, open-source 3D racing game for the whole family, built with Godot. The Windows alpha is already out.",
+    "highlights": [
+      "The track, scenery, characters and music are generated in code: on top of the Godot engine, the game takes about 200 KB.",
+      "The 11 rivals are AI bots that produce the same commands as a player and follow the same physics, no cheating; the difficulty draws each one's skill.",
+      "A version tag triggers GitHub Actions, which exports the game, packages the zip with the licenses and publishes the release."
+    ],
+    "tech": ["Godot 4", "GDScript", "GitHub Actions", "Blazor WebAssembly", "Azure Static Web Apps", "xUnit", "bUnit"],
+    "repo": "https://github.com/schlupfwerk/schlupfwerk_swanrace",
+    "photo": "case-swan-race"
+  },
+  {
     "id": "erp-mock",
     "title": "ERP Mock · WPF + API",
     "period": "2026",

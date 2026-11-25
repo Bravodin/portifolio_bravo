@@ -94,8 +94,8 @@ public sealed class ContentValidatorTests : IDisposable
         Edit("en/cases.json", json => json[1]!["repo"] = "https://github.com/someone-else/repo");
 
         var error = Assert.Throws<InvalidDataException>(() => ContentStore.Load(_root));
-        Assert.Contains("es is missing case study(s): erp-mock", error.Message, StringComparison.Ordinal);
-        Assert.Contains("case study 'loja-mock' has a different repository, thumbnail or number of highlights in en", error.Message, StringComparison.Ordinal);
+        Assert.Contains("es is missing case study(s): swan-race", error.Message, StringComparison.Ordinal);
+        Assert.Contains("case study 'erp-mock' has a different repository, thumbnail or number of highlights in en", error.Message, StringComparison.Ordinal);
     }
 
     [Fact]

@@ -164,6 +164,21 @@
       "caption": null
     },
     {
+      "id": "case-swan-race",
+      "file": "projects/case-swan-race.png",
+      "category": "projects",
+      "featured": false,
+      "focalPoint": { "x": 0.5, "y": 0.55 },
+      "date": "2026-11",
+      "credit": null,
+      "alt": {
+        "pt-BR": "Tela de título do Swan Race: um cisne branco acabou de sair do ovo sobre uma plataforma de areia, com o logo da Schlupfwerk e o nome SWAN RACE no céu azul",
+        "en": "Swan Race title screen: a white swan has just hatched on a sandy platform, with the Schlupfwerk logo and the name SWAN RACE in the blue sky",
+        "es": "Pantalla de título de Swan Race: un cisne blanco acaba de salir del huevo sobre una plataforma de arena, con el logo de Schlupfwerk y el nombre SWAN RACE en el cielo azul"
+      },
+      "caption": null
+    },
+    {
       "id": "case-erp-mock",
       "file": "projects/case-erp-mock.png",
       "category": "projects",

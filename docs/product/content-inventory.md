@@ -165,6 +165,17 @@ Regrouped on 2026-11-21 (Manuel): the old seven drawers showed breadth but hid t
 
 Until a category has a photo, its card uses a line-art illustration (blueprint style) instead of an empty slot.
 
+### 6.0.1 Case study: Swan Race (Schlupfwerk)
+
+Source: Manuel, 2026-11-25, and the game repository (github.com/schlupfwerk/schlupfwerk_swanrace). Manuel's title at Schlupfwerk: **Founder & Game Developer**. Only these facts may be used; the Service Log, Recruiter Mode and CV don't mention Schlupfwerk until he decides.
+
+| Fact | Value | Where it comes from |
+|---|---|---|
+| Game content on top of the engine | ~200 KB | Exported `SwanRace.exe` (109,465,016 B) minus the Godot 4.7.2 release template (109,268,480 B), alpha 0.0.5 |
+| AI rivals per race | up to 11 (12 swans in total) | Game settings (racers 1–12) |
+| Status | Windows alpha 0.0.5 published (GitHub release `v0.0.5-alpha`) | 2026-11-25 |
+| Release pipeline | a `v*` tag runs GitHub Actions: export, zip with licenses, release | `.github/workflows/release-windows.yml`, first green run 2026-11-25 |
+
 ## 6.1 Media
 
 All photos are listed in [`content/media/gallery.json`](../../content/media/gallery.json): file, category, focal point, credit, and `alt` + caption in the 3 languages. To add more photos, see [`content/media/README.md`](../../content/media/README.md).
